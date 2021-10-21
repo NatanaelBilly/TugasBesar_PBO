@@ -4,30 +4,39 @@
  * and open the template in the editor.
  */
 package Model;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author natanael billy
  */
 public class User {
+
     private int id_user;
     private String nama_depan;
     private String nama_belakang;
     private String email_user;
     private String password;
+    private double saldo;
     private Model.Role role;
-    
-    public User (){
-        
+    private ArrayList<Transaksi> listTransaksi;
+
+    public User() {
+
     }
-    public User(int id_user, String nama_depan, String nama_belakang, String email_user, String password, Role role) {
+
+    public User(int id_user, String nama_depan, String nama_belakang, String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
         this.id_user = id_user;
         this.nama_depan = nama_depan;
         this.nama_belakang = nama_belakang;
         this.email_user = email_user;
         this.password = password;
+        this.saldo = saldo;
         this.role = role;
+        this.listTransaksi = listTransaksi;
     }
-    
+
     public int getId_user() {
         return id_user;
     }
@@ -68,6 +77,14 @@ public class User {
         this.password = password;
     }
 
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
     public Role getRole() {
         return role;
     }
@@ -75,5 +92,12 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-    
+
+    public ArrayList<Transaksi> getListTransaksi() {
+        return listTransaksi;
+    }
+
+    public void setListTransaksi(ArrayList<Transaksi> listTransaksi) {
+        this.listTransaksi = listTransaksi;
+    }
 }
