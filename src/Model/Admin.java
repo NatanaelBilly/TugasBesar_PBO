@@ -5,24 +5,26 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author natanael billy
  */
 public class Admin extends User{
-    private int id_admin;
+      private ArrayList<Saran> listSaran;
 
-    public Admin(int id_admin, int id_user, String nama_depan, String nama_belakang, String email_user, String password, Role role) {
-        super(id_user, nama_depan, nama_belakang, email_user, password, role);
-        this.id_admin = id_admin;
+    public Admin(ArrayList<Saran> listSaran, int id_user, String nama_depan, String nama_belakang, String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
+        super(id_user, nama_depan, nama_belakang, email_user, password, saldo, role, listTransaksi);
+        this.listSaran = listSaran;
     }
 
-    public int getId_admin() {
-        return id_admin;
+    public ArrayList<Saran> getListSaran() {
+        return listSaran;
     }
 
-    public void setId_admin(int id_admin) {
-        this.id_admin = id_admin;
+    public void setListSaran(ArrayList<Saran> listSaran) {
+        this.listSaran = listSaran;
     }
     
     
