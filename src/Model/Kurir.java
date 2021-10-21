@@ -4,45 +4,28 @@
  * and open the template in the editor.
  */
 package Model;
+
 import java.util.ArrayList;
+
 /**
  *
  * @author natanael billy
  */
-public class Kurir extends User{
-    private String id_kurir;
-    private String NIK;
+public class Kurir extends User {
+
     private double total_pendapatan;
-    private int available;
+    private String NIK;
+    private int ketersediaan;
     private String plat;
     private String jenis_kendaraan;
-    ArrayList<Transaksi> listTransaksi;
 
-    public Kurir(String id_kurir, String NIK, double total_pendapatan, int available, String plat, String jenis_kendaraan, ArrayList<Transaksi> listTransaksi, int id_user, String nama_depan, String nama_belakang, String email_user, String password, Role role) {
-        super(id_user, nama_depan, nama_belakang, email_user, password, role);
-        this.id_kurir = id_kurir;
-        this.NIK = NIK;
+    public Kurir(double total_pendapatan, String NIK, int ketersediaan, String plat, String jenis_kendaraan, int id_user, String nama_depan, String nama_belakang, String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
+        super(id_user, nama_depan, nama_belakang, email_user, password, saldo, role, listTransaksi);
         this.total_pendapatan = total_pendapatan;
-        this.available = available;
+        this.NIK = NIK;
+        this.ketersediaan = ketersediaan;
         this.plat = plat;
         this.jenis_kendaraan = jenis_kendaraan;
-        this.listTransaksi = listTransaksi;
-    }
-
-    public String getId_kurir() {
-        return id_kurir;
-    }
-
-    public void setId_kurir(String id_kurir) {
-        this.id_kurir = id_kurir;
-    }
-
-    public String getNIK() {
-        return NIK;
-    }
-
-    public void setNIK(String NIK) {
-        this.NIK = NIK;
     }
 
     public double getTotal_pendapatan() {
@@ -53,12 +36,20 @@ public class Kurir extends User{
         this.total_pendapatan = total_pendapatan;
     }
 
-    public int getAvailable() {
-        return available;
+    public String getNIK() {
+        return NIK;
     }
 
-    public void setAvailable(int available) {
-        this.available = available;
+    public void setNIK(String NIK) {
+        this.NIK = NIK;
+    }
+
+    public int getKetersediaan() {
+        return ketersediaan;
+    }
+
+    public void setKetersediaan(int ketersediaan) {
+        this.ketersediaan = ketersediaan;
     }
 
     public String getPlat() {
@@ -77,12 +68,4 @@ public class Kurir extends User{
         this.jenis_kendaraan = jenis_kendaraan;
     }
 
-    public ArrayList<Transaksi> getListTransaksi() {
-        return listTransaksi;
-    }
-
-    public void setListTransaksi(ArrayList<Transaksi> listTransaksi) {
-        this.listTransaksi = listTransaksi;
-    }
-    
 }
