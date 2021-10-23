@@ -1,12 +1,10 @@
 package Main;
 
-import View.ProfilePengguna;
-import View.feedbackAdmin;
-import View.listMenuPengguna;
+import View.ProfilePelanggan;
 
 public class Main {
     public static void main(String[] args) {
-        new ProfilePengguna();
+        new ProfilePelanggan();
         System.out.println("aaaaa");
     }
 }
