@@ -5,12 +5,12 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 
-public class listMenuPelanggan {
+public class ListMenuPelanggan {
     public static JPanel panel;
     JLabel labelMenu, labelOrder, labelFeedback, labelTransactions, labelProfile;
     ImageIcon menu, order, feedback, transactions, profile;
 
-    public listMenuPelanggan(){
+    public ListMenuPelanggan(){
 
         //panel
         panel = new JPanel();

@@ -13,8 +13,8 @@ public class ProfilePelanggan {
     JButton btnEditProfile;
 
     public ProfilePelanggan(){
-        new listMenuPelanggan();
-        panelMenu = listMenuPelanggan.panel;
+        new ListMenuPelanggan();
+        panelMenu = ListMenuPelanggan.panel;
 
         //picture
         labelProfilePic = new JLabel();
