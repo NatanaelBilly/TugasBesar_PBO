@@ -1,5 +1,7 @@
 package View;
 
+import Model.Constant;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -58,7 +60,7 @@ public class ProfilePelanggan {
         });
 
         //Frame
-        frame = new JFrame("Nama APK");
+        frame = new JFrame(Constant.applicationName);
         frame.setSize(600, 800);
 
         panelNama.add(labelNama);
