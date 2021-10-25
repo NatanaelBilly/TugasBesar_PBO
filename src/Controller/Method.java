@@ -17,11 +17,20 @@ public class Method {
         }
     }
 
-    public void lihatSeluruhTransaksi(){
-
+    public void lihatSeluruhTransaksi(ArrayList<Transaksi> listTransaksi){
+        System.out.println("LIST TRANSAKSI");
+        for (int i = 0; i < listTransaksi.size(); i++) {
+            Transaksi currentTransaksi= listTransaksi.get(i);
+        }
     }
 
-    public void lihatSaldoAdmin(){
-
+    public void lihatSaldoAdmin(ArrayList<Transaksi> listTransaksi){
+        double total=0;
+        for (int i = 0; i < listTransaksi.size(); i++) {
+            Transaksi currentTransaksi= listTransaksi.get(i);
+            total += currentTransaksi.getTotal_pembayaran();
+        }
+        System.out.println("Total pendapatan dari seluruh transaksi :");
+        System.out.println(total);
     }
 }
