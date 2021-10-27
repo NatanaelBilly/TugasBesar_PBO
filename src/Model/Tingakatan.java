@@ -9,6 +9,6 @@ package Model;
  *
  * @author natanael billy
  */
-public enum Role {
-    ADMIN, PELANGGAN, KURIR;
+public enum Tingakatan {
+    BRONZE,SILVER,GOLD;
 }

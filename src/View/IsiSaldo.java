@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package View;
 
 /**
  *
- * @author natanael billy
+ * @author MrKaisar
  */
-public enum Role {
-    ADMIN, PELANGGAN, KURIR;
+public class IsiSaldo {
+    
 }
