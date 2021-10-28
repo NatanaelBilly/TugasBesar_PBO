@@ -55,7 +55,8 @@ public class ProfilePelanggan {
         btnEditProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //add ke database
+                frame.dispose();
+                new EditProfilePelanggan();
             }
         });
 
