@@ -3,9 +3,15 @@ import Model.*;
 
 import java.util.ArrayList;
 public class Method {
-
+    Controller c=new Controller();
     public void lihatDaftarUser(){
         System.out.println("LIST USER");
+        ArrayList<User> listUser = c.getAllUsers();
+        for (int i = 0; i < listUser.size(); i++) {
+            User currentUser= listUser.get(i);
+            System.out.println(currentUser);
+            System.out.println();
+        }
     }
 
     public void lihatFeedback(ArrayList<Saran> listSaran){
