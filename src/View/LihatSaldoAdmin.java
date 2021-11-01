@@ -13,7 +13,7 @@ public class LihatSaldoAdmin {
 
         //panel
         JPanel panel= new JPanel();
-        panel.setSize(600, 320);
+        panel.setSize(600, 600);
         panel.setBackground(new Color(201, 228, 197));
 
         //String builder
