@@ -16,9 +16,9 @@ import java.util.ArrayList;
  */
 public class Controller {
     static Database conn = new Database();
-    
+    public ArrayList<User> users = new ArrayList<>();
+
     public  ArrayList<User> getAllUsers() {
-        ArrayList<User> users = new ArrayList<>();
         conn.connect();
         String query = "SELECT * FROM user";
         try {
