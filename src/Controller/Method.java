@@ -12,23 +12,14 @@ public class Method {
             System.out.println();
         }
     }
-    public String [][] konversiListToArray(ArrayList<Pelanggan> list){
-        String hasil[][]=new String[list.size()][5];
+    public String [][] konversiListToArray(ArrayList<User> list){
+        String hasil[][]=new String[list.size()][4];
         for (int i = 0; i < list.size(); i++) {
-            Pelanggan currentUser= list.get(i);
-            String tingkatan="";
-            if(currentUser.getTingkatan()==Tingakatan.BRONZE){
-                tingkatan="BRONZE";
-            }else if(currentUser.getTingkatan()==Tingakatan.SILVER){
-                tingkatan="SILVER";
-            }else if(currentUser.getTingkatan()==Tingakatan.GOLD){
-                tingkatan="GOLD";
-            }
-            hasil[i][0]=tingkatan;
-            hasil[i][1]=Integer.toString(currentUser.getId_user());
-            hasil[i][2]=currentUser.getNama_depan();
-            hasil[i][3]=currentUser.getNama_belakang();
-            hasil[i][4]=currentUser.getEmail_user();
+            User currentUser= list.get(i);
+            hasil[i][0]=Integer.toString(currentUser.getId_user());
+            hasil[i][1]=currentUser.getNama_depan();
+            hasil[i][2]=currentUser.getNama_belakang();
+            hasil[i][3]=currentUser.getEmail_user();
         }
         return hasil;
     }
