@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Method {
     Controller c=new Controller();
     public void lihatDaftarUser(){
-        System.out.println("LIST USER");
         ArrayList<User> listUser = c.getAllUsers();
         for (int i = 0; i < listUser.size(); i++) {
             User currentUser= listUser.get(i);
@@ -13,7 +12,26 @@ public class Method {
             System.out.println();
         }
     }
-
+    public String [][] konversiListToArray(ArrayList<Pelanggan> list){
+        String hasil[][]=new String[list.size()][5];
+        for (int i = 0; i < list.size(); i++) {
+            Pelanggan currentUser= list.get(i);
+            String tingkatan="";
+            if(currentUser.getTingkatan()==Tingakatan.BRONZE){
+                tingkatan="BRONZE";
+            }else if(currentUser.getTingkatan()==Tingakatan.SILVER){
+                tingkatan="SILVER";
+            }else if(currentUser.getTingkatan()==Tingakatan.GOLD){
+                tingkatan="GOLD";
+            }
+            hasil[i][0]=tingkatan;
+            hasil[i][1]=Integer.toString(currentUser.getId_user());
+            hasil[i][2]=currentUser.getNama_depan();
+            hasil[i][3]=currentUser.getNama_belakang();
+            hasil[i][4]=currentUser.getEmail_user();
+        }
+        return hasil;
+    }
     public void lihatFeedback(ArrayList<Saran> listSaran){
         System.out.println("LIST FEEDBACK");
         for (int i = 0; i < listSaran.size(); i++) {
