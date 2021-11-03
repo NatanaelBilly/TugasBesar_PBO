@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class HomePelanggan {
     JFrame frame;
@@ -22,6 +24,13 @@ public class HomePelanggan {
         btnProfile.setFont(new Font("Arial", Font.BOLD, 20));
         btnProfile.setBackground(new Color(217, 217, 217));
         btnProfile.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnProfile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new ProfilePelanggan();
+            }
+        });
         btnOrder = new JButton("Create Order");
         btnOrder.setBounds(170, 340, 250, 80);
         btnOrder.setFont(new Font("Arial", Font.BOLD, 20));

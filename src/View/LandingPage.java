@@ -5,6 +5,8 @@ import Model.Constant;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LandingPage {
     JFrame frame;
@@ -24,6 +26,13 @@ public class LandingPage {
         btnLogin.setFont(new Font("Arial", Font.BOLD, 20));
         btnLogin.setBackground(new Color(217, 217, 217));
         btnLogin.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new Login();
+            }
+        });
 
 
         //Button Register
@@ -41,7 +50,7 @@ public class LandingPage {
         panelLandingPage.setBackground(new Color(204, 180, 114));
 
         //Frame
-        frame = new JFrame("Nama APK - Home Pelanggan");
+        frame = new JFrame(Constant.applicationName);
         frame.setSize(600, 800);
 
 
