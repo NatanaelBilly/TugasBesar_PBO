@@ -14,7 +14,7 @@ public class Main {
         ArrayList<User> users = controller.getAllUsers();
         
         for (User user : users) {
-            System.out.println(user.toString());
+            System.out.println(user.getNama_depan());
         }
         
     }

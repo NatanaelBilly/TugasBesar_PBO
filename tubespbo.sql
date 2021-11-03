@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2021 at 08:32 PM
+-- Generation Time: Nov 03, 2021 at 02:01 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -31,7 +31,8 @@ CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
   `id_pengirim` int(11) DEFAULT NULL,
   `id_penerima` int(11) DEFAULT NULL,
-  `chat` varchar(255) DEFAULT NULL
+  `chat` varchar(255) DEFAULT NULL,
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -42,8 +43,8 @@ CREATE TABLE `chat` (
 
 CREATE TABLE `kurir` (
   `NIK` varchar(255) NOT NULL,
-  `total_pendapatan` double DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
+  `total_pendapatan` double DEFAULT NULL,
   `ketersediaan` int(11) DEFAULT NULL,
   `plat` varchar(255) DEFAULT NULL,
   `jenis_kendaraan` varchar(255) DEFAULT NULL
@@ -100,6 +101,13 @@ CREATE TABLE `user` (
   `role` enum('ADMIN','PELANGGAN','KURIR') DEFAULT NULL,
   `saldo` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `nama_depan`, `nama_belakang`, `email_user`, `password`, `role`, `saldo`) VALUES
+(1, 'Kaisar', 'Valentino', 'kaisar@gmail.com', 'kai123', 'PELANGGAN', 90000);
 
 --
 -- Indexes for dumped tables
@@ -167,7 +175,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
