@@ -3,6 +3,8 @@ package View;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class ListMenuPelanggan {
@@ -22,6 +24,12 @@ public class ListMenuPelanggan {
         menu = new ImageIcon ("assets/menu_home.jpg");
         labelMenu.setIcon(menu);
         labelMenu.setBounds(60,-10,70,60);
+        labelMenu.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new HomePelanggan();
+            }
+        });
 
         labelOrder = new JLabel();
         order = new ImageIcon ("assets/menu_order.jpg");
