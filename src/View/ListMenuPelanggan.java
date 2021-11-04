@@ -11,8 +11,27 @@ public class ListMenuPelanggan {
     public static JPanel panel;
     JLabel labelMenu, labelOrder, labelFeedback, labelTransactions, labelProfile;
     ImageIcon menu, order, feedback, transactions, profile;
+    JMenuBar menuPelanggan;
+    JMenu order1,feedback1,transactions1,profile1;
+    TextArea headerMenuPelanggan;
 
     public ListMenuPelanggan(){
+        //JMenuBar
+        menuPelanggan = new JMenuBar();
+        order1 = new JMenu("Order");
+        feedback1 = new JMenu("Feedback");
+        transactions1 = new JMenu("Transaction");
+        profile1 = new JMenu("Profile");
+        menuPelanggan.add(order1);
+        menuPelanggan.add(feedback1);
+        menuPelanggan.add(transactions1);
+        menuPelanggan.add(profile1);
+        menuPelanggan.setVisible(true);
+
+//        headerMenuPelanggan = new TextArea();
+//        headerMenuPelanggan.add(menuPelanggan);
+//        headerMenuPelanggan.setBounds(60,-10,600,60);
+
 
         //panel
         panel = new JPanel();
@@ -80,6 +99,7 @@ public class ListMenuPelanggan {
         panel.add(labelFeedback);
         panel.add(labelTransactions);
         panel.add(labelProfile);
+
         panel.setLayout(null);
         panel.setVisible(true);
     }

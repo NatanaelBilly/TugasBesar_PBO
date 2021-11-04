@@ -41,6 +41,13 @@ public class LandingPage {
         btnRegister.setFont(new Font("Arial", Font.BOLD, 20));
         btnRegister.setBackground(new Color(217, 217, 217));
         btnRegister.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new RegisterPilihRule();
+            }
+        });
 
         //Panel
         panelLandingPage = new JPanel();
