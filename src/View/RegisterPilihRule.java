@@ -3,6 +3,8 @@ package View;
 import Model.Constant;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RegisterPilihRule {
     JFrame frame;
@@ -24,6 +26,13 @@ public class RegisterPilihRule {
         //Button Kurir
         registerKurir = new JButton("Kurir");
         registerKurir.setBounds(60, 190, 480, 40);
+        registerKurir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new RegisterKurir();
+            }
+        });
         registerPilihRule.add(registerKurir);
 
         //Button Pelanggan
