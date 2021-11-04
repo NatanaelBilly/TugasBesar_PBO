@@ -35,16 +35,34 @@ public class ListMenuPelanggan {
         order = new ImageIcon ("assets/menu_order.jpg");
         labelOrder.setIcon(order);
         labelOrder.setBounds(130,-10,70,60);
+        labelOrder.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+        });
 
         labelFeedback = new JLabel();
         feedback = new ImageIcon ("assets/menu_feedback.jpg");
         labelFeedback.setIcon(feedback);
         labelFeedback.setBounds(200,-10,100,60);
+        labelFeedback.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+        });
 
         labelTransactions = new JLabel();
         transactions = new ImageIcon ("assets/menu_transaction.jpg");
         labelTransactions.setIcon(transactions);
         labelTransactions.setBounds(300,-10,130,60);
+        labelTransactions.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+        });
 
         labelProfile = new JLabel();
         profile = new ImageIcon ("assets/menu_profile.jpg");
