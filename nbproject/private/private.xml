@@ -8,6 +8,7 @@
         </group>
         <group name="SIA">
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/IsiSaldo.java</file>
+            <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/EditProfilePelanggan.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Model/Chat.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/FeedbackAdmin.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/ProfilePelanggan.java</file>
@@ -15,15 +16,21 @@
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/Chat.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Model/User.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/ListMenuPelanggan.java</file>
+            <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Model/Transaksi.java</file>
+            <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Database/Database.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/LandingPage.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Model/Role.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/PendapatanKurir.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Model/Kurir.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Model/Status_pengiriman.java</file>
+            <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/LihatSaldoAdmin.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Model/Constant.java</file>
+            <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Model/Pelanggan.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Controller/Controller.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/Controller/Method.java</file>
+            <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/Login.java</file>
             <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/HomePelanggan.java</file>
+            <file>file:/C:/Users/kaisa/OneDrive/Documents/NetBeansProjects/TugasBesar_PBO/src/View/MenampilkanListUser.java</file>
         </group>
     </open-files>
 </project-private>
