@@ -50,6 +50,12 @@ public class ListMenuPelanggan {
         profile = new ImageIcon ("assets/menu_profile.jpg");
         labelProfile.setIcon(profile);
         labelProfile.setBounds(430,-10,80,60);
+        labelProfile.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new ProfilePelanggan();
+            }
+        });
 
         panel.add(labelMenu);
         panel.add(labelOrder);
