@@ -5,21 +5,27 @@
  */
 package Model;
 
-/**
- *
- * @author natanael billy
- */
+import java.sql.Time;
+
+
 public class Chat {
     private int id_chat;
+    private int id_transaksi;
     private int id_pengirim;
     private int id_penerima;
     private String chat;
+    private Time time;
+    
+    
+    public Chat(){}
 
-    public Chat(int id_chat, int id_pengirim, int id_penerima, String chat) {
+    public Chat(int id_chat, int id_transaksi, int id_pengirim, int id_penerima, String chat, Time time) {
         this.id_chat = id_chat;
+        this.id_transaksi = id_transaksi;
         this.id_pengirim = id_pengirim;
         this.id_penerima = id_penerima;
         this.chat = chat;
+        this.time = time;
     }
 
     public int getId_chat() {
@@ -28,6 +34,14 @@ public class Chat {
 
     public void setId_chat(int id_chat) {
         this.id_chat = id_chat;
+    }
+
+    public int getId_transaksi() {
+        return id_transaksi;
+    }
+
+    public void setId_transaksi(int id_transaksi) {
+        this.id_transaksi = id_transaksi;
     }
 
     public int getId_pengirim() {
@@ -53,6 +67,16 @@ public class Chat {
     public void setChat(String chat) {
         this.chat = chat;
     }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+    
+    
     
     
 }

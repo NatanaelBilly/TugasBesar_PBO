@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class ProfilePelanggan {
     JFrame frame;
-    JPanel panelMenu, panelNama, panelInfo;
+    JPanel panelMenu, panelNama;
     JLabel labelProfilePic, labelNama, labelEmail, labelRole, email, role;
     ImageIcon profilePic;
     JButton btnEditProfile;

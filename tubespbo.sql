@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2021 at 04:03 AM
+-- Generation Time: Nov 04, 2021 at 02:32 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -29,10 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
+  `id_transaksi` int(11) DEFAULT NULL,
   `id_pengirim` int(11) DEFAULT NULL,
   `id_penerima` int(11) DEFAULT NULL,
   `chat` varchar(255) DEFAULT NULL,
-  `date` date DEFAULT NULL
+  `time` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -119,7 +120,8 @@ INSERT INTO `user` (`id_user`, `nama_depan`, `nama_belakang`, `email_user`, `pas
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_pengirim` (`id_pengirim`),
-  ADD KEY `id_penerima` (`id_penerima`);
+  ADD KEY `id_penerima` (`id_penerima`),
+  ADD KEY `id_transaksi` (`id_transaksi`);
 
 --
 -- Indexes for table `kurir`
@@ -186,7 +188,8 @@ ALTER TABLE `user`
 --
 ALTER TABLE `chat`
   ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`id_pengirim`) REFERENCES `user` (`id_user`),
-  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`id_penerima`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`id_penerima`) REFERENCES `user` (`id_user`),
+  ADD CONSTRAINT `chat_ibfk_3` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi` (`id_transaksi`);
 
 --
 -- Constraints for table `kurir`
