@@ -20,13 +20,10 @@ public class KurirLihatProfil {
             showNama, showEmail, showNIK, showPlat, showKendaraan;
     private ImageIcon profilePic;
     
+    private Kurir kurir;
     public KurirLihatProfil(Kurir kurir)
     {
-        if(kurir == null)
-        {
-            System.out.println("Null");
-            return;
-        }
+        this.kurir = kurir;
         
         //Data Template
 //        int data_id = kurir.getId_user();
@@ -93,6 +90,7 @@ public class KurirLihatProfil {
         btnEditProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                new KurirEditProfil(kurir);
                 frame.setVisible(false);
             }
         });
