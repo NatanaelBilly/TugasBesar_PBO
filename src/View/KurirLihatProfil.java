@@ -15,11 +15,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class KurirLihatProfil {
-    JFrame frame;
-    JLabel labelMenu, labelProfilePic, labelNama, labelEmail,labelNIK, labelPlat, labelKendaraan,
+    private JFrame frame;
+    private JLabel labelMenu, labelProfilePic, labelNama, labelEmail,labelNIK, labelPlat, labelKendaraan,
             showNama, showEmail, showNIK, showPlat, showKendaraan;
-    ImageIcon profilePic;
-    JButton btnEditProfile;
+    private ImageIcon profilePic;
     
     public KurirLihatProfil(Kurir kurir)
     {
@@ -88,16 +87,28 @@ public class KurirLihatProfil {
         showKendaraan.setFont(new Font("Arial", Font.PLAIN, 17));
 
 
-        //Button
-        btnEditProfile = new JButton("Edit Profil");
+        //Button Edit
+        JButton btnEditProfile = new JButton("Edit Profil");
         btnEditProfile.setBounds(250, 600, 100, 30);
         btnEditProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //add ke database
+                frame.setVisible(false);
+            }
+        });
+        
+        //Button Back
+        JButton btnBack = new JButton("Kembali");
+        btnBack.setBounds(450, 25, 100, 30);
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new KurirMenu(kurir);
+                frame.setVisible(false);
             }
         });
 
+        
         //Frame
         frame = new JFrame(Constant.applicationName);
         frame.setSize(600, 800);
@@ -114,7 +125,9 @@ public class KurirLihatProfil {
         frame.add(showPlat);
         frame.add(showKendaraan);
         frame.add(showNIK);
+        
         frame.add(btnEditProfile);
+        frame.add(btnBack);
 
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
