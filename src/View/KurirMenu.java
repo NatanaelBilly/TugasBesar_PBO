@@ -5,11 +5,15 @@
  */
 package View;
 
+import Model.Kurir;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
@@ -17,51 +21,93 @@ import javax.swing.border.BevelBorder;
  *
  * @author Asus
  */
-public class KurirMenu {
-    JFrame frame;
-    JPanel panelMessage;
-    JLabel labelMessage;
-    JButton btnProfile, btnOrder, btnTransaction;
+public class KurirMenu implements ActionListener{
+    private JFrame frame;
+    private JPanel panelPesan;
+    private JLabel labelPesan;
+    private JButton btnProfil, btnOrder, btnTransaksi, btnObrolan;
 
-    public KurirMenu(){
+    private Kurir kurir;
+    
+    public KurirMenu(Kurir kurir){
+        this.kurir = kurir;
+        
         //label
-        labelMessage = new JLabel("Welcome Back, Ini Nama!");
-        labelMessage.setFont(new Font("Arial", Font.BOLD, 24));
+        labelPesan = new JLabel("Selamat Datang, !");
+        labelPesan.setFont(new Font("Arial", Font.BOLD, 24));
 
         //Button
-        btnProfile = new JButton("See My Profile");
-        btnProfile.setBounds(170, 210, 250, 80);
-        btnProfile.setFont(new Font("Arial", Font.BOLD, 20));
-        btnProfile.setBackground(new Color(217, 217, 217));
-        btnProfile.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-        btnOrder = new JButton("Create Order");
-        btnOrder.setBounds(170, 340, 250, 80);
+        btnProfil = new JButton("Lihat Profil");
+        btnProfil.setBounds(170, 150, 250, 80);
+        btnProfil.setFont(new Font("Arial", Font.BOLD, 20));
+        btnProfil.setBackground(new Color(217, 217, 217));
+        btnProfil.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnProfil.addActionListener(this);
+        
+        btnOrder = new JButton("Lihat Order");
+        btnOrder.setBounds(170, 250, 250, 80);
         btnOrder.setFont(new Font("Arial", Font.BOLD, 20));
         btnOrder.setBackground(new Color(217, 217, 217));
         btnOrder.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-        btnTransaction = new JButton("See transactions");
-        btnTransaction.setBounds(170, 470, 250, 80);
-        btnTransaction.setFont(new Font("Arial", Font.BOLD, 20));
-        btnTransaction.setBackground(new Color(217, 217, 217));
-        btnTransaction.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnOrder.addActionListener(this);
+        
+        btnTransaksi = new JButton("Lihat Transaksi");
+        btnTransaksi.setBounds(170, 350, 250, 80);
+        btnTransaksi.setFont(new Font("Arial", Font.BOLD, 20));
+        btnTransaksi.setBackground(new Color(217, 217, 217));
+        btnTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnTransaksi.addActionListener(this);
 
+        
+        btnObrolan = new JButton("Obrolan");
+        btnObrolan.setBounds(170, 450, 250, 80);
+        btnObrolan.setFont(new Font("Arial", Font.BOLD, 20));
+        btnObrolan.setBackground(new Color(217, 217, 217));
+        btnObrolan.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnObrolan.addActionListener(this);
+        
         //Panel
-        panelMessage = new JPanel();
-        panelMessage.setBounds(0,120,600,50);
+        panelPesan = new JPanel();
+        panelPesan.setBounds(0,50,600,50);
 
         //Frame
-        frame = new JFrame("Nama APK - Home Pelanggan");
+        frame = new JFrame("Nama APK - Home Kurir");
         frame.setSize(600, 800);
 
-        panelMessage.add(labelMessage);
-        frame.add(btnProfile);
+        panelPesan.add(labelPesan);
+        frame.add(btnProfil);
         frame.add(btnOrder);
-        frame.add(btnTransaction);
-        frame.add(panelMessage);
+        frame.add(btnTransaksi);
+        frame.add(btnObrolan);
+        frame.add(panelPesan);
 
-        panelMessage.setVisible(true);
+        panelPesan.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
         frame.setVisible(true);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+        switch (command) {
+            case "Lihat Profil":
+                new KurirLihatProfil(kurir);
+                frame.setVisible(false);
+                break;
+            case "Lihat Order":
+                frame.setVisible(false);
+                break;
+            case "Lihat Transaksi":
+                frame.setVisible(false);
+                break;
+            case "Obrolan":
+                frame.setVisible(false);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Berhasil Keluar");
+                System.exit(1);
+                break;
+        }
     }
 }
