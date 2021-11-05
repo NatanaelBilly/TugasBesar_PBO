@@ -26,5 +26,16 @@ public class MenampilkanListUser {
 
         //tabel data
         JTable tabelDataUser=new JTable(dataUser,column);
+        tabelDataUser.setBounds(30,40,400,600);
+        JScrollPane sp=new JScrollPane(tabelDataUser);
+        panel.add(sp);
+
+        //initialize panel dan frame
+        panel.setLayout(null);
+        panel.setVisible(true);
+        frame.add(panel);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(null);
+        frame.setVisible(true);
     }
 }
