@@ -28,5 +28,12 @@ public class LihatSaldoAdmin {
         labelGetTotal.setBounds(200, 100, 150, 30);
         panel.add(labelGetTotal);
 
+        //initialize panel dan frame
+        panel.setLayout(null);
+        panel.setVisible(true);
+        frame.add(panel);
+        frame.setLocationRelativeTo(null);
+        frame.setLayout(null);
+        frame.setVisible(true);
     }
 }
