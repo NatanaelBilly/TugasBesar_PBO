@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2021 at 08:32 PM
+-- Generation Time: Nov 04, 2021 at 02:32 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -29,9 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
+  `id_transaksi` int(11) DEFAULT NULL,
   `id_pengirim` int(11) DEFAULT NULL,
   `id_penerima` int(11) DEFAULT NULL,
-  `chat` varchar(255) DEFAULT NULL
+  `chat` varchar(255) DEFAULT NULL,
+  `time` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -42,8 +44,8 @@ CREATE TABLE `chat` (
 
 CREATE TABLE `kurir` (
   `NIK` varchar(255) NOT NULL,
-  `total_pendapatan` double DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
+  `total_pendapatan` double DEFAULT NULL,
   `ketersediaan` int(11) DEFAULT NULL,
   `plat` varchar(255) DEFAULT NULL,
   `jenis_kendaraan` varchar(255) DEFAULT NULL
@@ -102,6 +104,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `nama_depan`, `nama_belakang`, `email_user`, `password`, `role`, `saldo`) VALUES
+(1, 'Kaisar', 'Valentino', 'kaisar@gmail.com', 'kai123', 'PELANGGAN', 90000);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -111,7 +120,8 @@ CREATE TABLE `user` (
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_pengirim` (`id_pengirim`),
-  ADD KEY `id_penerima` (`id_penerima`);
+  ADD KEY `id_penerima` (`id_penerima`),
+  ADD KEY `id_transaksi` (`id_transaksi`);
 
 --
 -- Indexes for table `kurir`
@@ -167,7 +177,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -178,7 +188,8 @@ ALTER TABLE `user`
 --
 ALTER TABLE `chat`
   ADD CONSTRAINT `chat_ibfk_1` FOREIGN KEY (`id_pengirim`) REFERENCES `user` (`id_user`),
-  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`id_penerima`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `chat_ibfk_2` FOREIGN KEY (`id_penerima`) REFERENCES `user` (`id_user`),
+  ADD CONSTRAINT `chat_ibfk_3` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi` (`id_transaksi`);
 
 --
 -- Constraints for table `kurir`
