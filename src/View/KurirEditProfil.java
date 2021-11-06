@@ -128,7 +128,7 @@ public class KurirEditProfil {
                 kurirBaru.setJenis_kendaraan(inputJenisKendaraan.getText());
 
                 
-                if(conKurir.editDataKurirToDB(kurirBaru))
+                if(conKurir.EditDataKurirToDB(kurirBaru))
                     JOptionPane.showMessageDialog(null, "Profil Telah Diperbaharui");
                 else
                     JOptionPane.showMessageDialog(null, "Mohon Maaf, Terjadi Kesalahan");
