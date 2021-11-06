@@ -108,7 +108,7 @@ public class RegisterKurir {
                 String role = String.valueOf(Role.PELANGGAN);
                 double saldo = 0;
                 String NIK = inputNIK.getText();
-                int jumlahUserSekarang = controller.hitungJumlahUser();
+                int jumlahUserSekarang = controller.HitungJumlahUser();
                 int idUser = jumlahUserSekarang+1;
                 double totalPendapatan = 0;
                 int ketersediaan = 0;

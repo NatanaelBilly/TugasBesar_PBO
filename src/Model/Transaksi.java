@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author natanael billy
  */
-public class Transaksi implements Status_pengiriman {
+public class Transaksi implements StatusPengiriman {
 
     private int id_transaksi;
     private int id_pelanggan;

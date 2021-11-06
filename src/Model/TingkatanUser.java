@@ -9,8 +9,6 @@ package Model;
  *
  * @author natanael billy
  */
-public interface Status_pengiriman {
-    final int DIPROSES=0;
-    final int DIANTAR=1;
-    final int SELESAI=2;
+public enum TingkatanUser {
+    BRONZE,SILVER,GOLD;
 }
