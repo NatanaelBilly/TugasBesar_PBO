@@ -1,6 +1,7 @@
 package Controller;
 import Model.*;
-
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 import java.util.ArrayList;
 public class Method {
     Controller c=new Controller();
@@ -32,20 +33,28 @@ public class Method {
         }
     }
 
-    public void lihatSeluruhTransaksi(ArrayList<Transaksi> listTransaksi){
-        System.out.println("LIST TRANSAKSI");
-        for (int i = 0; i < listTransaksi.size(); i++) {
-            Transaksi currentTransaksi= listTransaksi.get(i);
-        }
-    }
-
-    public void lihatSaldoAdmin(ArrayList<Transaksi> listTransaksi){
+    public double lihatSaldoAdmin(ArrayList<Transaksi> listTransaksi){
         double total=0;
         for (int i = 0; i < listTransaksi.size(); i++) {
             Transaksi currentTransaksi= listTransaksi.get(i);
             total += currentTransaksi.getTotal_pembayaran();
         }
-        System.out.println("Total pendapatan dari seluruh transaksi :");
-        System.out.println(total);
+        return total*0.3;
+    }
+
+    public String [][] konversiListToArrayTransaksi(ArrayList<User> listUser){
+        String hasil[][]=new String[listUser.size()][5];
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        for (int i = 0; i <listUser.size() ; i++) {
+            User currentUser= listUser.get(i);
+            for (int j = 0; j < currentUser.getListTransaksi().size(); j++) {
+                Transaksi currentTransaksi= currentUser.getListTransaksi().get(j);
+                hasil[i][0]=Integer.toString(currentTransaksi.getId_transaksi());
+                hasil[i][1]=Integer.toString(currentTransaksi.getId_pelanggan());
+                hasil[i][2]=Integer.toString(currentTransaksi.getId_kurir());
+                hasil[i][3]=  dateFormat.format(currentTransaksi.getTanggal());
+            }
+        }
+        return hasil;
     }
 }
