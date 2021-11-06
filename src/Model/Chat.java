@@ -20,12 +20,12 @@ public class Chat {
     public Chat(){}
 
     public Chat(int id_chat, int id_transaksi, int id_pengirim, int id_penerima, String chat, Time time) {
-        this.id_chat = id_chat;
-        this.id_transaksi = id_transaksi;
-        this.id_pengirim = id_pengirim;
-        this.id_penerima = id_penerima;
-        this.chat = chat;
-        this.time = time;
+        setId_chat(id_chat);
+        setId_transaksi(id_transaksi);
+        setId_pengirim(id_pengirim);
+        setId_penerima(id_penerima);
+        setChat(chat);
+        setTime(time);
     }
 
     public int getId_chat() {

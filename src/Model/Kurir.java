@@ -8,7 +8,6 @@ package Model;
 import java.util.ArrayList;
 
 /**
- *
  * @author natanael billy
  */
 public class Kurir extends User {
@@ -21,11 +20,11 @@ public class Kurir extends User {
 
     public Kurir(double total_pendapatan, String NIK, int ketersediaan, String plat, String jenis_kendaraan, int id_user, String nama_depan, String nama_belakang, String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
         super(id_user, nama_depan, nama_belakang, email_user, password, saldo, role, listTransaksi);
-        this.total_pendapatan = total_pendapatan;
-        this.NIK = NIK;
-        this.ketersediaan = ketersediaan;
-        this.plat = plat;
-        this.jenis_kendaraan = jenis_kendaraan;
+        setTotal_pendapatan(total_pendapatan);
+        setNIK(NIK);
+        setKetersediaan(ketersediaan);
+        setPlat(plat);
+        setJenis_kendaraan(jenis_kendaraan);
     }
 
     public double getTotal_pendapatan() {

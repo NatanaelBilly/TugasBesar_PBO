@@ -15,9 +15,9 @@ public class Saran {
     private String saran;
 
     public Saran(int id_saran, int id_pelanggan, String saran) {
-        this.id_saran = id_saran;
-        this.id_pelanggan = id_pelanggan;
-        this.saran = saran;
+        setId_saran(id_saran);
+        setId_pelanggan(id_pelanggan);
+        setSaran(saran);
     }
 
     public int getId_saran() {

@@ -14,7 +14,7 @@ public class Pelanggan extends User{
 
     public Pelanggan(Tingakatan tingkatan, int id_user, String nama_depan, String nama_belakang, String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
         super(id_user, nama_depan, nama_belakang, email_user, password, saldo, role, listTransaksi);
-        this.tingkatan = tingkatan;
+        setTingkatan(tingkatan);
     }
 
     public Tingakatan getTingkatan() {
