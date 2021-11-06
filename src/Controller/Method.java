@@ -57,4 +57,15 @@ public class Method {
         }
         return hasil;
     }
+
+    public String [][] konversiListToArraySaran(ArrayList<Saran> listSaran){
+        String hasil[][]=new String[listSaran.size()][3];
+            for (int i = 0; i < listSaran.size(); i++) {
+                Saran currentTransaksi= listSaran.get(i);
+                hasil[i][0]=Integer.toString(currentTransaksi.getId_saran());
+                hasil[i][1]=Integer.toString(currentTransaksi.getId_pelanggan());
+                hasil[i][2]=currentTransaksi.getSaran();
+            }
+        return hasil;
+    }
 }
