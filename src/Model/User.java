@@ -8,7 +8,6 @@ package Model;
 import java.util.ArrayList;
 
 /**
- *
  * @author natanael billy
  */
 public class User {
@@ -27,14 +26,14 @@ public class User {
     }
 
     public User(int id_user, String nama_depan, String nama_belakang, String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
-        this.id_user = id_user;
-        this.nama_depan = nama_depan;
-        this.nama_belakang = nama_belakang;
-        this.email_user = email_user;
-        this.password = password;
-        this.saldo = saldo;
-        this.role = role;
-        this.listTransaksi = listTransaksi;
+        setId_user(id_user);
+        setNama_depan(nama_depan);
+        setNama_belakang(nama_belakang);
+        setEmail_user(email_user);
+        setPassword(password);
+        setSaldo(saldo);
+        setRole(role);
+        setListTransaksi(listTransaksi);
     }
 
     public int getId_user() {
