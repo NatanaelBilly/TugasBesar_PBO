@@ -1,14 +1,9 @@
 package Controller;
 
 import Database.Database;
-import Model.Chat;
-import Model.Kurir;
-import Model.Role;
-import Model.User;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import Model.*;
+
+import java.sql.*;
 import java.util.ArrayList;
 
 public class Controller {
@@ -88,7 +83,6 @@ public class Controller {
     //Insert Chat
     public boolean insertChat(Chat chat) {
         conn.connect();
-
         String query = "INSERT INTO chat VALUES(?,?,?,?,?)";
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query);
@@ -131,7 +125,35 @@ public class Controller {
         }
         return (chats);
     }
-    
- 
+
+    //Buat transaksi
+    public boolean buatOrder(Transaksi transaksi) {
+        conn.connect();
+        String query = "INSERT INTO transaksi VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement stmt = conn.con.prepareStatement(query);
+            stmt.setInt(1, transaksi.getId_transaksi());
+            stmt.setInt(2, transaksi.getId_pelanggan());
+            stmt.setInt(3, transaksi.getId_kurir());
+            stmt.setString(4, transaksi.getKategori_barang());
+            stmt.setDouble(5, transaksi.getBerat_barang());
+            stmt.setDouble(6, transaksi.getJumlah_barang());
+            stmt.setString(7, transaksi.getNama_pengirim());
+            stmt.setString(8, transaksi.getNama_penerima());
+            stmt.setString(9,transaksi.getNoHP_pengirim());
+            stmt.setString(10, transaksi.getNoHP_penerima());
+            stmt.setString(11, transaksi.getAlamat_pengirim());
+            stmt.setString(12,transaksi.getAlamat_penerima());
+            stmt.setDouble(13, transaksi.getTotal_pembayaran());
+            stmt.setDate(14, (Date) transaksi.getTanggal());
+            stmt.setString(15, transaksi.getStatus_pemesanan());
+            stmt.executeUpdate();
+            return (true);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return (false);
+        }
+    }
+
 
 }

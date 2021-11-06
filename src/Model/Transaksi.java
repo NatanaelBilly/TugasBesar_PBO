@@ -33,23 +33,23 @@ public class Transaksi implements Status_pengiriman {
     private ArrayList<Chat> listChat;
 
     public Transaksi(int id_transaksi, int id_pelanggan, int id_kurir, String kategori_barang, double berat_barang, double jumlah_barang, String nama_pengirim, String alamat_pengirim, String noHP_pengirim, String nama_penerima, String alamat_penerima, String noHP_penerima, double total_pembayaran, int status_pemesanan, Date tanggal, String saran_driver, ArrayList<Chat> listChat) {
-        this.id_transaksi = id_transaksi;
-        this.id_pelanggan = id_pelanggan;
-        this.id_kurir = id_kurir;
-        this.kategori_barang = kategori_barang;
-        this.berat_barang = berat_barang;
-        this.jumlah_barang = jumlah_barang;
-        this.nama_pengirim = nama_pengirim;
-        this.alamat_pengirim = alamat_pengirim;
-        this.noHP_pengirim = noHP_pengirim;
-        this.nama_penerima = nama_penerima;
-        this.alamat_penerima = alamat_penerima;
-        this.noHP_penerima = noHP_penerima;
-        this.total_pembayaran = total_pembayaran;
-        this.status_pemesanan = status_pemesanan;
-        this.tanggal = tanggal;
-        this.saran_driver = saran_driver;
-        this.listChat = listChat;
+        setId_transaksi(id_transaksi);
+        setId_pelanggan(id_pelanggan);
+        setId_kurir(id_kurir);
+        setKategori_barang(kategori_barang);
+        setBerat_barang(berat_barang);
+        setJumlah_barang(jumlah_barang);
+        setNama_pengirim(nama_pengirim);
+        setAlamat_pengirim(alamat_pengirim);
+        setNoHP_pengirim(noHP_pengirim);
+        setNama_penerima(nama_penerima);
+        setAlamat_pengirim(alamat_penerima);
+        setNoHP_penerima(noHP_penerima);
+        setTotal_pembayaran(total_pembayaran);
+        setStatus_pemesanan(status_pemesanan);
+        setTanggal(tanggal);
+        setSaran_driver(saran_driver);
+        setListChat(listChat);
     }
 
     public int getId_transaksi() {
@@ -156,8 +156,11 @@ public class Transaksi implements Status_pengiriman {
         this.total_pembayaran = total_pembayaran;
     }
 
-    public int getStatus_pemesanan() {
-        return status_pemesanan;
+    public String getStatus_pemesanan() {
+        if(status_pemesanan == 1){
+            return "aaa";
+        }
+        return "Diantar";
     }
 
     public void setStatus_pemesanan(int status_pemesanan) {
