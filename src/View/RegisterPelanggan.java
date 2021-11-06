@@ -1,9 +1,12 @@
 package View;
 
-import Model.Constant;
+import Model.*;
+import Controller.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RegisterPelanggan {
     JFrame frame;
@@ -67,6 +70,28 @@ public class RegisterPelanggan {
         //button Register
         buttonRegister = new JButton("Register");
         buttonRegister.setBounds(380, 500, 100, 40);
+        buttonRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Controller controller = new Controller();
+
+                String namaDepan = inputNamaDepan.getText();
+                String namaBelakang = inputNamaBelakang.getText();
+                String emailUser = inputEmail.getText();
+                String password = String.valueOf(inputPassword.getPassword());
+                int banyakUser = controller.HitungJumlahUser();
+                double saldo = 0;
+
+                User penggunaBaru = new Pelanggan(TingkatanUser.BRONZE,banyakUser+1, namaDepan, namaBelakang,emailUser,password,saldo,Role.PELANGGAN,null);
+                if(controller.RegisterPelanggan((Pelanggan) penggunaBaru)){
+                    JOptionPane.showMessageDialog(null, "Register Berhasil!");
+                    frame.dispose();
+                    new HomePelanggan();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Register Gagal. Silahkan coba lagi");
+                }
+            }
+        });
 
         //Panel
         panelRegisterPelanggan = new JPanel();
