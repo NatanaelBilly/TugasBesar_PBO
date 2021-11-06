@@ -140,10 +140,10 @@ public class Controller {
             stmt.setDouble(6, transaksi.getJumlah_barang());
             stmt.setString(7, transaksi.getNama_pengirim());
             stmt.setString(8, transaksi.getNama_penerima());
-            stmt.setString(9,transaksi.getNoHP_pengirim());
+            stmt.setString(9, transaksi.getNoHP_pengirim());
             stmt.setString(10, transaksi.getNoHP_penerima());
             stmt.setString(11, transaksi.getAlamat_pengirim());
-            stmt.setString(12,transaksi.getAlamat_penerima());
+            stmt.setString(12, transaksi.getAlamat_penerima());
             stmt.setDouble(13, transaksi.getTotal_pembayaran());
             stmt.setDate(14, (Date) transaksi.getTanggal());
             stmt.setString(15, transaksi.getStatus_pemesanan());
@@ -155,9 +155,29 @@ public class Controller {
         }
     }
 
-    public int hitungJumlahUser(){
+    public int HitungJumlahUser() {
         getAllUsers();
         return users.size();
+    }
+
+    public boolean RegisterPelanggan(Pelanggan pelanggan) {
+        conn.connect();
+        String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement stmt = conn.con.prepareStatement(query1);
+            stmt.setString(1, pelanggan.getNama_depan());
+            stmt.setString(2,pelanggan.getNama_belakang());
+            stmt.setString(3, pelanggan.getEmail_user());
+            stmt.setString(4, pelanggan.getPassword());
+            stmt.setString(5, String.valueOf(pelanggan.getRole()));
+            stmt.setDouble(6, pelanggan.getSaldo());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return false;
+        }
     }
 
 

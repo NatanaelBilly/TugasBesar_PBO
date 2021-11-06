@@ -9,6 +9,8 @@ package Model;
  *
  * @author natanael billy
  */
-public enum Tingakatan {
-    BRONZE,SILVER,GOLD;
+public interface StatusPengiriman {
+    final int DIPROSES=0;
+    final int DIANTAR=1;
+    final int SELESAI=2;
 }
