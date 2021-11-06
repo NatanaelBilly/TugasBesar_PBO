@@ -148,11 +148,16 @@ public class Controller {
             stmt.setDate(14, (Date) transaksi.getTanggal());
             stmt.setString(15, transaksi.getStatus_pemesanan());
             stmt.executeUpdate();
-            return (true);
+            return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return (false);
+            return false;
         }
+    }
+
+    public int hitungJumlahUser(){
+        getAllUsers();
+        return users.size();
     }
 
 

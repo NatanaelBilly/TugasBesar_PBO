@@ -27,6 +27,8 @@ public class Kurir extends User {
         setJenis_kendaraan(jenis_kendaraan);
     }
 
+
+
     public double getTotal_pendapatan() {
         return total_pendapatan;
     }
