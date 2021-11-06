@@ -7,6 +7,8 @@ package Controller;
 
 import static Controller.Controller.conn;
 import Model.Kurir;
+
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -18,7 +20,7 @@ public class KurirController {
     
     private Controller con = new Controller();
     
-    public boolean editDataKurirToDB(Kurir kurir)
+    public boolean EditDataKurirToDB(Kurir kurir)
     {
         Controller.conn.connect();
         String query = "UPDATE user, kurir "
@@ -31,7 +33,6 @@ public class KurirController {
                 + "kurir.jenis_kendaraan='" + kurir.getJenis_kendaraan()+ "' "
                 + "WHERE user.id_user=" + kurir.getId_user()
                 + " AND kurir.id_user=" + kurir.getId_user();
-
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);
@@ -40,6 +41,38 @@ public class KurirController {
             e.printStackTrace();
             return (false);
         }
+    }
+
+    public boolean RegisterKurir(Kurir kurir){
+        conn.connect();
+        String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?)";
+        String query2 = "INSERT INTO kurir VALUES (?,null,?,?,?,?)";
+
+        try {
+            PreparedStatement stmt = conn.con.prepareStatement(query1);
+            PreparedStatement stmt2 = conn.con.prepareStatement(query2);
+            stmt.setString(1, kurir.getNama_depan());
+            stmt.setString(2, kurir.getNama_belakang());
+            stmt.setString(3, kurir.getEmail_user());
+            stmt.setString(4, kurir.getPassword());
+            stmt.setString(5, kurir.getRole().toString());
+            stmt.setDouble(6, kurir.getSaldo());
+            stmt2.setString(1, kurir.getNIK());
+            stmt2.setDouble(2, kurir.getTotal_pendapatan());
+            stmt2.setInt(3, kurir.getKetersediaan());
+            stmt2.setString(4, kurir.getPlat());
+            stmt2.setString(5, kurir.getJenis_kendaraan());
+            stmt.executeUpdate();
+            stmt2.executeUpdate();
+
+            return (true);
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return false;
+        }
+
     }
     
 }
