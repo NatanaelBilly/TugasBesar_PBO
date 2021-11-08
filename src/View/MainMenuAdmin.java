@@ -18,23 +18,23 @@ public class MainMenuAdmin {
 
         //label
         JLabel labelNama =new JLabel("WELCOME ADMIN "+admin.getNama_depan());
-        labelNama.setBounds(400,20,200,30);
+        labelNama.setBounds(250,20,200,30);
         panel.add(labelNama);
 
         //button lihat saldo pendapatan apk
         JButton buttonPendpatan = new JButton("lihat pendapatan");
-        buttonPendpatan.setBounds(300, 100, 200, 30);
+        buttonPendpatan.setBounds(100, 100, 200, 30);
         buttonPendpatan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new LihatSaldoAdmin(admin);
+//                new LihatSaldoAdmin(admin);
                 frame.dispose();
             }
         });
         panel.add(buttonPendpatan);
         //button lihat list user
         JButton buttonListTransaksi = new JButton("lihat tabel transaksi");
-        buttonListTransaksi.setBounds(300, 150, 200, 30);
+        buttonListTransaksi.setBounds(100, 150, 200, 30);
         buttonListTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,7 +46,7 @@ public class MainMenuAdmin {
 
         //button lihat seluruh transaksi
         JButton buttonListUser = new JButton("lihat tabel user");
-        buttonListUser.setBounds(300, 200, 200, 30);
+        buttonListUser.setBounds(100, 200, 200, 30);
         buttonListUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -58,7 +58,7 @@ public class MainMenuAdmin {
 
         //button lihat feedback dari user
         JButton buttonListFeedback = new JButton("lihat tabel feedback");
-        buttonListFeedback.setBounds(300, 250, 200, 30);
+        buttonListFeedback.setBounds(100, 250, 200, 30);
         buttonListFeedback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
