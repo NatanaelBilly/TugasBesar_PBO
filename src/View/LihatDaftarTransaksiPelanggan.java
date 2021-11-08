@@ -23,7 +23,7 @@ public class LihatDaftarTransaksiPelanggan {
         Font fontHarga = new Font("Arial", Font.BOLD, 18);
         Font fontButton = new Font("Arial", Font.BOLD, 16);
 
-        frame = new JFrame();
+        frame = new JFrame(Constant.applicationName+" - Transaksi");
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(new EmptyBorder(30, 60, 30, 60));
@@ -72,7 +72,7 @@ public class LihatDaftarTransaksiPelanggan {
         btnDetail.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Halaman Detail Transaksi
+                new LihatDetailTransaksiPelanggan();
             }
         });
 
@@ -124,7 +124,7 @@ public class LihatDaftarTransaksiPelanggan {
         btnDetail.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Halaman Detail Transaksi
+                new LihatDetailTransaksiPelanggan();
             }
         });
 
