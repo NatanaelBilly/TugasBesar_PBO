@@ -41,6 +41,13 @@ public class HomePelanggan {
         btnTransaction.setFont(new Font("Arial", Font.BOLD, 20));
         btnTransaction.setBackground(new Color(217, 217, 217));
         btnTransaction.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnTransaction.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new LihatDaftarTransaksiPelanggan();
+            }
+        });
 
         //Panel
         panelMessage = new JPanel();
