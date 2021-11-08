@@ -6,6 +6,7 @@
 package Model;
 
 import java.sql.Time;
+import java.util.Date;
 
 
 public class Chat {
@@ -14,7 +15,7 @@ public class Chat {
     private int id_pengirim;
     private int id_penerima;
     private String chat;
-    private Time time;
+    private Date time;
     
     
     public Chat(){}
@@ -68,11 +69,11 @@ public class Chat {
         this.chat = chat;
     }
 
-    public Time getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Date time) {
         this.time = time;
     }
     

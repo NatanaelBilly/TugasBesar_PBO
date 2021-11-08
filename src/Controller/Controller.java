@@ -91,7 +91,7 @@ public class Controller {
             stmt.setInt(3, chat.getId_pengirim());
             stmt.setInt(4, chat.getId_penerima());
             stmt.setString(5, chat.getChat());
-            stmt.setTime(6, chat.getTime());
+            stmt.setDate(6, (Date) chat.getTime());
             stmt.executeUpdate();
             return (true);
         } catch (SQLException e) {
