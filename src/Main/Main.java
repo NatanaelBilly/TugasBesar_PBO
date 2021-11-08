@@ -1,16 +1,19 @@
 package Main;
 
 import Controller.Controller;
-import Model.Transaksi;
+import Model.*;
 import View.HomePelanggan;
 import View.LihatDaftarTransaksiPelanggan;
+import Controller.Method;
+import View.MainMenuAdmin;
 
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 public class Main {
     public static void main(String[] args) {
-        new HomePelanggan();
+//        new HomePelanggan();
+
 //        new BuatOrder();
 //        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 //        Date currentDate = new Date(new java.util.Date().getTime());
