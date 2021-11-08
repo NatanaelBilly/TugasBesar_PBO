@@ -1,5 +1,7 @@
 package View;
 
+import Model.Constant;
+
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
@@ -44,7 +46,6 @@ public class HomePelanggan {
         btnTransaction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
                 new LihatDaftarTransaksiPelanggan();
             }
         });
@@ -54,7 +55,7 @@ public class HomePelanggan {
         panelMessage.setBounds(0,120,600,50);
 
         //Frame
-        frame = new JFrame("Nama APK - Home Pelanggan");
+        frame = new JFrame(Constant.applicationName+" - Home Pelanggan");
         frame.setSize(600, 800);
 
         panelMessage.add(labelMessage);
