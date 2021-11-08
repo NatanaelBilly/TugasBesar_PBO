@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2021 at 02:32 PM
+-- Generation Time: Nov 06, 2021 at 06:04 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -100,15 +100,16 @@ CREATE TABLE `user` (
   `email_user` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `role` enum('ADMIN','PELANGGAN','KURIR') DEFAULT NULL,
-  `saldo` double DEFAULT NULL
+  `saldo` double DEFAULT NULL,
+  `tingkatan` enum('BRONZE','SILVER','GOLD') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama_depan`, `nama_belakang`, `email_user`, `password`, `role`, `saldo`) VALUES
-(1, 'Kaisar', 'Valentino', 'kaisar@gmail.com', 'kai123', 'PELANGGAN', 90000);
+INSERT INTO `user` (`id_user`, `nama_depan`, `nama_belakang`, `email_user`, `password`, `role`, `saldo`, `tingkatan`) VALUES
+(1, 'Kaisar', 'Valentino', 'kaisar@gmail.com', 'kai123', 'PELANGGAN', 90000, NULL);
 
 --
 -- Indexes for dumped tables
