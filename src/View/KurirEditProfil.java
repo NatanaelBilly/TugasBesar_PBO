@@ -24,13 +24,13 @@ import javax.swing.SwingConstants;
  *
  * @author Asus
  */
-public class KurirEditProfil {
+public class KurirEditProfil{
 
     private JFrame frame;
     private JPanel panelEditData;
     private JPanel panelEditPassword;
-    private JLabel labelJudul, labelNamaDepan, labelNamaBelakang, labelNIK, labelPlatNomor, labelJenisKendaraan, labelEmail, labelNomorHP;
-    private JTextField inputNamaDepan, inputNamaBelakang, inputNIK, inputPlatnomor, inputJenisKendaraan, inputEmail, inputNomorHp, inputPasswordLama, inputPasswordBaru, inputPasswordBaru2;
+    private JLabel labelJudul, labelNamaDepan, labelNamaBelakang, labelNIK, labelPlatNomor, labelJenisKendaraan, labelEmail;
+    private JTextField inputNamaDepan, inputNamaBelakang, inputNIK, inputPlatnomor, inputJenisKendaraan, inputEmail, inputPasswordLama, inputPasswordBaru, inputPasswordBaru2;
 
     private Kurir kurir;
     
@@ -98,40 +98,32 @@ public class KurirEditProfil {
         inputEmail = new JTextField();
         inputEmail.setBounds(230, 370, 250, 30);
 
-//        //Label Nomor HP
-//        labelNomorHP = new JLabel("Nomor HP");
-//        labelNomorHP.setFont(new Font("Arial", Font.PLAIN, 16));
-//        labelNomorHP.setBounds(65, 420, 150, 30);
-
-        //Input Nomor HP
-//        inputNomorHp = new JTextField();
-//        inputNomorHp.setBounds(230, 420, 250, 30);
 
 //========================================Input Password
 //        Label Password
-        JLabel labelPassword = new JLabel("Kata Sandi Lama");
+        JLabel labelPassword = new JLabel("Kata Sandi Lama",SwingConstants.CENTER);
         labelPassword.setFont(new Font("Arial", Font.PLAIN, 16));
-        labelPassword.setBounds(65, 150, 150, 30);
+        labelPassword.setBounds(200, 120, 200, 30);
         inputPasswordLama = new JPasswordField();
-        inputPasswordLama.setBounds(230,150,250,30);
+        inputPasswordLama.setBounds(150,150,300,30);
         
         
-        JLabel labelPasswordBaru = new JLabel("Kata Sandi Baru");
-        labelPassword.setFont(new Font("Arial", Font.PLAIN, 16));
-        labelPassword.setBounds(65, 250, 150, 30);
+        JLabel labelPasswordBaru = new JLabel("Kata Sandi Baru", SwingConstants.CENTER);
+        labelPasswordBaru.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelPasswordBaru.setBounds(200, 200, 200, 30);
         inputPasswordBaru = new JPasswordField();
-        inputPasswordBaru.setBounds(230,250,250,30);
+        inputPasswordBaru.setBounds(150,230,300,30);
         
         
-        JLabel labelPasswordBaru2 = new JLabel("Konfirmasi Kata Sandi");
-        labelPassword.setFont(new Font("Arial", Font.PLAIN, 16));
-        labelPassword.setBounds(65, 350, 150, 30);
+        JLabel labelPasswordBaru2 = new JLabel("Konfirmasi Kata Sandi", SwingConstants.CENTER);
+        labelPasswordBaru2.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelPasswordBaru2.setBounds(200, 280, 200, 30);
         inputPasswordBaru2 = new JPasswordField();
-        inputPasswordBaru2.setBounds(230,350,250,30);
+        inputPasswordBaru2.setBounds(150,310,300,30);
         
 //======================BUTTON
         JButton btnSubmit = new JButton("Submit");
-        btnSubmit.setBounds(380, 540, 100, 40);
+        btnSubmit.setBounds(200, 590, 200, 40);
         btnSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -155,7 +147,8 @@ public class KurirEditProfil {
                 frame.setVisible(false);
             }
         });
-        //Button Back
+        
+        //Button Back Menu
         JButton btnBack = new JButton("Kembali");
         btnBack.setBounds(450, 25, 100, 30);
         btnBack.addActionListener(new ActionListener() {
@@ -165,19 +158,32 @@ public class KurirEditProfil {
                 frame.setVisible(false);
             }
         });
+        
         //Button Edit Password
         JButton btnPassword = new JButton("Ubah Kata Sandi");
-        btnBack.setBounds(150, 540, 100, 40);
-        btnBack.addActionListener(new ActionListener() {
+        btnPassword.setBounds(200, 500, 200, 40);
+        btnPassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                labelJudul = new JLabel("UBAH KATA SANDI", SwingConstants.CENTER);
                 panelEditData.setVisible(false);
                 panelEditPassword.setVisible(true);
             }
         });
         
+        //Button Back Edit
+        JButton btnBackEdit = new JButton("Kembali");
+        btnBackEdit.setBounds(450, 25, 100, 30);
+        btnBackEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                labelJudul = new JLabel("EDIT PROFIL", SwingConstants.CENTER);
+                panelEditData.setVisible(true);
+                panelEditPassword.setVisible(false);
+            }
+        });
         
-        //Function
+//==============================Function
         isiDataLama();
 
 //Panel Edit Data
@@ -194,7 +200,7 @@ public class KurirEditProfil {
         panelEditData.add(labelPlatNomor);
         panelEditData.add(labelJenisKendaraan);
         panelEditData.add(labelEmail);
-        panelEditData.add(labelNomorHP);
+//        panelEditData.add(labelNomorHP);
         panelEditData.add(inputNamaDepan);
         panelEditData.add(inputNamaBelakang);
         panelEditData.add(inputNIK);
@@ -219,6 +225,7 @@ public class KurirEditProfil {
         panelEditPassword.add(inputPasswordLama);
         panelEditPassword.add(inputPasswordBaru);
         panelEditPassword.add(inputPasswordBaru2);
+        panelEditPassword.add(btnBackEdit);
 
         //Frame
         frame = new JFrame(Constant.applicationName + " - Register Kurir");
@@ -241,7 +248,6 @@ public class KurirEditProfil {
 
         inputEmail.setText(kurir.getEmail_user());
 
-        //inputNomorHp.setText();
     }
     
     
