@@ -1,5 +1,6 @@
 package View;
 
+import Model.Chat;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,11 +19,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-public class Chat {
+public class MenuChat {
     
     ArrayList<JLabel> labelChat = new ArrayList();
 
-    public Chat(ArrayList<Chat> chats) {
+    public MenuChat(ArrayList<MenuChat> chats) {
         JFrame frame = new JFrame("Chat");
         JScrollPane scroll = new JScrollPane();
         JLabel label = new JLabel("Menggunakan ScrollPane");
@@ -60,11 +61,11 @@ public class Chat {
     public static void main(String[] args) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date currentDate = new Date(new java.util.Date().getTime());
-        ArrayList<Chat> chats = new ArrayList();
+        ArrayList<MenuChat> chats = new ArrayList();
         
         Chat chat1 = new Chat(1, 1, 1, 2, "Halo", currentDate);
 
-        new Chat(chats);
+        new MenuChat(chats);
     }
 
 }
