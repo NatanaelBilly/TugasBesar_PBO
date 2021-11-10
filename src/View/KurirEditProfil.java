@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -26,12 +27,12 @@ import javax.swing.SwingConstants;
 public class KurirEditProfil {
 
     private JFrame frame;
-    private JPanel panelRegisterKurir;
-    private JLabel labelJudul, labelNamaDepan, labelNamaBelakang, labelNIK, labelPlatNomor, labelJenisKendaraan, labelEmail, labelNomorHP, labelPassword;
-    private JTextField inputNamaDepan, inputNamaBelakang, inputNIK, inputPlatnomor, inputJenisKendaraan, inputEmail, inputNomorHp;
+    private JPanel panelEditData;
+    private JPanel panelEditPassword;
+    private JLabel labelJudul, labelNamaDepan, labelNamaBelakang, labelNIK, labelPlatNomor, labelJenisKendaraan, labelEmail, labelNomorHP;
+    private JTextField inputNamaDepan, inputNamaBelakang, inputNIK, inputPlatnomor, inputJenisKendaraan, inputEmail, inputNomorHp, inputPasswordLama, inputPasswordBaru, inputPasswordBaru2;
 
     private Kurir kurir;
-
     
     private KurirController conKurir = new KurirController();
     
@@ -97,21 +98,38 @@ public class KurirEditProfil {
         inputEmail = new JTextField();
         inputEmail.setBounds(230, 370, 250, 30);
 
-        //Label Nomor HP
-        labelNomorHP = new JLabel("Nomor HP");
-        labelNomorHP.setFont(new Font("Arial", Font.PLAIN, 16));
-        labelNomorHP.setBounds(65, 420, 150, 30);
+//        //Label Nomor HP
+//        labelNomorHP = new JLabel("Nomor HP");
+//        labelNomorHP.setFont(new Font("Arial", Font.PLAIN, 16));
+//        labelNomorHP.setBounds(65, 420, 150, 30);
 
         //Input Nomor HP
 //        inputNomorHp = new JTextField();
 //        inputNomorHp.setBounds(230, 420, 250, 30);
 
-        //Label Password
-        labelPassword = new JLabel("Password");
+//========================================Input Password
+//        Label Password
+        JLabel labelPassword = new JLabel("Kata Sandi Lama");
         labelPassword.setFont(new Font("Arial", Font.PLAIN, 16));
-        labelPassword.setBounds(65, 470, 150, 30);
-
+        labelPassword.setBounds(65, 150, 150, 30);
+        inputPasswordLama = new JPasswordField();
+        inputPasswordLama.setBounds(230,150,250,30);
         
+        
+        JLabel labelPasswordBaru = new JLabel("Kata Sandi Baru");
+        labelPassword.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelPassword.setBounds(65, 250, 150, 30);
+        inputPasswordBaru = new JPasswordField();
+        inputPasswordBaru.setBounds(230,250,250,30);
+        
+        
+        JLabel labelPasswordBaru2 = new JLabel("Konfirmasi Kata Sandi");
+        labelPassword.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelPassword.setBounds(65, 350, 150, 30);
+        inputPasswordBaru2 = new JPasswordField();
+        inputPasswordBaru2.setBounds(230,350,250,30);
+        
+//======================BUTTON
         JButton btnSubmit = new JButton("Submit");
         btnSubmit.setBounds(380, 540, 100, 40);
         btnSubmit.addActionListener(new ActionListener() {
@@ -147,40 +165,69 @@ public class KurirEditProfil {
                 frame.setVisible(false);
             }
         });
+        //Button Edit Password
+        JButton btnPassword = new JButton("Ubah Kata Sandi");
+        btnBack.setBounds(150, 540, 100, 40);
+        btnBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panelEditData.setVisible(false);
+                panelEditPassword.setVisible(true);
+            }
+        });
+        
         
         //Function
         isiDataLama();
 
-        //Panel
-        panelRegisterKurir = new JPanel();
-        panelRegisterKurir.setSize(600, 800);
-        panelRegisterKurir.setVisible(true);
-        panelRegisterKurir.setLayout(null);
-        panelRegisterKurir.add(labelJudul);
-        panelRegisterKurir.add(labelNamaDepan);
-        panelRegisterKurir.add(labelNamaBelakang);
-        panelRegisterKurir.add(labelNIK);
-        panelRegisterKurir.add(labelPlatNomor);
-        panelRegisterKurir.add(labelJenisKendaraan);
-        panelRegisterKurir.add(labelEmail);
-        panelRegisterKurir.add(labelNomorHP);
-        panelRegisterKurir.add(labelPassword);
-        panelRegisterKurir.add(inputNamaDepan);
-        panelRegisterKurir.add(inputNamaBelakang);
-        panelRegisterKurir.add(inputNIK);
-        panelRegisterKurir.add(inputPlatnomor);
-        panelRegisterKurir.add(inputJenisKendaraan);
-        panelRegisterKurir.add(inputEmail);
+//Panel Edit Data
+        panelEditData = new JPanel();
+        panelEditData.setSize(600, 800);
+        panelEditData.setVisible(true);
+        panelEditData.setLayout(null);
+        
+        
+        panelEditData.add(labelJudul);
+        panelEditData.add(labelNamaDepan);
+        panelEditData.add(labelNamaBelakang);
+        panelEditData.add(labelNIK);
+        panelEditData.add(labelPlatNomor);
+        panelEditData.add(labelJenisKendaraan);
+        panelEditData.add(labelEmail);
+        panelEditData.add(labelNomorHP);
+        panelEditData.add(inputNamaDepan);
+        panelEditData.add(inputNamaBelakang);
+        panelEditData.add(inputNIK);
+        panelEditData.add(inputPlatnomor);
+        panelEditData.add(inputJenisKendaraan);
+        panelEditData.add(inputEmail);
 //        panelRegisterKurir.add(inputNomorHp);
-        panelRegisterKurir.add(btnSubmit);
-        panelRegisterKurir.add(btnBack);
+        panelEditData.add(btnSubmit);
+        panelEditData.add(btnBack);
+        panelEditData.add(btnPassword);
+        
+ //Panel Edit Password       
+        panelEditPassword = new JPanel();
+        panelEditPassword.setSize(600, 800);
+        panelEditPassword.setVisible(false);
+        panelEditPassword.setLayout(null);
+        
+        panelEditPassword.add(labelJudul);
+        panelEditPassword.add(labelPassword);
+        panelEditPassword.add(labelPasswordBaru);
+        panelEditPassword.add(labelPasswordBaru2);
+        panelEditPassword.add(inputPasswordLama);
+        panelEditPassword.add(inputPasswordBaru);
+        panelEditPassword.add(inputPasswordBaru2);
 
         //Frame
         frame = new JFrame(Constant.applicationName + " - Register Kurir");
         frame.setSize(600, 800);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.add(panelRegisterKurir);
+        
+        frame.add(panelEditData);
+        frame.add(panelEditPassword);
     }
 
     private void isiDataLama() {
