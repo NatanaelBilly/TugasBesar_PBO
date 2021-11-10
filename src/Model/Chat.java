@@ -20,6 +20,7 @@ public class Chat {
     
     public Chat(){}
 
+
     public Chat(int id_chat, int id_transaksi, int id_pengirim, int id_penerima, String chat, Date time) {
         setId_chat(id_chat);
         setId_transaksi(id_transaksi);
