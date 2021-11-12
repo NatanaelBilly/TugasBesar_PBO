@@ -2,7 +2,7 @@ package Controller;
 
 import Model.Pelanggan;
 import Model.User;
-import View.HomePelanggan;
+import View.BerandaPelanggan;
 
 public class LoginHandler {
     public LoginHandler(String email, String password) {
@@ -13,7 +13,7 @@ public class LoginHandler {
         User user = new Model.UserManager().getInstance().getUser();
 
         if (user instanceof Pelanggan) {
-            new HomePelanggan();
+            new BerandaPelanggan();
         } else {
             System.out.println("Belum jadi guinya, maap yak");
         }

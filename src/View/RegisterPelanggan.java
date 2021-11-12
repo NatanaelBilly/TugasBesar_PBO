@@ -86,7 +86,7 @@ public class RegisterPelanggan {
                 if(controller.RegisterPelanggan((Pelanggan) penggunaBaru)){
                     JOptionPane.showMessageDialog(null, "Register Berhasil!");
                     frame.dispose();
-                    new HomePelanggan();
+                    new BerandaPelanggan();
                 } else {
                     JOptionPane.showMessageDialog(null, "Register Gagal. Silahkan coba lagi");
                 }

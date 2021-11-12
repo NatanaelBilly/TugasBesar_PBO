@@ -46,7 +46,7 @@ public class ListMenuPelanggan {
         labelMenu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new HomePelanggan();
+                new BerandaPelanggan();
             }
         });
 

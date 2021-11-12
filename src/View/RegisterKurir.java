@@ -108,14 +108,10 @@ public class RegisterKurir {
             if(ck.RegisterKurir(kurirBaru)){
                 JOptionPane.showMessageDialog(null, "Register Berhasil!");
                 frame.dispose();
-                new HomePelanggan();
+                new BerandaPelanggan();
             } else {
                 JOptionPane.showMessageDialog(null, "Coba lagi");
             }
-
-
-
-
         });
 
         //Panel
