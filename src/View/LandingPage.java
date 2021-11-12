@@ -57,7 +57,7 @@ public class LandingPage {
         panelLandingPage.setBackground(new Color(204, 180, 114));
 
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
 
 
         panelLandingPage.add(welcomeUser);

@@ -1,10 +1,7 @@
 package View;
 
-import Model.Constant;
-
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,7 +52,7 @@ public class HomePelanggan {
         panelMessage.setBounds(0,120,600,50);
 
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
 
         panelMessage.add(labelMessage);
         frame.add(btnProfile);

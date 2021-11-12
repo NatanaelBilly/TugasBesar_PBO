@@ -6,7 +6,6 @@
 package View;
 
 import Controller.KurirController;
-import Model.Constant;
 import Model.Kurir;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -228,7 +227,7 @@ public class KurirEditProfil{
         panelEditPassword.add(btnBackEdit);
 
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
     }
 
     private void isiDataLama() {

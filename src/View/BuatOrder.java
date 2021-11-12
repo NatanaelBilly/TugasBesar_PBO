@@ -1,10 +1,6 @@
 package View;
 
-import Model.Constant;
-
 import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
 
 public class BuatOrder {
     JFrame frame;
@@ -18,6 +14,6 @@ public class BuatOrder {
         panelPengirim.setBounds(50,50,240,400);
 
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
     }
 }

@@ -1,7 +1,5 @@
 package View;
 
-import Model.Constant;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +12,7 @@ public class EditProfilePelanggan {
 
     public EditProfilePelanggan(){
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
 
         //Label
         labelNamaDepan = new JLabel("Nama Depan");

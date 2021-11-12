@@ -71,7 +71,7 @@ public class KurirMenu implements ActionListener{
         panelPesan.setBounds(0,50,600,50);
 
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
 
         panelPesan.add(labelPesan);
         frame.add(btnProfil);

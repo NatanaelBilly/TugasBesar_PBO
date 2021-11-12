@@ -8,7 +8,7 @@ public class MainMenuAdmin {
 
     public MainMenuAdmin(Admin admin){
         //frame
-        JFrame frame = new DefaultFrameSetting().defaultFrame();
+        JFrame frame = new DefaultComponentSetting().defaultFrame();
 
         //panel
         JPanel panel= new JPanel();
