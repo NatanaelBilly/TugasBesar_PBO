@@ -79,7 +79,7 @@ public class IsiFeedbackAdmin {
         });
 
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
 
         //Panel
         panel = new JPanel();

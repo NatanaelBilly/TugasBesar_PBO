@@ -1,7 +1,5 @@
 package View;
 
-import Model.Constant;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -63,7 +61,7 @@ public class ProfilePelanggan {
         });
 
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
         frame.add(labelProfilePic);
         frame.add(labelEmail);
         frame.add(labelRole);

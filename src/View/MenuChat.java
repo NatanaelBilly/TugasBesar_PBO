@@ -4,17 +4,9 @@ import Model.Chat;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -26,7 +18,7 @@ public class MenuChat {
 
     public MenuChat(ArrayList<Chat> chats) {
 
-        JFrame frame = new DefaultFrameSetting().defaultFrame();
+        JFrame frame = new DefaultComponentSetting().defaultFrame();
         JScrollPane scroll = new JScrollPane();
         JLabel label = new JLabel("Menggunakan ScrollPane");
 

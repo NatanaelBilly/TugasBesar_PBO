@@ -5,8 +5,6 @@ import Model.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class RegisterKurir {
     JFrame frame;
@@ -18,13 +16,11 @@ public class RegisterKurir {
 
     public RegisterKurir() {
         //Label Judul
-        labelJudul = new JLabel("REGISTER - KURIR", SwingConstants.CENTER);
+        labelJudul = new DefaultComponentSetting().defaultHeadingLabel("Register sebagai Kurir");
         labelJudul.setBounds(0, 50, 600, 30);
-        labelJudul.setFont(new Font("Arial", Font.BOLD, 20));
 
         //Label Nama Depan
-        labelNamaDepan = new JLabel("Nama Depan");
-        labelNamaDepan.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelNamaDepan = new DefaultComponentSetting().defaultRegularLabel("Nama Depan");
         labelNamaDepan.setBounds(65, 130, 150, 30);
 
         //Input Nama Depan
@@ -32,8 +28,7 @@ public class RegisterKurir {
         inputNamaDepan.setBounds(230, 130, 250, 30);
 
         //Label Nama Belakang
-        labelNamaBelakang = new JLabel("Nama Belakang");
-        labelNamaBelakang.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelNamaBelakang = new DefaultComponentSetting().defaultRegularLabel("Nama Belakang");
         labelNamaBelakang.setBounds(65, 180, 150, 30);
 
         //Input Nama Belakang
@@ -41,8 +36,7 @@ public class RegisterKurir {
         inputNamaBelakang.setBounds(230, 180, 250, 30);
 
         //Label NIK
-        labelNIK = new JLabel("NIK");
-        labelNIK.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelNIK = new DefaultComponentSetting().defaultRegularLabel("NIK");
         labelNIK.setBounds(65, 230, 150, 30);
 
         //Input NIK
@@ -50,7 +44,7 @@ public class RegisterKurir {
         inputNIK.setBounds(230, 230, 250, 30);
 
         //Label Plat Nomor
-        labelPlatNomor = new JLabel("Plat Nomor");
+        labelPlatNomor = new DefaultComponentSetting().defaultRegularLabel("PlatNomor");
         labelPlatNomor.setFont(new Font("Arial", Font.PLAIN, 16));
         labelPlatNomor.setBounds(65, 280, 150, 30);
 
@@ -59,16 +53,14 @@ public class RegisterKurir {
         inputPlatnomor.setBounds(230, 280, 250, 30);
 
         //Label Jenis Kendaraan
-        labelJenisKendaraan = new JLabel("Jenis Kendaraan");
-        labelJenisKendaraan.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelJenisKendaraan = new DefaultComponentSetting().defaultRegularLabel("Jenis Kendaraan");
         labelJenisKendaraan.setBounds(65, 330, 150, 30);
 
         inputJenisKendaraan = new JTextField();
         inputJenisKendaraan.setBounds(230, 330, 250, 30);
 
         //Label Email
-        labelEmail = new JLabel("Email");
-        labelEmail.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelEmail = new DefaultComponentSetting().defaultRegularLabel("Email");
         labelEmail.setBounds(65, 370, 150, 30);
 
         //Input Email
@@ -76,8 +68,7 @@ public class RegisterKurir {
         inputEmail.setBounds(230, 370, 250, 30);
 
         //Label Nomor HP
-        labelNomorHP = new JLabel("Nomor HP");
-        labelNomorHP.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelNomorHP = new DefaultComponentSetting().defaultRegularLabel("Nomor HP");
         labelNomorHP.setBounds(65, 420, 150, 30);
 
         //Input Nomor HP
@@ -85,8 +76,7 @@ public class RegisterKurir {
         inputNomorHp.setBounds(230, 420, 250, 30);
 
         //Label Password
-        labelPassword = new JLabel("Password");
-        labelPassword.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelPassword = new DefaultComponentSetting().defaultRegularLabel("Password");
         labelPassword.setBounds(65, 470, 150, 30);
 
         //Input Password
@@ -96,39 +86,36 @@ public class RegisterKurir {
         //button Register
         buttonRegister = new JButton("Register");
         buttonRegister.setBounds(380, 540, 100, 40);
-        buttonRegister.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Controller controller = new Controller();
-                KurirController ck = new KurirController();
-                String namaDepan = inputNamaDepan.getText();
-                String namaBelakang = inputNamaBelakang.getText();
-                String emailUser = inputEmail.getText();
-                String password = String.valueOf(inputPassword.getPassword());
-                String role = String.valueOf(Role.PELANGGAN);
-                double saldo = 0;
-                String NIK = inputNIK.getText();
-                int jumlahUserSekarang = controller.HitungJumlahUser();
-                int idUser = jumlahUserSekarang+1;
-                double totalPendapatan = 0;
-                int ketersediaan = 0;
-                String plat = inputPlatnomor.getText();
-                String jenisKendaraan = inputJenisKendaraan.getText();
+        buttonRegister.addActionListener(e -> {
+            Controller controller = new Controller();
+            KurirController ck = new KurirController();
+            String namaDepan = inputNamaDepan.getText();
+            String namaBelakang = inputNamaBelakang.getText();
+            String emailUser = inputEmail.getText();
+            String password = String.valueOf(inputPassword.getPassword());
+            String role = String.valueOf(Role.PELANGGAN);
+            double saldo = 0;
+            String NIK = inputNIK.getText();
+            int jumlahUserSekarang = controller.HitungJumlahUser();
+            int idUser = jumlahUserSekarang+1;
+            double totalPendapatan = 0;
+            int ketersediaan = 0;
+            String plat = inputPlatnomor.getText();
+            String jenisKendaraan = inputJenisKendaraan.getText();
 
-                User kurirBaru = new Kurir(totalPendapatan, NIK, ketersediaan, plat, jenisKendaraan,idUser, namaDepan, namaBelakang, emailUser, password, saldo, Role.KURIR, null);
+            Kurir kurirBaru = new Kurir(totalPendapatan, NIK, ketersediaan, plat, jenisKendaraan,idUser, namaDepan, namaBelakang, emailUser, password, saldo, Role.KURIR, null);
 
-                if(ck.RegisterKurir((Kurir) kurirBaru)){
-                    JOptionPane.showMessageDialog(null, "Register Berhasil!");
-                    frame.dispose();
-                    new HomePelanggan();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Coba lagi");
-                }
-
-
-
-
+            if(ck.RegisterKurir(kurirBaru)){
+                JOptionPane.showMessageDialog(null, "Register Berhasil!");
+                frame.dispose();
+                new HomePelanggan();
+            } else {
+                JOptionPane.showMessageDialog(null, "Coba lagi");
             }
+
+
+
+
         });
 
         //Panel
@@ -157,7 +144,7 @@ public class RegisterKurir {
 
 
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
         frame.add(panelRegisterKurir);
     }
 }

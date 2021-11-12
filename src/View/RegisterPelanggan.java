@@ -113,7 +113,7 @@ public class RegisterPelanggan {
 
 
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
         frame.add(panelRegisterPelanggan);
     }
 

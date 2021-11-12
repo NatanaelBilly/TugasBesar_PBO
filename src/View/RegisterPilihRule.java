@@ -1,7 +1,5 @@
 package View;
 
-import Model.Constant;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,7 +47,7 @@ public class RegisterPilihRule {
         registerPilihRule.add(registerPelanggan);
 
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
         frame.add(registerPilihRule);
     }
 }

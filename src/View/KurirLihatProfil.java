@@ -1,10 +1,7 @@
 package View;
 
-import Controller.Controller;
-import Model.Constant;
 import Model.Kurir;
-import Model.Role;
-import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class KurirLihatProfil {
     private JFrame frame;
@@ -108,7 +104,7 @@ public class KurirLihatProfil {
 
         
         //Frame
-        frame = new DefaultFrameSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
 
         frame.add(labelMenu);
         frame.add(labelProfilePic);
