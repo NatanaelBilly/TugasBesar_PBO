@@ -6,30 +6,31 @@
 package Controller;
 
 import static Controller.Controller.conn;
+
 import Model.Kurir;
+import Model.TingkatanUser;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
  * @author Asus
  */
 public class KurirController {
-    
+
     private Controller con = new Controller();
-    
-    public boolean EditDataKurirToDB(Kurir kurir)
-    {
+
+    public boolean EditDataKurirToDB(Kurir kurir) {
         Controller.conn.connect();
         String query = "UPDATE user, kurir "
                 + "SET "
-                + "user.nama_depan='" + kurir.getNama_depan()+ "', "
-                + "user.nama_belakang='" + kurir.getNama_belakang()+ "', "
-                + "user.email_user='" + kurir.getEmail_user()+ "', "
-                + "kurir.NIK= '" + kurir.getNIK()+ "', "
-                + "kurir.plat='" + kurir.getPlat()+ "', "
-                + "kurir.jenis_kendaraan='" + kurir.getJenis_kendaraan()+ "' "
+                + "user.nama_depan='" + kurir.getNama_depan() + "', "
+                + "user.nama_belakang='" + kurir.getNama_belakang() + "', "
+                + "user.email_user='" + kurir.getEmail_user() + "', "
+                + "kurir.NIK= '" + kurir.getNIK() + "', "
+                + "kurir.plat='" + kurir.getPlat() + "', "
+                + "kurir.jenis_kendaraan='" + kurir.getJenis_kendaraan() + "' "
                 + "WHERE user.id_user=" + kurir.getId_user()
                 + " AND kurir.id_user=" + kurir.getId_user();
         try {
@@ -42,9 +43,9 @@ public class KurirController {
         }
     }
 
-    public boolean RegisterKurir(Kurir kurir){
+    public boolean RegisterKurir(Kurir kurir) {
         conn.connect();
-        String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?)";
+        String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO kurir VALUES (?,?,?,?,?,?)";
 
         try {
@@ -56,8 +57,9 @@ public class KurirController {
             stmt.setString(4, kurir.getPassword());
             stmt.setString(5, kurir.getRole().toString());
             stmt.setDouble(6, kurir.getSaldo());
+            stmt.setString(7, TingkatanUser.KURIR.toString());
             stmt2.setString(1, kurir.getNIK());
-            stmt2.setInt(2,kurir.getId_user());
+            stmt2.setInt(2, kurir.getId_user());
             stmt2.setDouble(3, kurir.getTotal_pendapatan());
             stmt2.setInt(4, kurir.getKetersediaan());
             stmt2.setString(5, kurir.getPlat());
@@ -71,5 +73,5 @@ public class KurirController {
         }
 
     }
-    
+
 }

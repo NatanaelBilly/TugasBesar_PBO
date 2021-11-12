@@ -10,5 +10,5 @@ package Model;
  * @author natanael billy
  */
 public enum TingkatanUser {
-    BRONZE,SILVER,GOLD;
+    KURIR,BRONZE,SILVER,GOLD;
 }
