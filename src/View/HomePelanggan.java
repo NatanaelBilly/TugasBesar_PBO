@@ -55,8 +55,7 @@ public class HomePelanggan {
         panelMessage.setBounds(0,120,600,50);
 
         //Frame
-        frame = new JFrame(Constant.applicationName+" - Home Pelanggan");
-        frame.setSize(600, 800);
+        frame = new DefaultFrameSetting().defaultFrame();
 
         panelMessage.add(labelMessage);
         frame.add(btnProfile);
@@ -65,8 +64,6 @@ public class HomePelanggan {
         frame.add(panelMessage);
 
         panelMessage.setVisible(true);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.setVisible(true);
+
     }
 }

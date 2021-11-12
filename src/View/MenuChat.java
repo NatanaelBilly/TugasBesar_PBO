@@ -26,7 +26,7 @@ public class MenuChat {
 
     public MenuChat(ArrayList<Chat> chats) {
 
-        JFrame frame = new JFrame("Chat");
+        JFrame frame = new DefaultFrameSetting().defaultFrame();
         JScrollPane scroll = new JScrollPane();
         JLabel label = new JLabel("Menggunakan ScrollPane");
 
@@ -47,10 +47,6 @@ public class MenuChat {
         send.setFont(new Font("Arial", Font.PLAIN, 15));
 
         //Chat Bubble
-        frame.setSize(650, 800);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
         frame.add(scroll);
         frame.add(chat);
         frame.add(send);
@@ -59,15 +55,4 @@ public class MenuChat {
         scroll.setBounds(25, 70, 580, 600);
         frame.setBackground(new Color(204, 180, 114));
     }
-
-    public static void main(String[] args) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        Date currentDate = new Date(new java.util.Date().getTime());
-        ArrayList<MenuChat> chats = new ArrayList();
-        
-        Chat chat1 = new Chat(1, 1, 1, 2, "Halo", currentDate);
-
-        
-    }
-
 }

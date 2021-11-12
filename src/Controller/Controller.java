@@ -180,5 +180,45 @@ public class Controller {
         }
     }
 
+    public String LogInn(String email, String password){
+        conn.connect();
+        String query = "SELECT * FROM user WHERE email_user='"+email+"' AND password = '"+password+"'";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+               return rs.getString("role");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "null";
+    }
+
+    public User LogIn(String email, String password){
+        conn.connect();
+        String query = "SELECT * FROM user WHERE email_user='"+email+"' AND password = '"+password+"'";
+        User user = null;
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                if(rs.getString("role").equalsIgnoreCase("Pelanggan")){
+                    user = new Pelanggan();
+                    user.setId_user(rs.getInt("id_user"));
+                    user.setNama_depan(rs.getString("nama_depan"));
+                    user.setNama_belakang(rs.getString("nama_belakang"));
+                    user.setEmail_user(rs.getString("email_user"));
+                    user.setPassword(rs.getString("password"));
+                    user.setSaldo(rs.getInt("saldo"));
+                    user.setRole(Role.valueOf(rs.getString("role")));
+                    user.setListTransaksi(null);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (user);
+    }
 
 }

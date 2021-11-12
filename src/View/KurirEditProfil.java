@@ -228,13 +228,7 @@ public class KurirEditProfil{
         panelEditPassword.add(btnBackEdit);
 
         //Frame
-        frame = new JFrame(Constant.applicationName + " - Register Kurir");
-        frame.setSize(600, 800);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-        
-        frame.add(panelEditData);
-        frame.add(panelEditPassword);
+        frame = new DefaultFrameSetting().defaultFrame();
     }
 
     private void isiDataLama() {

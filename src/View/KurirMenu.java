@@ -71,8 +71,7 @@ public class KurirMenu implements ActionListener{
         panelPesan.setBounds(0,50,600,50);
 
         //Frame
-        frame = new JFrame("Nama APK - Home Kurir");
-        frame.setSize(600, 800);
+        frame = new DefaultFrameSetting().defaultFrame();
 
         panelPesan.add(labelPesan);
         frame.add(btnProfil);
@@ -82,9 +81,6 @@ public class KurirMenu implements ActionListener{
         frame.add(panelPesan);
 
         panelPesan.setVisible(true);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.setVisible(true);
     }
     
     @Override

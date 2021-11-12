@@ -38,12 +38,18 @@ public class RegisterPilihRule {
         //Button Pelanggan
         registerPelanggan = new JButton("Pelanggan");
         registerPelanggan.setBounds(60,270,480,40);
+        registerPelanggan.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new RegisterPelanggan();
+            }
+        });
+
         registerPilihRule.add(registerPelanggan);
 
         //Frame
-        frame = new JFrame(Constant.applicationName);
-        frame.setSize(600,800);
-        frame.setVisible(true);
+        frame = new DefaultFrameSetting().defaultFrame();
         frame.add(registerPilihRule);
     }
 }

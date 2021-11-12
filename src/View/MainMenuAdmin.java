@@ -8,8 +8,7 @@ public class MainMenuAdmin {
 
     public MainMenuAdmin(Admin admin){
         //frame
-        JFrame frame = new JFrame("Nama APK");
-        frame.setSize(600, 800);
+        JFrame frame = new DefaultFrameSetting().defaultFrame();
 
         //panel
         JPanel panel= new JPanel();
@@ -72,8 +71,6 @@ public class MainMenuAdmin {
         panel.setLayout(null);
         panel.setVisible(true);
         frame.add(panel);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.setVisible(true);
+
     }
 }

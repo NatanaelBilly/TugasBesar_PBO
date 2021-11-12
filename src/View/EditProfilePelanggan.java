@@ -14,8 +14,7 @@ public class EditProfilePelanggan {
 
     public EditProfilePelanggan(){
         //Frame
-        frame = new JFrame(Constant.applicationName);
-        frame.setSize(460, 300);
+        frame = new DefaultFrameSetting().defaultFrame();
 
         //Label
         labelNamaDepan = new JLabel("Nama Depan");
@@ -54,8 +53,5 @@ public class EditProfilePelanggan {
         frame.add(tfEmail);
         frame.add(btnEdit);
 
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.setVisible(true);
     }
 }

@@ -178,6 +178,7 @@ public class LihatDetailTransaksiPelanggan {
 
         panelInfoKurir.setLayout(null);
         frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setVisible(true);
     }
