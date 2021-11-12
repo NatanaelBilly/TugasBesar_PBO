@@ -103,6 +103,7 @@ public class IsiFeedbackAdmin {
         panel.setVisible(true);
         panelText.setVisible(true);
         frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setVisible(true);
     }

@@ -53,7 +53,7 @@ public class EditProfilePelanggan {
         frame.add(tfNamaBelakang);
         frame.add(tfEmail);
         frame.add(btnEdit);
-
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
         frame.setVisible(true);

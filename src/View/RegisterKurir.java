@@ -158,6 +158,8 @@ public class RegisterKurir {
 
         //Frame
         frame = new JFrame(Constant.applicationName + " - Register Kurir");
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 800);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

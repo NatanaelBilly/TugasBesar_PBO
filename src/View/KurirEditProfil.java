@@ -232,7 +232,7 @@ public class KurirEditProfil{
         frame.setSize(600, 800);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panelEditData);
         frame.add(panelEditPassword);
     }

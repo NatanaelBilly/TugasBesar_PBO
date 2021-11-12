@@ -35,5 +35,6 @@ public class MenampilkanFeedbackDariPengguna {
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

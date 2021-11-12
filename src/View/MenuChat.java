@@ -59,15 +59,4 @@ public class MenuChat {
         scroll.setBounds(25, 70, 580, 600);
         frame.setBackground(new Color(204, 180, 114));
     }
-
-    public static void main(String[] args) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        Date currentDate = new Date(new java.util.Date().getTime());
-        ArrayList<MenuChat> chats = new ArrayList();
-        
-        Chat chat1 = new Chat(1, 1, 1, 2, "Halo", currentDate);
-
-        
-    }
-
 }

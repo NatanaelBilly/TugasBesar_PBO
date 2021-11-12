@@ -126,7 +126,7 @@ public class KurirLihatProfil {
         
         frame.add(btnEditProfile);
         frame.add(btnBack);
-
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
         frame.setVisible(true);

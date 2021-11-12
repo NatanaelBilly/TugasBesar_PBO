@@ -51,6 +51,7 @@ public class Login {
         //frame
         frame = new JFrame(Constant.applicationName);
         frame.setSize(600,800);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panelLogin);
         frame.setVisible(true);
     }

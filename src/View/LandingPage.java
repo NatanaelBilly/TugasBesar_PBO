@@ -67,6 +67,7 @@ public class LandingPage {
 
         frame.add(panelLandingPage);
         frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setVisible(true);
     }

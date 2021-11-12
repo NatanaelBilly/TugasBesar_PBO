@@ -33,6 +33,7 @@ public class LihatSaldoAdmin {
         panel.setVisible(true);
         frame.add(panel);
         frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setVisible(true);
     }
