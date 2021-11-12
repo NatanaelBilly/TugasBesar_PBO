@@ -7,19 +7,56 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Login {
     JFrame frame;
-    JLabel labelEmail, labelPassword;
+    JLabel labelJudul, labelEmail, labelPassword, linkKembali;
     JTextField inputEmail;
     JPasswordField inputPassword;
     JPanel panelLogin;
     JButton buttonLogin;
 
     public Login() {
+        //Link Kembali
+        linkKembali = new DefaultComponentSetting().defaultBackLabel();
+        linkKembali.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                frame.dispose();
+                new LandingPage();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                frame.dispose();
+                new LandingPage();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+        //Label Judul
+        labelJudul = new DefaultComponentSetting().defaultHeadingLabel("Log In");
+        labelJudul.setBounds(0,100,600,40);
+
+
         //Label Input Email
-        labelEmail = new JLabel("Email");
-        labelEmail.setFont(new Font("Arial", Font.PLAIN, 18));
+        labelEmail = new DefaultComponentSetting().defaultRegularLabel("Email");
         labelEmail.setBounds(75, 200, 150, 35);
 
         //TextField Input Email
@@ -27,8 +64,7 @@ public class Login {
         inputEmail.setBounds(225, 200, 300, 35);
 
         //Label Input Password
-        labelPassword = new JLabel("Password");
-        labelPassword.setFont(new Font("Arial", Font.PLAIN, 18));
+        labelPassword = new DefaultComponentSetting().defaultRegularLabel("Password");
         labelPassword.setBounds(75, 270, 150, 35);
 
         //Input Password
@@ -65,12 +101,12 @@ public class Login {
         panelLogin.add(labelPassword);
         panelLogin.add(inputPassword);
         panelLogin.add(buttonLogin);
+        panelLogin.add(linkKembali);
+        panelLogin.add(labelJudul);
 
         //frame
-        frame = new JFrame(Constant.applicationName);
-        frame.setSize(600, 800);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame = new DefaultComponentSetting().defaultFrame();
         frame.add(panelLogin);
-        frame.setVisible(true);
+//        frame.add(linkKembali);
     }
 }

@@ -6,13 +6,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class HomePelanggan {
+public class BerandaPelanggan {
     JFrame frame;
     JPanel panelMessage;
     JLabel labelMessage;
     JButton btnProfile, btnOrder, btnTransaction;
 
-    public HomePelanggan(){
+    public BerandaPelanggan(){
         //label
         labelMessage = new JLabel("Welcome Back, Ini Nama!");
         labelMessage.setFont(new Font("Arial", Font.BOLD, 24));
@@ -35,6 +35,14 @@ public class HomePelanggan {
         btnOrder.setFont(new Font("Arial", Font.BOLD, 20));
         btnOrder.setBackground(new Color(217, 217, 217));
         btnOrder.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnOrder.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new BuatOrder();
+            }
+        });
+
         btnTransaction = new JButton("See transactions");
         btnTransaction.setBounds(170, 470, 250, 80);
         btnTransaction.setFont(new Font("Arial", Font.BOLD, 20));

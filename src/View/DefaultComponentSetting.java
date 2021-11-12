@@ -19,13 +19,20 @@ public class DefaultComponentSetting {
 
     public JLabel defaultRegularLabel(String label){
         JLabel jlabel = new JLabel(label);
-        jlabel.setFont(new Font("Arial",Font.PLAIN,16));
+        jlabel.setFont(new Font("Arial",Font.PLAIN,14));
         return jlabel;
     }
 
     public JLabel defaultHeadingLabel(String label){
         JLabel jlabel = new JLabel(label,SwingConstants.CENTER);
         jlabel.setFont(new Font("Arial",Font.BOLD,20));
+        return jlabel;
+    }
+
+    public JLabel defaultBackLabel(){
+        JLabel jlabel = new JLabel("< Back");
+        jlabel.setFont(new Font("Arial",Font.BOLD,14));
+        jlabel.setBounds(10, 5, 50, 30);
         return jlabel;
     }
 }
