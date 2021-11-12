@@ -44,7 +44,7 @@ public class RegisterKurir {
         inputNIK.setBounds(230, 230, 250, 30);
 
         //Label Plat Nomor
-        labelPlatNomor = new DefaultComponentSetting().defaultRegularLabel("PlatNomor");
+        labelPlatNomor = new DefaultComponentSetting().defaultRegularLabel("Plat Nomor");
         labelPlatNomor.setFont(new Font("Arial", Font.PLAIN, 16));
         labelPlatNomor.setBounds(65, 280, 150, 30);
 
