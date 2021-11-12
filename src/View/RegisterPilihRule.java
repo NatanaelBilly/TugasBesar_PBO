@@ -49,11 +49,7 @@ public class RegisterPilihRule {
         registerPilihRule.add(registerPelanggan);
 
         //Frame
-        frame = new JFrame(Constant.applicationName);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600,800);
-        frame.setVisible(true);
+        frame = new DefaultFrameSetting().defaultFrame();
         frame.add(registerPilihRule);
     }
 }

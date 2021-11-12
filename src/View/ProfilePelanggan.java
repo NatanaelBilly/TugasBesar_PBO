@@ -63,10 +63,7 @@ public class ProfilePelanggan {
         });
 
         //Frame
-        frame = new JFrame(Constant.applicationName);
-        frame.setSize(600, 800);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame = new DefaultFrameSetting().defaultFrame();
         frame.add(labelProfilePic);
         frame.add(labelEmail);
         frame.add(labelRole);
@@ -75,7 +72,6 @@ public class ProfilePelanggan {
         frame.add(panelMenu);
         frame.add(panelNama);
         frame.add(btnEditProfile);
-        frame.setLayout(null);
-        frame.setVisible(true);
+
     }
 }

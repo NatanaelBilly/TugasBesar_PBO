@@ -4,13 +4,18 @@
  * and open the template in the editor.
  */
 package Model;
+
 import java.util.ArrayList;
+
 /**
- *
  * @author natanael billy
  */
-public class Pelanggan extends User{
-   TingkatanUser tingkatan;
+public class Pelanggan extends User {
+    TingkatanUser tingkatan;
+
+    public Pelanggan() {
+
+    }
 
     public Pelanggan(TingkatanUser tingkatan, int id_user, String nama_depan, String nama_belakang, String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
         super(id_user, nama_depan, nama_belakang, email_user, password, saldo, role, listTransaksi);
@@ -24,5 +29,5 @@ public class Pelanggan extends User{
     public void setTingkatan(TingkatanUser tingkatan) {
         this.tingkatan = tingkatan;
     }
-    
+
 }

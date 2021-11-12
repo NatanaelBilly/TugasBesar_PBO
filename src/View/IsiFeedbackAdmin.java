@@ -79,8 +79,7 @@ public class IsiFeedbackAdmin {
         });
 
         //Frame
-        frame = new JFrame("Nama APK");
-        frame.setSize(600, 800);
+        frame = new DefaultFrameSetting().defaultFrame();
 
         //Panel
         panel = new JPanel();
@@ -102,9 +101,5 @@ public class IsiFeedbackAdmin {
         panel.setLayout(null);
         panel.setVisible(true);
         panelText.setVisible(true);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
-        frame.setVisible(true);
     }
 }

@@ -1,9 +1,12 @@
 package View;
 
+import Controller.Controller;
 import Model.Constant;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Login {
     JFrame frame;
@@ -35,6 +38,25 @@ public class Login {
         //Button Login
         buttonLogin = new JButton("LOGIN");
         buttonLogin.setBounds(350, 350, 100,45);
+        buttonLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String email = inputEmail.getText();
+                String password = String.valueOf(inputPassword.getPassword());
+
+                Controller controller = new Controller();
+                String loggedInAs = controller.LogInn(email,password);
+                if(!loggedInAs.equalsIgnoreCase("null")){
+                    frame.dispose();
+                    if(loggedInAs.equalsIgnoreCase("pelanggan")){
+                        new HomePelanggan();
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Gagal Login");
+                }
+            }
+        });
 
         //Panel Login
         panelLogin = new JPanel();

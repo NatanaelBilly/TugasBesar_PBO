@@ -57,8 +57,7 @@ public class LandingPage {
         panelLandingPage.setBackground(new Color(204, 180, 114));
 
         //Frame
-        frame = new JFrame(Constant.applicationName);
-        frame.setSize(600, 800);
+        frame = new DefaultFrameSetting().defaultFrame();
 
 
         panelLandingPage.add(welcomeUser);
@@ -66,9 +65,6 @@ public class LandingPage {
         panelLandingPage.add(btnRegister);
 
         frame.add(panelLandingPage);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
-        frame.setVisible(true);
+
     }
 }

@@ -26,7 +26,7 @@ public class MenuChat {
 
     public MenuChat(ArrayList<Chat> chats) {
 
-        JFrame frame = new JFrame("Chat");
+        JFrame frame = new DefaultFrameSetting().defaultFrame();
         JScrollPane scroll = new JScrollPane();
         JLabel label = new JLabel("Menggunakan ScrollPane");
 
@@ -47,10 +47,6 @@ public class MenuChat {
         send.setFont(new Font("Arial", Font.PLAIN, 15));
 
         //Chat Bubble
-        frame.setSize(650, 800);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
         frame.add(scroll);
         frame.add(chat);
         frame.add(send);

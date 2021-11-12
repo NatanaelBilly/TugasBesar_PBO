@@ -18,11 +18,6 @@ public class BuatOrder {
         panelPengirim.setBounds(50,50,240,400);
 
         //Frame
-        frame = new JFrame(Constant.applicationName+" - Order");
-        frame.setSize(600,800);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.add(panelPengirim);
-        frame.setVisible(true);
+        frame = new DefaultFrameSetting().defaultFrame();
     }
 }

@@ -108,8 +108,7 @@ public class KurirLihatProfil {
 
         
         //Frame
-        frame = new JFrame(Constant.applicationName);
-        frame.setSize(600, 800);
+        frame = new DefaultFrameSetting().defaultFrame();
 
         frame.add(labelMenu);
         frame.add(labelProfilePic);
@@ -126,9 +125,6 @@ public class KurirLihatProfil {
         
         frame.add(btnEditProfile);
         frame.add(btnBack);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(null);
-        frame.setVisible(true);
+
     }
 }

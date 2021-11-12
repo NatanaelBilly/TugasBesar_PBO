@@ -113,14 +113,8 @@ public class RegisterPelanggan {
 
 
         //Frame
-        frame = new JFrame(Constant.applicationName + " - Register Pelanggan");
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 800);
-        frame.setVisible(true);
-        frame.setLayout(null);
+        frame = new DefaultFrameSetting().defaultFrame();
         frame.add(panelRegisterPelanggan);
-
     }
 
 }
