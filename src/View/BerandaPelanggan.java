@@ -1,5 +1,7 @@
 package View;
 
+import Model.Pelanggan;
+
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
@@ -12,10 +14,10 @@ public class BerandaPelanggan {
     JLabel labelMessage;
     JButton btnProfile, btnOrder, btnTransaction;
 
-    public BerandaPelanggan() {
+    public BerandaPelanggan(Pelanggan pelanggan) {
         //label
-        labelMessage = new JLabel("Welcome Back, Ini Nama!");
-        labelMessage.setFont(new Font("Arial", Font.BOLD, 24));
+        labelMessage = new DefaultComponentSetting().defaultHeadingLabel("Welcome Back");
+//        labelMessage.setFont(new Font("Arial", Font.BOLD, 24));
 
         //Button
         btnProfile = new DefaultComponentSetting().defaultButton("Lihat Profil",20);
@@ -57,16 +59,18 @@ public class BerandaPelanggan {
         panelMessage = new JPanel();
         panelMessage.setBounds(0, 120, 600, 50);
 
+
+        panelMessage.setVisible(true);
+        panelMessage.add(labelMessage);
+
         //Frame
         frame = new DefaultComponentSetting().defaultFrame();
-
-        panelMessage.add(labelMessage);
         frame.add(btnProfile);
         frame.add(btnOrder);
         frame.add(btnTransaction);
         frame.add(panelMessage);
 
-        panelMessage.setVisible(true);
+
 
     }
 }

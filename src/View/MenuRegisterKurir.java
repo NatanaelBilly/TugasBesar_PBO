@@ -109,7 +109,7 @@ public class MenuRegisterKurir {
             if (ck.RegisterKurir(kurirBaru)) {
                 JOptionPane.showMessageDialog(null, "Register Berhasil!");
                 frame.dispose();
-                new BerandaPelanggan();
+                new BerandaKurir(kurirBaru);
             } else {
                 JOptionPane.showMessageDialog(null, "Coba lagi");
             }

@@ -46,7 +46,7 @@ public class HeaderMenu {
         labelMenu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new BerandaPelanggan();
+//                new BerandaPelanggan();
             }
         });
 

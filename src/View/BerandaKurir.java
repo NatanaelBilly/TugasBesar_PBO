@@ -6,6 +6,8 @@
 package View;
 
 import Model.Kurir;
+import Model.UserManager;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -23,64 +25,45 @@ import javax.swing.border.BevelBorder;
  */
 public class BerandaKurir implements ActionListener{
     private JFrame frame;
-    private JPanel panelPesan;
+    private JPanel panelBerandaKurir;
     private JLabel labelPesan;
     private JButton btnProfil, btnOrder, btnTransaksi, btnObrolan;
 
-    private Kurir kurir;
-    
     public BerandaKurir(Kurir kurir){
-        this.kurir = kurir;
-        
         //label
-        labelPesan = new JLabel("Selamat Datang, !");
-        labelPesan.setFont(new Font("Arial", Font.BOLD, 24));
+        labelPesan = new DefaultComponentSetting().defaultRegularLabel("Selamat Datang, !");
 
         //Button
-        btnProfil = new JButton("Lihat Profil");
+        btnProfil = new DefaultComponentSetting().defaultButton("Llihat Profil",20);
         btnProfil.setBounds(170, 150, 250, 80);
-        btnProfil.setFont(new Font("Arial", Font.BOLD, 20));
-        btnProfil.setBackground(new Color(217, 217, 217));
-        btnProfil.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
         btnProfil.addActionListener(this);
         
-        btnOrder = new JButton("Lihat Order");
+        btnOrder = new DefaultComponentSetting().defaultButton("Lihat Order",20);
         btnOrder.setBounds(170, 250, 250, 80);
-        btnOrder.setFont(new Font("Arial", Font.BOLD, 20));
-        btnOrder.setBackground(new Color(217, 217, 217));
-        btnOrder.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
         btnOrder.addActionListener(this);
         
-        btnTransaksi = new JButton("Lihat Transaksi");
+        btnTransaksi = new DefaultComponentSetting().defaultButton("Lihat Transaksi",20);
         btnTransaksi.setBounds(170, 350, 250, 80);
-        btnTransaksi.setFont(new Font("Arial", Font.BOLD, 20));
-        btnTransaksi.setBackground(new Color(217, 217, 217));
-        btnTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
         btnTransaksi.addActionListener(this);
 
         
-        btnObrolan = new JButton("Obrolan");
+        btnObrolan = new DefaultComponentSetting().defaultButton("Obrolan",20);
         btnObrolan.setBounds(170, 450, 250, 80);
-        btnObrolan.setFont(new Font("Arial", Font.BOLD, 20));
-        btnObrolan.setBackground(new Color(217, 217, 217));
-        btnObrolan.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
         btnObrolan.addActionListener(this);
         
         //Panel
-        panelPesan = new JPanel();
-        panelPesan.setBounds(0,50,600,50);
+        panelBerandaKurir = new JPanel();
+        panelBerandaKurir.setBounds(0,0,600,50);
+        panelBerandaKurir.setVisible(true);
+        panelBerandaKurir.add(labelPesan);
 
         //Frame
         frame = new DefaultComponentSetting().defaultFrame();
-
-        panelPesan.add(labelPesan);
         frame.add(btnProfil);
         frame.add(btnOrder);
         frame.add(btnTransaksi);
         frame.add(btnObrolan);
-        frame.add(panelPesan);
-
-        panelPesan.setVisible(true);
+        frame.add(panelBerandaKurir);
     }
     
     @Override
@@ -88,7 +71,7 @@ public class BerandaKurir implements ActionListener{
         String command = e.getActionCommand();
         switch (command) {
             case "Lihat Profil":
-                new MenuLihatProfilKurir(kurir);
+//                new MenuLihatProfilKurir(kurir);
                 frame.setVisible(false);
                 break;
             case "Lihat Order":
