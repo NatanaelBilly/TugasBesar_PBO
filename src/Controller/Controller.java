@@ -57,6 +57,7 @@ public class Controller {
                     String nama_belakang = rs.getString("nama_belakang");
                     String email_user = rs.getString("email_user");
                     String password = rs.getString("password");
+                    String noHp = rs.getString("noHp");
 
                     String NIK = rs.getString("NIK");
                     String plat = rs.getString("plat");
@@ -68,7 +69,7 @@ public class Controller {
                     dataKurir = new Kurir(
                             total_pendapatan, NIK, ketersediaan,
                             plat, jenis_kendaraan,
-                            id_user, nama_depan, nama_belakang,
+                            id_user, nama_depan, noHp,nama_belakang,
                             email_user, password, saldo,
                             role, null);
                 }
@@ -162,17 +163,18 @@ public class Controller {
 
     public boolean RegisterPelanggan(Pelanggan pelanggan) {
         conn.connect();
-        String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?,?)";
+        String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query1);
             stmt.setString(1, pelanggan.getNama_depan());
             stmt.setString(2, pelanggan.getNama_belakang());
-            stmt.setString(3, pelanggan.getEmail_user());
-            stmt.setString(4, pelanggan.getPassword());
-            stmt.setString(5, String.valueOf(pelanggan.getRole()));
-            stmt.setDouble(6, pelanggan.getSaldo());
-            stmt.setString(7, String.valueOf(pelanggan.getTingkatan()));
+            stmt.setString(3, pelanggan.getNoHp());
+            stmt.setString(4, pelanggan.getEmail_user());
+            stmt.setString(5, pelanggan.getPassword());
+            stmt.setString(6, String.valueOf(pelanggan.getRole()));
+            stmt.setDouble(7, pelanggan.getSaldo());
+            stmt.setString(8, String.valueOf(pelanggan.getTingkatan()));
             stmt.executeUpdate();
             return true;
         } catch (SQLException throwables) {
@@ -193,6 +195,7 @@ public class Controller {
                 String namaBelakang = rs.getString("nama_belakang");
                 String emailUser = rs.getString("email_user");
                 String passwordUser = rs.getString("password");
+                String noHp = rs.getString("noHp");
                 Role roleUser = Role.valueOf(rs.getString("role"));
 
                 double saldo = rs.getDouble("saldo");
@@ -203,6 +206,7 @@ public class Controller {
                     pelanggan.setId_user(idUser);
                     pelanggan.setNama_depan(namaDepan);
                     pelanggan.setNama_belakang(namaBelakang);
+                    pelanggan.setNoHp(noHp);
                     pelanggan.setEmail_user(emailUser);
                     pelanggan.setPassword(passwordUser);
                     pelanggan.setSaldo(saldo);
@@ -225,6 +229,7 @@ public class Controller {
                             kurir.setId_user(idUser);
                             kurir.setNama_depan(namaDepan);
                             kurir.setNama_belakang(namaBelakang);
+                            kurir.setNoHp(noHp);
                             kurir.setEmail_user(emailUser);
                             kurir.setPassword(passwordUser);
                             kurir.setSaldo(saldo);
@@ -246,6 +251,7 @@ public class Controller {
                     admin.setId_user(idUser);
                     admin.setNama_depan(namaDepan);
                     admin.setNama_belakang(namaBelakang);
+                    admin.setNoHp(noHp);
                     admin.setEmail_user(emailUser);
                     admin.setPassword(passwordUser);
                     admin.setSaldo(saldo);

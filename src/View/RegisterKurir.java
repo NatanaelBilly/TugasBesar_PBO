@@ -91,21 +91,22 @@ public class RegisterKurir {
             KurirController ck = new KurirController();
             String namaDepan = inputNamaDepan.getText();
             String namaBelakang = inputNamaBelakang.getText();
+            String noHP = inputNomorHp.getText();
             String emailUser = inputEmail.getText();
             String password = String.valueOf(inputPassword.getPassword());
             String role = String.valueOf(Role.PELANGGAN);
             double saldo = 0;
             String NIK = inputNIK.getText();
             int jumlahUserSekarang = controller.HitungJumlahUser();
-            int idUser = jumlahUserSekarang+1;
+            int idUser = jumlahUserSekarang + 1;
             double totalPendapatan = 0;
             int ketersediaan = 0;
             String plat = inputPlatnomor.getText();
             String jenisKendaraan = inputJenisKendaraan.getText();
 
-            Kurir kurirBaru = new Kurir(totalPendapatan, NIK, ketersediaan, plat, jenisKendaraan,idUser, namaDepan, namaBelakang, emailUser, password, saldo, Role.KURIR, null);
+            Kurir kurirBaru = new Kurir(totalPendapatan, NIK, ketersediaan, plat, jenisKendaraan, idUser, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.KURIR, null);
 
-            if(ck.RegisterKurir(kurirBaru)){
+            if (ck.RegisterKurir(kurirBaru)) {
                 JOptionPane.showMessageDialog(null, "Register Berhasil!");
                 frame.dispose();
                 new BerandaPelanggan();

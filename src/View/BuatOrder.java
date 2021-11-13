@@ -5,15 +5,18 @@ import Model.UserManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class BuatOrder {
     JFrame frame;
     JPanel panelPengirim, panelPenerima, panelBarang;
-    JLabel labelKembali, labelJudul, labelPengirim, labelPenerima, labelBarang, labelNamaPenerima, labelNamaPengirim, labelAlamatPenerima, labelAlamatPengirim, labelNomorHPPenerima, labelNomorHPPengirim, labelTipeBarang, labelTotalBarang, labelBeratBarang;
-    JTextField inputNamaPengirim, inputNamaPenerima, inputLokasiPengirim, inputLokasiPenerima, inputNoHPPengirim, inputNoHPPenerima;
+    JLabel labelKembali, labelJudul, labelPengirim, labelPenerima, labelBarang, labelNamaPenerima, labelNamaPengirim, labelAlamatPenerima, labelAlamatPengirim, labelNomorHPPenerima, labelNomorHPPengirim, labelTipeBarang, labelTotalBarang, labelBeratBarang, labelKesalahanBanyak, labelKesalahanBerat;
+    JTextField inputNamaPengirim, inputNamaPenerima, inputLokasiPengirim, inputLokasiPenerima, inputNoHPPengirim, inputNoHPPenerima, inputBanyakBarang, inputBeratBarang;
     JButton buttonOrder;
+    JComboBox inputTipeBarang;
 //    User user = new UserManager().getInstance().getUser();
 
     public BuatOrder() {
@@ -54,13 +57,15 @@ public class BuatOrder {
 
         // Label Pengirim
         labelPengirim = new DefaultComponentSetting().defaultRegularLabel("Pengirim");
-        labelPengirim.setBounds(20,70,240,30);
-        
+        labelPengirim.setBounds(20, 70, 240, 30);
+
         //Label Penerima
         labelPenerima = new DefaultComponentSetting().defaultRegularLabel("Penerima");
-        labelPenerima.setBounds(320,70,240,30);
+        labelPenerima.setBounds(320, 70, 240, 30);
 
         //Label Order
+        labelBarang = new DefaultComponentSetting().defaultRegularLabel("Barang");
+        labelBarang.setBounds(50, 320, 500, 30);
 
         //Panel Pengirim
         panelPengirim = new JPanel();
@@ -71,14 +76,14 @@ public class BuatOrder {
 
         //Panel Penerima
         panelPenerima = new JPanel();
-        panelPenerima.setBounds(20, 100,240,210);
-        panelPenerima.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        panelPenerima.setBounds(320, 100, 240, 210);
+        panelPenerima.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         panelPenerima.setVisible(true);
         panelPenerima.setLayout(null);
 
         //Panel Barang
         panelBarang = new JPanel();
-        panelBarang.setBounds(50,350,500,210);
+        panelBarang.setBounds(50, 350, 500, 170);
         panelBarang.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         panelBarang.setVisible(true);
         panelBarang.setLayout(null);
@@ -89,16 +94,24 @@ public class BuatOrder {
 
         //Label Nama Penerima
         labelNamaPenerima = new DefaultComponentSetting().defaultRegularLabel("Nama Penerima");
-        labelNamaPenerima.setBounds(10,10,215,20);
+        labelNamaPenerima.setBounds(10, 10, 215, 20);
 
-        
+        //Label Tipe Barang
+        labelTipeBarang = new DefaultComponentSetting().defaultRegularLabel("Tipe Barang");
+        labelTipeBarang.setBounds(10, 10, 150, 20);
+
         //Input Nama Pengirim
         inputNamaPengirim = new JTextField();
         inputNamaPengirim.setBounds(10, 35, 215, 30);
 
         //Input Nama Penerima
         inputNamaPenerima = new JTextField();
-        inputNamaPenerima.setBounds(10,35,215,30);
+        inputNamaPenerima.setBounds(10, 35, 215, 30);
+
+        //Input Tipe Barang
+        String[] tipeBarang = {"Dokumen", "Makanan", "Alat Rumah Tangga", "Alat Kecantikan", "Tipe Lain"};
+        inputTipeBarang = new JComboBox(tipeBarang);
+        inputTipeBarang.setBounds(225, 10, 215, 30);
 
         //Label Alamat Pengirim
         labelAlamatPengirim = new DefaultComponentSetting().defaultRegularLabel("Alamat Pengirim");
@@ -108,6 +121,10 @@ public class BuatOrder {
         labelAlamatPenerima = new DefaultComponentSetting().defaultRegularLabel("Alamat Penerima");
         labelAlamatPenerima.setBounds(10, 75, 215, 20);
 
+        //Label total Item
+        labelTotalBarang = new DefaultComponentSetting().defaultRegularLabel("Total");
+        labelTotalBarang.setBounds(10, 60, 150, 20);
+
         //Input Alamat Pengirim
         inputLokasiPengirim = new JTextField();
         inputLokasiPengirim.setBounds(10, 100, 215, 30);
@@ -116,6 +133,30 @@ public class BuatOrder {
         inputLokasiPenerima = new JTextField();
         inputLokasiPenerima.setBounds(10, 100, 215, 30);
 
+        //Input Total Barang -> only accept number
+        inputBanyakBarang = new JTextField();
+        inputBanyakBarang.setBounds(225, 60, 215, 30);
+        inputBanyakBarang.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                String value = inputBanyakBarang.getText();
+                int l = value.length();
+                if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
+                    labelKesalahanBanyak.setText("");
+                } else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    labelKesalahanBanyak.setText("");
+                } else {
+                    labelKesalahanBanyak.setText("Harap masukkan angka.");
+                }
+
+            }
+        });
+
+        //Label Kesalahan Berat
+        labelKesalahanBanyak = new DefaultComponentSetting().defaultRegularLabel("");
+        labelKesalahanBanyak.setBounds(10, 90, 215, 20);
+        labelKesalahanBanyak.setForeground(Color.RED);
+
         //Label no HP
         labelNomorHPPengirim = new DefaultComponentSetting().defaultRegularLabel("Nomor HP Pengirim");
         labelNomorHPPengirim.setBounds(10, 140, 215, 20);
@@ -123,13 +164,43 @@ public class BuatOrder {
         labelNomorHPPenerima = new DefaultComponentSetting().defaultRegularLabel("Nomor HP Penerima");
         labelNomorHPPenerima.setBounds(10, 140, 215, 20);
 
+        labelBeratBarang = new DefaultComponentSetting().defaultRegularLabel("Berat Barang");
+        labelBeratBarang.setBounds(10, 110, 150, 30);
+
         //Input no HP
         inputNoHPPengirim = new JTextField();
         inputNoHPPengirim.setBounds(10, 165, 215, 30);
 
         inputNoHPPenerima = new JTextField();
         inputNoHPPenerima.setBounds(10, 165, 215, 30);
-        
+
+        inputBeratBarang = new JTextField();
+        inputBeratBarang.setBounds(225, 110, 215, 30);
+        inputBeratBarang.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                String value = inputBeratBarang.getText();
+                int l = value.length();
+                if (e.getKeyChar() >= '0' && e.getKeyChar() <= '9') {
+                    labelKesalahanBerat.setText("");
+                } else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    labelKesalahanBerat.setText("");
+                } else {
+                    labelKesalahanBerat.setText("Harap masukkan angka.");
+                }
+            }
+        });
+
+        //Label Kesalahan input Berat
+        labelKesalahanBerat = new DefaultComponentSetting().defaultRegularLabel("");
+        labelKesalahanBerat.setForeground(Color.RED);
+        labelKesalahanBerat.setBounds(10, 140, 215, 30);
+
+        //button Order
+        buttonOrder = new DefaultComponentSetting().defaultButton("Order", 16);
+        buttonOrder.setBounds(230, 550, 140, 30);
+
+
         //Frame
         frame = new DefaultComponentSetting().defaultFrame();
 
@@ -149,14 +220,26 @@ public class BuatOrder {
         panelPenerima.add(inputLokasiPenerima);
         panelPenerima.add(inputNoHPPenerima);
 
+        //Add to panel barang
+        panelBarang.add(labelTipeBarang);
+        panelBarang.add(labelTotalBarang);
+        panelBarang.add(labelKesalahanBanyak);
+        panelBarang.add(labelBeratBarang);
+        panelBarang.add(labelKesalahanBerat);
+        panelBarang.add(inputTipeBarang);
+        panelBarang.add(inputBanyakBarang);
+        panelBarang.add(inputBeratBarang);
 
         //Add Panel to Frame
         frame.add(labelJudul);
         frame.add(labelKembali);
         frame.add(labelPengirim);
         frame.add(labelPenerima);
+        frame.add(labelBarang);
         frame.add(panelPengirim);
         frame.add(panelPenerima);
         frame.add(panelBarang);
+        frame.add(buttonOrder);
     }
+
 }

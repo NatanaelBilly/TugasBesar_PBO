@@ -45,7 +45,7 @@ public class KurirController {
 
     public boolean RegisterKurir(Kurir kurir) {
         conn.connect();
-        String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?,?)";
+        String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO kurir VALUES (?,?,?,?,?,?)";
 
         try {
@@ -53,11 +53,12 @@ public class KurirController {
             PreparedStatement stmt2 = conn.con.prepareStatement(query2);
             stmt.setString(1, kurir.getNama_depan());
             stmt.setString(2, kurir.getNama_belakang());
-            stmt.setString(3, kurir.getEmail_user());
-            stmt.setString(4, kurir.getPassword());
-            stmt.setString(5, kurir.getRole().toString());
-            stmt.setDouble(6, kurir.getSaldo());
-            stmt.setString(7, TingkatanUser.KURIR.toString());
+            stmt.setString(3, kurir.getNoHp());
+            stmt.setString(4, kurir.getEmail_user());
+            stmt.setString(5, kurir.getPassword());
+            stmt.setString(6, kurir.getRole().toString());
+            stmt.setDouble(7, kurir.getSaldo());
+            stmt.setString(8, TingkatanUser.KURIR.toString());
             stmt2.setString(1, kurir.getNIK());
             stmt2.setInt(2, kurir.getId_user());
             stmt2.setDouble(3, kurir.getTotal_pendapatan());
