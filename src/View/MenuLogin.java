@@ -1,16 +1,13 @@
 package View;
 
 import Controller.*;
-import Model.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Login {
+public class MenuLogin {
     JFrame frame;
     JLabel labelJudul, labelEmail, labelPassword, linkKembali;
     JTextField inputEmail;
@@ -18,20 +15,20 @@ public class Login {
     JPanel panelLogin;
     JButton buttonLogin;
 
-    public Login() {
+    public MenuLogin() {
         //Link Kembali
         linkKembali = new DefaultComponentSetting().defaultBackLabel();
         linkKembali.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
-                new LandingPage();
+                new HalamanAwal();
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
                 frame.dispose();
-                new LandingPage();
+                new HalamanAwal();
             }
 
             @Override

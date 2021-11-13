@@ -4,9 +4,9 @@ import java.awt.*;
 import Model.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-public class MainMenuAdmin {
+public class BerandaAdmin {
 
-    public MainMenuAdmin(Admin admin){
+    public BerandaAdmin(Admin admin){
         //frame
         JFrame frame = new DefaultComponentSetting().defaultFrame();
 
@@ -37,7 +37,7 @@ public class MainMenuAdmin {
         buttonListTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenampilkanSeluruhTransaksi();
+                new MenuMenampilkanSeluruhTransaksi();
                 frame.dispose();
             }
         });
@@ -49,7 +49,7 @@ public class MainMenuAdmin {
         buttonListUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenampilkanListUser();
+                new MenuMenampilkanListUser();
                 frame.dispose();
             }
         });
@@ -61,7 +61,7 @@ public class MainMenuAdmin {
         buttonListFeedback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenampilkanFeedbackDariPengguna();
+                new MenuMenampilkanFeedbackDariPengguna();
                 frame.dispose();
             }
         });

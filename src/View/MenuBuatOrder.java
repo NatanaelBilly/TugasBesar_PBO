@@ -5,21 +5,17 @@ import Model.UserManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
-public class BuatOrder {
+public class MenuBuatOrder {
     JFrame frame;
     JPanel panelPengirim, panelPenerima, panelBarang;
     JLabel labelKembali, labelJudul, labelPengirim, labelPenerima, labelBarang, labelNamaPenerima, labelNamaPengirim, labelAlamatPenerima, labelAlamatPengirim, labelNomorHPPenerima, labelNomorHPPengirim, labelTipeBarang, labelTotalBarang, labelBeratBarang, labelKesalahanBanyak, labelKesalahanBerat;
     JTextField inputNamaPengirim, inputNamaPenerima, inputLokasiPengirim, inputLokasiPenerima, inputNoHPPengirim, inputNoHPPenerima, inputBanyakBarang, inputBeratBarang;
     JButton buttonOrder;
     JComboBox inputTipeBarang;
-//    User user = new UserManager().getInstance().getUser();
-
-    public BuatOrder() {
+    User user = new UserManager().getInstance().getUser();
+    public MenuBuatOrder() {
         //Hyperlink Back
         labelKembali = new DefaultComponentSetting().defaultBackLabel();
         labelKembali.setVisible(true);
@@ -101,7 +97,7 @@ public class BuatOrder {
         labelTipeBarang.setBounds(10, 10, 150, 20);
 
         //Input Nama Pengirim
-        inputNamaPengirim = new JTextField();
+        inputNamaPengirim = new JTextField(user.getNama_depan()+" "+user.getNama_belakang());
         inputNamaPengirim.setBounds(10, 35, 215, 30);
 
         //Input Nama Penerima
@@ -148,7 +144,6 @@ public class BuatOrder {
                 } else {
                     labelKesalahanBanyak.setText("Harap masukkan angka.");
                 }
-
             }
         });
 
@@ -168,7 +163,7 @@ public class BuatOrder {
         labelBeratBarang.setBounds(10, 110, 150, 30);
 
         //Input no HP
-        inputNoHPPengirim = new JTextField();
+        inputNoHPPengirim = new JTextField(user.getNoHp());
         inputNoHPPengirim.setBounds(10, 165, 215, 30);
 
         inputNoHPPenerima = new JTextField();
@@ -199,6 +194,27 @@ public class BuatOrder {
         //button Order
         buttonOrder = new DefaultComponentSetting().defaultButton("Order", 16);
         buttonOrder.setBounds(230, 550, 140, 30);
+        buttonOrder.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int idPelanggan = user.getId_user();
+                String namaPengirim = inputNamaPengirim.getText();
+                String namaPenerima = inputNamaPenerima.getText();
+                String alamatPengirim = inputLokasiPengirim.getText();
+                String alamatPenerima = inputLokasiPenerima.getText();
+                String noHPPengirim = inputNoHPPengirim.getText();
+                String noHPPenerima = inputNoHPPenerima.getText();
+                String tipeBarang = String.valueOf(inputTipeBarang.getSelectedItem());
+                double banyakBarang = Double.valueOf(inputBanyakBarang.getText());
+                double beratBarang = Double.valueOf(inputBeratBarang.getText());
+                if(beratBarang>20){
+                    JOptionPane.showMessageDialog(null,"Maaf, berat barang yang anda masukkan melebihi batas yang kami tentukan.");
+                } else {
+                    //code
+                }
+
+            }
+        });
 
 
         //Frame

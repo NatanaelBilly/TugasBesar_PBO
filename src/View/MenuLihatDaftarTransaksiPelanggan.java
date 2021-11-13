@@ -4,20 +4,19 @@ import Model.Constant;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LihatDaftarTransaksiPelanggan {
+public class MenuLihatDaftarTransaksiPelanggan {
     JFrame frame;
     JPanel panel, panelTransaksi, panelMenu;
     JLabel labelTgl, labelPengirim, labelPenerima, labelKurir, labelTotal, labelLogo;
     ImageIcon logo;
     JButton btnDetail;
 
-    public LihatDaftarTransaksiPelanggan(){
+    public MenuLihatDaftarTransaksiPelanggan(){
 
         Font fontText = new Font("Arial", Font.PLAIN, 18);
         Font fontHarga = new Font("Arial", Font.BOLD, 18);
@@ -72,7 +71,7 @@ public class LihatDaftarTransaksiPelanggan {
         btnDetail.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new LihatDetailTransaksiPelanggan();
+                new MenuLihatDetailTransaksiPelanggan();
             }
         });
 
@@ -124,7 +123,7 @@ public class LihatDaftarTransaksiPelanggan {
         btnDetail.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new LihatDetailTransaksiPelanggan();
+                new MenuLihatDetailTransaksiPelanggan();
             }
         });
 

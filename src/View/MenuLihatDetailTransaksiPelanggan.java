@@ -11,7 +11,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
 
-public class LihatDetailTransaksiPelanggan {
+public class MenuLihatDetailTransaksiPelanggan {
     JFrame frame;
     JPanel panelInfoKurir, panelNamaNoKurir, panelPengirim, panelPenerima, panelInfoPengiriman;
     JLabel labelMessage, labelIconProfil, labelNamaKurir, labelNoPlatKurir, labelIconPengirim, labelIconPenerima;
@@ -19,7 +19,7 @@ public class LihatDetailTransaksiPelanggan {
     JTextArea taAlamatPengirim, taAlamatPenerima;
     ImageIcon iconProfil, iconPengirim, iconPenerima, iconBarang, iconDot;
 
-    public LihatDetailTransaksiPelanggan(){
+    public MenuLihatDetailTransaksiPelanggan(){
         //Font
         Font fontLabelKurir = new Font("Arial", Font.PLAIN, 20);
         Font fontText = new Font("Arial", Font.PLAIN, 18);

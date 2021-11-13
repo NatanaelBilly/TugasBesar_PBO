@@ -4,13 +4,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EditProfilePelanggan {
+public class MenuEditProfilePelanggan {
     JFrame frame;
     JLabel labelNamaDepan, labelNamaBelakang, labelEmail;
     JTextField tfNamaDepan, tfNamaBelakang, tfEmail;
     JButton btnEdit;
 
-    public EditProfilePelanggan(){
+    public MenuEditProfilePelanggan(){
         //Frame
         frame = new DefaultComponentSetting().defaultFrame();
 
@@ -38,7 +38,7 @@ public class EditProfilePelanggan {
             public void actionPerformed(ActionEvent e) {
                 //change database
                 frame.dispose();
-                new ProfilePelanggan();
+                new MenuProfilePelanggan();
             }
         });
 

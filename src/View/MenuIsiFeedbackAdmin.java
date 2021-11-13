@@ -10,7 +10,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class IsiFeedbackAdmin {
+public class MenuIsiFeedbackAdmin {
     JFrame frame;
     JPanel panel, panelText;
     JLabel labelBack, labelProfilePic, labelNama, labelKet, labelAdmin;
@@ -18,7 +18,7 @@ public class IsiFeedbackAdmin {
     JTextArea taFeedback;
     JButton btnSubmit;
 
-    public IsiFeedbackAdmin(){
+    public MenuIsiFeedbackAdmin(){
         //Font
         Font titleFont = new Font("Arial", Font.BOLD, 20);
         Font textFont = new Font("Arial", Font.PLAIN, 18);

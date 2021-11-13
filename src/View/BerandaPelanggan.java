@@ -27,7 +27,7 @@ public class BerandaPelanggan {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new ProfilePelanggan();
+                new MenuProfilePelanggan();
             }
         });
         btnOrder = new JButton("Buat Order");
@@ -39,7 +39,7 @@ public class BerandaPelanggan {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new BuatOrder();
+                new MenuBuatOrder();
             }
         });
 
@@ -52,7 +52,7 @@ public class BerandaPelanggan {
         btnTransaction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new LihatDaftarTransaksiPelanggan();
+                new MenuLihatDaftarTransaksiPelanggan();
             }
         });
 

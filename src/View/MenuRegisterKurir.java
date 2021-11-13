@@ -6,7 +6,7 @@ import Model.*;
 import javax.swing.*;
 import java.awt.*;
 
-public class RegisterKurir {
+public class MenuRegisterKurir {
     JFrame frame;
     JPanel panelRegisterKurir;
     JLabel labelJudul, labelNamaDepan, labelNamaBelakang, labelNIK, labelPlatNomor, labelJenisKendaraan, labelEmail, labelNomorHP, labelPassword;
@@ -14,7 +14,7 @@ public class RegisterKurir {
     JPasswordField inputPassword;
     JButton buttonRegister;
 
-    public RegisterKurir() {
+    public MenuRegisterKurir() {
         //Label Judul
         labelJudul = new DefaultComponentSetting().defaultHeadingLabel("Register sebagai Kurir");
         labelJudul.setBounds(0, 50, 600, 30);

@@ -7,7 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
-public class ListMenuPelanggan {
+public class HeaderMenu {
     public static JPanel panel;
     JLabel labelMenu, labelOrder, labelFeedback, labelTransactions, labelProfile;
     ImageIcon menu, order, feedback, transactions, profile;
@@ -15,7 +15,7 @@ public class ListMenuPelanggan {
     JMenu order1,feedback1,transactions1,profile1;
     TextArea headerMenuPelanggan;
 
-    public ListMenuPelanggan(){
+    public HeaderMenu(){
         //JMenuBar
         menuPelanggan = new JMenuBar();
         order1 = new JMenu("Order");
@@ -90,7 +90,7 @@ public class ListMenuPelanggan {
         labelProfile.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new ProfilePelanggan();
+                new MenuProfilePelanggan();
             }
         });
 
