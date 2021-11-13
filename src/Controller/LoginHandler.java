@@ -1,7 +1,11 @@
 package Controller;
 
+import Model.Admin;
+import Model.Kurir;
 import Model.Pelanggan;
 import Model.User;
+import View.BerandaAdmin;
+import View.BerandaKurir;
 import View.BerandaPelanggan;
 
 public class LoginHandler {
@@ -13,9 +17,11 @@ public class LoginHandler {
         User user = new Model.UserManager().getInstance().getUser();
 
         if (user instanceof Pelanggan) {
-            new BerandaPelanggan();
+            new BerandaPelanggan((Pelanggan) user);
+        } else if(user instanceof Kurir){
+            new BerandaKurir((Kurir) user);
         } else {
-            System.out.println("Belum jadi guinya, maap yak");
+            new BerandaAdmin((Admin) user);
         }
     }
 }

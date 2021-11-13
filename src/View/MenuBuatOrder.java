@@ -1,10 +1,7 @@
 package View;
 
 import Controller.Controller;
-import Model.StatusPengiriman;
-import Model.Transaksi;
-import Model.User;
-import Model.UserManager;
+import Model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +24,7 @@ public class MenuBuatOrder {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
-                new BerandaPelanggan();
+                new BerandaPelanggan((Pelanggan) user);
             }
 
             @Override
