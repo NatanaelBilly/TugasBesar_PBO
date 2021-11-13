@@ -1,11 +1,13 @@
 package View;
-import Controller.Controller;
-import Controller.Method;
+
 import javax.swing.*;
 import java.awt.*;
-public class MenampilkanFeedbackDariPengguna {
-    public MenampilkanFeedbackDariPengguna(){
-        Controller c =new Controller();
+import Model.*;
+import Controller.*;
+
+public class MenuMenampilkanListUser {
+    public MenuMenampilkanListUser(){
+        Controller c=new Controller();
         Method m=new Method();
         //frame
         JFrame frame = new JFrame("Nama APK");
@@ -17,15 +19,15 @@ public class MenampilkanFeedbackDariPengguna {
         panel.setBackground(new Color(201, 228, 197));
 
         //init isi data
-        String [][] dataSaran=m.konversiListToArrayTransaksi(c.users);//masi perlu diganti jadi arrayList saran di admin
+        String [][] dataUser=m.konversiListToArray(c.users);
 
         //init kolom
-        String column[]={"id saran","Id pengguna","Saran"};
+        String column[]={"Tingkatan","Id User","Nama Depan","Nama Belakang","email"};
 
         //tabel data
-        JTable tabelSaran=new JTable(dataSaran,column);
-        tabelSaran.setBounds(30,40,400,600);
-        JScrollPane sp=new JScrollPane(tabelSaran);
+        JTable tabelDataUser=new JTable(dataUser,column);
+        tabelDataUser.setBounds(30,40,400,600);
+        JScrollPane sp=new JScrollPane(tabelDataUser);
         panel.add(sp);
 
         //initialize panel dan frame

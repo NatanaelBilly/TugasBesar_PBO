@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RegisterPelanggan {
+public class MenuRegisterPelanggan {
     JFrame frame;
     JPanel panelRegisterPelanggan;
     JLabel labelJudul, labelNamaDepan, labelNamaBelakang, labelEmail, labelNomorHP, labelPassword;
@@ -16,7 +16,7 @@ public class RegisterPelanggan {
     JPasswordField inputPassword;
     JButton buttonRegister;
 
-    public RegisterPelanggan() {
+    public MenuRegisterPelanggan() {
         //Label Judul
         labelJudul = new JLabel("REGISTER - PELANGGAN", SwingConstants.CENTER);
         labelJudul.setBounds(0, 100, 600, 30);
@@ -70,26 +70,23 @@ public class RegisterPelanggan {
         //button Register
         buttonRegister = new JButton("Register");
         buttonRegister.setBounds(380, 500, 100, 40);
-        buttonRegister.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Controller controller = new Controller();
-                String noHP = inputNomorHP.getText();
-                String namaDepan = inputNamaDepan.getText();
-                String namaBelakang = inputNamaBelakang.getText();
-                String emailUser = inputEmail.getText();
-                String password = String.valueOf(inputPassword.getPassword());
-                int banyakUser = controller.HitungJumlahUser();
-                double saldo = 0;
+        buttonRegister.addActionListener(e -> {
+            Controller controller = new Controller();
+            String noHP = inputNomorHP.getText();
+            String namaDepan = inputNamaDepan.getText();
+            String namaBelakang = inputNamaBelakang.getText();
+            String emailUser = inputEmail.getText();
+            String password = String.valueOf(inputPassword.getPassword());
+            int banyakUser = controller.HitungJumlahUser();
+            double saldo = 0;
 
-                User penggunaBaru = new Pelanggan(TingkatanUser.BRONZE, banyakUser + 1, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.PELANGGAN, null);
-                if (controller.RegisterPelanggan((Pelanggan) penggunaBaru)) {
-                    JOptionPane.showMessageDialog(null, "Register Berhasil!");
-                    frame.dispose();
-                    new BerandaPelanggan();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Register Gagal. Silahkan coba lagi");
-                }
+            User penggunaBaru = new Pelanggan(TingkatanUser.BRONZE, banyakUser + 1, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.PELANGGAN, null);
+            if (controller.RegisterPelanggan((Pelanggan) penggunaBaru)) {
+                JOptionPane.showMessageDialog(null, "Register Berhasil!");
+                frame.dispose();
+                new BerandaPelanggan();
+            } else {
+                JOptionPane.showMessageDialog(null, "Register Gagal. Silahkan coba lagi");
             }
         });
 

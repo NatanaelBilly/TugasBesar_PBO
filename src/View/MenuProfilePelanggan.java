@@ -5,16 +5,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ProfilePelanggan {
+public class MenuProfilePelanggan {
     JFrame frame;
     JPanel panelMenu, panelNama;
     JLabel labelProfilePic, labelNama, labelEmail, labelRole, email, role;
     ImageIcon profilePic;
     JButton btnEditProfile;
 
-    public ProfilePelanggan() {
-        new ListMenuPelanggan();
-        panelMenu = ListMenuPelanggan.panel;
+    public MenuProfilePelanggan() {
+        new HeaderMenu();
+        panelMenu = HeaderMenu.panel;
 
         //picture
         labelProfilePic = new JLabel();
@@ -56,7 +56,7 @@ public class ProfilePelanggan {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new EditProfilePelanggan();
+                new MenuEditProfilePelanggan();
             }
         });
 

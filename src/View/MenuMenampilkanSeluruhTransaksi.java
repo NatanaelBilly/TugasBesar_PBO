@@ -5,8 +5,8 @@ import java.awt.*;
 import Controller.Controller;
 import Controller.Method;
 import Model.*;
-public class MenampilkanSeluruhTransaksi {
-    public MenampilkanSeluruhTransaksi(){
+public class MenuMenampilkanSeluruhTransaksi {
+    public MenuMenampilkanSeluruhTransaksi(){
         Controller c =new Controller();
         Method m=new Method();
         //frame

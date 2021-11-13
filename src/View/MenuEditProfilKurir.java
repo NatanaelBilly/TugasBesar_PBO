@@ -23,7 +23,7 @@ import javax.swing.SwingConstants;
  *
  * @author Asus
  */
-public class KurirEditProfil{
+public class MenuEditProfilKurir {
 
     private JFrame frame;
     private JPanel panelEditData;
@@ -35,7 +35,7 @@ public class KurirEditProfil{
     
     private KurirController conKurir = new KurirController();
     
-    public KurirEditProfil(Kurir kurir) {
+    public MenuEditProfilKurir(Kurir kurir) {
         
         this.kurir = kurir;
         
@@ -142,7 +142,7 @@ public class KurirEditProfil{
                 else
                     JOptionPane.showMessageDialog(null, "Mohon Maaf, Terjadi Kesalahan");
                     
-                new KurirLihatProfil(kurir);
+                new MenuLihatProfilKurir(kurir);
                 frame.setVisible(false);
             }
         });
@@ -153,7 +153,7 @@ public class KurirEditProfil{
         btnBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new KurirLihatProfil(kurir);
+                new MenuLihatProfilKurir(kurir);
                 frame.setVisible(false);
             }
         });

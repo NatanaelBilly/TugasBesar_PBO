@@ -21,7 +21,7 @@ import javax.swing.border.BevelBorder;
  *
  * @author Asus
  */
-public class KurirMenu implements ActionListener{
+public class BerandaKurir implements ActionListener{
     private JFrame frame;
     private JPanel panelPesan;
     private JLabel labelPesan;
@@ -29,7 +29,7 @@ public class KurirMenu implements ActionListener{
 
     private Kurir kurir;
     
-    public KurirMenu(Kurir kurir){
+    public BerandaKurir(Kurir kurir){
         this.kurir = kurir;
         
         //label
@@ -88,7 +88,7 @@ public class KurirMenu implements ActionListener{
         String command = e.getActionCommand();
         switch (command) {
             case "Lihat Profil":
-                new KurirLihatProfil(kurir);
+                new MenuLihatProfilKurir(kurir);
                 frame.setVisible(false);
                 break;
             case "Lihat Order":

@@ -9,6 +9,6 @@ package View;
  *
  * @author MrKaisar
  */
-public class IsiSaldo {
+public class MenuIsiSaldo {
     
 }

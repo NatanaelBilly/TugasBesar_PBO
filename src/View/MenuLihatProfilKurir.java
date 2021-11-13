@@ -10,14 +10,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class KurirLihatProfil {
+public class MenuLihatProfilKurir {
     private JFrame frame;
     private JLabel labelMenu, labelProfilePic, labelNama, labelEmail,labelNIK, labelPlat, labelKendaraan,
             showNama, showEmail, showNIK, showPlat, showKendaraan;
     private ImageIcon profilePic;
     
     private Kurir kurir;
-    public KurirLihatProfil(Kurir kurir)
+    public MenuLihatProfilKurir(Kurir kurir)
     {
         this.kurir = kurir;
         
@@ -86,7 +86,7 @@ public class KurirLihatProfil {
         btnEditProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new KurirEditProfil(kurir);
+                new MenuEditProfilKurir(kurir);
                 frame.setVisible(false);
             }
         });
@@ -97,7 +97,7 @@ public class KurirLihatProfil {
         btnBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new KurirMenu(kurir);
+                new BerandaKurir(kurir);
                 frame.setVisible(false);
             }
         });

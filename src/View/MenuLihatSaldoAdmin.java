@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.lang.Object;
 import java.awt.Color;
 import Model.*;
-public class LihatSaldoAdmin {
+public class MenuLihatSaldoAdmin {
 
-    public LihatSaldoAdmin(Admin admin){
+    public MenuLihatSaldoAdmin(Admin admin){
         //frame
         JFrame frame = new JFrame("Nama APK");
         frame.setSize(600, 800);

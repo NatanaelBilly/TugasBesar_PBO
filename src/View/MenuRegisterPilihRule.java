@@ -1,16 +1,14 @@
 package View;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class RegisterPilihRule {
+public class MenuRegisterPilihRule {
     JFrame frame;
     JPanel registerPilihRule;
     JLabel pilihRule;
     JButton registerKurir, registerPelanggan;
 
-    public RegisterPilihRule(){
+    public MenuRegisterPilihRule(){
         //Panel
         registerPilihRule = new JPanel();
         registerPilihRule.setSize(600,800);
@@ -22,26 +20,20 @@ public class RegisterPilihRule {
         registerPilihRule.add(pilihRule);
 
         //Button Kurir
-        registerKurir = new JButton("Kurir");
+        registerKurir = new DefaultComponentSetting().defaultButton("Kurir",18);
         registerKurir.setBounds(60, 190, 480, 40);
-        registerKurir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                new RegisterKurir();
-            }
+        registerKurir.addActionListener(e -> {
+            frame.dispose();
+            new MenuRegisterKurir();
         });
         registerPilihRule.add(registerKurir);
 
         //Button Pelanggan
-        registerPelanggan = new JButton("Pelanggan");
+        registerPelanggan = new DefaultComponentSetting().defaultButton("Pelanggan",18);
         registerPelanggan.setBounds(60,270,480,40);
-        registerPelanggan.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                new RegisterPelanggan();
-            }
+        registerPelanggan.addActionListener(e -> {
+            frame.dispose();
+            new MenuRegisterPelanggan();
         });
 
         registerPilihRule.add(registerPelanggan);

@@ -8,13 +8,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LandingPage {
+public class HalamanAwal {
     JFrame frame;
     JLabel welcomeUser;
     JButton btnLogin, btnRegister;
     JPanel panelLandingPage;
 
-    public LandingPage(){
+    public HalamanAwal(){
         // Label
         welcomeUser = new JLabel("Hallo! Welcome to "+ Constant.applicationName, SwingConstants.CENTER);
         welcomeUser.setFont(new Font("Arial", Font.BOLD, 24));
@@ -30,7 +30,7 @@ public class LandingPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new Login();
+                new MenuLogin();
             }
         });
 
@@ -45,7 +45,7 @@ public class LandingPage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new RegisterPilihRule();
+                new MenuRegisterPilihRule();
             }
         });
 
