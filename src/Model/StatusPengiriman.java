@@ -10,7 +10,7 @@ package Model;
  * @author natanael billy
  */
 public interface StatusPengiriman {
-    final int DIPROSES=0;
-    final int DIANTAR=1;
-    final int SELESAI=2;
+    int MENUNGGU_KURIR=0;
+    int DIANTAR=1;
+    int DITERIMA=2;
 }

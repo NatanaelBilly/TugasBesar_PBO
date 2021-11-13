@@ -69,7 +69,7 @@ public class MenuLogin {
         inputPassword.setBounds(225, 270, 300, 35);
 
         //Button Login
-        buttonLogin = new JButton("LOGIN");
+        buttonLogin = new DefaultComponentSetting().defaultButton("Login",20);
         buttonLogin.setBounds(350, 350, 100, 45);
         buttonLogin.addActionListener(e -> {
             String email = inputEmail.getText();

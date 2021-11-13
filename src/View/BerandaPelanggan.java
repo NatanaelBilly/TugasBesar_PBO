@@ -20,9 +20,6 @@ public class BerandaPelanggan {
         //Button
         btnProfile = new DefaultComponentSetting().defaultButton("Lihat Profil",20);
         btnProfile.setBounds(170, 210, 250, 80);
-//        btnProfile.setFont(new Font("Arial", Font.BOLD, 20));
-//        btnProfile.setBackground(new Color(217, 217, 217));
-//        btnProfile.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
         btnProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
