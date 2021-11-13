@@ -17,6 +17,7 @@ public class User {
     private String nama_belakang;
     private String email_user;
     private String password;
+    private String noHp;
     private double saldo;
     private Model.Role role;
     private ArrayList<Transaksi> listTransaksi;
@@ -25,15 +26,24 @@ public class User {
 
     }
 
-    public User(int id_user, String nama_depan, String nama_belakang, String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
+    public User(int id_user, String nama_depan, String nama_belakang,String noHp, String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
         setId_user(id_user);
         setNama_depan(nama_depan);
         setNama_belakang(nama_belakang);
+        setNoHp(noHp);
         setEmail_user(email_user);
         setPassword(password);
         setSaldo(saldo);
         setRole(role);
         setListTransaksi(listTransaksi);
+    }
+
+    public String getNoHp() {
+        return noHp;
+    }
+
+    public void setNoHp(String noHp) {
+        this.noHp = noHp;
     }
 
     public int getId_user() {

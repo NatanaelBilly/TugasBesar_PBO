@@ -74,7 +74,7 @@ public class RegisterPelanggan {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controller controller = new Controller();
-
+                String noHP = inputNomorHP.getText();
                 String namaDepan = inputNamaDepan.getText();
                 String namaBelakang = inputNamaBelakang.getText();
                 String emailUser = inputEmail.getText();
@@ -82,8 +82,8 @@ public class RegisterPelanggan {
                 int banyakUser = controller.HitungJumlahUser();
                 double saldo = 0;
 
-                User penggunaBaru = new Pelanggan(TingkatanUser.BRONZE,banyakUser+1, namaDepan, namaBelakang,emailUser,password,saldo,Role.PELANGGAN,null);
-                if(controller.RegisterPelanggan((Pelanggan) penggunaBaru)){
+                User penggunaBaru = new Pelanggan(TingkatanUser.BRONZE, banyakUser + 1, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.PELANGGAN, null);
+                if (controller.RegisterPelanggan((Pelanggan) penggunaBaru)) {
                     JOptionPane.showMessageDialog(null, "Register Berhasil!");
                     frame.dispose();
                     new BerandaPelanggan();
