@@ -69,7 +69,7 @@ public class Controller {
                     dataKurir = new Kurir(
                             total_pendapatan, NIK, ketersediaan,
                             plat, jenis_kendaraan,
-                            id_user, nama_depan, noHp,nama_belakang,
+                            id_user, nama_depan, noHp, nama_belakang,
                             email_user, password, saldo,
                             role, null);
                 }
@@ -183,6 +183,35 @@ public class Controller {
         }
     }
 
+    public boolean buatTransaksi(Transaksi transaksi) {
+        conn.connect();
+        String query = "INSERT INTO transaksi VALUES(null,?,null,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement stmt = conn.con.prepareStatement(query);
+            stmt.setInt(1, transaksi.getId_pelanggan());
+//            stmt.setInt(2, transaksi.getId_kurir());
+            stmt.setString(2, transaksi.getKategori_barang());
+            stmt.setDouble(3, transaksi.getBerat_barang());
+            stmt.setDouble(4, transaksi.getJumlah_barang());
+            stmt.setString(5, transaksi.getNama_pengirim());
+            stmt.setString(6, transaksi.getNama_penerima());
+            stmt.setString(7, transaksi.getNoHP_pengirim());
+            stmt.setString(8, transaksi.getNoHP_penerima());
+            stmt.setString(9, transaksi.getAlamat_pengirim());
+            stmt.setString(10, transaksi.getAlamat_penerima());
+            stmt.setDouble(11, transaksi.getTotal_pembayaran());
+            stmt.setDate(12, (Date) transaksi.getTanggal());
+            stmt.setString(13, transaksi.getStatus_pemesanan());
+            stmt.executeUpdate();
+            return (true);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return (false);
+        }
+
+
+    }
+
     public void logIn(String email, String password) {
         conn.connect();
         String query = "SELECT * FROM user WHERE email_user='" + email + "' AND password = '" + password + "'";
@@ -244,7 +273,7 @@ public class Controller {
 
                         }
                     } catch (SQLException throwables) {
-                       throwables.printStackTrace();
+                        throwables.printStackTrace();
                     }
                 } else {
                     Admin admin = new Admin();
@@ -270,15 +299,15 @@ public class Controller {
 
     }
 
-    public boolean cekUserDiDataBase(String email,String password){
+    public boolean cekUserDiDataBase(String email, String password) {
         conn.connect();
-        String query = "SELECT * FROM user WHERE email_user='" + email+"' AND password='"+password+"';";
+        String query = "SELECT * FROM user WHERE email_user='" + email + "' AND password='" + password + "';";
 
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-               return (true);
+                return (true);
             }
         } catch (SQLException e) {
             e.printStackTrace();

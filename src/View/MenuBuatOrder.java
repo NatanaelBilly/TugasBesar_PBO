@@ -1,11 +1,15 @@
 package View;
 
+import Controller.Controller;
+import Model.StatusPengiriman;
+import Model.Transaksi;
 import Model.User;
 import Model.UserManager;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Date;
 
 public class MenuBuatOrder {
     JFrame frame;
@@ -166,6 +170,7 @@ public class MenuBuatOrder {
         inputNoHPPengirim = new JTextField(user.getNoHp());
         inputNoHPPengirim.setBounds(10, 165, 215, 30);
 
+
         inputNoHPPenerima = new JTextField();
         inputNoHPPenerima.setBounds(10, 165, 215, 30);
 
@@ -197,20 +202,51 @@ public class MenuBuatOrder {
         buttonOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int idTransaksi = 0;
                 int idPelanggan = user.getId_user();
-                String namaPengirim = inputNamaPengirim.getText();
-                String namaPenerima = inputNamaPenerima.getText();
-                String alamatPengirim = inputLokasiPengirim.getText();
-                String alamatPenerima = inputLokasiPenerima.getText();
-                String noHPPengirim = inputNoHPPengirim.getText();
-                String noHPPenerima = inputNoHPPenerima.getText();
-                String tipeBarang = String.valueOf(inputTipeBarang.getSelectedItem());
-                double banyakBarang = Double.valueOf(inputBanyakBarang.getText());
+                int idKurir = 0;
+                String kategoriBarang = String.valueOf(inputTipeBarang.getSelectedItem());
                 double beratBarang = Double.valueOf(inputBeratBarang.getText());
-                if(beratBarang>20){
+                double banyakBarang = Double.valueOf(inputBanyakBarang.getText());
+                String namaPengirim = inputNamaPengirim.getText();
+                String alamatPengirim = inputLokasiPengirim.getText();
+                String noHPPengirim = inputNoHPPengirim.getText();
+                String namaPenerima = inputNamaPenerima.getText();
+                String alamatPenerima = inputLokasiPenerima.getText();
+                System.out.println("alamat penerima disini: "+alamatPenerima);
+                System.out.println("alamat pengirim disini: "+alamatPengirim);
+                String noHPPenerima = inputNoHPPenerima.getText();
+
+
+
+                if(beratBarang*banyakBarang>20){
                     JOptionPane.showMessageDialog(null,"Maaf, berat barang yang anda masukkan melebihi batas yang kami tentukan.");
                 } else {
-                    //code
+                    double totalPembayaran=10000;
+                    if(beratBarang<3){
+                        totalPembayaran+=10000;
+                    } else if(beratBarang<8){
+                        totalPembayaran+=15000;
+                    } else {
+                        totalPembayaran+=25000;
+                    }
+                    int statusPemesanan = StatusPengiriman.MENUNGGU_KURIR;
+                    long millis=System.currentTimeMillis();
+                    Date tanggal = new java.sql.Date(millis);
+                    String saranDriver = null;
+
+                    Transaksi transaksi = new Transaksi(idTransaksi,idPelanggan,idKurir,kategoriBarang,beratBarang,banyakBarang,namaPengirim,alamatPengirim,noHPPengirim,namaPenerima,alamatPenerima,noHPPenerima,totalPembayaran,statusPemesanan,tanggal,saranDriver,null);
+                    System.out.println(transaksi.getStatus_pemesanan());;
+                    System.out.println("alamat penerima: "+transaksi.getAlamat_penerima());
+                    System.out.println("alamat pengirim: "+transaksi.getAlamat_pengirim());
+                    Controller c = new Controller();
+                    boolean transaksiTerbuat = c.buatTransaksi(transaksi);
+                    if(transaksiTerbuat){
+                        JOptionPane.showMessageDialog(null, "Transaksi Terbuat!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Transaksi gagal terbuat. Coba lagi");
+                    }
+
                 }
 
             }

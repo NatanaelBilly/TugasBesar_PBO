@@ -43,7 +43,8 @@ public class Transaksi implements StatusPengiriman {
         setAlamat_pengirim(alamat_pengirim);
         setNoHP_pengirim(noHP_pengirim);
         setNama_penerima(nama_penerima);
-        setAlamat_pengirim(alamat_penerima);
+        setAlamat_pengirim(alamat_pengirim);
+        setAlamat_penerima(alamat_penerima);
         setNoHP_penerima(noHP_penerima);
         setTotal_pembayaran(total_pembayaran);
         setStatus_pemesanan(status_pemesanan);
@@ -157,10 +158,15 @@ public class Transaksi implements StatusPengiriman {
     }
 
     public String getStatus_pemesanan() {
-        if(status_pemesanan == 1){
-            return "aaa";
+        String status = "";
+        if(status_pemesanan == 0){
+            status = "MENUNGGU KURIR";
+        } else if(status_pemesanan == 1){
+            status = "DIANTAR";
+        } else {
+            status = "DITERIMA";
         }
-        return "Diantar";
+        return status;
     }
 
     public void setStatus_pemesanan(int status_pemesanan) {
