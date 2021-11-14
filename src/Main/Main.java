@@ -6,8 +6,10 @@ import View.*;
 
 public class Main {
     public static void main(String[] args) {
-//        Kurir kurir = null;
-//        new BerandaKurir(kurir);
-        new MenuLogin();
+//        Pelanggan pelanggan = new Pelanggan();
+//        new BerandaPelanggan(pelanggan);
+//        new MenuLogin();
+//        new MenuRegisterPilihRule();
+        new MenuRegisterPelanggan();
     }
 }
