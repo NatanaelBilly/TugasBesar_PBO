@@ -38,6 +38,20 @@ public class MenuLihatSaldoAdmin {
                 frame.dispose();
             }
         });
+        panel.add(detilTransaksi);
+
+        //button back
+        JButton back = new JButton("Kembali ke Main Menu");
+        back.setBounds(20,500,100,40);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new BerandaAdmin(admin);
+                frame.dispose();
+            }
+        });
+        panel.add(back);
+
         //initialize panel dan frame
         panel.setLayout(null);
         panel.setVisible(true);
