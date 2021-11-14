@@ -243,16 +243,16 @@ public class Controller {
                     pelanggan.setListTransaksi(null);//sementara
                     new UserManager().getInstance().setUser(pelanggan);
                 } else if (roleUser == Role.KURIR) {
-                    String query2 = "SELECT * FROM user WHERE id_user=" + idUser + ";";
+                    String query2 = "SELECT * FROM kurir WHERE id_user=" + idUser + ";";
                     try {
                         Statement stmt2 = conn.con.createStatement();
                         ResultSet rs2 = stmt2.executeQuery(query2);
-                        while (rs.next()) {
+                        while (rs2.next()) {
                             String NIK = rs2.getString("NIK");
                             double totalPendapatan = rs2.getDouble("total_pendapatan");
-                            int ketersediaan = rs.getInt("ketersediaan");
-                            String platNomor = rs.getString("plat");
-                            String jenisKendaraan = rs.getString("jenis_kendaraan");
+                            int ketersediaanKurir = rs2.getInt("ketersediaan");
+                            String platNomor = rs2.getString("plat");
+                            String jenisKendaraan = rs2.getString("jenis_kendaraan");
 
                             Kurir kurir = new Kurir();
                             kurir.setId_user(idUser);
@@ -266,7 +266,7 @@ public class Controller {
                             kurir.setListTransaksi(null);
                             kurir.setTotal_pendapatan(totalPendapatan);
                             kurir.setNIK(NIK);
-                            kurir.setKetersediaan(ketersediaan);
+                            kurir.setKetersediaan(ketersediaanKurir);
                             kurir.setPlat(platNomor);
                             kurir.setJenis_kendaraan(jenisKendaraan);
                             new UserManager().getInstance().setUser(kurir);

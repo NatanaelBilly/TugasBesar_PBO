@@ -34,7 +34,7 @@ public class BerandaKurir implements ActionListener{
         labelPesan = new DefaultComponentSetting().defaultRegularLabel("Selamat Datang, !");
 
         //Button
-        btnProfil = new DefaultComponentSetting().defaultButton("Llihat Profil",20);
+        btnProfil = new DefaultComponentSetting().defaultButton("Lihat Profil",20);
         btnProfil.setBounds(170, 150, 250, 80);
         btnProfil.addActionListener(this);
         
