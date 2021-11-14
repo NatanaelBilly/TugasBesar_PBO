@@ -22,7 +22,7 @@ public class BerandaAdmin {
 
         //button lihat saldo pendapatan apk
         JButton buttonPendpatan = new JButton("lihat pendapatan");
-        buttonPendpatan.setBounds(100, 100, 200, 30);
+        buttonPendpatan.setBounds(200, 100, 200, 30);
         buttonPendpatan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,7 +33,7 @@ public class BerandaAdmin {
         panel.add(buttonPendpatan);
         //button lihat list user
         JButton buttonListTransaksi = new JButton("lihat tabel transaksi");
-        buttonListTransaksi.setBounds(100, 150, 200, 30);
+        buttonListTransaksi.setBounds(200, 150, 200, 30);
         buttonListTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -45,7 +45,7 @@ public class BerandaAdmin {
 
         //button lihat seluruh transaksi
         JButton buttonListUser = new JButton("lihat tabel user");
-        buttonListUser.setBounds(100, 200, 200, 30);
+        buttonListUser.setBounds(200, 200, 200, 30);
         buttonListUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,7 +57,7 @@ public class BerandaAdmin {
 
         //button lihat feedback dari user
         JButton buttonListFeedback = new JButton("lihat tabel feedback");
-        buttonListFeedback.setBounds(100, 250, 200, 30);
+        buttonListFeedback.setBounds(200, 250, 200, 30);
         buttonListFeedback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -71,6 +71,10 @@ public class BerandaAdmin {
         panel.setLayout(null);
         panel.setVisible(true);
         frame.add(panel);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+        frame.setVisible(true);
 
     }
 }

@@ -3,17 +3,19 @@ import Controller.Controller;
 import Controller.Method;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class MenuMenampilkanFeedbackDariPengguna {
     public MenuMenampilkanFeedbackDariPengguna(){
         Controller c =new Controller();
         Method m=new Method();
         //frame
-        JFrame frame = new JFrame("Nama APK");
-        frame.setSize(1500, 1500);
+        JFrame frame = new DefaultComponentSetting().defaultFrame();
 
         //panel
         JPanel panel= new JPanel();
-        panel.setSize(1200, 1200);
+        panel.setSize(600, 800);
         panel.setBackground(new Color(201, 228, 197));
 
         //init isi data
@@ -27,6 +29,18 @@ public class MenuMenampilkanFeedbackDariPengguna {
         tabelSaran.setBounds(30,40,400,600);
         JScrollPane sp=new JScrollPane(tabelSaran);
         panel.add(sp);
+
+        //button back
+        JButton back = new JButton("Kembali ke Main Menu");
+        back.setBounds(20,500,100,40);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                new BerandaAdmin(admin);
+                frame.dispose();
+            }
+        });
+        panel.add(back);
 
         //initialize panel dan frame
         panel.setLayout(null);
