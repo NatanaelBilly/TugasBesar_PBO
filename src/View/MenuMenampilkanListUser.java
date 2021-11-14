@@ -9,13 +9,11 @@ public class MenuMenampilkanListUser {
     public MenuMenampilkanListUser(){
         Controller c=new Controller();
         Method m=new Method();
-        //frame
-        JFrame frame = new JFrame("Nama APK");
-        frame.setSize(1500, 1500);
+        JFrame frame = new DefaultComponentSetting().defaultFrame();
 
         //panel
         JPanel panel= new JPanel();
-        panel.setSize(1200, 1200);
+        panel.setSize(600, 800);
         panel.setBackground(new Color(201, 228, 197));
 
         //init isi data
