@@ -19,7 +19,7 @@ public class MenuMenampilkanFeedbackDariPengguna {
         panel.setBackground(new Color(201, 228, 197));
 
         //init isi data
-        String [][] dataSaran=m.konversiListToArrayTransaksi(c.users);//masi perlu diganti jadi arrayList saran di admin
+        String [][] dataSaran=m.konversiListToArraySaran(c.listSaran);
 
         //init kolom
         String column[]={"id saran","Id pengguna","Saran"};

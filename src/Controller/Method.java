@@ -52,7 +52,7 @@ public class Method {
                 hasil[i][0]=Integer.toString(currentTransaksi.getId_transaksi());
                 hasil[i][1]=Integer.toString(currentTransaksi.getId_pelanggan());
                 hasil[i][2]=Integer.toString(currentTransaksi.getId_kurir());
-                hasil[i][3]=  dateFormat.format(currentTransaksi.getTanggal());
+                hasil[i][3]=dateFormat.format(currentTransaksi.getTanggal());
             }
         }
         return hasil;

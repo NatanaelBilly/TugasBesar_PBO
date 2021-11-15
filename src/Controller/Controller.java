@@ -11,8 +11,8 @@ public class Controller {
     static Database conn = new Database();
     public ArrayList<User> users = new ArrayList<>();
     ArrayList<Chat> chats = new ArrayList<>();
-    ArrayList<Transaksi> listTransaksi=new ArrayList<>();
-    ArrayList<Saran> listSaran=new ArrayList<>();
+    public ArrayList<Transaksi> listTransaksi=new ArrayList<>();
+    public ArrayList<Saran> listSaran=new ArrayList<>();
 
     public ArrayList<User> getAllUsers() {
         conn.connect();
