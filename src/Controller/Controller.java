@@ -467,4 +467,22 @@ public class Controller {
         }
 
     }
+
+    public boolean updateDataPelanggan(String namaDpn, String namaBlkng, String email, String noHp, int idUser){
+        conn.connect();
+        String query = "update user set nama_depan = ?, nama_belakang = ?, email_user = ?, noHp = ? where id_user = ?";
+        try {
+            PreparedStatement stmt = conn.con.prepareStatement(query);
+            stmt.setString(1, namaDpn);
+            stmt.setString(2, namaBlkng);
+            stmt.setString(3, email);
+            stmt.setString(4, noHp);
+            stmt.setInt(5, idUser);
+            stmt.executeUpdate();
+            return (true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return (false);
+        }
+    }
 }
