@@ -109,4 +109,11 @@ public class User {
     public void setListTransaksi(ArrayList<Transaksi> listTransaksi) {
         this.listTransaksi = listTransaksi;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "id_user=" + id_user + ", nama_depan=" + nama_depan + ", nama_belakang=" + nama_belakang + ", email_user=" + email_user + ", password=" + password + ", noHp=" + noHp + ", saldo=" + saldo + ", role=" + role + ", listTransaksi=" + listTransaksi + '}';
+    }
+    
+    
 }

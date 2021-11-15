@@ -8,6 +8,7 @@ package Main;
 import Controller.Controller;
 import Model.Kurir;
 import View.BerandaKurir;
+import View.MenuLihatProfilKurir;
 
 /**
  *
@@ -16,7 +17,7 @@ import View.BerandaKurir;
 public class MainAdit {
     public static void main(String[] args) {
         
-        Kurir kurir = new Controller().ambilDataKurir(2);
+        Kurir kurir = new Controller().ambilDataKurir(8);
         
         new BerandaKurir(kurir);
     }

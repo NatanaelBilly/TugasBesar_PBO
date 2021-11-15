@@ -22,12 +22,15 @@ public class KurirController {
     private Controller con = new Controller();
 
     public boolean EditDataKurirToDB(Kurir kurir) {
+        System.out.println(kurir.toString());
         Controller.conn.connect();
         String query = "UPDATE user, kurir "
                 + "SET "
                 + "user.nama_depan='" + kurir.getNama_depan() + "', "
                 + "user.nama_belakang='" + kurir.getNama_belakang() + "', "
                 + "user.email_user='" + kurir.getEmail_user() + "', "
+                + "user.password='" + kurir.getPassword()+ "', "
+                + "user.noHp='" + kurir.getNoHp()+ "', "
                 + "kurir.NIK= '" + kurir.getNIK() + "', "
                 + "kurir.plat='" + kurir.getPlat() + "', "
                 + "kurir.jenis_kendaraan='" + kurir.getJenis_kendaraan() + "' "

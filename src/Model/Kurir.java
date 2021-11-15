@@ -73,4 +73,8 @@ public class Kurir extends User {
         this.jenis_kendaraan = jenis_kendaraan;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "Kurir{" + "total_pendapatan=" + total_pendapatan + ", NIK=" + NIK + ", ketersediaan=" + ketersediaan + ", plat=" + plat + ", jenis_kendaraan=" + jenis_kendaraan + '}';
+    }
 }
