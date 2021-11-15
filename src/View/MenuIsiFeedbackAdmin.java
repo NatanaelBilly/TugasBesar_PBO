@@ -23,16 +23,15 @@ public class MenuIsiFeedbackAdmin {
     ImageIcon back, profilePic;
     JTextArea taFeedback;
     JButton btnSubmit;
-    User user = new UserManager().getInstance().getUser();
 
-    public MenuIsiFeedbackAdmin(){
+    public MenuIsiFeedbackAdmin(Pelanggan pelanggan){
         //back
         labelBack = new DefaultComponentSetting().defaultBackLabel();
         labelBack.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
-                new BerandaPelanggan((Pelanggan) user);
+                new BerandaPelanggan(pelanggan);
             }
         });
 
@@ -43,7 +42,7 @@ public class MenuIsiFeedbackAdmin {
         labelProfilePic.setBounds(130,50,320,260);
 
         //Nama
-        labelNama = new DefaultComponentSetting().defaultHeadingLabel("Hallo, "+user.getNama_depan()+" "+user.getNama_belakang());
+        labelNama = new DefaultComponentSetting().defaultHeadingLabel("Hallo, "+pelanggan.getNama_depan()+" "+pelanggan.getNama_belakang());
 
         //Ket
         labelKet = new DefaultComponentSetting().defaultRegularLabel("Let us know what you're thinking about this application");
@@ -67,17 +66,17 @@ public class MenuIsiFeedbackAdmin {
         });
 
         btnSubmit = new DefaultComponentSetting().defaultButton("Submit", 14);
-        btnSubmit.setBounds(390, 640, 100, 30);
+        btnSubmit.setBounds(380, 610, 100, 30);
         btnSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Saran saran = new Saran(0, user.getId_user(), taFeedback.getText());
+                Saran saran = new Saran(0, pelanggan.getId_user(), taFeedback.getText());
                 Controller c = new Controller();
                 boolean submitSaran = c.tambahSaran(saran);
                 if(submitSaran){
                     JOptionPane.showMessageDialog(null, "Saran telah kami terima. Terima Kasih!");
                     frame.dispose();
-                    new BerandaPelanggan((Pelanggan) user);
+                    new BerandaPelanggan(pelanggan);
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal menambahkan saran");
                 }
