@@ -11,6 +11,8 @@ public class Controller {
     static Database conn = new Database();
     public ArrayList<User> users = new ArrayList<>();
     ArrayList<Chat> chats = new ArrayList<>();
+    public ArrayList<Transaksi> listTransaksi=new ArrayList<>();
+    public ArrayList<Saran> listSaran=new ArrayList<>();
 
     public ArrayList<User> getAllUsers() {
         conn.connect();
@@ -315,4 +317,55 @@ public class Controller {
         return (false);
     }
 
+    public ArrayList<Transaksi> getSeluruhTransaksi() {
+        conn.connect();
+        String query = "SELECT * FROM transaksi";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                int idTransaksi=rs.getInt(1);
+                int idPelanggan=rs.getInt(2);
+                int idKurir=rs.getInt(3);
+                String kategoriBarang=rs.getString(4);
+                double beratBarang=rs.getDouble(5);
+                double jumlahBarang=rs.getDouble(6);
+                String namaPengirim=rs.getString(7);
+                String namaPenerima=rs.getString(8);
+                String noHPPengirim=rs.getString(9);
+                String noHPPenerima=rs.getString(10);
+                String alamatPengirim=rs.getString(11);
+                String alamatPenerima=rs.getString(12);
+                double totalPembayaran=rs.getDouble(13);
+                Date tanggal=rs.getDate(14);
+                int statusPemesanan=rs.getInt(15);
+                String saranDriver="";
+                ArrayList<Chat> chatTransaksi=new ArrayList<>();
+                Transaksi trans=new Transaksi(idTransaksi,idPelanggan,idKurir,kategoriBarang,beratBarang,jumlahBarang,namaPengirim,alamatPengirim,noHPPengirim,namaPenerima,alamatPenerima,noHPPenerima,totalPembayaran,statusPemesanan,tanggal,saranDriver,chatTransaksi);
+                listTransaksi.add(trans);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (listTransaksi);
+    }
+
+    public ArrayList<Saran> getSeluruhSaran() {
+        conn.connect();
+        String query = "SELECT * FROM saran";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                int idSaran=rs.getInt(1);
+                int idPelanggan=rs.getInt(2);
+                String saran=rs.getString(3);
+                Saran isiSaran=new Saran(idSaran,idPelanggan,saran);
+                listSaran.add(isiSaran);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (listSaran);
+    }
 }
