@@ -7,24 +7,55 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class MenuRegisterPelanggan {
     JFrame frame;
     JPanel panelRegisterPelanggan;
-    JLabel labelJudul, labelNamaDepan, labelNamaBelakang, labelEmail, labelNomorHP, labelPassword;
+    JLabel labelKembali, labelJudul, labelNamaDepan, labelNamaBelakang, labelEmail, labelNomorHP, labelPassword;
     JTextField inputNamaDepan, inputNamaBelakang, inputEmail, inputNomorHP;
     JPasswordField inputPassword;
     JButton buttonRegister;
 
     public MenuRegisterPelanggan() {
+        //Link Kembali
+        labelKembali = new DefaultComponentSetting().defaultBackLabel();
+        labelKembali.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                frame.dispose();
+                new MenuRegisterPilihRule();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                frame.dispose();
+                new HalamanAwal();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
         //Label Judul
-        labelJudul = new JLabel("REGISTER - PELANGGAN", SwingConstants.CENTER);
+        labelJudul = new DefaultComponentSetting().defaultHeadingLabel("Anda akan register sebagai pelanggan");
         labelJudul.setBounds(0, 100, 600, 30);
-        labelJudul.setFont(new Font("Arial", Font.BOLD, 20));
 
         //Label Nama Depan
-        labelNamaDepan = new JLabel("Nama Depan");
-        labelNamaDepan.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelNamaDepan = new DefaultComponentSetting().defaultRegularLabel("Nama Depan");
         labelNamaDepan.setBounds(65, 210, 150, 30);
 
         //Input Nama Depan
@@ -32,8 +63,7 @@ public class MenuRegisterPelanggan {
         inputNamaDepan.setBounds(230, 210, 250, 30);
 
         //Label Nama Belakang
-        labelNamaBelakang = new JLabel("Nama Belakang");
-        labelNamaBelakang.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelNamaBelakang = new DefaultComponentSetting().defaultRegularLabel("Nama Belakang");
         labelNamaBelakang.setBounds(65, 260, 150, 30);
 
         //Input Nama Belakang
@@ -41,8 +71,7 @@ public class MenuRegisterPelanggan {
         inputNamaBelakang.setBounds(230, 260, 250, 30);
 
         //Label Email
-        labelEmail = new JLabel("Email");
-        labelEmail.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelEmail = new DefaultComponentSetting().defaultRegularLabel("Email");
         labelEmail.setBounds(65, 310, 150, 30);
 
         //Input Email
@@ -50,8 +79,7 @@ public class MenuRegisterPelanggan {
         inputEmail.setBounds(230, 310, 250, 30);
 
         //Label Nomor HP
-        labelNomorHP = new JLabel("Nomor HP");
-        labelNomorHP.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelNomorHP = new DefaultComponentSetting().defaultRegularLabel("Nomor HP");
         labelNomorHP.setBounds(65, 360, 150, 30);
 
         //Input Nomor HP
@@ -59,8 +87,7 @@ public class MenuRegisterPelanggan {
         inputNomorHP.setBounds(230, 360, 250, 30);
 
         //Label Password
-        labelPassword = new JLabel("Password");
-        labelPassword.setFont(new Font("Arial", Font.PLAIN, 16));
+        labelPassword = new DefaultComponentSetting().defaultRegularLabel("Password");
         labelPassword.setBounds(65, 410, 150, 30);
 
         //Input Password
@@ -96,6 +123,7 @@ public class MenuRegisterPelanggan {
         panelRegisterPelanggan.setVisible(true);
         panelRegisterPelanggan.setLayout(null);
         panelRegisterPelanggan.add(labelJudul);
+        panelRegisterPelanggan.add(labelKembali);
         panelRegisterPelanggan.add(labelNamaDepan);
         panelRegisterPelanggan.add(labelNamaBelakang);
         panelRegisterPelanggan.add(labelEmail);
@@ -107,7 +135,6 @@ public class MenuRegisterPelanggan {
         panelRegisterPelanggan.add(inputNomorHP);
         panelRegisterPelanggan.add(inputPassword);
         panelRegisterPelanggan.add(buttonRegister);
-
 
         //Frame
         frame = new DefaultComponentSetting().defaultFrame();

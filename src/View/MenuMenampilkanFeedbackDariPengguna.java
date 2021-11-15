@@ -19,20 +19,23 @@ public class MenuMenampilkanFeedbackDariPengguna {
         panel.setBackground(new Color(201, 228, 197));
 
         //init isi data
-        String [][] dataSaran=m.konversiListToArrayTransaksi(c.users);//masi perlu diganti jadi arrayList saran di admin
-
+        c.getSeluruhSaran();
+        String [][] dataSaran=m.konversiListToArraySaran(c.listSaran);
+//        String dataSaran[][]={ {"101","Amit","670000"},
+//                {"102","Jai","780000"},
+//                {"101","Sachin","700000"}};
         //init kolom
         String column[]={"id saran","Id pengguna","Saran"};
 
         //tabel data
         JTable tabelSaran=new JTable(dataSaran,column);
-        tabelSaran.setBounds(30,40,400,600);
+        tabelSaran.setBounds(10,40,550,600);
         JScrollPane sp=new JScrollPane(tabelSaran);
         panel.add(sp);
 
         //button back
         JButton back = new JButton("Kembali ke Main Menu");
-        back.setBounds(20,500,100,40);
+        back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

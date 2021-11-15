@@ -15,13 +15,13 @@ public class LoginHandler {
         controller.logIn(email, password);
 
         User user = new Model.UserManager().getInstance().getUser();
+        System.out.println(user.getClass().getSimpleName());
 
         if (user instanceof Pelanggan) {
             new BerandaPelanggan((Pelanggan) user);
         } else if(user instanceof Kurir){
+            System.out.println("Hai ini kurir");
             new BerandaKurir((Kurir) user);
-        } else {
-            new BerandaAdmin((Admin) user);
         }
     }
 }

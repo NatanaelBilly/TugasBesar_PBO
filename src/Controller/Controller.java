@@ -11,6 +11,8 @@ public class Controller {
     static Database conn = new Database();
     public ArrayList<User> users = new ArrayList<>();
     ArrayList<Chat> chats = new ArrayList<>();
+    public ArrayList<Transaksi> listTransaksi=new ArrayList<>();
+    public ArrayList<Saran> listSaran=new ArrayList<>();
 
     public ArrayList<User> getAllUsers() {
         conn.connect();
@@ -58,20 +60,36 @@ public class Controller {
                     String email_user = rs.getString("email_user");
                     String password = rs.getString("password");
                     String noHp = rs.getString("noHp");
+                    double saldo = rs.getInt("saldo");
 
                     String NIK = rs.getString("NIK");
                     String plat = rs.getString("plat");
                     String jenis_kendaraan = rs.getString("jenis_kendaraan");
                     double total_pendapatan = rs.getInt("total_pendapatan");
                     int ketersediaan = rs.getInt("ketersediaan");
-
-                    double saldo = rs.getInt("saldo");
-                    dataKurir = new Kurir(
-                            total_pendapatan, NIK, ketersediaan,
-                            plat, jenis_kendaraan,
-                            id_user, nama_depan, noHp, nama_belakang,
-                            email_user, password, saldo,
-                            role, null);
+                    
+                    dataKurir = new Kurir.Builder()
+                        .setIdUser(id_user)
+                        .setNamaDepan(nama_depan)
+                        .setNamaBelakang(nama_belakang)
+                        .setEmail(email_user)
+                        .setPassword(password)
+                        .setNoHp(noHp)
+                        .setSaldo(saldo)
+                        .setRole(role)
+                        .setNIK(NIK)
+                        .setPlat(plat)
+                        .setJenisKendaraan(jenis_kendaraan)
+                        .setTotalPendapatan(total_pendapatan)
+                        .setKetersediaan(ketersediaan)
+                        .build();
+                    
+//                    dataKurir = new Kurir(
+//                            total_pendapatan, NIK, ketersediaan,
+//                            plat, jenis_kendaraan,
+//                            id_user, nama_depan, nama_belakang, noHp,
+//                            email_user, password, saldo,
+//                            role, null);
                 }
             }
         } catch (SQLException e) {
@@ -243,16 +261,16 @@ public class Controller {
                     pelanggan.setListTransaksi(null);//sementara
                     new UserManager().getInstance().setUser(pelanggan);
                 } else if (roleUser == Role.KURIR) {
-                    String query2 = "SELECT * FROM user WHERE id_user=" + idUser + ";";
+                    String query2 = "SELECT * FROM kurir WHERE id_user=" + idUser + ";";
                     try {
                         Statement stmt2 = conn.con.createStatement();
                         ResultSet rs2 = stmt2.executeQuery(query2);
-                        while (rs.next()) {
+                        while (rs2.next()) {
                             String NIK = rs2.getString("NIK");
                             double totalPendapatan = rs2.getDouble("total_pendapatan");
-                            int ketersediaan = rs.getInt("ketersediaan");
-                            String platNomor = rs.getString("plat");
-                            String jenisKendaraan = rs.getString("jenis_kendaraan");
+                            int ketersediaanKurir = rs2.getInt("ketersediaan");
+                            String platNomor = rs2.getString("plat");
+                            String jenisKendaraan = rs2.getString("jenis_kendaraan");
 
                             Kurir kurir = new Kurir();
                             kurir.setId_user(idUser);
@@ -266,7 +284,7 @@ public class Controller {
                             kurir.setListTransaksi(null);
                             kurir.setTotal_pendapatan(totalPendapatan);
                             kurir.setNIK(NIK);
-                            kurir.setKetersediaan(ketersediaan);
+                            kurir.setKetersediaan(ketersediaanKurir);
                             kurir.setPlat(platNomor);
                             kurir.setJenis_kendaraan(jenisKendaraan);
                             new UserManager().getInstance().setUser(kurir);
@@ -314,6 +332,7 @@ public class Controller {
         }
         return (false);
     }
+
     
     public boolean isiSaldo(Pelanggan pelanggan, int saldo){
         conn.connect();
@@ -331,4 +350,72 @@ public class Controller {
         
     }
 
+    public boolean cekUserDiDataBase(String email) {
+        conn.connect();
+        String query = "SELECT * FROM user WHERE email_user='" + email + "'";
+
+
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                return (true);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (false);
+    }
+
+    public ArrayList<Transaksi> getSeluruhTransaksi() {
+        conn.connect();
+        String query = "SELECT * FROM transaksi";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                int idTransaksi=rs.getInt(1);
+                int idPelanggan=rs.getInt(2);
+                int idKurir=rs.getInt(3);
+                String kategoriBarang=rs.getString(4);
+                double beratBarang=rs.getDouble(5);
+                double jumlahBarang=rs.getDouble(6);
+                String namaPengirim=rs.getString(7);
+                String namaPenerima=rs.getString(8);
+                String noHPPengirim=rs.getString(9);
+                String noHPPenerima=rs.getString(10);
+                String alamatPengirim=rs.getString(11);
+                String alamatPenerima=rs.getString(12);
+                double totalPembayaran=rs.getDouble(13);
+                Date tanggal=rs.getDate(14);
+                int statusPemesanan=rs.getInt(15);
+                String saranDriver="";
+                ArrayList<Chat> chatTransaksi=new ArrayList<>();
+                Transaksi trans=new Transaksi(idTransaksi,idPelanggan,idKurir,kategoriBarang,beratBarang,jumlahBarang,namaPengirim,alamatPengirim,noHPPengirim,namaPenerima,alamatPenerima,noHPPenerima,totalPembayaran,statusPemesanan,tanggal,saranDriver,chatTransaksi);
+                listTransaksi.add(trans);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (listTransaksi);
+    }
+
+    public ArrayList<Saran> getSeluruhSaran() {
+        conn.connect();
+        String query = "SELECT * FROM saran";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                int idSaran=rs.getInt(1);
+                int idPelanggan=rs.getInt(2);
+                String saran=rs.getString(3);
+                Saran isiSaran=new Saran(idSaran,idPelanggan,saran);
+                listSaran.add(isiSaran);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (listSaran);
+    }
 }

@@ -5,6 +5,8 @@ import Model.Kurir;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,20 +14,19 @@ import javax.swing.JLabel;
 
 public class MenuLihatProfilKurir {
     private JFrame frame;
-    private JLabel labelMenu, labelProfilePic, labelNama, labelEmail,labelNIK, labelPlat, labelKendaraan,
-            showNama, showEmail, showNIK, showPlat, showKendaraan;
+    private JLabel labelMenu, labelProfilePic, labelNama, labelEmail, labelNoHp, labelNIK, labelPlat, labelKendaraan,
+            TampilanNama, TampilanEmail, TampilanNoHp, TampilanNIK, TampilanPlat, TampilanKendaraan;
     private ImageIcon profilePic;
     
-    private Kurir kurir;
+    private final DefaultComponentSetting GUI = new DefaultComponentSetting();
     public MenuLihatProfilKurir(Kurir kurir)
     {
-        this.kurir = kurir;
-        
         //Data Template
 //        int data_id = kurir.getId_user();
 //        Role data_role = kurir.getRole();
         String data_nama_lengkap = kurir.getNama_depan() + " " + kurir.getNama_belakang();
         String data_email = kurir.getEmail_user();
+        String data_noHp = kurir.getNoHp();
 //        String data_password = kurir.getPassword();
 
         String data_NIK = kurir.getNIK();
@@ -34,93 +35,121 @@ public class MenuLihatProfilKurir {
 //        double data_total_pendapatan = kurir.getTotal_pendapatan();
 //        int data_ketersediaan = kurir.getKetersediaan();
         
+
         //Menu
-        labelMenu = new JLabel("Lihat Profil");
-        labelMenu.setBounds(50,25,200,50);
-        labelMenu.setFont(new Font("Arial", Font.BOLD, 25));
+        labelMenu = GUI.defaultHeadingLabel("Lihat Profil");
+        labelMenu.setBounds(200,50,200,50);
         
         //picture
         labelProfilePic = new JLabel();
         profilePic = new ImageIcon ("assets/profile_pic.jpg");
         labelProfilePic.setIcon(profilePic);
-        labelProfilePic.setBounds(130,75,320,260);
+        labelProfilePic.setBounds(130,100,325,260);
 
-        //label
-        labelNama = new JLabel("Nama ");
-        labelNama.setBounds(100,350,200,40);
-        labelNama.setFont(new Font("Arial", Font.PLAIN, 17));
-        labelNIK = new JLabel("NIK ");
-        labelNIK.setBounds(100,375,200,40);
-        labelNIK.setFont(new Font("Arial", Font.PLAIN, 17));
-        labelEmail = new JLabel("Email");
-        labelEmail.setBounds(100,400,200,40);
-        labelEmail.setFont(new Font("Arial", Font.PLAIN, 17));
-        labelPlat = new JLabel("Plat");
-        labelPlat.setBounds(100,425,200,40);
-        labelPlat.setFont(new Font("Arial", Font.PLAIN, 17));
-        labelKendaraan = new JLabel("Kendaraan");
-        labelKendaraan.setBounds(100,450,200,40);
-        labelKendaraan.setFont(new Font("Arial", Font.PLAIN, 17));
+        //Label Keterangan
+        labelNama = GUI.defaultRegularLabel("Nama : ");
+        labelNama.setBounds(100,375,200,40);
+        
+        labelNIK = GUI.defaultRegularLabel("NIK ");
+        labelNIK.setBounds(100,400,200,40);
+        
+        labelEmail = GUI.defaultRegularLabel("Email");
+        labelEmail.setBounds(100,425,200,40);
+        
+        labelNoHp = GUI.defaultRegularLabel("No Telepon");
+        labelNoHp.setBounds(100,450,200,40);
+        
+        labelPlat = GUI.defaultRegularLabel("Plat");
+        labelPlat.setBounds(100,475,200,40);
+        
+        labelKendaraan = GUI.defaultRegularLabel("Kendaraan");
+        labelKendaraan.setBounds(100,500,200,40);
 
         //Data
-        showNama = new JLabel(": " + data_nama_lengkap);
-        showNama.setBounds(200,350,300,40);
-        showNama.setFont(new Font("Arial", Font.PLAIN, 17));
-        showNIK = new JLabel(": " + data_NIK);
-        showNIK.setBounds(200,375,300,40);
-        showNIK.setFont(new Font("Arial", Font.PLAIN, 17));
-        showEmail = new JLabel(": " + data_email);
-        showEmail.setBounds(200,400,300,40);
-        showEmail.setFont(new Font("Arial", Font.PLAIN, 17));
-        showPlat = new JLabel(": " + data_plat);
-        showPlat.setBounds(200,425,300,40);
-        showPlat.setFont(new Font("Arial", Font.PLAIN, 17));
-        showKendaraan = new JLabel(": " + data_jenis_kendaraan);
-        showKendaraan.setBounds(200,450,300,40);
-        showKendaraan.setFont(new Font("Arial", Font.PLAIN, 17));
+        TampilanNama = GUI.defaultRegularLabel(": " + data_nama_lengkap);
+        TampilanNama.setBounds(200,375,300,40);
+        
+        TampilanNIK = GUI.defaultRegularLabel(": " + data_NIK);
+        TampilanNIK.setBounds(200,400,300,40);
+        
+        TampilanEmail = GUI.defaultRegularLabel(": " + data_email);
+        TampilanEmail.setBounds(200,425,300,40);
+        
+        TampilanNoHp = GUI.defaultRegularLabel(": " + data_noHp);
+        TampilanNoHp.setBounds(200,450,300,40);
+        
+        TampilanPlat = GUI.defaultRegularLabel(": " + data_plat);
+        TampilanPlat.setBounds(200,475,300,40);
+        
+        TampilanKendaraan = GUI.defaultRegularLabel(": " + data_jenis_kendaraan);
+        TampilanKendaraan.setBounds(200,500,300,40);
 
 
         //Button Edit
-        JButton btnEditProfile = new JButton("Edit Profil");
-        btnEditProfile.setBounds(250, 600, 100, 30);
+        JButton btnEditProfile = GUI.defaultButton("Ubah Profil", 20);
+        btnEditProfile.setBounds(200, 600, 200, 50);
         btnEditProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MenuEditProfilKurir(kurir);
-                frame.setVisible(false);
+                frame.dispose();
             }
         });
         
-        //Button Back
-        JButton btnBack = new JButton("Kembali");
-        btnBack.setBounds(450, 25, 100, 30);
-        btnBack.addActionListener(new ActionListener() {
+        
+        //Link Kembali
+        JLabel labelKembali = GUI.defaultBackLabel();
+        labelKembali.addMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void mouseClicked(MouseEvent e) {
                 new BerandaKurir(kurir);
-                frame.setVisible(false);
+                frame.dispose();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                new BerandaKurir(kurir);
+                frame.dispose();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
             }
         });
 
         
         //Frame
-        frame = new DefaultComponentSetting().defaultFrame();
+        frame = GUI.defaultFrame();
 
         frame.add(labelMenu);
         frame.add(labelProfilePic);
         frame.add(labelNama);
         frame.add(labelEmail);
+        frame.add(labelNoHp);
         frame.add(labelNIK);
         frame.add(labelPlat);
         frame.add(labelKendaraan);
-        frame.add(showNama);
-        frame.add(showEmail);
-        frame.add(showPlat);
-        frame.add(showKendaraan);
-        frame.add(showNIK);
+        frame.add(TampilanNama);
+        frame.add(TampilanEmail);
+        frame.add(TampilanNoHp);
+        frame.add(TampilanPlat);
+        frame.add(TampilanKendaraan);
+        frame.add(TampilanNIK);
         
         frame.add(btnEditProfile);
-        frame.add(btnBack);
+        frame.add(labelKembali);
 
     }
+    
 }

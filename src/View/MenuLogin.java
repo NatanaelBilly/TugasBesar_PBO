@@ -80,6 +80,7 @@ public class MenuLogin {
             boolean bisaLogin = controller.cekUserDiDataBase(email, password);
 
             if (bisaLogin) {
+                System.out.println("Bisa Login");
                 frame.dispose();
                 new LoginHandler(email, password);
             } else {
@@ -92,7 +93,7 @@ public class MenuLogin {
         panelLogin.setVisible(true);
         panelLogin.setLayout(null);
         panelLogin.setBounds(0, 0, 600, 800);
-        panelLogin.setBackground(new Color(204, 180, 114));
+        panelLogin.setBackground(Color.white);
         panelLogin.add(labelEmail);
         panelLogin.add(inputEmail);
         panelLogin.add(labelPassword);

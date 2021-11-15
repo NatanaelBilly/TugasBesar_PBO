@@ -29,41 +29,49 @@ public class BerandaKurir implements ActionListener{
     private JLabel labelPesan;
     private JButton btnProfil, btnOrder, btnTransaksi, btnObrolan;
 
+    private final DefaultComponentSetting GUI = new DefaultComponentSetting();
+    
+    private final Kurir kurir;
     public BerandaKurir(Kurir kurir){
+        this.kurir = kurir;
+        
         //label
-        labelPesan = new DefaultComponentSetting().defaultRegularLabel("Selamat Datang, !");
+        labelPesan = GUI.defaultHeadingLabel("Selamat Datang, "+ kurir.getNama_depan() +" !");
+        labelPesan.setBounds(145, 50, 300, 80);
 
         //Button
-        btnProfil = new DefaultComponentSetting().defaultButton("Llihat Profil",20);
+        btnProfil = GUI.defaultButton("Lihat Profil",20);
         btnProfil.setBounds(170, 150, 250, 80);
         btnProfil.addActionListener(this);
         
-        btnOrder = new DefaultComponentSetting().defaultButton("Lihat Order",20);
+        btnOrder = GUI.defaultButton("Lihat Order",20);
         btnOrder.setBounds(170, 250, 250, 80);
         btnOrder.addActionListener(this);
         
-        btnTransaksi = new DefaultComponentSetting().defaultButton("Lihat Transaksi",20);
+        btnTransaksi = GUI.defaultButton("Lihat Transaksi",20);
         btnTransaksi.setBounds(170, 350, 250, 80);
         btnTransaksi.addActionListener(this);
 
         
-        btnObrolan = new DefaultComponentSetting().defaultButton("Obrolan",20);
+        btnObrolan = GUI.defaultButton("Obrolan",20);
         btnObrolan.setBounds(170, 450, 250, 80);
         btnObrolan.addActionListener(this);
         
         //Panel
-        panelBerandaKurir = new JPanel();
-        panelBerandaKurir.setBounds(0,0,600,50);
-        panelBerandaKurir.setVisible(true);
-        panelBerandaKurir.add(labelPesan);
-
+//        panelBerandaKurir = new JPanel();
+//        panelBerandaKurir.setBounds(0,0,600,50);
+//        panelBerandaKurir.setLayout(null);
+//        panelBerandaKurir.setVisible(true);
+        
+        
         //Frame
-        frame = new DefaultComponentSetting().defaultFrame();
+        frame = GUI.defaultFrame();
         frame.add(btnProfil);
         frame.add(btnOrder);
         frame.add(btnTransaksi);
         frame.add(btnObrolan);
-        frame.add(panelBerandaKurir);
+        frame.add(labelPesan);
+        //frame.add(panelBerandaKurir);
     }
     
     @Override
@@ -71,17 +79,17 @@ public class BerandaKurir implements ActionListener{
         String command = e.getActionCommand();
         switch (command) {
             case "Lihat Profil":
-//                new MenuLihatProfilKurir(kurir);
-                frame.setVisible(false);
+                new MenuLihatProfilKurir(kurir);
+                frame.dispose();
                 break;
             case "Lihat Order":
-                frame.setVisible(false);
+                frame.dispose();
                 break;
             case "Lihat Transaksi":
-                frame.setVisible(false);
+                frame.dispose();
                 break;
             case "Obrolan":
-                frame.setVisible(false);
+                frame.dispose();
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Berhasil Keluar");
