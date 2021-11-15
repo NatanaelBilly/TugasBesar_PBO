@@ -453,4 +453,19 @@ public class Controller {
             return (false);
         }
     }
+
+    public boolean ubahPassword(String passBaru, int idUser){
+        conn.connect();
+        String query = "update user set password = ? where id_user = ?";
+        try {
+            PreparedStatement stmt = conn.con.prepareStatement(query);
+            stmt.setString(1, passBaru);
+            stmt.setInt(2, idUser);
+            stmt.executeUpdate();
+            return (true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return (false);
+        }
+    }
 }
