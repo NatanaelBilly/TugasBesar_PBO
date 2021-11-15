@@ -60,20 +60,36 @@ public class Controller {
                     String email_user = rs.getString("email_user");
                     String password = rs.getString("password");
                     String noHp = rs.getString("noHp");
+                    double saldo = rs.getInt("saldo");
 
                     String NIK = rs.getString("NIK");
                     String plat = rs.getString("plat");
                     String jenis_kendaraan = rs.getString("jenis_kendaraan");
                     double total_pendapatan = rs.getInt("total_pendapatan");
                     int ketersediaan = rs.getInt("ketersediaan");
-
-                    double saldo = rs.getInt("saldo");
-                    dataKurir = new Kurir(
-                            total_pendapatan, NIK, ketersediaan,
-                            plat, jenis_kendaraan,
-                            id_user, nama_depan, nama_belakang, noHp,
-                            email_user, password, saldo,
-                            role, null);
+                    
+                    dataKurir = new Kurir.Builder()
+                        .setIdUser(id_user)
+                        .setNamaDepan(nama_depan)
+                        .setNamaBelakang(nama_belakang)
+                        .setEmail(email_user)
+                        .setPassword(password)
+                        .setNoHp(noHp)
+                        .setSaldo(saldo)
+                        .setRole(role)
+                        .setNIK(NIK)
+                        .setPlat(plat)
+                        .setJenisKendaraan(jenis_kendaraan)
+                        .setTotalPendapatan(total_pendapatan)
+                        .setKetersediaan(ketersediaan)
+                        .build();
+                    
+//                    dataKurir = new Kurir(
+//                            total_pendapatan, NIK, ketersediaan,
+//                            plat, jenis_kendaraan,
+//                            id_user, nama_depan, nama_belakang, noHp,
+//                            email_user, password, saldo,
+//                            role, null);
                 }
             }
         } catch (SQLException e) {
