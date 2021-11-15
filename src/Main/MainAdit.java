@@ -4,6 +4,7 @@ import Controller.Controller;
 import Model.Kurir;
 import Model.Role;
 import View.BerandaKurir;
+import View.MenuLihatOrderKurir;
 import View.MenuLihatProfilKurir;
 
 /**
@@ -16,6 +17,6 @@ public class MainAdit {
         Kurir kurir = new Controller().ambilDataKurir(8);
         
         
-        new BerandaKurir(kurir);
+        new MenuLihatOrderKurir();
     }
 }

@@ -81,13 +81,6 @@ public class Controller {
                         .setTotalPendapatan(total_pendapatan)
                         .setKetersediaan(ketersediaan)
                         .build();
-                    
-//                    dataKurir = new Kurir(
-//                            total_pendapatan, NIK, ketersediaan,
-//                            plat, jenis_kendaraan,
-//                            id_user, nama_depan, nama_belakang, noHp,
-//                            email_user, password, saldo,
-//                            role, null);
                 }
             }
         } catch (SQLException e) {
@@ -226,6 +219,45 @@ public class Controller {
         }
 
 
+    }
+    
+    public ArrayList<Transaksi> ambilDaftarOrder()
+    {
+        ArrayList<Transaksi> daftarOrder = new ArrayList<>();
+        
+        conn.connect();
+        String query = "SELECT * FROM transaksi";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                    Transaksi transaksi = new Transaksi();
+                    transaksi.setId_transaksi(rs.getInt("id_transaksi"));
+                    transaksi.setId_pelanggan(rs.getInt("id_pelanggan"));
+                    transaksi.setId_kurir(rs.getInt("id_kurir"));
+                    transaksi.setKategori_barang(rs.getString("kategori_barang"));
+                    transaksi.setBerat_barang(rs.getInt("berat_barang"));
+                    transaksi.setJumlah_barang(rs.getInt("jumlah_barang"));
+                    transaksi.setNama_pengirim(rs.getString("nama_pengirim"));
+                    transaksi.setAlamat_pengirim(rs.getString("alamat_pengirim"));
+                    transaksi.setNoHP_pengirim(rs.getString("noHP_pengirim"));
+                    transaksi.setNama_penerima(rs.getString("nama_penerima"));
+                    transaksi.setAlamat_pengirim(rs.getString("alamat_pengirim"));
+                    transaksi.setAlamat_penerima(rs.getString("alamat_penerima"));
+                    transaksi.setNoHP_penerima(rs.getString("noHP_penerima"));
+                    transaksi.setTotal_pembayaran(rs.getInt("total_pembayaran"));
+                    
+                    //Get Status nya belum
+                    //transaksi.setStatus_pemesanan(rs.getInt("status_pemesanan"));
+                    
+                    daftarOrder.add(transaksi);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return daftarOrder;
     }
 
     public void logIn(String email, String password) {

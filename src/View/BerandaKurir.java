@@ -83,6 +83,7 @@ public class BerandaKurir implements ActionListener{
                 frame.dispose();
                 break;
             case "Lihat Order":
+                new MenuLihatOrderKurir();
                 frame.dispose();
                 break;
             case "Lihat Transaksi":
