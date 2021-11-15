@@ -1,5 +1,6 @@
 package View;
 
+import Model.Pelanggan;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,12 +9,12 @@ import java.awt.event.ActionListener;
 public class MenuProfilePelanggan {
     JFrame frame;
     JPanel panelMenu, panelNama;
-    JLabel labelProfilePic, labelNama, labelEmail, labelRole, email, role;
+    JLabel labelProfilePic, labelNama, labelEmail,labelSaldo, labelRole, email, role, saldo;
     ImageIcon profilePic;
     JButton btnEditProfile;
 
-    public MenuProfilePelanggan() {
-        new HeaderMenu();
+    public MenuProfilePelanggan(Pelanggan pelanggan) {
+        new HeaderMenu(pelanggan);
         panelMenu = HeaderMenu.panel;
 
         //picture
@@ -23,7 +24,7 @@ public class MenuProfilePelanggan {
         labelProfilePic.setBounds(130, 80, 320, 260);
 
         //label
-        labelNama = new JLabel("Nama Pengguna Ceritanya", JLabel.CENTER);
+        labelNama = new JLabel(pelanggan.getNama_depan() + " " + pelanggan.getNama_belakang(), JLabel.CENTER);
         labelNama.setFont(new Font("Arial", Font.BOLD, 20));
         labelEmail = new JLabel("Email");
         labelEmail.setBounds(90, 420, 80, 40);
@@ -31,13 +32,20 @@ public class MenuProfilePelanggan {
         labelRole = new JLabel("Role");
         labelRole.setBounds(90, 470, 80, 40);
         labelRole.setFont(new Font("Arial", Font.PLAIN, 17));
+        labelSaldo = new JLabel("Saldo");
+        labelSaldo.setBounds(90, 520, 80, 40);
+        labelSaldo.setFont(new Font("Arial", Font.PLAIN, 17));
 
-        email = new JLabel(": iniemail@mail.com");
+        email = new JLabel(": " + pelanggan.getEmail_user());
         email.setBounds(190, 420, 300, 40);
         email.setFont(new Font("Arial", Font.PLAIN, 17));
-        role = new JLabel(": Pelanggan");
+        role = new JLabel(": " + pelanggan.getRole());
         role.setBounds(190, 470, 300, 40);
         role.setFont(new Font("Arial", Font.PLAIN, 17));
+        
+        saldo = new JLabel(": " + pelanggan.getSaldo());
+        saldo.setBounds(190, 520, 300, 40);
+        saldo.setFont(new Font("Arial", Font.PLAIN, 17));
 
         //Panel
         panelNama = new JPanel();
@@ -56,7 +64,7 @@ public class MenuProfilePelanggan {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new MenuEditProfilePelanggan();
+                new MenuEditProfilePelanggan(pelanggan);
             }
         });
 
@@ -67,6 +75,8 @@ public class MenuProfilePelanggan {
         frame.add(labelRole);
         frame.add(email);
         frame.add(role);
+        frame.add(labelSaldo);
+        frame.add(saldo);
         frame.add(panelMenu);
         frame.add(panelNama);
         frame.add(btnEditProfile);

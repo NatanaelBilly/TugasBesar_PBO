@@ -1,6 +1,7 @@
 package View;
 
 import Model.Pelanggan;
+import Model.UserManager;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -12,7 +13,7 @@ public class BerandaPelanggan {
     JFrame frame;
     JPanel panelMessage;
     JLabel labelMessage;
-    JButton btnProfile, btnOrder, btnTransaction;
+    JButton btnProfile, btnOrder, btnTransaction, btnIsiSaldo;
 
     public BerandaPelanggan(Pelanggan pelanggan) {
         //label
@@ -26,7 +27,7 @@ public class BerandaPelanggan {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                new MenuProfilePelanggan();
+                new MenuProfilePelanggan(pelanggan);
             }
         });
         btnOrder = new JButton("Buat Order");
@@ -42,7 +43,7 @@ public class BerandaPelanggan {
             }
         });
 
-
+        
         btnTransaction = new JButton("Lihat Transaksi");
         btnTransaction.setBounds(170, 470, 250, 80);
         btnTransaction.setFont(new Font("Arial", Font.BOLD, 20));
@@ -52,6 +53,18 @@ public class BerandaPelanggan {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MenuLihatDaftarTransaksiPelanggan();
+            }
+        });
+        
+        btnIsiSaldo = new JButton("Isi Saldo");
+        btnIsiSaldo.setBounds(170, 600, 250, 80);
+        btnIsiSaldo.setFont(new Font("Arial", Font.BOLD, 20));
+        btnIsiSaldo.setBackground(new Color(217, 217, 217));
+        btnIsiSaldo.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnIsiSaldo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new MenuIsiSaldo(pelanggan);
             }
         });
 
@@ -68,6 +81,7 @@ public class BerandaPelanggan {
         frame.add(btnProfile);
         frame.add(btnOrder);
         frame.add(btnTransaction);
+        frame.add(btnIsiSaldo);
         frame.add(panelMessage);
 
 

@@ -314,5 +314,21 @@ public class Controller {
         }
         return (false);
     }
+    
+    public boolean isiSaldo(Pelanggan pelanggan, int saldo){
+        conn.connect();
+        double total = pelanggan.getSaldo() + saldo;
+        String query = "UPDATE user SET saldo = " + total + "WHERE id_user =" + pelanggan.getId_user() + ";";
+        
+         try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+            return (true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return (false);
+        }
+        
+    }
 
 }

@@ -1,5 +1,6 @@
 package View;
 
+import Model.Pelanggan;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,10 +11,10 @@ public class MenuEditProfilePelanggan {
     JTextField tfNamaDepan, tfNamaBelakang, tfEmail;
     JButton btnEdit;
 
-    public MenuEditProfilePelanggan(){
+    public MenuEditProfilePelanggan(Pelanggan pelanggan){
         //Frame
         frame = new DefaultComponentSetting().defaultFrame();
-
+        System.out.println(pelanggan.toString());
         //Label
         labelNamaDepan = new JLabel("Nama Depan");
         labelNamaDepan.setBounds(30,30,150,40);
@@ -23,11 +24,11 @@ public class MenuEditProfilePelanggan {
         labelEmail.setBounds(30,130,150,40);
 
         //Text Field
-        tfNamaDepan = new JTextField("NamaDepan");
+        tfNamaDepan = new JTextField(pelanggan.getNama_depan());
         tfNamaDepan.setBounds(200,30,190,30);
-        tfNamaBelakang = new JTextField("NamaBelakang");
+        tfNamaBelakang = new JTextField(pelanggan.getNama_belakang());
         tfNamaBelakang.setBounds(200,80,190,30);
-        tfEmail = new JTextField("iniemail@mail.com");
+        tfEmail = new JTextField(pelanggan.getNama_belakang());
         tfEmail.setBounds(200,130,190,30);
 
         //Button
@@ -38,7 +39,7 @@ public class MenuEditProfilePelanggan {
             public void actionPerformed(ActionEvent e) {
                 //change database
                 frame.dispose();
-                new MenuProfilePelanggan();
+                new MenuProfilePelanggan(pelanggan);
             }
         });
 

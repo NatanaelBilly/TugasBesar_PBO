@@ -1,5 +1,6 @@
 package View;
 
+import Model.Pelanggan;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -15,7 +16,7 @@ public class HeaderMenu {
     JMenu order1,feedback1,transactions1,profile1;
     TextArea headerMenuPelanggan;
 
-    public HeaderMenu(){
+    public HeaderMenu(Pelanggan pelanggan){
         //JMenuBar
         menuPelanggan = new JMenuBar();
         order1 = new JMenu("Order");
@@ -90,7 +91,7 @@ public class HeaderMenu {
         labelProfile.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new MenuProfilePelanggan();
+                new MenuProfilePelanggan(pelanggan);
             }
         });
 
