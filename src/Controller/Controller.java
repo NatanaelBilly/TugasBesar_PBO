@@ -71,7 +71,7 @@ public class Controller {
                     dataKurir = new Kurir(
                             total_pendapatan, NIK, ketersediaan,
                             plat, jenis_kendaraan,
-                            id_user, nama_depan, noHp, nama_belakang,
+                            id_user, nama_depan, nama_belakang, noHp,
                             email_user, password, saldo,
                             role, null);
                 }
@@ -304,6 +304,21 @@ public class Controller {
     public boolean cekUserDiDataBase(String email, String password) {
         conn.connect();
         String query = "SELECT * FROM user WHERE email_user='" + email + "' AND password='" + password + "';";
+
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                return (true);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (false);
+    }
+    public boolean cekUserDiDataBase(String email) {
+        conn.connect();
+        String query = "SELECT * FROM user WHERE email_user='" + email + "'";
 
         try {
             Statement stmt = conn.con.createStatement();
