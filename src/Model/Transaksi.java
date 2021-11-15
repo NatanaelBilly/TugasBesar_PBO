@@ -32,6 +32,7 @@ public class Transaksi implements StatusPengiriman {
     private String saran_driver;
     private ArrayList<Chat> listChat;
 
+    public Transaksi(){};
     public Transaksi(int id_transaksi, int id_pelanggan, int id_kurir, String kategori_barang, double berat_barang, double jumlah_barang, String nama_pengirim, String alamat_pengirim, String noHP_pengirim, String nama_penerima, String alamat_penerima, String noHP_penerima, double total_pembayaran, int status_pemesanan, Date tanggal, String saran_driver, ArrayList<Chat> listChat) {
         setId_transaksi(id_transaksi);
         setId_pelanggan(id_pelanggan);
