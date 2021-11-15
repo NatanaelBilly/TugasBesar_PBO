@@ -19,6 +19,7 @@ public class MenuMenampilkanSeluruhTransaksi {
         panel.setBackground(new Color(201, 228, 197));
 
         //init isi data
+        c.getAllUsers();
         String [][] dataTransakksi=m.konversiListToArrayTransaksi(c.users);
 
         //init kolom
@@ -32,7 +33,7 @@ public class MenuMenampilkanSeluruhTransaksi {
 
         //button back
         JButton back = new JButton("Kembali ke Main Menu");
-        back.setBounds(20,500,100,40);
+        back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
