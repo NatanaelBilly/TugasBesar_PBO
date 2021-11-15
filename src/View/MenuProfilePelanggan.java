@@ -72,7 +72,7 @@ public class MenuProfilePelanggan {
             panelNama.setBackground(new Color(204, 180, 114));
         }else if(pelanggan.getTingkatan().equals(TingkatanUser.SILVER)){
             panelNama.setBackground(new Color(214, 212, 206));
-        }else{
+        }else if(pelanggan.getTingkatan().equals(TingkatanUser.GOLD)){
             panelNama.setBackground(new Color(252, 218, 116));
         }
         panelNama.add(labelNama);
