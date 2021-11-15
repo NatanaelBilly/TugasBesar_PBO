@@ -16,35 +16,34 @@ public class BerandaPelanggan {
     JButton btnProfile, btnOrder, btnTransaction, btnIsiSaldo;
 
     public BerandaPelanggan(Pelanggan pelanggan) {
-        //Label
+        //label
         labelMessage = new DefaultComponentSetting().defaultHeadingLabel("Welcome Back");
+//        labelMessage.setFont(new Font("Arial", Font.BOLD, 24));
 
         //Button
-        btnProfile = new DefaultComponentSetting().defaultButton("Lihat Profil", 20);
+        btnProfile = new DefaultComponentSetting().defaultButton("Lihat Profil",20);
         btnProfile.setBounds(170, 210, 250, 80);
-<<<<<<< HEAD
         btnProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 new MenuProfilePelanggan(pelanggan);
             }
-=======
-        btnProfile.addActionListener(e -> {
-            frame.dispose();
-            new MenuProfilePelanggan();
->>>>>>> 303d598c8a747878071b0e87529325ebdda1065d
         });
-
-        btnOrder = new DefaultComponentSetting().defaultButton("Buat Order", 20);
+        btnOrder = new JButton("Buat Order");
         btnOrder.setBounds(170, 340, 250, 80);
-        btnOrder.addActionListener(e -> {
-            frame.dispose();
-            new MenuBuatOrder();
+        btnOrder.setFont(new Font("Arial", Font.BOLD, 20));
+        btnOrder.setBackground(new Color(217, 217, 217));
+        btnOrder.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        btnOrder.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                new MenuBuatOrder();
+            }
         });
 
-<<<<<<< HEAD
-        
+
         btnTransaction = new JButton("Lihat Transaksi");
         btnTransaction.setBounds(170, 470, 250, 80);
         btnTransaction.setFont(new Font("Arial", Font.BOLD, 20));
@@ -56,7 +55,7 @@ public class BerandaPelanggan {
                 new MenuLihatDaftarTransaksiPelanggan();
             }
         });
-        
+
         btnIsiSaldo = new JButton("Isi Saldo");
         btnIsiSaldo.setBounds(170, 600, 250, 80);
         btnIsiSaldo.setFont(new Font("Arial", Font.BOLD, 20));
@@ -68,15 +67,12 @@ public class BerandaPelanggan {
                 new MenuIsiSaldo(pelanggan);
             }
         });
-=======
-        btnTransaction = new DefaultComponentSetting().defaultButton("Lihat Transaksi", 20);
-        btnTransaction.setBounds(170, 470, 250, 80);
-        btnTransaction.addActionListener(e -> new MenuLihatDaftarTransaksiPelanggan());
->>>>>>> 303d598c8a747878071b0e87529325ebdda1065d
 
         //Panel
         panelMessage = new JPanel();
         panelMessage.setBounds(0, 120, 600, 50);
+
+
         panelMessage.setVisible(true);
         panelMessage.add(labelMessage);
 
@@ -87,6 +83,7 @@ public class BerandaPelanggan {
         frame.add(btnTransaction);
         frame.add(btnIsiSaldo);
         frame.add(panelMessage);
+
 
 
     }

@@ -418,4 +418,21 @@ public class Controller {
         }
         return (listSaran);
     }
+
+    public boolean tambahSaran(Saran saran) {
+        conn.connect();
+        String query = "INSERT INTO saran VALUES(?,?,?)";
+        try {
+            PreparedStatement stmt = conn.con.prepareStatement(query);
+            stmt.setInt(1, saran.getId_saran());
+            stmt.setInt(2, saran.getId_pelanggan());
+            stmt.setString(3, saran.getSaran());
+            stmt.executeUpdate();
+            return (true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return (false);
+        }
+
+    }
 }
