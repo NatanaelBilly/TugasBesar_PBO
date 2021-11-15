@@ -1,5 +1,11 @@
 package View;
 
+import Controller.Controller;
+import Model.Pelanggan;
+import Model.Saran;
+import Model.User;
+import Model.UserManager;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,22 +23,16 @@ public class MenuIsiFeedbackAdmin {
     ImageIcon back, profilePic;
     JTextArea taFeedback;
     JButton btnSubmit;
+    User user = new UserManager().getInstance().getUser();
 
     public MenuIsiFeedbackAdmin(){
-        //Font
-        Font titleFont = new Font("Arial", Font.BOLD, 20);
-        Font textFont = new Font("Arial", Font.PLAIN, 18);
-
         //back
-        labelBack = new JLabel();
-        back = new ImageIcon ("assets/back.jpg");
-        labelBack.setIcon(back);
-        labelBack.setBounds(30,15,100,30);
-
+        labelBack = new DefaultComponentSetting().defaultBackLabel();
         labelBack.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Yay you clicked me");
+                frame.dispose();
+                new BerandaPelanggan((Pelanggan) user);
             }
         });
 
@@ -43,21 +43,18 @@ public class MenuIsiFeedbackAdmin {
         labelProfilePic.setBounds(130,50,320,260);
 
         //Nama
-        labelNama = new JLabel("Hallo, "+"Nama Pengguna",JLabel.CENTER);
-        labelNama.setFont(titleFont);
+        labelNama = new DefaultComponentSetting().defaultHeadingLabel("Hallo, "+user.getNama_depan()+" "+user.getNama_belakang());
 
         //Ket
-        labelKet = new JLabel("Let us know what you're thinking about this application",JLabel.CENTER);
-        labelKet.setFont(textFont);
-        labelAdmin = new JLabel("- ADMIN");
-        labelAdmin.setFont(textFont);
-        labelAdmin.setBounds(450,340,100,100);
+        labelKet = new DefaultComponentSetting().defaultRegularLabel("Let us know what you're thinking about this application");
+        labelAdmin = new DefaultComponentSetting().defaultRegularLabel("- ADMIN");
+        labelAdmin.setBounds(420,340,100,100);
 
         //Text Area
         taFeedback = new JTextArea();
-        taFeedback.setBounds(110,420,360,180);
+        taFeedback.setBounds(110,420,360,140);
         taFeedback.setLineWrap(true);
-        final int MAX_LENGTH = 400;
+        final int MAX_LENGTH = 255;
         taFeedback.setDocument(new PlainDocument() {
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException, BadLocationException {
@@ -69,12 +66,21 @@ public class MenuIsiFeedbackAdmin {
             }
         });
 
-        btnSubmit = new JButton("Submit");
-        btnSubmit.setBounds(450, 640, 100, 30);
+        btnSubmit = new DefaultComponentSetting().defaultButton("Submit", 14);
+        btnSubmit.setBounds(390, 640, 100, 30);
         btnSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //add ke database
+                Saran saran = new Saran(0, user.getId_user(), taFeedback.getText());
+                Controller c = new Controller();
+                boolean submitSaran = c.tambahSaran(saran);
+                if(submitSaran){
+                    JOptionPane.showMessageDialog(null, "Saran telah kami terima. Terima Kasih!");
+                    frame.dispose();
+                    new BerandaPelanggan((Pelanggan) user);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Gagal menambahkan saran");
+                }
             }
         });
 
