@@ -1,6 +1,7 @@
 package View;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,13 +10,19 @@ import Model.*;
 import Controller.*;
 
 public class MenuMenampilkanListUser {
+    JFrame frame;
+    JPanel panel;
+    DefaultTableModel tableModel;
+    JTable tabelUser;
+    JScrollPane sp;
+    JButton back;
     public MenuMenampilkanListUser(){
         Controller c=new Controller();
         Method m=new Method();
-        JFrame frame = new DefaultComponentSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
 
         //panel
-        JPanel panel= new JPanel();
+        panel= new JPanel();
         panel.setSize(600, 800);
         panel.setBackground(new Color(201, 228, 197));
 
@@ -27,13 +34,19 @@ public class MenuMenampilkanListUser {
         String column[]={"Tingkatan","Id User","Nama Depan","Nama Belakang","email"};
 
         //tabel data
-        JTable tabelDataUser=new JTable(dataUser,column);
-        tabelDataUser.setBounds(30,40,400,600);
-        JScrollPane sp=new JScrollPane(tabelDataUser);
+        tableModel=new DefaultTableModel(dataUser,column);
+        tabelUser=new JTable(tableModel);
+        tabelUser.setBackground(new Color(201, 228, 197));
+        tabelUser.setBounds(10,100,550,600);
+        JScrollPane sp=new JScrollPane(tabelUser);
+        sp.setBounds(0,100,550,600);
+        sp.setBackground(new Color(201, 228, 197));
+        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         panel.add(sp);
 
         //button back
-        JButton back = new JButton("Kembali ke Main Menu");
+        back = new JButton("Kembali ke Main Menu");
         back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
