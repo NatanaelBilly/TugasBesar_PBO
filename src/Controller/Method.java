@@ -17,10 +17,11 @@ public class Method {
         String hasil[][]=new String[list.size()][4];
         for (int i = 0; i < list.size(); i++) {
             User currentUser= list.get(i);
-            hasil[i][0]=Integer.toString(currentUser.getId_user());
-            hasil[i][1]=currentUser.getNama_depan();
-            hasil[i][2]=currentUser.getNama_belakang();
-            hasil[i][3]=currentUser.getEmail_user();
+            hasil[i][0]= currentUser.getRole().toString();
+            hasil[i][1]=Integer.toString(currentUser.getId_user());
+            hasil[i][2]=currentUser.getNama_depan();
+            hasil[i][3]=currentUser.getNama_belakang();
+            hasil[i][4]=currentUser.getEmail_user();
         }
         return hasil;
     }
