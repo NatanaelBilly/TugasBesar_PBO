@@ -5,23 +5,27 @@ import Model.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 public class BerandaAdmin {
+    JFrame frame;
+    JPanel panel;
+    JLabel labelNama;
+    JButton buttonPendpatan,buttonListTransaksi,buttonListUser,buttonListFeedback;
 
     public BerandaAdmin(Admin admin){
         //frame
-        JFrame frame = new DefaultComponentSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
 
         //panel
-        JPanel panel= new JPanel();
+        panel= new JPanel();
         panel.setSize(600, 800);
         panel.setBackground(new Color(201, 228, 197));
 
         //label
-        JLabel labelNama =new JLabel("WELCOME ADMIN "+admin.getNama_depan());
+        labelNama =new JLabel("WELCOME ADMIN "+admin.getNama_depan());
         labelNama.setBounds(250,20,200,30);
         panel.add(labelNama);
 
         //button lihat saldo pendapatan apk
-        JButton buttonPendpatan = new JButton("lihat pendapatan");
+        buttonPendpatan = new JButton("lihat pendapatan");
         buttonPendpatan.setBounds(200, 100, 200, 30);
         buttonPendpatan.addActionListener(new ActionListener() {
             @Override
@@ -32,7 +36,7 @@ public class BerandaAdmin {
         });
         panel.add(buttonPendpatan);
         //button lihat list user
-        JButton buttonListTransaksi = new JButton("lihat tabel transaksi");
+        buttonListTransaksi = new JButton("lihat tabel transaksi");
         buttonListTransaksi.setBounds(200, 150, 200, 30);
         buttonListTransaksi.addActionListener(new ActionListener() {
             @Override
@@ -44,7 +48,7 @@ public class BerandaAdmin {
         panel.add(buttonListTransaksi);
 
         //button lihat seluruh transaksi
-        JButton buttonListUser = new JButton("lihat tabel user");
+        buttonListUser = new JButton("lihat tabel user");
         buttonListUser.setBounds(200, 200, 200, 30);
         buttonListUser.addActionListener(new ActionListener() {
             @Override
@@ -56,7 +60,7 @@ public class BerandaAdmin {
         panel.add(buttonListUser);
 
         //button lihat feedback dari user
-        JButton buttonListFeedback = new JButton("lihat tabel feedback");
+        buttonListFeedback = new JButton("lihat tabel feedback");
         buttonListFeedback.setBounds(200, 250, 200, 30);
         buttonListFeedback.addActionListener(new ActionListener() {
             @Override
