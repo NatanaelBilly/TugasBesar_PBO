@@ -2,6 +2,7 @@ package View;
 import Controller.Controller;
 import Controller.Method;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,26 +13,24 @@ public class MenuMenampilkanFeedbackDariPengguna {
         Method m=new Method();
         //frame
         JFrame frame = new DefaultComponentSetting().defaultFrame();
-
-        //panel
-        JPanel panel= new JPanel();
-        panel.setSize(600, 800);
-        panel.setBackground(new Color(201, 228, 197));
+        frame.setBackground(new Color(201, 228, 197));
 
         //init isi data
         c.getSeluruhSaran();
         String [][] dataSaran=m.konversiListToArraySaran(c.listSaran);
-//        String dataSaran[][]={ {"101","Amit","670000"},
-//                {"102","Jai","780000"},
-//                {"101","Sachin","700000"}};
         //init kolom
         String column[]={"id saran","Id pengguna","Saran"};
 
         //tabel data
-        JTable tabelSaran=new JTable(dataSaran,column);
-        tabelSaran.setBounds(10,40,550,600);
+        DefaultTableModel tabelModel=new DefaultTableModel(dataSaran,column);
+        JTable tabelSaran=new JTable(tabelModel);
+        tabelSaran.setBackground(new Color(201, 228, 197));
+        tabelSaran.setBounds(10,100,550,600);
         JScrollPane sp=new JScrollPane(tabelSaran);
-        panel.add(sp);
+        sp.setBounds(0,100,550,600);
+        sp.setBackground(new Color(201, 228, 197));
+        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         //button back
         JButton back = new JButton("Kembali ke Main Menu");
@@ -43,13 +42,11 @@ public class MenuMenampilkanFeedbackDariPengguna {
                 frame.dispose();
             }
         });
-        panel.add(back);
+        frame.add(back);
 
         //initialize panel dan frame
-        panel.setLayout(null);
-        panel.setVisible(true);
-        frame.add(panel);
         frame.setLocationRelativeTo(null);
+        frame.add(sp);
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
