@@ -1,5 +1,6 @@
 package View;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,13 +9,19 @@ import Controller.Controller;
 import Controller.Method;
 import Model.*;
 public class MenuMenampilkanSeluruhTransaksi {
+    JFrame frame;
+    JPanel panel;
+    DefaultTableModel tableModel;
+    JTable tabelUser;
+    JScrollPane sp;
+    JButton back;
     public MenuMenampilkanSeluruhTransaksi(){
         Controller c =new Controller();
         Method m=new Method();
-        JFrame frame = new DefaultComponentSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
 
         //panel
-        JPanel panel= new JPanel();
+        panel= new JPanel();
         panel.setSize(600, 800);
         panel.setBackground(new Color(201, 228, 197));
 
@@ -26,13 +33,19 @@ public class MenuMenampilkanSeluruhTransaksi {
         String column[]={"id transaksi","Id pelanggan","id kurir","tanggal transaksi","total pembayaran"};
 
         //tabel data
-        JTable tabelDataTransaksi=new JTable(dataTransakksi,column);
-        tabelDataTransaksi.setBounds(30,40,400,600);
-        JScrollPane sp=new JScrollPane(tabelDataTransaksi);
+        tableModel=new DefaultTableModel(dataTransakksi,column);
+        tabelUser=new JTable(tableModel);
+        tabelUser.setBackground(new Color(201, 228, 197));
+        tabelUser.setBounds(10,100,550,600);
+        sp=new JScrollPane(tabelUser);
+        sp.setBounds(0,100,550,600);
+        sp.setBackground(new Color(201, 228, 197));
+        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         panel.add(sp);
 
         //button back
-        JButton back = new JButton("Kembali ke Main Menu");
+        back = new JButton("Kembali ke Main Menu");
         back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override

@@ -1,19 +1,23 @@
 package View;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.Object;
 import java.awt.Color;
 import Model.*;
 public class MenuLihatSaldoAdmin {
-
+    JFrame frame;
+    JPanel panel;
+    JLabel labelTotal,labelGetTotal;
+    JButton detilTransaksi,back;
     public MenuLihatSaldoAdmin(Admin admin){
         //Frame
-        JFrame frame = new DefaultComponentSetting().defaultFrame();
+        frame = new DefaultComponentSetting().defaultFrame();
 
         //panel
-        JPanel panel= new JPanel();
+        panel= new JPanel();
         panel.setSize(600, 800);
         panel.setBackground(new Color(201, 228, 197));
 
@@ -22,15 +26,15 @@ public class MenuLihatSaldoAdmin {
         str.append(admin.getSaldo());
 
         //Label
-        JLabel labelTotal  = new DefaultComponentSetting().defaultRegularLabel("Saldo Total Pendapatan");
+        labelTotal  = new DefaultComponentSetting().defaultRegularLabel("Saldo Total Pendapatan");
         labelTotal.setBounds(30, 100, 150, 30);
         panel.add(labelTotal);
-        JLabel labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(str.toString());
+        labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(str.toString());
         labelGetTotal.setBounds(200, 100, 150, 30);
         panel.add(labelGetTotal);
 
         //button
-        JButton detilTransaksi = new DefaultComponentSetting().defaultButton("Detail Transaksi",50);
+        detilTransaksi = new DefaultComponentSetting().defaultButton("Detail Transaksi",50);
         detilTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,8 +45,8 @@ public class MenuLihatSaldoAdmin {
         panel.add(detilTransaksi);
 
         //button back
-        JButton back = new JButton("Kembali ke Main Menu");
-        back.setBounds(20,500,100,40);
+        back = new JButton("Kembali ke Main Menu");
+        back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
