@@ -14,7 +14,7 @@ public class Method {
         }
     }
     public String [][] konversiListToArray(ArrayList<User> list){
-        String hasil[][]=new String[list.size()][4];
+        String hasil[][]=new String[list.size()][5];
         for (int i = 0; i < list.size(); i++) {
             User currentUser= list.get(i);
             hasil[i][0]= currentUser.getRole().toString();
