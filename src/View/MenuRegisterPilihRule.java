@@ -1,7 +1,6 @@
 package View;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -10,10 +9,11 @@ public class MenuRegisterPilihRule {
     JPanel registerPilihRule;
     JLabel pilihRule, labelKembali;
     JButton registerKurir, registerPelanggan;
+    DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuRegisterPilihRule() {
         //Link Kembali
-        labelKembali = new DefaultComponentSetting().defaultBackLabel();
+        labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -44,11 +44,11 @@ public class MenuRegisterPilihRule {
         });
 
         //Label
-        pilihRule = new DefaultComponentSetting().defaultHeadingLabel("Pilih Role Kamu.");
+        pilihRule = GUI.defaultHeadingLabel("Pilih Role Kamu.");
         pilihRule.setBounds(0, 200, 600, 30);
 
         //Button Kurir
-        registerKurir = new DefaultComponentSetting().defaultButton("Kurir", 18);
+        registerKurir = GUI.defaultButton("Kurir", 18);
         registerKurir.setBounds(60, 300, 480, 60);
         registerKurir.addActionListener(e -> {
             frame.dispose();
@@ -56,7 +56,7 @@ public class MenuRegisterPilihRule {
         });
 
         //Button Pelanggan
-        registerPelanggan = new DefaultComponentSetting().defaultButton("Pelanggan", 18);
+        registerPelanggan = GUI.defaultButton("Pelanggan", 18);
         registerPelanggan.setBounds(60, 400, 480, 60);
         registerPelanggan.addActionListener(e -> {
             frame.dispose();
@@ -68,14 +68,14 @@ public class MenuRegisterPilihRule {
         registerPilihRule.setBounds(0, 0, 600, 800);
         registerPilihRule.setLayout(null);
         registerPilihRule.setVisible(true);
-        registerPilihRule.setBackground(Color.white);
+        registerPilihRule.setBackground(GUI.backGroundColor());
         registerPilihRule.add(labelKembali);
         registerPilihRule.add(pilihRule);
         registerPilihRule.add(registerKurir);
         registerPilihRule.add(registerPelanggan);
 
         //Frame
-        frame = new DefaultComponentSetting().defaultFrame();
+        frame = GUI.defaultFrame();
         frame.add(registerPilihRule);
     }
 }

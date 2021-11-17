@@ -1,5 +1,7 @@
 package View;
 
+import Model.Constant;
+
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
@@ -7,7 +9,7 @@ import java.awt.*;
 public class DefaultComponentSetting {
     public JFrame defaultFrame() {
         //Declare Frame
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame(Constant.APPLICATION_NAME);
 
         //Initialize Frame
         frame.setLayout(null);
@@ -41,7 +43,11 @@ public class DefaultComponentSetting {
         JButton button = new JButton(namaButton);
         button.setBackground(new Color(217, 217, 217));
         button.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-        button.setFont(new Font("Arial",Font.BOLD,besarFont));
+        button.setFont(new Font("Arial", Font.BOLD, besarFont));
         return button;
+    }
+
+    public Color backGroundColor() {
+        return new Color(204, 180, 114);
     }
 }

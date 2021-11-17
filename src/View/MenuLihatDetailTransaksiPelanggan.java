@@ -26,7 +26,7 @@ public class MenuLihatDetailTransaksiPelanggan {
         Font fontInfoPengiriman = new Font("Arial", Font.PLAIN, 35);
 
         //Frame
-        frame = new JFrame(Constant.applicationName+" - Detail Transaksi");
+        frame = new JFrame(Constant.APPLICATION_NAME+" - Detail Transaksi");
         frame.setSize(600, 800);
 
         //line border
