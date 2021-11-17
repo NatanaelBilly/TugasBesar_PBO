@@ -5,11 +5,8 @@
  */
 package View;
 
+import Controller.KurirController;
 import Model.Kurir;
-import Model.UserManager;
-
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -33,7 +30,13 @@ public class BerandaKurir implements ActionListener{
     
     private final Kurir kurir;
     public BerandaKurir(Kurir kurir){
+        
+//        if(kurir == null || new KurirController().cekKurirLogin())
+//        {
+//            new MenuLogin();
+//        }
         this.kurir = kurir;
+        
         
         //label
         labelPesan = GUI.defaultHeadingLabel("Selamat Datang, "+ kurir.getNama_depan() +" !");
@@ -83,7 +86,7 @@ public class BerandaKurir implements ActionListener{
                 frame.dispose();
                 break;
             case "Lihat Order":
-                new MenuLihatOrderKurir();
+                new MenuLihatOrderKurir(kurir);
                 frame.dispose();
                 break;
             case "Lihat Transaksi":
