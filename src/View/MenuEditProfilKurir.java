@@ -40,7 +40,10 @@ public class MenuEditProfilKurir {
     private final DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuEditProfilKurir(Kurir kurir) {
-
+//        if(kurir == null || new KurirController().cekKurirLogin())
+//        {
+//            new MenuLogin();
+//        }
         this.kurir = kurir;
 
         //Label Judul

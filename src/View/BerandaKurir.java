@@ -1,5 +1,6 @@
 package View;
 
+
 import Model.Constant;
 import Model.Kurir;
 import Model.UserManager;
@@ -20,6 +21,7 @@ public class BerandaKurir implements ActionListener {
 
     public BerandaKurir(Kurir kurir) {
         this.kurir = kurir;
+
         //label
         labelPesan = GUI.defaultHeadingLabel("Selamat Datang, " + kurir.getNama_depan() + "!");
         labelPesan.setBounds(145, 50, 300, 80);
