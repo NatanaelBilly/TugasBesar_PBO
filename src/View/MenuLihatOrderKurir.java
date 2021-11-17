@@ -44,6 +44,7 @@ public class MenuLihatOrderKurir {
         panel.setBorder(new EmptyBorder(25, 50, 25, 50));
         
         ArrayList<Transaksi> daftarOrder = con.ambilDaftarOrder();
+        //ArrayList<Transaksi> daftarOrder = new ArrayList<>();
         panelOrder = new JPanel[daftarOrder.size()];
 
         for (int i = 0; i < daftarOrder.size(); i++) {
@@ -76,6 +77,7 @@ public class MenuLihatOrderKurir {
             btnDetail.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    //Button Ambil
                 }
             });
 
