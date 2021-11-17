@@ -1,72 +1,56 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
-import Controller.KurirController;
+
+import Model.Constant;
 import Model.Kurir;
+import Model.UserManager;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
 
-/**
- *
- * @author Asus
- */
-public class BerandaKurir implements ActionListener{
-    private JFrame frame;
-    private JPanel panelBerandaKurir;
-    private JLabel labelPesan;
-    private JButton btnProfil, btnOrder, btnTransaksi, btnObrolan;
+public class BerandaKurir implements ActionListener {
+    JFrame frame;
+    JLabel labelPesan;
+    JButton btnProfil, btnOrder, btnTransaksi, btnObrolan, btnLogout;
+    DefaultComponentSetting GUI = new DefaultComponentSetting();
+    Kurir kurir;
 
-    private final DefaultComponentSetting GUI = new DefaultComponentSetting();
-    
-    private final Kurir kurir;
-    public BerandaKurir(Kurir kurir){
-        
-//        if(kurir == null || new KurirController().cekKurirLogin())
-//        {
-//            new MenuLogin();
-//        }
+    public BerandaKurir(Kurir kurir) {
         this.kurir = kurir;
-        
-        
+
         //label
-        labelPesan = GUI.defaultHeadingLabel("Selamat Datang, "+ kurir.getNama_depan() +" !");
+        labelPesan = GUI.defaultHeadingLabel("Selamat Datang, " + kurir.getNama_depan() + "!");
         labelPesan.setBounds(145, 50, 300, 80);
 
-        //Button
-        btnProfil = GUI.defaultButton("Lihat Profil",20);
+        //Button Profil
+        btnProfil = GUI.defaultButton("Lihat Profil", 20);
         btnProfil.setBounds(170, 150, 250, 80);
         btnProfil.addActionListener(this);
-        
-        btnOrder = GUI.defaultButton("Lihat Order",20);
+
+        //Button Order
+        btnOrder = GUI.defaultButton("Lihat Order", 20);
         btnOrder.setBounds(170, 250, 250, 80);
         btnOrder.addActionListener(this);
-        
-        btnTransaksi = GUI.defaultButton("Lihat Transaksi",20);
+
+        //Button Transaksi
+        btnTransaksi = GUI.defaultButton("Lihat Transaksi", 20);
         btnTransaksi.setBounds(170, 350, 250, 80);
         btnTransaksi.addActionListener(this);
 
-        
-        btnObrolan = GUI.defaultButton("Obrolan",20);
+        //Button Obrolan
+        btnObrolan = GUI.defaultButton("Obrolan", 20);
         btnObrolan.setBounds(170, 450, 250, 80);
         btnObrolan.addActionListener(this);
-        
-        //Panel
-//        panelBerandaKurir = new JPanel();
-//        panelBerandaKurir.setBounds(0,0,600,50);
-//        panelBerandaKurir.setLayout(null);
-//        panelBerandaKurir.setVisible(true);
-        
-        
+
+        //Button Logout
+        btnLogout = GUI.defaultButton("Logout", 20);
+        btnLogout.setBounds(170, 550, 250, 80);
+        btnLogout.addActionListener(this);
+
         //Frame
         frame = GUI.defaultFrame();
         frame.add(btnProfil);
@@ -74,26 +58,34 @@ public class BerandaKurir implements ActionListener{
         frame.add(btnTransaksi);
         frame.add(btnObrolan);
         frame.add(labelPesan);
-        //frame.add(panelBerandaKurir);
+        frame.add(btnLogout);
+        frame.getContentPane().setBackground(GUI.backGroundColor());
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         switch (command) {
             case "Lihat Profil":
-                new MenuLihatProfilKurir(kurir);
                 frame.dispose();
+                new MenuLihatProfilKurir(kurir);
                 break;
             case "Lihat Order":
-                new MenuLihatOrderKurir(kurir);
                 frame.dispose();
+                new MenuLihatOrderKurir();
                 break;
             case "Lihat Transaksi":
                 frame.dispose();
                 break;
             case "Obrolan":
                 frame.dispose();
+                //new obrolan
+                break;
+            case "Logout":
+                JOptionPane.showMessageDialog(null, Constant.INFO_LOGOUT);
+                frame.dispose();
+                UserManager.getInstance().logOut();
+                new HalamanAwal();
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Berhasil Keluar");

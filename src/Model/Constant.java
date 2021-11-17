@@ -1,5 +1,8 @@
 package Model;
 
 public class Constant {
-    public final static String applicationName = "Go-block";
+    public final static String APPLICATION_NAME = "PaketKu";
+    public final static String ERROR_MESSAGE = "Mohon isi data dengan benar.";
+    public final static String INFO_LOGOUT="Terima kasih sudah menggunakan sistem kami!";
+
 }

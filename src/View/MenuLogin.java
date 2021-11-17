@@ -3,7 +3,6 @@ package View;
 import Controller.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -14,10 +13,11 @@ public class MenuLogin {
     JPasswordField inputPassword;
     JPanel panelLogin;
     JButton buttonLogin;
+    DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuLogin() {
         //Link Kembali
-        linkKembali = new DefaultComponentSetting().defaultBackLabel();
+        linkKembali = GUI.defaultBackLabel();
         linkKembali.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -48,29 +48,28 @@ public class MenuLogin {
         });
 
         //Label Judul
-        labelJudul = new DefaultComponentSetting().defaultHeadingLabel("Log In");
-        labelJudul.setBounds(0,100,600,40);
-
+        labelJudul = GUI.defaultHeadingLabel("Log In");
+        labelJudul.setBounds(0,150,600,40);
 
         //Label Input Email
-        labelEmail = new DefaultComponentSetting().defaultRegularLabel("Email");
-        labelEmail.setBounds(75, 200, 150, 35);
+        labelEmail = GUI.defaultRegularLabel("Email");
+        labelEmail.setBounds(75, 250, 150, 35);
 
         //TextField Input Email
         inputEmail = new JTextField();
-        inputEmail.setBounds(225, 200, 300, 35);
+        inputEmail.setBounds(225, 250, 300, 35);
 
         //Label Input Password
-        labelPassword = new DefaultComponentSetting().defaultRegularLabel("Password");
-        labelPassword.setBounds(75, 270, 150, 35);
+        labelPassword = GUI.defaultRegularLabel("Password");
+        labelPassword.setBounds(75, 320, 150, 35);
 
         //Input Password
         inputPassword = new JPasswordField();
-        inputPassword.setBounds(225, 270, 300, 35);
+        inputPassword.setBounds(225, 320, 300, 35);
 
         //Button Login
-        buttonLogin = new DefaultComponentSetting().defaultButton("Login",20);
-        buttonLogin.setBounds(350, 350, 100, 45);
+        buttonLogin = GUI.defaultButton("Login",20);
+        buttonLogin.setBounds(425, 400, 100, 45);
         buttonLogin.addActionListener(e -> {
             String email = inputEmail.getText();
             String password = String.valueOf(inputPassword.getPassword());
@@ -80,7 +79,6 @@ public class MenuLogin {
             boolean bisaLogin = controller.cekUserDiDataBase(email, password);
 
             if (bisaLogin) {
-                System.out.println("Bisa Login");
                 frame.dispose();
                 new LoginHandler(email, password);
             } else {
@@ -93,7 +91,6 @@ public class MenuLogin {
         panelLogin.setVisible(true);
         panelLogin.setLayout(null);
         panelLogin.setBounds(0, 0, 600, 800);
-        panelLogin.setBackground(Color.white);
         panelLogin.add(labelEmail);
         panelLogin.add(inputEmail);
         panelLogin.add(labelPassword);
@@ -101,10 +98,10 @@ public class MenuLogin {
         panelLogin.add(buttonLogin);
         panelLogin.add(linkKembali);
         panelLogin.add(labelJudul);
+        panelLogin.setBackground(GUI.backGroundColor());
 
         //frame
         frame = new DefaultComponentSetting().defaultFrame();
         frame.add(panelLogin);
-//        frame.add(linkKembali);
     }
 }
