@@ -251,7 +251,17 @@ public class Controller {
                     transaksi.setTotal_pembayaran(rs.getInt("total_pembayaran"));
                     
                     //Get Status nya belum
-                    //transaksi.setStatus_pemesanan(rs.getInt("status_pemesanan"));
+                    String status_pemesanan = rs.getString("status_pemesanan");
+                    int status;
+                    if(status_pemesanan.equals("MENUNGGU_KURIR")){
+                        status = 0;
+                    } else if(status_pemesanan.equals("DIANTAR")){
+                        status = 1;
+                    } else {
+                        status = 2;
+                    }
+                    
+                    transaksi.setStatus_pemesanan(status);
                     
                     daftarOrder.add(transaksi);
             }
@@ -262,6 +272,20 @@ public class Controller {
         return daftarOrder;
     }
 
+    public ArrayList<Transaksi> ambilDaftarOrderMenunggu(ArrayList<Transaksi> daftarOrder)
+    {
+        ArrayList<Transaksi> daftarOrderMenunggu = new ArrayList<>();
+        for (Transaksi order : daftarOrder)
+        {
+            if(order.getStatus_pemesanan().equals("MENUNGGU KURIR"))
+            {
+                daftarOrderMenunggu.add(order);
+            }
+        }
+        
+        return daftarOrderMenunggu;
+    }
+    
     public void logIn(String email, String password) {
         conn.connect();
         String query = "SELECT * FROM user WHERE email_user='" + email + "' AND password = '" + password + "'";

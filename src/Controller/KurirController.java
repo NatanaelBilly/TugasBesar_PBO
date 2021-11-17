@@ -22,7 +22,6 @@ public class KurirController {
     private Controller con = new Controller();
 
     public boolean EditDataKurirToDB(Kurir kurir) {
-        System.out.println(kurir.toString());
         Controller.conn.connect();
         String query = "UPDATE user, kurir "
                 + "SET "
@@ -76,6 +75,47 @@ public class KurirController {
             return false;
         }
 
+    }
+    
+    
+    public boolean ambilOrderOlehKurir(int idTransaksi, int idKurir)
+    {
+        Controller.conn.connect();
+        String query = "UPDATE transaksi "
+                + "SET "
+                + "status_pemesanan = 'DIANTAR' ,"
+                + "id_kurir = " + idKurir
+                + " WHERE id_transaksi=" + idTransaksi;
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+            return (true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return (false);
+        }
+    }
+    
+    public boolean ubahKetersediaanKurir(int idKurir, int ketersediaan) {
+        
+        Controller.conn.connect();
+        String query = "UPDATE kurir "
+                + "SET "
+                + "ketersediaan = " + ketersediaan
+                + " WHERE id_user= " + idKurir;
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+            return (true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return (false);
+        }
+    }
+    
+    public boolean cekKurirLogin()
+    {
+        return (Kurir) new Model.UserManager().getInstance().getUser() == null;
     }
 
 }

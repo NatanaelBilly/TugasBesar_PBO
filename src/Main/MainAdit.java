@@ -8,6 +8,7 @@ import Model.User;
 import View.BerandaKurir;
 import View.MenuLihatOrderKurir;
 import View.MenuLihatProfilKurir;
+import View.MenuLogin;
 
 /**
  *
@@ -16,8 +17,8 @@ import View.MenuLihatProfilKurir;
 public class MainAdit {
     public static void main(String[] args) {
         
-        //Kurir kurir = new Controller().ambilDataKurir(8);
+        Kurir kurir = new Controller().ambilDataKurir(8);
 
-        new MenuLihatOrderKurir();
+        new MenuLogin();
     }
 }
