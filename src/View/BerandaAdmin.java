@@ -20,7 +20,7 @@ public class BerandaAdmin {
         panel.setBackground(new Color(201, 228, 197));
 
         //label
-        labelNama =new JLabel("WELCOME ADMIN "+admin.getNama_depan());
+        labelNama =new JLabel("WELCOME ADMIN "+admin.getNamaDepan());
         labelNama.setBounds(250,20,200,30);
         panel.add(labelNama);
 
@@ -41,7 +41,7 @@ public class BerandaAdmin {
         buttonListTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenuMenampilkanSeluruhTransaksi();
+                new MenuMenampilkanSeluruhTransaksi(admin);
                 frame.dispose();
             }
         });
@@ -53,7 +53,7 @@ public class BerandaAdmin {
         buttonListUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenuMenampilkanListUser();
+                new MenuMenampilkanListUser(admin);
                 frame.dispose();
             }
         });
@@ -65,7 +65,7 @@ public class BerandaAdmin {
         buttonListFeedback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenuMenampilkanFeedbackDariPengguna();
+                new MenuMenampilkanFeedbackDariPengguna(admin);
                 frame.dispose();
             }
         });

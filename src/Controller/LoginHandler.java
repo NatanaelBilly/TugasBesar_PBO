@@ -3,6 +3,8 @@ package Controller;
 import Model.Kurir;
 import Model.Pelanggan;
 import Model.User;
+import Model.Admin;
+import View.BerandaAdmin;
 import View.BerandaKurir;
 import View.BerandaPelanggan;
 
@@ -19,6 +21,8 @@ public class LoginHandler {
             new BerandaPelanggan((Pelanggan) user);
         } else if(user instanceof Kurir){
             new BerandaKurir((Kurir) user);
+        }else if (user instanceof Admin){
+            new BerandaAdmin((Admin) user);
         }
     }
 }
