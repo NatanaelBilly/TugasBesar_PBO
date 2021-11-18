@@ -71,25 +71,25 @@ public class MenuLihatDaftarTransaksiPelanggan {
             labelTgl.setBounds(30, 20, 320, 30);
 
             //Label Pengirim untuk Setiap Transaksi
-            labelPengirim = GUI.defaultRegularLabel("Pengirim: " + transaksi.getNama_pengirim());
+            labelPengirim = GUI.defaultRegularLabel("Pengirim: " + transaksi.getNamaPengirim());
             labelPengirim.setBounds(30, 50, 320, 30);
 
             //Label Penerima
-            labelPenerima = GUI.defaultRegularLabel("Penerima: " + transaksi.getNama_penerima());
+            labelPenerima = GUI.defaultRegularLabel("Penerima: " + transaksi.getNamaPenerima());
             labelPenerima.setBounds(30, 80, 320, 30);
 
             labelKurir = GUI.defaultRegularLabel("Kurir: kurir");
             labelKurir.setBounds(30, 110, 320, 30);
 
-            labelTotal = GUI.defaultRegularLabel("Total: " + transaksi.getTotal_pembayaran());
+            labelTotal = GUI.defaultRegularLabel("Total: " + transaksi.getTotalPembayaran());
             labelTotal.setBounds(30, 140, 320, 30);
 
-            System.out.println(transaksi.getStatus_pemesanan());
+            System.out.println(transaksi.getStatusPemesanan());
 
             labelLogo = new JLabel();
-            if (transaksi.getStatus_pemesanan().equalsIgnoreCase("MENUNGGU KURIR")) {
+            if (transaksi.getStatusPemesanan().equalsIgnoreCase("MENUNGGU KURIR")) {
                 logo = new ImageIcon("assets/menunggu_kurir.jpg");
-            } else if (transaksi.getStatus_pemesanan().equalsIgnoreCase("diantar")) {
+            } else if (transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")) {
                 logo = new ImageIcon("assets/diantar.jpg");
             } else {
                 logo = new ImageIcon("assets/order_selesai.jpg");

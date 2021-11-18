@@ -44,7 +44,7 @@ public class MenuIsiFeedbackAdmin {
         labelProfilePic.setBounds(130,50,320,260);
 
         //Nama
-        labelNama = GUI.defaultHeadingLabel("Hallo, "+pelanggan.getNama_depan()+" "+pelanggan.getNama_belakang());
+        labelNama = GUI.defaultHeadingLabel("Hallo, "+pelanggan.getNamaDepan()+" "+pelanggan.getNamaBelakang());
 
         //Ket
         labelKet = GUI.defaultRegularLabel("Let us know what you're thinking about this application");
@@ -75,7 +75,7 @@ public class MenuIsiFeedbackAdmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!taFeedback.getText().equals("")){
-                    Saran saran = new Saran(0, pelanggan.getId_user(), taFeedback.getText());
+                    Saran saran = new Saran(0, pelanggan.getIdUser(), taFeedback.getText());
                     Controller c = new Controller();
                     boolean submitSaran = c.tambahSaran(saran);
                     if(submitSaran){

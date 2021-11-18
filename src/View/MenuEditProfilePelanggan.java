@@ -63,11 +63,11 @@ public class MenuEditProfilePelanggan {
         labelKonfirmasiPass.setBounds(30,130,200,40);
 
         //Text Field
-        tfNamaDepan = new JTextField(pelanggan.getNama_depan());
+        tfNamaDepan = new JTextField(pelanggan.getNamaDepan());
         tfNamaDepan.setBounds(200,150,350,40);
-        tfNamaBelakang = new JTextField(pelanggan.getNama_belakang());
+        tfNamaBelakang = new JTextField(pelanggan.getNamaBelakang());
         tfNamaBelakang.setBounds(200,210,350,40);
-        tfEmail = new JTextField(pelanggan.getEmail_user());
+        tfEmail = new JTextField(pelanggan.getEmailUser());
         tfEmail.setBounds(200,270,350,40);
         tfNoHp = new JTextField(pelanggan.getNoHp());
         tfNoHp.setBounds(200,330,350,40);
@@ -91,7 +91,7 @@ public class MenuEditProfilePelanggan {
                 if(user.getPassword().equals(pass)){
                     if(passBaru.equals(konfirmasiPass)){
                         Controller c = new Controller();
-                        boolean ubahPassword = c.ubahPassword(passBaru, user.getId_user());
+                        boolean ubahPassword = c.ubahPassword(passBaru, user.getIdUser());
                         if(ubahPassword){
                             user.setPassword(passBaru);
                             JOptionPane.showMessageDialog(null, "Password berhasil diubah.");
@@ -114,12 +114,12 @@ public class MenuEditProfilePelanggan {
             public void actionPerformed(ActionEvent e) {
                 Controller c = new Controller();
                 User user = new UserManager().getInstance().getUser();
-                if(user.getEmail_user().equals(tfEmail.getText()) || !user.getEmail_user().equals(tfEmail.getText()) && !c.cekUserDiDataBase(tfEmail.getText())){
-                    boolean updateDataPelanggan = c.updateDataPelanggan(tfNamaDepan.getText(), tfNamaBelakang.getText(), tfEmail.getText(), tfNoHp.getText(), pelanggan.getId_user());
+                if(user.getEmailUser().equals(tfEmail.getText()) || !user.getEmailUser().equals(tfEmail.getText()) && !c.cekUserDiDataBase(tfEmail.getText())){
+                    boolean updateDataPelanggan = c.updateDataPelanggan(tfNamaDepan.getText(), tfNamaBelakang.getText(), tfEmail.getText(), tfNoHp.getText(), pelanggan.getIdUser());
                     if(updateDataPelanggan){
-                        user.setNama_depan(tfNamaDepan.getText());
-                        user.setNama_belakang(tfNamaBelakang.getText());
-                        user.setEmail_user(tfEmail.getText());
+                        user.setNamaDepan(tfNamaDepan.getText());
+                        user.setNamaBelakang(tfNamaBelakang.getText());
+                        user.setEmailUser(tfEmail.getText());
                         user.setNoHp(tfNoHp.getText());
                         JOptionPane.showMessageDialog(null, "Data profil kamu berhasil diupdate.");
                         frame.dispose();

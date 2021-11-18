@@ -14,7 +14,7 @@ public class BerandaPelanggan {
 
     public BerandaPelanggan(Pelanggan pelanggan) {
         //Label
-        labelMessage = GUI.defaultHeadingLabel("Hallo, " + pelanggan.getNama_depan() + "!");
+        labelMessage = GUI.defaultHeadingLabel("Hallo, " + pelanggan.getNamaDepan() + "!");
 
         //Button Profile
         btnProfile = GUI.defaultButton("Lihat Profil", 20);
