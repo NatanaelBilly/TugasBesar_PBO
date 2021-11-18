@@ -9,6 +9,8 @@ import Controller.Controller;
 import Controller.KurirController;
 import Model.Kurir;
 import Model.Transaksi;
+import Model.User;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;

@@ -2,6 +2,8 @@ package View;
 
 import Model.Constant;
 import Model.Pelanggan;
+import Model.StatusPengiriman;
+import Model.Transaksi;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -11,23 +13,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class MenuLihatDaftarTransaksiPelanggan {
-    JFrame frame;
-    JPanel panel, panelTransaksi, panelMenu;
-    JLabel labelKembali, labelTgl, labelPengirim, labelPenerima, labelKurir, labelTotal, labelLogo;
-    ImageIcon logo;
-    JButton btnDetail;
-    DefaultComponentSetting GUI = new DefaultComponentSetting();
+    private JFrame frame;
+    private JPanel panel, panelTransaksi;
+    private JLabel labelKembali, labelTgl, labelPengirim, labelPenerima, labelKurir, labelTotal, labelLogo;
+    private ImageIcon logo;
+    private JButton btnDetail;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuLihatDaftarTransaksiPelanggan(Pelanggan pelanggan) {
         labelKembali = GUI.defaultBackLabel();
-        labelKembali.setVisible(true);
         labelKembali.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
-                new BerandaPelanggan((Pelanggan) pelanggan);
+                new BerandaPelanggan(pelanggan);
             }
 
             @Override
@@ -51,143 +53,76 @@ public class MenuLihatDaftarTransaksiPelanggan {
             }
         });
 
-        Font fontText = new Font("Arial", Font.PLAIN, 18);
-        Font fontHarga = new Font("Arial", Font.BOLD, 18);
-        Font fontButton = new Font("Arial", Font.BOLD, 16);
-
         frame = GUI.defaultFrame();
         panel = new JPanel();
+        frame.add(panel);
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(new EmptyBorder(30, 60, 30, 60));
+        panel.setBounds(0, 100, 600, 800);
+        panel.setBackground(GUI.backGroundColor());
+        panel.add(labelKembali);
+        panel.setVisible(true);
 
-//        for (int i = 0; i < 6; i++) {
-//            JPanel panel1 = new JPanel();
-//            panel1.setPreferredSize( new Dimension(100, 200) );
-//            panel1.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-//            panel1.setBackground(new Color(200,200,0));
-//            panel.add( panel1 );
-//            panel.add(Box.createRigidArea(new Dimension(0, 25)));
-//        }
-//--------------------------------------------------------------------------------------------
-        panelTransaksi = new JPanel();
-        panelTransaksi.setPreferredSize(new Dimension(100, 200));
-        panelTransaksi.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
-        panelTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-//        panelTransaksi.setBackground(new Color(0,250,150));
-        panelTransaksi.setLayout(null);
+        for (int i = 0; i < pelanggan.getListTransaksi().size(); i++) {
+            Transaksi transaksi = pelanggan.getListTransaksi().get(i);
+            System.out.println(pelanggan.getListTransaksi().get(i).getNama_penerima());
+            System.out.println(transaksi.getTanggal());
 
-        labelTgl = new JLabel("12/10/2021");
-        labelTgl.setBounds(30, 20, 100, 30);
-        labelTgl.setFont(fontText);
-        labelPengirim = new JLabel("Pengirim : Pengirim 1");
-        labelPengirim.setBounds(30, 50, 320, 30);
-        labelPengirim.setFont(fontText);
-        labelPenerima = new JLabel("Penerima : Penerima 1");
-        labelPenerima.setBounds(30, 80, 320, 30);
-        labelPenerima.setFont(fontText);
-        labelKurir = new JLabel("Kurir : Kurir 1");
-        labelKurir.setBounds(30, 110, 320, 30);
-        labelKurir.setFont(fontText);
-        labelTotal = new JLabel("Total : 20000");
-        labelTotal.setBounds(30, 140, 320, 30);
-        labelTotal.setFont(fontHarga);
+            //Tanggal Untuk Setiap Transaksi
+            labelTgl = GUI.defaultRegularLabel(String.valueOf(transaksi.getTanggal()));
+            labelTgl.setBounds(30, 20, 320, 30);
 
-        labelLogo = new JLabel();
-        logo = new ImageIcon("assets/diantar.jpg");
-        labelLogo.setIcon(logo);
-        labelLogo.setBounds(360, 30, 100, 100);
+            //Label Pengirim untuk Setiap Transaksi
+            labelPengirim = GUI.defaultRegularLabel("Pengirim: " + transaksi.getNama_pengirim());
+            labelPengirim.setBounds(30, 50, 320, 30);
 
-        btnDetail = new JButton("Detail");
-        btnDetail.setBounds(370, 140, 80, 30);
-        btnDetail.setFont(fontButton);
-        btnDetail.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-        btnDetail.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new MenuLihatDetailTransaksiPelanggan();
+            //Label Penerima
+            labelPenerima = GUI.defaultRegularLabel("Penerima: " + transaksi.getNama_penerima());
+            labelPenerima.setBounds(30, 80, 320, 30);
+
+            labelKurir = GUI.defaultRegularLabel("Kurir: kurir");
+            labelKurir.setBounds(30, 110, 320, 30);
+
+            labelTotal = GUI.defaultRegularLabel("Total: " + transaksi.getTotal_pembayaran());
+            labelTotal.setBounds(30, 140, 320, 30);
+
+            System.out.println(transaksi.getStatus_pemesanan());
+
+            labelLogo = new JLabel();
+            if (transaksi.getStatus_pemesanan().equalsIgnoreCase("MENUNGGU KURIR")) {
+                logo = new ImageIcon("assets/menunggu_kurir.jpg");
+            } else if (transaksi.getStatus_pemesanan().equalsIgnoreCase("diantar")) {
+                logo = new ImageIcon("assets/diantar.jpg");
+            } else {
+                logo = new ImageIcon("assets/order_selesai.jpg");
             }
-        });
 
-        panelTransaksi.add(labelTgl);
-        panelTransaksi.add(labelPengirim);
-        panelTransaksi.add(labelPenerima);
-        panelTransaksi.add(labelKurir);
-        panelTransaksi.add(labelTotal);
-        panelTransaksi.add(labelLogo);
-        panelTransaksi.add(btnDetail);
+            labelLogo.setIcon(logo);
+            labelLogo.setBounds(330,30,100,100);
 
-        panel.add(panelTransaksi);
-        panel.add(Box.createRigidArea(new Dimension(0, 25)));
+            btnDetail = GUI.defaultButton("Detail", 17);
+            btnDetail.setBounds(330, 140, 100, 30);
+            btnDetail.addActionListener(e -> new MenuLihatDetailTransaksiPelanggan());
 
-//---------------------------------------------------------------------------------------------
+            panelTransaksi = new JPanel();
+            panelTransaksi.setPreferredSize(new Dimension(100, 200));
+            panelTransaksi.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
+            panelTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+            panelTransaksi.setLayout(null);
+            panelTransaksi.setVisible(true);
+            panelTransaksi.setBackground(GUI.backGroundColor());
 
-        panelTransaksi = new JPanel();
-        panelTransaksi.setPreferredSize(new Dimension(100, 200));
-        panelTransaksi.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
-        panelTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-//        panelTransaksi.setBackground(new Color(0,250,150));
-        panelTransaksi.setLayout(null);
+            panelTransaksi.add(labelTgl);
+            panelTransaksi.add(labelPengirim);
+            panelTransaksi.add(labelPenerima);
+            panelTransaksi.add(labelKurir);
+            panelTransaksi.add(labelTotal);
+            panelTransaksi.add(labelLogo);
+            panelTransaksi.add(btnDetail);
 
-        labelTgl = new JLabel("16/10/2021");
-        labelTgl.setBounds(30, 20, 100, 30);
-        labelTgl.setFont(fontText);
-        labelPengirim = new JLabel("Pengirim : Pengirim 2");
-        labelPengirim.setBounds(30, 50, 320, 30);
-        labelPengirim.setFont(fontText);
-        labelPenerima = new JLabel("Penerima : Penerima 2");
-        labelPenerima.setBounds(30, 80, 320, 30);
-        labelPenerima.setFont(fontText);
-        labelKurir = new JLabel("Kurir : Kurir 2");
-        labelKurir.setBounds(30, 110, 320, 30);
-        labelKurir.setFont(fontText);
-        labelTotal = new JLabel("Total : 15000");
-        labelTotal.setBounds(30, 140, 320, 30);
-        labelTotal.setFont(fontHarga);
-
-        labelLogo = new JLabel();
-        logo = new ImageIcon("assets/order_selesai.jpg");
-        labelLogo.setIcon(logo);
-        labelLogo.setBounds(370, 40, 80, 80);
-
-        btnDetail = new JButton("Detail");
-        btnDetail.setBounds(370, 140, 80, 30);
-        btnDetail.setFont(fontButton);
-        btnDetail.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-        btnDetail.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new MenuLihatDetailTransaksiPelanggan();
-            }
-        });
-
-        panelTransaksi.add(labelTgl);
-        panelTransaksi.add(labelPengirim);
-        panelTransaksi.add(labelPenerima);
-        panelTransaksi.add(labelKurir);
-        panelTransaksi.add(labelTotal);
-        panelTransaksi.add(labelLogo);
-        panelTransaksi.add(btnDetail);
-
-        panel.add(panelTransaksi);
-        panel.add(Box.createRigidArea(new Dimension(0, 25)));
-//
-        panelTransaksi = new JPanel();
-        panelTransaksi.setPreferredSize( new Dimension(100, 200) );
-        panelTransaksi.setMaximumSize( new Dimension(Integer.MAX_VALUE, 200) );
-        panelTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-        panelTransaksi.setBackground(new Color(200,200,0));
-        panelTransaksi.setLayout(null);
-        panel.add( panelTransaksi );
-        panel.add(Box.createRigidArea(new Dimension(0, 25)));
-
-        panelTransaksi = new JPanel();
-        panelTransaksi.setPreferredSize( new Dimension(100, 200) );
-        panelTransaksi.setMaximumSize( new Dimension(Integer.MAX_VALUE, 200) );
-        panelTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-        panelTransaksi.setBackground(new Color(200,200,0));
-        panelTransaksi.setLayout(null);
-        panel.add( panelTransaksi );
-        panel.add(Box.createRigidArea(new Dimension(0, 25)));
+            panel.add(panelTransaksi);
+            panel.add(Box.createRigidArea(new Dimension(0, 25)));
+        }
 
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setBounds(0, 0, 600, 800);
@@ -199,12 +134,7 @@ public class MenuLihatDaftarTransaksiPelanggan {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.add(labelKembali);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
-    public static void main(String[] args) {
-        Pelanggan pelanggan = new Pelanggan();
-        new MenuLihatDaftarTransaksiPelanggan(pelanggan);
-    }
 }
