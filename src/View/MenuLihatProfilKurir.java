@@ -1,5 +1,6 @@
 package View;
 
+import Controller.KurirController;
 import Model.Kurir;
 
 import java.awt.Font;
@@ -14,13 +15,18 @@ import javax.swing.JLabel;
 
 public class MenuLihatProfilKurir {
     private JFrame frame;
-    private JLabel labelMenu, labelProfilePic, labelNama, labelEmail, labelNoHp, labelNIK, labelPlat, labelKendaraan,
-            TampilanNama, TampilanEmail, TampilanNoHp, TampilanNIK, TampilanPlat, TampilanKendaraan;
+    private JLabel labelMenu, labelProfilePic, labelNama, labelEmail, labelNoHp, labelNIK, labelPlat, labelKendaraan, labelKetersediaan,
+            TampilanNama, TampilanEmail, TampilanNoHp, TampilanNIK, TampilanPlat, TampilanKendaraan, TampilanKetersediaan;
     private ImageIcon profilePic;
     
     private final DefaultComponentSetting GUI = new DefaultComponentSetting();
     public MenuLihatProfilKurir(Kurir kurir)
     {
+//        if(kurir == null || new KurirController().cekKurirLogin())
+//        {
+//            new MenuLogin();
+//        }
+        
         //Data Template
 //        int data_id = kurir.getId_user();
 //        Role data_role = kurir.getRole();
@@ -33,7 +39,7 @@ public class MenuLihatProfilKurir {
         String data_plat = kurir.getPlat();
         String data_jenis_kendaraan = kurir.getJenis_kendaraan();
 //        double data_total_pendapatan = kurir.getTotal_pendapatan();
-//        int data_ketersediaan = kurir.getKetersediaan();
+        int data_ketersediaan = kurir.getKetersediaan();
         
 
         //Menu
@@ -64,6 +70,9 @@ public class MenuLihatProfilKurir {
         
         labelKendaraan = GUI.defaultRegularLabel("Kendaraan");
         labelKendaraan.setBounds(100,500,200,40);
+        
+        labelKetersediaan = GUI.defaultRegularLabel("Status");
+        labelKetersediaan.setBounds(100,525,200,40);
 
         //Data
         TampilanNama = GUI.defaultRegularLabel(": " + data_nama_lengkap);
@@ -84,6 +93,15 @@ public class MenuLihatProfilKurir {
         TampilanKendaraan = GUI.defaultRegularLabel(": " + data_jenis_kendaraan);
         TampilanKendaraan.setBounds(200,500,300,40);
 
+        
+        String status;
+        if(data_ketersediaan == 0)
+            status = "Tidak Ada Orderan";
+        else
+            status = "Sedang Mengirim Orderan";
+            
+        TampilanKetersediaan = GUI.defaultRegularLabel(": " + status);
+        TampilanKetersediaan.setBounds(200,525,300,40);
 
         //Button Edit
         JButton btnEditProfile = GUI.defaultButton("Ubah Profil", 20);
@@ -140,12 +158,14 @@ public class MenuLihatProfilKurir {
         frame.add(labelNIK);
         frame.add(labelPlat);
         frame.add(labelKendaraan);
+        frame.add(labelKetersediaan);
         frame.add(TampilanNama);
         frame.add(TampilanEmail);
         frame.add(TampilanNoHp);
         frame.add(TampilanPlat);
         frame.add(TampilanKendaraan);
         frame.add(TampilanNIK);
+        frame.add(TampilanKetersediaan);
         
         frame.add(btnEditProfile);
         frame.add(labelKembali);
