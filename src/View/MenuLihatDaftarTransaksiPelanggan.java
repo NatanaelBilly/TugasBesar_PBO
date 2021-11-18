@@ -65,8 +65,6 @@ public class MenuLihatDaftarTransaksiPelanggan {
 
         for (int i = 0; i < pelanggan.getListTransaksi().size(); i++) {
             Transaksi transaksi = pelanggan.getListTransaksi().get(i);
-            System.out.println(pelanggan.getListTransaksi().get(i).getNama_penerima());
-            System.out.println(transaksi.getTanggal());
 
             //Tanggal Untuk Setiap Transaksi
             labelTgl = GUI.defaultRegularLabel(String.valueOf(transaksi.getTanggal()));
@@ -102,7 +100,13 @@ public class MenuLihatDaftarTransaksiPelanggan {
 
             btnDetail = GUI.defaultButton("Detail", 17);
             btnDetail.setBounds(330, 140, 100, 30);
-            btnDetail.addActionListener(e -> new MenuLihatDetailTransaksiPelanggan());
+            btnDetail.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    frame.dispose();
+                    new MenuLihatDetailTransaksiPelanggan(transaksi, pelanggan);
+                }
+            });
 
             panelTransaksi = new JPanel();
             panelTransaksi.setPreferredSize(new Dimension(100, 200));
