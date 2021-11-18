@@ -72,7 +72,7 @@ public class MenuLihatDetailTransaksiPelanggan {
         panelInfoPengiriman.setBackground(GUI.backGroundColor());
 
         //label
-        if(transaksi.getStatus_pemesanan().equalsIgnoreCase("diantar")){
+        if(transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")){
             labelMessage = new JLabel("Barangmu sedang diantar oleh...");
         }else{
             labelMessage = new JLabel("Barangmu telah diantar oleh...");
@@ -85,37 +85,37 @@ public class MenuLihatDetailTransaksiPelanggan {
         labelNoPlatKurir = new JLabel("D 2754 SBD");
         labelNoPlatKurir.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         labelNoPlatKurir.setFont(fontLabelKurir);
-        labelNamaPengirim = new JLabel(transaksi.getNama_pengirim());
+        labelNamaPengirim = new JLabel(transaksi.getNamaPengirim());
         labelNamaPengirim.setBounds(0,0,300,25);
         labelNamaPengirim.setFont(fontText);
-        labelNoTlpPengirim = new JLabel(transaksi.getNoHP_pengirim());
+        labelNoTlpPengirim = new JLabel(transaksi.getNoHpPengirim());
         labelNoTlpPengirim.setBounds(0,25,300,25);
         labelNoTlpPengirim.setFont(fontText);
-        taAlamatPengirim = new JTextArea(transaksi.getAlamat_pengirim());
+        taAlamatPengirim = new JTextArea(transaksi.getAlamatPengirim());
         taAlamatPengirim.setBounds(0,50,300,65);
         taAlamatPengirim.setFont(fontText);
         taAlamatPengirim.setLineWrap(true);
         taAlamatPengirim.setOpaque(false);
         taAlamatPengirim.setEditable(false);
         taAlamatPengirim.setFocusable(false);
-        labelNamaPenerima = new JLabel(transaksi.getNama_penerima());
+        labelNamaPenerima = new JLabel(transaksi.getNamaPenerima());
         labelNamaPenerima.setBounds(0,0,300,25);
         labelNamaPenerima.setFont(fontText);
-        labelNoTlpPenerima = new JLabel(transaksi.getNoHP_penerima());
+        labelNoTlpPenerima = new JLabel(transaksi.getNoHpPenerima());
         labelNoTlpPenerima.setBounds(0,25,300,25);
         labelNoTlpPenerima.setFont(fontText);
-        taAlamatPenerima = new JTextArea(transaksi.getAlamat_penerima());
+        taAlamatPenerima = new JTextArea(transaksi.getAlamatPenerima());
         taAlamatPenerima.setBounds(0,50,300,65);
         taAlamatPenerima.setFont(fontText);
         taAlamatPenerima.setLineWrap(true);
         taAlamatPenerima.setOpaque(false);
         taAlamatPenerima.setEditable(false);
         taAlamatPenerima.setFocusable(false);
-        labelBeratBarang = new JLabel(transaksi.getBerat_barang()+" kg");
+        labelBeratBarang = new JLabel(transaksi.getBeratBarang()+" kg");
         labelBeratBarang.setFont(fontInfoPengiriman);
         labelBeratBarang.setHorizontalAlignment(JLabel.CENTER);
         labelBeratBarang.setBorder(BorderFactory.createMatteBorder(0, 2, 0, 0, Color.BLACK));
-        labelHarga = new JLabel(transaksi.getTotal_pembayaran()+"");
+        labelHarga = new JLabel(transaksi.getTotalPembayaran()+"");
         labelHarga.setFont(fontInfoPengiriman);
         labelHarga.setHorizontalAlignment(JLabel.CENTER);
         labelHarga.setBorder(BorderFactory.createMatteBorder(0, 2, 0, 0, Color.BLACK));
@@ -140,7 +140,7 @@ public class MenuLihatDetailTransaksiPelanggan {
         iconPenerima = new ImageIcon ("assets/recipient.jpg");
         labelIconPenerima.setIcon(iconPenerima);
         labelIconBarang = new JLabel();
-        switch(transaksi.getKategori_barang()){
+        switch(transaksi.getKategoriBarang()){
             case "Dokumen":
                 iconBarang = new ImageIcon ("assets/dokumen.png");
                 break;
@@ -163,13 +163,13 @@ public class MenuLihatDetailTransaksiPelanggan {
         frame = GUI.defaultFrame();
         frame.getContentPane().setBackground(GUI.backGroundColor());
 
-        if(transaksi.getStatus_pemesanan().equalsIgnoreCase("diantar")){
+        if(transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")){
             JButton btnChat = GUI.defaultButton("Chat Driver",15);
             btnChat.setBounds(20,660,540,30);
             btnChat.setFont(fontText);
             frame.add(btnChat);
         }else{
-            if(transaksi.getSaran_driver()==null){
+            if(transaksi.getSaranDriver()==null){
                 JLabel labelFeedback = new JLabel("Masukkan untuk kurir : ");
                 labelFeedback.setBounds(20,605,250,30);
                 labelFeedback.setFont(fontText);
@@ -200,7 +200,7 @@ public class MenuLihatDetailTransaksiPelanggan {
                 JLabel labelFeedback = new JLabel("Masukkan untuk kurir: ");
                 labelFeedback.setBounds(20,605,250,30);
                 labelFeedback.setFont(fontText);
-                JTextArea taFeedback = new JTextArea(transaksi.getSaran_driver());
+                JTextArea taFeedback = new JTextArea(transaksi.getSaranDriver());
                 taFeedback.setBounds(20,635,540,65);
                 taFeedback.setLineWrap(true);
                 taFeedback.setEditable(false);

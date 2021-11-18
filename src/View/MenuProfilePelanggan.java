@@ -36,7 +36,7 @@ public class MenuProfilePelanggan {
         labelProfilePic.setBounds(130, 80, 320, 260);
 
         //label
-        labelNama = GUI.defaultHeadingLabel(pelanggan.getNama_depan() + " " + pelanggan.getNama_belakang());
+        labelNama = GUI.defaultHeadingLabel(pelanggan.getNamaDepan() + " " + pelanggan.getNamaBelakang());
         labelEmail = new JLabel("Email");
         labelEmail.setBounds(90, 420, 80, 40);
         labelEmail.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -50,7 +50,7 @@ public class MenuProfilePelanggan {
         labelSaldo.setBounds(90, 570, 80, 40);
         labelSaldo.setFont(new Font("Arial", Font.PLAIN, 17));
 
-        email = new JLabel(": " + pelanggan.getEmail_user());
+        email = new JLabel(": " + pelanggan.getEmailUser());
         email.setBounds(190, 420, 300, 40);
         email.setFont(new Font("Arial", Font.PLAIN, 17));
         role = new JLabel(": " + pelanggan.getRole());
