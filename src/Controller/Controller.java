@@ -524,4 +524,29 @@ public class Controller {
             return (false);
         }
     }
+
+    public double bayarOrder(int idPelanggan, double totalBayar) {
+        conn.connect();
+        String query1 = "SELECT saldo FROM user WHERE id_user=" + idPelanggan + ";";
+        double totalSekarang = 0;
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query1);
+            while ((rs.next())) {
+                totalSekarang = rs.getDouble("saldo");
+
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        double totalNow = totalSekarang - totalBayar;
+        String query2 = "UPDATE user SET saldo = " + totalNow + " WHERE id_user = " + idPelanggan + ";";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query2);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return totalSekarang - totalBayar;
+    }
 }
