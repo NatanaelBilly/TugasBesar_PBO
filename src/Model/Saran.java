@@ -1,41 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-/**
- *
- * @author natanael billy
- */
 public class Saran {
-    private int id_saran;
-    private int id_pelanggan;
+    private int idSaran;
+    private int idPelanggan;
     private String saran;
 
-    public Saran(int id_saran, int id_pelanggan, String saran) {
-        setId_saran(id_saran);
-        setId_pelanggan(id_pelanggan);
+    public Saran(int idSaran, int idPelanggan, String saran) {
+        setIdSaran(idSaran);
+        setIdPelanggan(idPelanggan);
         setSaran(saran);
     }
 
-    public int getId_saran() {
-        return id_saran;
+    public int getIdSaran() {
+        return idSaran;
     }
 
-    public void setId_saran(int id_saran) {
-        this.id_saran = id_saran;
+    public void setIdSaran(int idSaran) {
+        this.idSaran = idSaran;
     }
 
-    public int getId_pelanggan() {
-        return id_pelanggan;
+    public int getIdPelanggan() {
+        return idPelanggan;
     }
 
-    public void setId_pelanggan(int id_pelanggan) {
-        this.id_pelanggan = id_pelanggan;
+    public void setIdPelanggan(int idPelanggan) {
+        this.idPelanggan = idPelanggan;
     }
-
+    
     public String getSaran() {
         return saran;
     }

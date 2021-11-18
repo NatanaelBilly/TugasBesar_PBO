@@ -1,172 +1,177 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
 import java.util.Date;
 import java.util.ArrayList;
 
-/**
- *
- * @author natanael billy
- */
+
 public class Transaksi implements StatusPengiriman {
 
-    private int id_transaksi;
-    private int id_pelanggan;
-    private int id_kurir;
-    private String kategori_barang;
-    private double berat_barang;
-    private double jumlah_barang;
-    private String nama_pengirim;
-    private String alamat_pengirim;
-    private String noHP_pengirim;
-    private String nama_penerima;
-    private String alamat_penerima;
-    private String noHP_penerima;
-    private double total_pembayaran;
-    private int status_pemesanan;
+    private int idTransaksi;
+    private int idPelanggan;
+    private int idKurir;
+    private String kategoriBarang;
+    private double beratBarang;
+    private double jumlahBarang;
+    private String namaPengirim;
+    private String alamatPengirim;
+    private String noHpPengirim;
+    private String namaPenerima;
+    private String alamatPenerima;
+    private String noHpPenerima;
+    private double totalPembayaran;
+    private int statusPemesanan;
     private Date tanggal;
-    private String saran_driver;
+    private String saranDriver;
     private ArrayList<Chat> listChat;
 
     public Transaksi() {
         
     }
-    public Transaksi(int id_transaksi, int id_pelanggan, int id_kurir, String kategori_barang, double berat_barang, double jumlah_barang, String nama_pengirim, String alamat_pengirim, String noHP_pengirim, String nama_penerima, String alamat_penerima, String noHP_penerima, double total_pembayaran, int status_pemesanan, Date tanggal, String saran_driver, ArrayList<Chat> listChat) {
-        setId_transaksi(id_transaksi);
-        setId_pelanggan(id_pelanggan);
-        setId_kurir(id_kurir);
-        setKategori_barang(kategori_barang);
-        setBerat_barang(berat_barang);
-        setJumlah_barang(jumlah_barang);
-        setNama_pengirim(nama_pengirim);
-        setAlamat_pengirim(alamat_pengirim);
-        setNoHP_pengirim(noHP_pengirim);
-        setNama_penerima(nama_penerima);
-        setAlamat_pengirim(alamat_pengirim);
-        setAlamat_penerima(alamat_penerima);
-        setNoHP_penerima(noHP_penerima);
-        setTotal_pembayaran(total_pembayaran);
-        setStatus_pemesanan(status_pemesanan);
+    public Transaksi(int idTransaksi, int idPelanggan, int idKurir, 
+            String kategoriBarang, double beratBarang, double jumlahBarang, 
+            String namaPengirim, String alamatPengirim, String noHpPengirim, 
+            String namaPenerima, String alamatPenerima, String noHpPenerima, 
+            double totalPembayaran, int statusPemesanan, Date tanggal, 
+            String saranDriver, ArrayList<Chat> listChat) {
+        
+        setIdTransaksi(idTransaksi);
+        setIdPelanggan(idPelanggan);
+        setIdKurir(idKurir);
+        setKategoriBarang(kategoriBarang);
+        setBeratBarang(beratBarang);
+        setJumlahBarang(jumlahBarang);
+        setNamaPengirim(namaPengirim);
+        setAlamatPengirim(alamatPengirim);
+        setNoHpPengirim(noHpPengirim);
+        setNamaPenerima(namaPenerima);
+        setAlamatPengirim(alamatPengirim);
+        setAlamatPenerima(alamatPenerima);
+        setNoHpPenerima(noHpPenerima);
+        setTotalPembayaran(totalPembayaran);
+        setStatusPemesanan(statusPemesanan);
         setTanggal(tanggal);
-        setSaran_driver(saran_driver);
+        setSaranDriver(saranDriver);
         setListChat(listChat);
     }
 
-    
-
-    public int getId_transaksi() {
-        return id_transaksi;
+    public int getIdTransaksi() {
+        return idTransaksi;
     }
 
-    public void setId_transaksi(int id_transaksi) {
-        this.id_transaksi = id_transaksi;
+    public void setIdTransaksi(int idTransaksi) {
+        this.idTransaksi = idTransaksi;
     }
 
-    public int getId_pelanggan() {
-        return id_pelanggan;
+    public int getIdPelanggan() {
+        return idPelanggan;
     }
 
-    public void setId_pelanggan(int id_pelanggan) {
-        this.id_pelanggan = id_pelanggan;
+    public void setIdPelanggan(int idPelanggan) {
+        this.idPelanggan = idPelanggan;
     }
 
-    public int getId_kurir() {
-        return id_kurir;
+    public int getIdKurir() {
+        return idKurir;
     }
 
-    public void setId_kurir(int id_kurir) {
-        this.id_kurir = id_kurir;
+    public void setIdKurir(int idKurir) {
+        this.idKurir = idKurir;
     }
 
-    public String getKategori_barang() {
-        return kategori_barang;
+    public String getKategoriBarang() {
+        return kategoriBarang;
     }
 
-    public void setKategori_barang(String kategori_barang) {
-        this.kategori_barang = kategori_barang;
+    public void setKategoriBarang(String kategoriBarang) {
+        this.kategoriBarang = kategoriBarang;
     }
 
-    public double getBerat_barang() {
-        return berat_barang;
+    public double getBeratBarang() {
+        return beratBarang;
     }
 
-    public void setBerat_barang(double berat_barang) {
-        this.berat_barang = berat_barang;
+    public void setBeratBarang(double beratBarang) {
+        this.beratBarang = beratBarang;
     }
 
-    public double getJumlah_barang() {
-        return jumlah_barang;
+    public double getJumlahBarang() {
+        return jumlahBarang;
     }
 
-    public void setJumlah_barang(double jumlah_barang) {
-        this.jumlah_barang = jumlah_barang;
+    public void setJumlahBarang(double jumlahBarang) {
+        this.jumlahBarang = jumlahBarang;
     }
 
-    public String getNama_pengirim() {
-        return nama_pengirim;
+    public String getNamaPengirim() {
+        return namaPengirim;
     }
 
-    public void setNama_pengirim(String nama_pengirim) {
-        this.nama_pengirim = nama_pengirim;
+    public void setNamaPengirim(String namaPengirim) {
+        this.namaPengirim = namaPengirim;
     }
 
-    public String getAlamat_pengirim() {
-        return alamat_pengirim;
+    public String getAlamatPengirim() {
+        return alamatPengirim;
     }
 
-    public void setAlamat_pengirim(String alamat_pengirim) {
-        this.alamat_pengirim = alamat_pengirim;
+    public void setAlamatPengirim(String alamatPengirim) {
+        this.alamatPengirim = alamatPengirim;
     }
 
-    public String getNoHP_pengirim() {
-        return noHP_pengirim;
+    public String getNoHpPengirim() {
+        return noHpPengirim;
     }
 
-    public void setNoHP_pengirim(String noHP_pengirim) {
-        this.noHP_pengirim = noHP_pengirim;
+    public void setNoHpPengirim(String noHpPengirim) {
+        this.noHpPengirim = noHpPengirim;
     }
 
-    public String getNama_penerima() {
-        return nama_penerima;
+    public String getNamaPenerima() {
+        return namaPenerima;
     }
 
-    public void setNama_penerima(String nama_penerima) {
-        this.nama_penerima = nama_penerima;
+    public void setNamaPenerima(String namaPenerima) {
+        this.namaPenerima = namaPenerima;
     }
 
-    public String getAlamat_penerima() {
-        return alamat_penerima;
+    public String getAlamatPenerima() {
+        return alamatPenerima;
     }
 
-    public void setAlamat_penerima(String alamat_penerima) {
-        this.alamat_penerima = alamat_penerima;
+    public void setAlamatPenerima(String alamatPenerima) {
+        this.alamatPenerima = alamatPenerima;
     }
 
-    public String getNoHP_penerima() {
-        return noHP_penerima;
+    public String getNoHpPenerima() {
+        return noHpPenerima;
     }
 
-    public void setNoHP_penerima(String noHP_penerima) {
-        this.noHP_penerima = noHP_penerima;
+    public void setNoHpPenerima(String noHpPenerima) {
+        this.noHpPenerima = noHpPenerima;
     }
 
-    public double getTotal_pembayaran() {
-        return total_pembayaran;
+    public double getTotalPembayaran() {
+        return totalPembayaran;
     }
 
-    public void setTotal_pembayaran(double total_pembayaran) {
-        this.total_pembayaran = total_pembayaran;
+    public void setTotalPembayaran(double totalPembayaran) {
+        this.totalPembayaran = totalPembayaran;
     }
 
-    public String getStatus_pemesanan() {
+    public String getSaranDriver() {
+        return saranDriver;
+    }
+
+    public void setSaranDriver(String saranDriver) {
+        this.saranDriver = saranDriver;
+    }
+
+
+    public String getStatusPemesanan() {
         String status = "";
-        if(status_pemesanan == 0){
+        if(statusPemesanan == 0){
             status = "MENUNGGU KURIR";
-        } else if(status_pemesanan == 1){
+        } else if(statusPemesanan == 1){
             status = "DIANTAR";
         } else {
             status = "DITERIMA";
@@ -174,8 +179,8 @@ public class Transaksi implements StatusPengiriman {
         return status;
     }
 
-    public void setStatus_pemesanan(int status_pemesanan) {
-        this.status_pemesanan = status_pemesanan;
+    public void setStatusPemesanan(int statusPemesanan) {
+        this.statusPemesanan = statusPemesanan;
     }
 
     public Date getTanggal() {
@@ -186,14 +191,6 @@ public class Transaksi implements StatusPengiriman {
         this.tanggal = tanggal;
     }
 
-    public String getSaran_driver() {
-        return saran_driver;
-    }
-
-    public void setSaran_driver(String saran_driver) {
-        this.saran_driver = saran_driver;
-    }
-
     public ArrayList<Chat> getListChat() {
         return listChat;
     }
@@ -201,4 +198,11 @@ public class Transaksi implements StatusPengiriman {
     public void setListChat(ArrayList<Chat> listChat) {
         this.listChat = listChat;
     }
+
+    @Override
+    public String toString() {
+        return "Transaksi{" + "idTransaksi=" + idTransaksi + ", idPelanggan=" + idPelanggan + ", idKurir=" + idKurir + ", kategoriBarang=" + kategoriBarang + ", beratBarang=" + beratBarang + ", jumlahBarang=" + jumlahBarang + ", namaPengirim=" + namaPengirim + ", alamatPengirim=" + alamatPengirim + ", noHpPengirim=" + noHpPengirim + ", namaPenerima=" + namaPenerima + ", alamatPenerima=" + alamatPenerima + ", noHpPenerima=" + noHpPenerima + ", totalPembayaran=" + totalPembayaran + ", statusPemesanan=" + statusPemesanan + ", tanggal=" + tanggal + ", saranDriver=" + saranDriver + ", listChat=" + listChat + '}';
+    }
+    
+    
 }

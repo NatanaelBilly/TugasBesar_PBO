@@ -1,47 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
 import java.util.ArrayList;
 
-/**
- * @author natanael billy
- */
 public class Kurir extends User {
 
-    private double total_pendapatan;
+    private double totalPendapatan;
     private String NIK;
     private int ketersediaan;
     private String plat;
-    private String jenis_kendaraan;
+    private String jenisKendaraan;
 
     public Kurir(){
 
     }
 
-    public Kurir(double total_pendapatan, String NIK, int ketersediaan, String plat, String jenis_kendaraan, int id_user, String nama_depan, String nama_belakang, String noHp,String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
-        super(id_user, nama_depan, nama_belakang, noHp,email_user, password, saldo, role, listTransaksi);
-        setTotal_pendapatan(total_pendapatan);
+    public Kurir(double totalPendapatan, String NIK, int ketersediaan, String plat, 
+            String jenisKendaraan, int idUser, String namaDepan, String namaBelakang, 
+            String noHp, String emailUser, String password, double saldo, Role role, 
+            ArrayList<Transaksi> listTransaksi) {
+        
+        super(idUser, namaDepan, namaBelakang, noHp,emailUser, password, saldo, role, listTransaksi);
+        setTotalPendapatan(totalPendapatan);
         setNIK(NIK);
         setKetersediaan(ketersediaan);
         setPlat(plat);
-        setJenis_kendaraan(jenis_kendaraan);
+        setJenisKendaraan(jenisKendaraan);
     }
     
     //Builder
     public Kurir(Builder builder) {
-        this.total_pendapatan = builder.total_pendapatan;
+        this.totalPendapatan = builder.totalPendapatan;
         this.NIK = builder.NIK;
         this.ketersediaan = builder.ketersediaan;
         this.plat = builder.plat;
-        this.jenis_kendaraan = builder.jenis_kendaraan;
-        super.setId_user(builder.id_user);
-        super.setNama_depan(builder.nama_depan);
-        super.setNama_belakang(builder.nama_belakang);
-        super.setEmail_user(builder.email_user);
+        this.jenisKendaraan = builder.jenisKendaraan;
+        super.setIdUser(builder.idUser);
+        super.setNamaDepan(builder.namaDepan);
+        super.setNamaBelakang(builder.namaBelakang);
+        super.setEmailUser(builder.emailUser);
         super.setPassword(builder.password);
         super.setNoHp(builder.noHp);
         super.setRole(builder.role);
@@ -49,10 +45,10 @@ public class Kurir extends User {
     }
     
     public static class Builder {
-        private int id_user;
-        private String nama_depan;
-        private String nama_belakang;
-        private String email_user;
+        private int idUser;
+        private String namaDepan;
+        private String namaBelakang;
+        private String emailUser;
         private String password;
         private String noHp;
         private double saldo;
@@ -60,28 +56,28 @@ public class Kurir extends User {
         
         private String NIK;
         private String plat;
-        private String jenis_kendaraan;
-        private double total_pendapatan;
+        private String jenisKendaraan;
+        private double totalPendapatan;
         private int ketersediaan;
     
         public Builder() {
         }
 
         //User
-        public Builder setIdUser(int id_user) {
-            this.id_user = id_user;
+        public Builder setIdUser(int idUser) {
+            this.idUser = idUser;
             return this;
         }
-        public Builder setNamaDepan(String nama_depan) {
-            this.nama_depan = nama_depan;
+        public Builder setNamaDepan(String namaDepan) {
+            this.namaDepan = namaDepan;
             return this;
         }
-        public Builder setNamaBelakang(String nama_belakang) {
-            this.nama_belakang = nama_belakang;
+        public Builder setNamaBelakang(String namaBelakang) {
+            this.namaBelakang = namaBelakang;
             return this;
         }
-        public Builder setEmail(String email_user) {
-            this.email_user = email_user;
+        public Builder setEmail(String emailUser) {
+            this.emailUser = emailUser;
             return this;
         }
         public Builder setPassword(String password) {
@@ -107,8 +103,8 @@ public class Kurir extends User {
             return this;
         }
 
-        public Builder setTotalPendapatan(double total_pendapatan) {
-            this.total_pendapatan = total_pendapatan;
+        public Builder setTotalPendapatan(double totalPendapatan) {
+            this.totalPendapatan = totalPendapatan;
             return this;
         }
 
@@ -122,8 +118,8 @@ public class Kurir extends User {
             return this;
         }
 
-        public Builder setJenisKendaraan(String jenis_kendaraan) {
-            this.jenis_kendaraan = jenis_kendaraan;
+        public Builder setJenisKendaraan(String jenisKendaraan) {
+            this.jenisKendaraan = jenisKendaraan;
             return this;
         }
         
@@ -133,15 +129,6 @@ public class Kurir extends User {
         }
     }
 
-
-
-    public double getTotal_pendapatan() {
-        return total_pendapatan;
-    }
-
-    public void setTotal_pendapatan(double total_pendapatan) {
-        this.total_pendapatan = total_pendapatan;
-    }
 
     public String getNIK() {
         return NIK;
@@ -167,16 +154,28 @@ public class Kurir extends User {
         this.plat = plat;
     }
 
-    public String getJenis_kendaraan() {
-        return jenis_kendaraan;
+    public double getTotalPendapatan() {
+        return totalPendapatan;
     }
 
-    public void setJenis_kendaraan(String jenis_kendaraan) {
-        this.jenis_kendaraan = jenis_kendaraan;
+    public void setTotalPendapatan(double totalPendapatan) {
+        this.totalPendapatan = totalPendapatan;
+    }
+
+    public String getJenisKendaraan() {
+        return jenisKendaraan;
+    }
+
+    public void setJenisKendaraan(String jenisKendaraan) {
+        this.jenisKendaraan = jenisKendaraan;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "Kurir{" + "total_pendapatan=" + total_pendapatan + ", NIK=" + NIK + ", ketersediaan=" + ketersediaan + ", plat=" + plat + ", jenis_kendaraan=" + jenis_kendaraan + '}';
+        return "Kurir{" + "totalPendapatan=" + totalPendapatan + ", NIK=" + NIK + ", ketersediaan=" + ketersediaan + ", plat=" + plat + ", jenisKendaraan=" + jenisKendaraan + '}';
     }
+
+    
+
+    
 }
