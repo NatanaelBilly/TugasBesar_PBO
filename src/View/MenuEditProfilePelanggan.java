@@ -6,10 +6,7 @@ import Model.User;
 import Model.UserManager;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class MenuEditProfilePelanggan {
     JFrame frame, frameEditPass;
@@ -18,12 +15,12 @@ public class MenuEditProfilePelanggan {
     JTextField tfNamaDepan, tfNamaBelakang, tfEmail, tfNoHp;
     JPasswordField tfPass, tfPassBaru, tfKonformasiPass;
     JButton btnEdit, btnUbahPass, btnKonfirmasiUbahPass;
+    DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuEditProfilePelanggan(Pelanggan pelanggan){
-        System.out.println(pelanggan);
         //Frame
-        frame = new DefaultComponentSetting().defaultFrame();
-        System.out.println(pelanggan.toString());
+        frame = GUI.defaultFrame();
+        frame.getContentPane().setBackground(GUI.backGroundColor());
 
         //Frame Edit Pass
         frameEditPass = new JFrame("Edit Pass");
@@ -31,11 +28,18 @@ public class MenuEditProfilePelanggan {
         frameEditPass.setVisible(false);
         frameEditPass.setLocationRelativeTo(null);
         frameEditPass.setLayout(null);
+        frameEditPass.getContentPane().setBackground(GUI.backGroundColor());
+        frameEditPass.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent evt) {
+                frameEditPass.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.setEnabled(true);
+            }
+        });
 
         //Label
-        labelHeading = new DefaultComponentSetting().defaultHeadingLabel("Edit Profil");
+        labelHeading = GUI.defaultHeadingLabel("Edit Profil");
         labelHeading.setBounds(220,80,150,40);
-        labelBack = new DefaultComponentSetting().defaultBackLabel();
+        labelBack = GUI.defaultBackLabel();
         labelBack.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -43,19 +47,19 @@ public class MenuEditProfilePelanggan {
                 new MenuProfilePelanggan(pelanggan);
             }
         });
-        labelNamaDepan = new DefaultComponentSetting().defaultRegularLabel("Nama Depan");
+        labelNamaDepan = GUI.defaultRegularLabel("Nama Depan");
         labelNamaDepan.setBounds(30,150,150,40);
-        labelNamaBelakang = new DefaultComponentSetting().defaultRegularLabel("Nama Belakang");
+        labelNamaBelakang = GUI.defaultRegularLabel("Nama Belakang");
         labelNamaBelakang.setBounds(30,210,150,40);
-        labelEmail = new DefaultComponentSetting().defaultRegularLabel("Email");
+        labelEmail = GUI.defaultRegularLabel("Email");
         labelEmail.setBounds(30,270,150,40);
-        labelNoHp = new DefaultComponentSetting().defaultRegularLabel("Nomor HP");
+        labelNoHp = GUI.defaultRegularLabel("Nomor HP");
         labelNoHp.setBounds(30,330,150,40);
-        labelPass = new DefaultComponentSetting().defaultRegularLabel("Password");
+        labelPass = GUI.defaultRegularLabel("Password");
         labelPass.setBounds(30,30,200,40);
-        labelPassBaru = new DefaultComponentSetting().defaultRegularLabel("Password Baru");
+        labelPassBaru = GUI.defaultRegularLabel("Password Baru");
         labelPassBaru.setBounds(30,80,200,40);
-        labelKonfirmasiPass = new DefaultComponentSetting().defaultRegularLabel("Konfirmasi Password Baru");
+        labelKonfirmasiPass = GUI.defaultRegularLabel("Konfirmasi Password Baru");
         labelKonfirmasiPass.setBounds(30,130,200,40);
 
         //Text Field
@@ -75,7 +79,7 @@ public class MenuEditProfilePelanggan {
         tfKonformasiPass.setBounds(250,130,310,40);
 
         //Button
-        btnKonfirmasiUbahPass = new DefaultComponentSetting().defaultButton("Ubah Password",14);
+        btnKonfirmasiUbahPass = GUI.defaultButton("Ubah Password",14);
         btnKonfirmasiUbahPass.setBounds(220, 200, 150,40);
         btnKonfirmasiUbahPass.addActionListener(new ActionListener() {
             @Override
@@ -103,7 +107,7 @@ public class MenuEditProfilePelanggan {
                 }
             }
         });
-        btnEdit = new DefaultComponentSetting().defaultButton("Edit Profil",14);
+        btnEdit = GUI.defaultButton("Edit Profil",14);
         btnEdit.setBounds(120, 420, 150,40);
         btnEdit.addActionListener(new ActionListener() {
             @Override
@@ -128,12 +132,13 @@ public class MenuEditProfilePelanggan {
                 }
             }
         });
-        btnUbahPass = new DefaultComponentSetting().defaultButton("Ganti Password",14);
+        btnUbahPass = GUI.defaultButton("Ganti Password",14);
         btnUbahPass.setBounds(320, 420, 150,40);
         btnUbahPass.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameEditPass.setVisible(true);
+                frame.setEnabled(false);
             }
         });
 

@@ -7,17 +7,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MenuProfilePelanggan {
     JFrame frame;
-    JPanel panelMenu, panelNama;
-    JLabel labelProfilePic, labelNama, labelEmail,labelSaldo, labelRole, labelNoHp, email, role, saldo, noHp;
+    JPanel panelNama;
+    JLabel labelProfilePic, labelNama, labelEmail,labelSaldo, labelRole, labelNoHp, email, role, saldo, noHp, labelKembali;
     ImageIcon profilePic;
     JButton btnEditProfile;
+    DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuProfilePelanggan(Pelanggan pelanggan) {
-        new HeaderMenu(pelanggan);
-        panelMenu = HeaderMenu.panel;
+        //back
+        labelKembali = GUI.defaultBackLabel();
+        labelKembali.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                frame.dispose();
+                new BerandaPelanggan(pelanggan);
+            }
+        });
 
         //picture
         labelProfilePic = new JLabel();
@@ -26,7 +36,7 @@ public class MenuProfilePelanggan {
         labelProfilePic.setBounds(130, 80, 320, 260);
 
         //label
-        labelNama = new DefaultComponentSetting().defaultHeadingLabel(pelanggan.getNama_depan() + " " + pelanggan.getNama_belakang());
+        labelNama = GUI.defaultHeadingLabel(pelanggan.getNama_depan() + " " + pelanggan.getNama_belakang());
         labelEmail = new JLabel("Email");
         labelEmail.setBounds(90, 420, 80, 40);
         labelEmail.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -54,7 +64,7 @@ public class MenuProfilePelanggan {
         saldo.setFont(new Font("Arial", Font.PLAIN, 17));
 
         //Button
-        btnEditProfile = new DefaultComponentSetting().defaultButton("Edit Profil",14);
+        btnEditProfile = GUI.defaultButton("Edit Profil",14);
         btnEditProfile.setBounds(250, 620, 100, 30);
         btnEditProfile.addActionListener(new ActionListener() {
             @Override
@@ -79,8 +89,10 @@ public class MenuProfilePelanggan {
         panelNama.setVisible(true);
 
         //Frame
-        frame = new DefaultComponentSetting().defaultFrame();
+        frame = GUI.defaultFrame();
+        frame.getContentPane().setBackground(GUI.backGroundColor());
 
+        frame.add(labelKembali);
         frame.add(labelProfilePic);
         frame.add(labelEmail);
         frame.add(labelRole);
@@ -90,7 +102,6 @@ public class MenuProfilePelanggan {
         frame.add(saldo);
         frame.add(labelNoHp);
         frame.add(noHp);
-        frame.add(panelMenu);
         frame.add(panelNama);
         frame.add(btnEditProfile);
 
