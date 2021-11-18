@@ -30,14 +30,14 @@ public class MenuLihatProfilKurir {
         //Data Template
 //        int data_id = kurir.getId_user();
 //        Role data_role = kurir.getRole();
-        String data_nama_lengkap = kurir.getNama_depan() + " " + kurir.getNama_belakang();
-        String data_email = kurir.getEmail_user();
+        String data_nama_lengkap = kurir.getNamaDepan() + " " + kurir.getNamaBelakang();
+        String data_email = kurir.getEmailUser();
         String data_noHp = kurir.getNoHp();
 //        String data_password = kurir.getPassword();
 
         String data_NIK = kurir.getNIK();
         String data_plat = kurir.getPlat();
-        String data_jenis_kendaraan = kurir.getJenis_kendaraan();
+        String data_jenis_kendaraan = kurir.getJenisKendaraan();
 //        double data_total_pendapatan = kurir.getTotal_pendapatan();
         int data_ketersediaan = kurir.getKetersediaan();
         

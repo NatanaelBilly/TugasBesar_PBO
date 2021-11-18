@@ -23,7 +23,7 @@ public class BerandaKurir implements ActionListener {
         this.kurir = kurir;
 
         //label
-        labelPesan = GUI.defaultHeadingLabel("Selamat Datang, " + kurir.getNama_depan() + "!");
+        labelPesan = GUI.defaultHeadingLabel("Selamat Datang, " + kurir.getNamaDepan() + "!");
         labelPesan.setBounds(145, 50, 300, 80);
 
         //Button Profil
