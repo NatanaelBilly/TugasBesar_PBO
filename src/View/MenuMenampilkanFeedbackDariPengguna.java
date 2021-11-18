@@ -6,7 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import Model.Admin;
 public class MenuMenampilkanFeedbackDariPengguna {
     JFrame frame;
     JPanel panel;
@@ -14,7 +14,7 @@ public class MenuMenampilkanFeedbackDariPengguna {
     JTable tabelSaran;
     JScrollPane sp;
     JButton back;
-    public MenuMenampilkanFeedbackDariPengguna(){
+    public MenuMenampilkanFeedbackDariPengguna(Admin admin){
         Controller c =new Controller();
         Method m=new Method();
         //frame
@@ -49,7 +49,7 @@ public class MenuMenampilkanFeedbackDariPengguna {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new BerandaAdmin(admin);
+                new BerandaAdmin(admin);
                 frame.dispose();
             }
         });

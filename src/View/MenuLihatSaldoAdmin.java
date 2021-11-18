@@ -7,12 +7,16 @@ import java.awt.event.ActionListener;
 import java.lang.Object;
 import java.awt.Color;
 import Model.*;
+import Controller.Method;
+import Controller.Controller;
 public class MenuLihatSaldoAdmin {
     JFrame frame;
     JPanel panel;
     JLabel labelTotal,labelGetTotal;
     JButton detilTransaksi,back;
     public MenuLihatSaldoAdmin(Admin admin){
+        Controller c=new Controller();
+        Method m=new Method();
         //Frame
         frame = new DefaultComponentSetting().defaultFrame();
 
@@ -23,6 +27,8 @@ public class MenuLihatSaldoAdmin {
 
         //String builder
         StringBuilder str =new StringBuilder();
+        c.getSeluruhTransaksi();
+        admin.setSaldo(m.lihatSaldoAdmin(c.listTransaksi));
         str.append(admin.getSaldo());
 
         //Label
@@ -38,7 +44,7 @@ public class MenuLihatSaldoAdmin {
         detilTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenuMenampilkanSeluruhTransaksi();
+                new MenuMenampilkanSeluruhTransaksi(admin);
                 frame.dispose();
             }
         });

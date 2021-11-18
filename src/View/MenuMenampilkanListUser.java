@@ -16,7 +16,7 @@ public class MenuMenampilkanListUser {
     JTable tabelUser;
     JScrollPane sp;
     JButton back;
-    public MenuMenampilkanListUser(){
+    public MenuMenampilkanListUser(Admin admin){
         Controller c=new Controller();
         Method m=new Method();
         frame = new DefaultComponentSetting().defaultFrame();
@@ -51,7 +51,7 @@ public class MenuMenampilkanListUser {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new BerandaAdmin(admin);
+                new BerandaAdmin(admin);
                 frame.dispose();
             }
         });

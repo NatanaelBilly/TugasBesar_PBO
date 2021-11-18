@@ -15,7 +15,7 @@ public class MenuMenampilkanSeluruhTransaksi {
     JTable tabelUser;
     JScrollPane sp;
     JButton back;
-    public MenuMenampilkanSeluruhTransaksi(){
+    public MenuMenampilkanSeluruhTransaksi(Admin admin){
         Controller c =new Controller();
         Method m=new Method();
         frame = new DefaultComponentSetting().defaultFrame();
@@ -50,7 +50,7 @@ public class MenuMenampilkanSeluruhTransaksi {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new BerandaAdmin(admin);
+                new BerandaAdmin(admin);
                 frame.dispose();
             }
         });
