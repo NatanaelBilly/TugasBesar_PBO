@@ -8,6 +8,7 @@ import View.BerandaPelanggan;
 import View.MenuChat;
 import View.MenuEditProfilePelanggan;
 import View.MenuIsiSaldo;
+import View.MenuLihatOrderKurir;
 import View.MenuLogin;
 import View.MenuProfilePelanggan;
 
@@ -24,6 +25,8 @@ public class MainKai {
 //        new BerandaPelanggan(user);
 //        new MenuProfilePelanggan(user);
 //        new MenuIsiSaldo(user);
-            new MenuLogin();
+//Kurir kurir = new Kurir();
+//            new MenuLihatOrderKurir(kurir);
+new MenuChat();
     }
 }
