@@ -49,6 +49,6 @@ public class DefaultComponentSetting {
     }
 
     public Color backGroundColor() {
-        return new Color(204, 180, 114);
+        return Color.WHITE;
     }
 }

@@ -97,7 +97,6 @@ public class KurirController {
     }
     
     public boolean ubahKetersediaanKurir(int idKurir, int ketersediaan) {
-        
         Controller.conn.connect();
         String query = "UPDATE kurir "
                 + "SET "
