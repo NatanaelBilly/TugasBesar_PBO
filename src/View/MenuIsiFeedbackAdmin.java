@@ -20,7 +20,7 @@ import java.awt.event.MouseEvent;
 public class MenuIsiFeedbackAdmin {
     JFrame frame;
     JPanel panel, panelText;
-    JLabel labelBack, labelProfilePic, labelNama, labelKet, labelAdmin;
+    JLabel labelKembali, labelProfilePic, labelNama, labelKet, labelAdmin;
     ImageIcon profilePic;
     JTextArea taFeedback;
     JButton btnSubmit;
@@ -28,8 +28,8 @@ public class MenuIsiFeedbackAdmin {
 
     public MenuIsiFeedbackAdmin(Pelanggan pelanggan){
         //back
-        labelBack = GUI.defaultBackLabel();
-        labelBack.addMouseListener(new MouseAdapter() {
+        labelKembali = GUI.defaultBackLabel();
+        labelKembali.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
@@ -104,7 +104,7 @@ public class MenuIsiFeedbackAdmin {
         panelText.setBackground(GUI.backGroundColor());
 
         //add
-        panel.add(labelBack);
+        panel.add(labelKembali);
         panel.add(labelProfilePic);
         panelText.add(labelNama);
         panelText.add(labelKet);
