@@ -20,7 +20,6 @@ public class LoginHandler {
         if (user instanceof Pelanggan) {
             new BerandaPelanggan((Pelanggan) user);
         } else if(user instanceof Kurir){
-            System.out.println("Hai ini kurir");
             new BerandaKurir((Kurir) user);
         }
     }

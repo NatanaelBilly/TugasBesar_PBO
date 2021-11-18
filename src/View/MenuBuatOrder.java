@@ -9,13 +9,13 @@ import java.awt.event.*;
 import java.sql.Date;
 
 public class MenuBuatOrder {
-    JFrame frame;
-    JPanel panelPengirim, panelPenerima, panelBarang;
-    JLabel labelKembali, labelJudul, labelPengirim, labelPenerima, labelBarang, labelNamaPenerima, labelNamaPengirim, labelAlamatPenerima, labelAlamatPengirim, labelNomorHPPenerima, labelNomorHPPengirim, labelTipeBarang, labelTotalBarang, labelBeratBarang;
-    JTextField inputNamaPengirim, inputNamaPenerima, inputLokasiPengirim, inputLokasiPenerima, inputNoHPPengirim, inputNoHPPenerima, inputBanyakBarang, inputBeratBarang;
-    JButton buttonOrder;
-    JComboBox inputTipeBarang;
-    DefaultComponentSetting GUI = new DefaultComponentSetting();
+    private JFrame frame;
+    private JPanel panelPengirim, panelPenerima, panelBarang;
+    private JLabel labelKembali, labelJudul, labelPengirim, labelPenerima, labelBarang, labelNamaPenerima, labelNamaPengirim, labelAlamatPenerima, labelAlamatPengirim, labelNomorHPPenerima, labelNomorHPPengirim, labelTipeBarang, labelTotalBarang, labelBeratBarang;
+    private JTextField inputNamaPengirim, inputNamaPenerima, inputLokasiPengirim, inputLokasiPenerima, inputNoHPPengirim, inputNoHPPenerima, inputBanyakBarang, inputBeratBarang;
+    private JButton buttonOrder;
+    private JComboBox inputTipeBarang;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuBuatOrder(Pelanggan pelanggan) {
         //Hyperlink Back
@@ -164,7 +164,7 @@ public class MenuBuatOrder {
         labelNomorHPPenerima = GUI.defaultRegularLabel("Nomor HP Penerima");
         labelNomorHPPenerima.setBounds(10, 140, 215, 20);
 
-        labelBeratBarang = GUI.defaultRegularLabel("Berat Barang");
+        labelBeratBarang = GUI.defaultRegularLabel("Berat Barang(kg)");
         labelBeratBarang.setBounds(10, 110, 150, 30);
 
         //Input no HP
@@ -209,8 +209,6 @@ public class MenuBuatOrder {
             String noHPPengirim = inputNoHPPengirim.getText();
             String namaPenerima = inputNamaPenerima.getText();
             String alamatPenerima = inputLokasiPenerima.getText();
-            System.out.println("alamat penerima disini: " + alamatPenerima);
-            System.out.println("alamat pengirim disini: " + alamatPengirim);
             String noHPPenerima = inputNoHPPenerima.getText();
             if (namaPengirim.isEmpty() || namaPenerima.isEmpty() || alamatPenerima.isEmpty() || alamatPengirim.isEmpty() || noHPPenerima.isEmpty() || noHPPengirim.isEmpty() || inputBeratBarang.getText().isEmpty() || inputBanyakBarang.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, Constant.ERROR_MESSAGE);
@@ -228,23 +226,31 @@ public class MenuBuatOrder {
                     } else {
                         totalPembayaran += 25000;
                     }
-                    int statusPemesanan = StatusPengiriman.MENUNGGU_KURIR;
-                    long millis = System.currentTimeMillis();
-                    Date tanggal = new Date(millis);
-                    String saranDriver = null;
-
-                    Transaksi transaksi = new Transaksi(idTransaksi, idPelanggan, idKurir, kategoriBarang, beratBarang, banyakBarang, namaPengirim, alamatPengirim, noHPPengirim, namaPenerima, alamatPenerima, noHPPenerima, totalPembayaran, statusPemesanan, tanggal, saranDriver, null);
-                    System.out.println(transaksi.getStatus_pemesanan());
-                    System.out.println("alamat penerima: " + transaksi.getAlamat_penerima());
-                    System.out.println("alamat pengirim: " + transaksi.getAlamat_pengirim());
-                    Controller c = new Controller();
-                    boolean transaksiTerbuat = c.buatTransaksi(transaksi);
-                    if (transaksiTerbuat) {
-                        JOptionPane.showMessageDialog(null, "Transaksi Terbuat!");
+                    if (pelanggan.getSaldo() < totalPembayaran) {
+                        JOptionPane.showMessageDialog(null, "Maaf, saldo kamu tidak cukup");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Transaksi gagal terbuat. Coba lagi");
-                    }
+                        int statusPemesanan = StatusPengiriman.MENUNGGU_KURIR;
+                        long millis = System.currentTimeMillis();
+                        Date tanggal = new Date(millis);
+                        String saranDriver = null;
 
+                        int buatTransaksi = JOptionPane.showConfirmDialog(null, "Saldo kamu akan terpotong sebesar " + totalPembayaran + " otomatis. Lanjutkan Pembayaran?");
+
+                        if (buatTransaksi == JOptionPane.YES_OPTION) {
+                            Transaksi transaksi = new Transaksi(idTransaksi, idPelanggan, idKurir, kategoriBarang, beratBarang, banyakBarang, namaPengirim, alamatPengirim, noHPPengirim, namaPenerima, alamatPenerima, noHPPenerima, totalPembayaran, statusPemesanan, tanggal, saranDriver, null);
+                            Controller c = new Controller();
+                            boolean transaksiTerbuat = c.buatTransaksi(transaksi);
+                            if (transaksiTerbuat) {
+                                double saldoSekarang = c.bayarOrder(pelanggan.getId_user(), transaksi.getTotal_pembayaran());
+                                pelanggan.setSaldo(saldoSekarang);
+                                JOptionPane.showMessageDialog(null, "Transaksi Terbuat! Saldo kamu kini tinggal " + pelanggan.getSaldo());
+                                frame.dispose();
+                                new BerandaPelanggan(pelanggan);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Transaksi gagal terbuat. Coba lagi");
+                            }
+                        }
+                    }
 
                 }
             }
@@ -291,10 +297,4 @@ public class MenuBuatOrder {
         frame.add(panelBarang);
         frame.add(buttonOrder);
     }
-
-    public static void main(String[] args) {
-        Pelanggan pelanggan = new Pelanggan();
-        new MenuBuatOrder(pelanggan);
-    }
-
 }

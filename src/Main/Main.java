@@ -9,7 +9,7 @@ public class Main {
 
 //        Pelanggan pelanggan = new Pelanggan();
 //        new BerandaPelanggan(pelanggan);
-//        new MenuLogin();
+        new HalamanAwal();
 //        new MenuRegisterPilihRule();
 //        new MenuRegisterPelanggan();
     }
