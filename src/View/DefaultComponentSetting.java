@@ -35,6 +35,7 @@ public class DefaultComponentSetting {
     public JLabel defaultBackLabel() {
         JLabel jlabel = new JLabel("< Back");
         jlabel.setFont(new Font("Arial", Font.BOLD, 14));
+        jlabel.setVisible(true);
         jlabel.setBounds(10, 5, 50, 30);
         return jlabel;
     }

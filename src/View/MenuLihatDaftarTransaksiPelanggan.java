@@ -171,23 +171,23 @@ public class MenuLihatDaftarTransaksiPelanggan {
         panel.add(panelTransaksi);
         panel.add(Box.createRigidArea(new Dimension(0, 25)));
 //
-//        panelTransaksi = new JPanel();
-//        panelTransaksi.setPreferredSize( new Dimension(100, 200) );
-//        panelTransaksi.setMaximumSize( new Dimension(Integer.MAX_VALUE, 200) );
-//        panelTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-//        panelTransaksi.setBackground(new Color(200,200,0));
-//        panelTransaksi.setLayout(null);
-//        panel.add( panelTransaksi );
-//        panel.add(Box.createRigidArea(new Dimension(0, 25)));
-//
-//        panelTransaksi = new JPanel();
-//        panelTransaksi.setPreferredSize( new Dimension(100, 200) );
-//        panelTransaksi.setMaximumSize( new Dimension(Integer.MAX_VALUE, 200) );
-//        panelTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-//        panelTransaksi.setBackground(new Color(200,200,0));
-//        panelTransaksi.setLayout(null);
-//        panel.add( panelTransaksi );
-//        panel.add(Box.createRigidArea(new Dimension(0, 25)));
+        panelTransaksi = new JPanel();
+        panelTransaksi.setPreferredSize( new Dimension(100, 200) );
+        panelTransaksi.setMaximumSize( new Dimension(Integer.MAX_VALUE, 200) );
+        panelTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        panelTransaksi.setBackground(new Color(200,200,0));
+        panelTransaksi.setLayout(null);
+        panel.add( panelTransaksi );
+        panel.add(Box.createRigidArea(new Dimension(0, 25)));
+
+        panelTransaksi = new JPanel();
+        panelTransaksi.setPreferredSize( new Dimension(100, 200) );
+        panelTransaksi.setMaximumSize( new Dimension(Integer.MAX_VALUE, 200) );
+        panelTransaksi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
+        panelTransaksi.setBackground(new Color(200,200,0));
+        panelTransaksi.setLayout(null);
+        panel.add( panelTransaksi );
+        panel.add(Box.createRigidArea(new Dimension(0, 25)));
 
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setBounds(0, 0, 600, 800);
@@ -195,12 +195,16 @@ public class MenuLihatDaftarTransaksiPelanggan {
         contentPane.setPreferredSize(new Dimension(600, 800));
         contentPane.add(scrollPane);
 
-
         frame.setContentPane(contentPane);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.add(labelKembali);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public static void main(String[] args) {
+        Pelanggan pelanggan = new Pelanggan();
+        new MenuLihatDaftarTransaksiPelanggan(pelanggan);
     }
 }
