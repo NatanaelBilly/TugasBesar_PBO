@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Controller.Controller;
-import Controller.KurirController;
 import Model.Kurir;
 import Model.Transaksi;
-import Model.User;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -103,15 +96,15 @@ public class MenuLihatOrderKurir {
             panelOrder[i].setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
             panelOrder[i].setLayout(null);
 
-            labelPengirim = GUI.defaultRegularLabel("Pengirim : " + daftarOrder.get(i).getNama_penerima());
+            labelPengirim = GUI.defaultRegularLabel("Pengirim : " + daftarOrder.get(i).getNamaPenerima());
             labelPengirim.setBounds(30,20,320,30);
-            labelAlamatTujuan = GUI.defaultRegularLabel("Alamat Tujuan : " + daftarOrder.get(i).getAlamat_penerima());
+            labelAlamatTujuan = GUI.defaultRegularLabel("Alamat Tujuan : " + daftarOrder.get(i).getAlamatPenerima());
             labelAlamatTujuan.setBounds(30,50,320,30);
-            labelBarang = GUI.defaultRegularLabel("Barang : " + daftarOrder.get(i).getKategori_barang());
+            labelBarang = GUI.defaultRegularLabel("Barang : " + daftarOrder.get(i).getKategoriBarang());
             labelBarang.setBounds(30,80,320,30);
-            labelJumlah = GUI.defaultRegularLabel("Berat : " + daftarOrder.get(i).getBerat_barang() + " KG");
+            labelJumlah = GUI.defaultRegularLabel("Berat : " + daftarOrder.get(i).getBeratBarang() + " KG");
             labelJumlah.setBounds(30,110,320,30);
-            labelBerat = GUI.defaultRegularLabel("Jumlah : " + daftarOrder.get(i).getJumlah_barang());
+            labelBerat = GUI.defaultRegularLabel("Jumlah : " + daftarOrder.get(i).getJumlahBarang());
             labelBerat.setBounds(30,140,320,30);
 
             labelLogo= new JLabel();

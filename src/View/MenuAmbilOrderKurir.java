@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
 
 import Controller.KurirController;
@@ -12,16 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Asus
- */
 public class MenuAmbilOrderKurir {
     private JFrame frame;
     private JLabel labelMenu, labelNamaPengirim,labelAlamatPengirim, labelNamaPenerima,labelAlamatPenerima, labelKategoriBarang,
@@ -45,34 +35,34 @@ public class MenuAmbilOrderKurir {
         labelMenu.setBounds(200,25,200,50);
 
         //Label Keterangan
-        labelKategoriBarang = GUI.defaultRegularLabel("Kategori Barang : " + transaksi.getKategori_barang());
+        labelKategoriBarang = GUI.defaultRegularLabel("Kategori Barang : " + transaksi.getKategoriBarang());
         labelKategoriBarang.setBounds(100,100,200,40);
         
-        labelBeratBarang = GUI.defaultRegularLabel("Berat Barang : " + transaksi.getBerat_barang()+ " KG");
+        labelBeratBarang = GUI.defaultRegularLabel("Berat Barang : " + transaksi.getBeratBarang()+ " KG");
         labelBeratBarang.setBounds(100,125,200,40);
         
-        labelJumlahBarang = GUI.defaultRegularLabel("Jumlah Barang : " + transaksi.getJumlah_barang());
+        labelJumlahBarang = GUI.defaultRegularLabel("Jumlah Barang : " + transaksi.getJumlahBarang());
         labelJumlahBarang.setBounds(100,150,200,40);
         
-        labelNamaPengirim = GUI.defaultRegularLabel("Nama Pengirim : " + transaksi.getNama_pengirim());
+        labelNamaPengirim = GUI.defaultRegularLabel("Nama Pengirim : " + transaksi.getNamaPengirim());
         labelNamaPengirim.setBounds(100,175,200,40);
         
-        labelHPPengirim = GUI.defaultRegularLabel("No Telepon Pengirim : " + transaksi.getNoHP_pengirim());
+        labelHPPengirim = GUI.defaultRegularLabel("No Telepon Pengirim : " + transaksi.getNoHpPengirim());
         labelHPPengirim.setBounds(100,200,200,40);
         
-        labelAlamatPengirim = GUI.defaultRegularLabel("Alamat Pengirim : " + transaksi.getAlamat_pengirim());
+        labelAlamatPengirim = GUI.defaultRegularLabel("Alamat Pengirim : " + transaksi.getAlamatPengirim());
         labelAlamatPengirim.setBounds(100,225,200,40);
         
-        labelNamaPenerima = GUI.defaultRegularLabel("Nama Penerima : " + transaksi.getNama_penerima());
+        labelNamaPenerima = GUI.defaultRegularLabel("Nama Penerima : " + transaksi.getNamaPenerima());
         labelNamaPenerima.setBounds(100,250,200,40);
         
-        labelHPPenerima = GUI.defaultRegularLabel("No Telepon Penerima : " + transaksi.getNoHP_penerima());
+        labelHPPenerima = GUI.defaultRegularLabel("No Telepon Penerima : " + transaksi.getNoHpPenerima());
         labelHPPenerima.setBounds(100,275,300,40);
         
-        labelAlamatPenerima = GUI.defaultRegularLabel("Alamat Penerima : " + transaksi.getAlamat_penerima());
+        labelAlamatPenerima = GUI.defaultRegularLabel("Alamat Penerima : " + transaksi.getAlamatPenerima());
         labelAlamatPenerima.setBounds(100,300,200,40);
         
-        labelTotalBayar = GUI.defaultRegularLabel("Total Pembayaran : " + transaksi.getTotal_pembayaran());
+        labelTotalBayar = GUI.defaultRegularLabel("Total Pembayaran : " + transaksi.getTotalPembayaran());
         labelTotalBayar.setBounds(100,325,325,40);
 
         //Button Edit
@@ -81,7 +71,7 @@ public class MenuAmbilOrderKurir {
         btnEditProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ambilOrderan(transaksi.getId_transaksi());
+                ambilOrderan(transaksi.getIdTransaksi());
             }
         });
         
@@ -144,9 +134,9 @@ public class MenuAmbilOrderKurir {
         int konfirmasi = JOptionPane.showConfirmDialog(null, "Ingin Mengambil Orderan Ini ?");
 
         if (konfirmasi == 0) {
-            if(new KurirController().ambilOrderOlehKurir(idTransaksi, kurir.getId_user()))
+            if(new KurirController().ambilOrderOlehKurir(idTransaksi, kurir.getIdUser()))
             {
-                if(new KurirController().ubahKetersediaanKurir(kurir.getId_user(),1))
+                if(new KurirController().ubahKetersediaanKurir(kurir.getIdUser(),1))
                 {
                     JOptionPane.showMessageDialog(null, "Berhasil Mengambil Order.");
                     frame.dispose();

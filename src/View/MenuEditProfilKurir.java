@@ -56,7 +56,7 @@ public class MenuEditProfilKurir {
         //Input Nama Depan
         inputNamaDepan = new JTextField();
         inputNamaDepan.setBounds(230, 130, 250, 30);
-        inputNamaDepan.setText(kurir.getNama_depan());
+        inputNamaDepan.setText(kurir.getNamaDepan());
 
         //Label Nama Belakang
         labelNamaBelakang = GUI.defaultRegularLabel("Nama Belakang");
@@ -64,7 +64,7 @@ public class MenuEditProfilKurir {
         //Input Nama Belakang
         inputNamaBelakang = new JTextField();
         inputNamaBelakang.setBounds(230, 180, 250, 30);
-        inputNamaBelakang.setText(kurir.getNama_belakang());
+        inputNamaBelakang.setText(kurir.getNamaBelakang());
 
         //Label NIK
         labelNIK = GUI.defaultRegularLabel("NIK");
@@ -80,7 +80,7 @@ public class MenuEditProfilKurir {
         //Input Email
         inputEmail = new JTextField();
         inputEmail.setBounds(230, 280, 250, 30);
-        inputEmail.setText(kurir.getEmail_user());
+        inputEmail.setText(kurir.getEmailUser());
 
         //Label No HP
         labelNoHp = GUI.defaultRegularLabel("Nomor Telepon");
@@ -104,7 +104,7 @@ public class MenuEditProfilKurir {
         //Input Jenis
         inputJenisKendaraan = new JTextField();
         inputJenisKendaraan.setBounds(230, 430, 250, 30);
-        inputJenisKendaraan.setText(kurir.getJenis_kendaraan());
+        inputJenisKendaraan.setText(kurir.getJenisKendaraan());
 
 //=====================Input Password=====================
 //        Label Password
@@ -201,7 +201,7 @@ public class MenuEditProfilKurir {
 
                 //Cek Email Redundant
                 String newEmail = inputEmail.getText();
-                if (con.cekUserDiDataBase(newEmail) && !kurir.getEmail_user().equals(newEmail)) {
+                if (con.cekUserDiDataBase(newEmail) && !kurir.getEmailUser().equals(newEmail)) {
                     JOptionPane.showMessageDialog(null, "Email tersebut sudah digunakan orang lain");
                 } else {
 
@@ -211,14 +211,14 @@ public class MenuEditProfilKurir {
                     if (konfirmasi == 0) {
 
                         Kurir kurirBaru = kurir;
-                        kurirBaru.setNama_depan(inputNamaDepan.getText());
-                        kurirBaru.setNama_belakang(inputNamaBelakang.getText());
-                        kurirBaru.setEmail_user(inputEmail.getText());
+                        kurirBaru.setNamaDepan(inputNamaDepan.getText());
+                        kurirBaru.setNamaBelakang(inputNamaBelakang.getText());
+                        kurirBaru.setEmailUser(inputEmail.getText());
                         kurirBaru.setNoHp(inputNoHp.getText());
                         kurirBaru.setNIK(inputNIK.getText());
 
                         kurirBaru.setPlat(inputPlatnomor.getText());
-                        kurirBaru.setJenis_kendaraan(inputJenisKendaraan.getText());
+                        kurirBaru.setJenisKendaraan(inputJenisKendaraan.getText());
 
                         if (conKurir.EditDataKurirToDB(kurirBaru)) {
                             JOptionPane.showMessageDialog(null, "Profil Telah Diperbaharui");
