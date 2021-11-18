@@ -2,7 +2,6 @@ package Controller;
 
 import Database.Database;
 import Model.*;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -22,10 +21,10 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 User user = new User();
-                user.setId_user(rs.getInt("id_user"));
-                user.setNama_depan(rs.getString("nama_depan"));
-                user.setNama_belakang(rs.getString("nama_belakang"));
-                user.setEmail_user(rs.getString("email_user"));
+                user.setIdUser(rs.getInt("id_user"));
+                user.setNamaDepan(rs.getString("nama_depan"));
+                user.setNamaBelakang(rs.getString("nama_belakang"));
+                user.setEmailUser(rs.getString("email_user"));
                 user.setPassword(rs.getString("password"));
                 user.setRole(Role.valueOf(rs.getString("role")));
                 user.setSaldo(rs.getInt("saldo"));
@@ -98,10 +97,10 @@ public class Controller {
         String query = "INSERT INTO chat VALUES(?,?,?,?,?)";
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query);
-            stmt.setInt(1, chat.getId_chat());
-            stmt.setInt(2, chat.getId_transaksi());
-            stmt.setInt(3, chat.getId_pengirim());
-            stmt.setInt(4, chat.getId_penerima());
+            stmt.setInt(1, chat.getIdChat());
+            stmt.setInt(2, chat.getIdTransaksi());
+            stmt.setInt(3, chat.getIdPengirim());
+            stmt.setInt(4, chat.getIdPenerima());
             stmt.setString(5, chat.getChat());
             stmt.setDate(6, (Date) chat.getTime());
             stmt.executeUpdate();
@@ -124,10 +123,10 @@ public class Controller {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Chat chat = new Chat();
-                chat.setId_chat(rs.getInt("id"));
-                chat.setId_transaksi(rs.getInt("id_transaksi"));
-                chat.setId_pengirim(rs.getInt("id_pengirim"));
-                chat.setId_penerima(rs.getInt("id_penerima"));
+                chat.setIdChat(rs.getInt("id"));
+                chat.setIdTransaksi(rs.getInt("id_transaksi"));
+                chat.setIdPengirim(rs.getInt("id_pengirim"));
+                chat.setIdPenerima(rs.getInt("id_penerima"));
                 chat.setChat(rs.getString("chat"));
                 chat.setTime(rs.getTime("time"));
                 chats.add(chat);
@@ -144,21 +143,21 @@ public class Controller {
         String query = "INSERT INTO transaksi VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query);
-            stmt.setInt(1, transaksi.getId_transaksi());
-            stmt.setInt(2, transaksi.getId_pelanggan());
-            stmt.setInt(3, transaksi.getId_kurir());
-            stmt.setString(4, transaksi.getKategori_barang());
-            stmt.setDouble(5, transaksi.getBerat_barang());
-            stmt.setDouble(6, transaksi.getJumlah_barang());
-            stmt.setString(7, transaksi.getNama_pengirim());
-            stmt.setString(8, transaksi.getNama_penerima());
-            stmt.setString(9, transaksi.getNoHP_pengirim());
-            stmt.setString(10, transaksi.getNoHP_penerima());
-            stmt.setString(11, transaksi.getAlamat_pengirim());
-            stmt.setString(12, transaksi.getAlamat_penerima());
-            stmt.setDouble(13, transaksi.getTotal_pembayaran());
+            stmt.setInt(1, transaksi.getIdTransaksi());
+            stmt.setInt(2, transaksi.getIdPelanggan());
+            stmt.setInt(3, transaksi.getIdKurir());
+            stmt.setString(4, transaksi.getKategoriBarang());
+            stmt.setDouble(5, transaksi.getBeratBarang());
+            stmt.setDouble(6, transaksi.getJumlahBarang());
+            stmt.setString(7, transaksi.getNamaPengirim());
+            stmt.setString(8, transaksi.getNamaPenerima());
+            stmt.setString(9, transaksi.getNoHpPengirim());
+            stmt.setString(10, transaksi.getNoHpPenerima());
+            stmt.setString(11, transaksi.getAlamatPengirim());
+            stmt.setString(12, transaksi.getAlamatPenerima());
+            stmt.setDouble(13, transaksi.getTotalPembayaran());
             stmt.setDate(14, (Date) transaksi.getTanggal());
-            stmt.setString(15, transaksi.getStatus_pemesanan());
+            stmt.setString(15, transaksi.getStatusPemesanan());
             stmt.executeUpdate();
             return true;
         } catch (SQLException throwables) {
@@ -178,10 +177,10 @@ public class Controller {
 
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query1);
-            stmt.setString(1, pelanggan.getNama_depan());
-            stmt.setString(2, pelanggan.getNama_belakang());
+            stmt.setString(1, pelanggan.getNamaDepan());
+            stmt.setString(2, pelanggan.getNamaBelakang());
             stmt.setString(3, pelanggan.getNoHp());
-            stmt.setString(4, pelanggan.getEmail_user());
+            stmt.setString(4, pelanggan.getEmailUser());
             stmt.setString(5, pelanggan.getPassword());
             stmt.setString(6, String.valueOf(pelanggan.getRole()));
             stmt.setDouble(7, pelanggan.getSaldo());
@@ -199,20 +198,20 @@ public class Controller {
         String query = "INSERT INTO transaksi VALUES(null,?,null,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query);
-            stmt.setInt(1, transaksi.getId_pelanggan());
+            stmt.setInt(1, transaksi.getIdPelanggan());
 //            stmt.setInt(2, transaksi.getId_kurir());
-            stmt.setString(2, transaksi.getKategori_barang());
-            stmt.setDouble(3, transaksi.getBerat_barang());
-            stmt.setDouble(4, transaksi.getJumlah_barang());
-            stmt.setString(5, transaksi.getNama_pengirim());
-            stmt.setString(6, transaksi.getNama_penerima());
-            stmt.setString(7, transaksi.getNoHP_pengirim());
-            stmt.setString(8, transaksi.getNoHP_penerima());
-            stmt.setString(9, transaksi.getAlamat_pengirim());
-            stmt.setString(10, transaksi.getAlamat_penerima());
-            stmt.setDouble(11, transaksi.getTotal_pembayaran());
+            stmt.setString(2, transaksi.getKategoriBarang());
+            stmt.setDouble(3, transaksi.getBeratBarang());
+            stmt.setDouble(4, transaksi.getJumlahBarang());
+            stmt.setString(5, transaksi.getNamaPengirim());
+            stmt.setString(6, transaksi.getNamaPenerima());
+            stmt.setString(7, transaksi.getNoHpPengirim());
+            stmt.setString(8, transaksi.getNoHpPenerima());
+            stmt.setString(9, transaksi.getAlamatPengirim());
+            stmt.setString(10, transaksi.getAlamatPenerima());
+            stmt.setDouble(11, transaksi.getTotalPembayaran());
             stmt.setDate(12, (Date) transaksi.getTanggal());
-            stmt.setString(13, transaksi.getStatus_pemesanan());
+            stmt.setString(13, transaksi.getStatusPemesanan());
             stmt.executeUpdate();
             return (true);
         } catch (SQLException throwables) {
@@ -234,30 +233,30 @@ public class Controller {
 
             while (rs.next()) {
                 Transaksi transaksi = new Transaksi();
-                transaksi.setId_transaksi(rs.getInt("id_transaksi"));
-                transaksi.setId_pelanggan(rs.getInt("id_pelanggan"));
-                transaksi.setId_kurir(rs.getInt("id_kurir"));
-                transaksi.setKategori_barang(rs.getString("kategori_barang"));
-                transaksi.setBerat_barang(rs.getInt("berat_barang"));
-                transaksi.setJumlah_barang(rs.getInt("jumlah_barang"));
-                transaksi.setNama_pengirim(rs.getString("nama_pengirim"));
-                transaksi.setAlamat_pengirim(rs.getString("alamat_pengirim"));
-                transaksi.setNoHP_pengirim(rs.getString("noHP_pengirim"));
-                transaksi.setNama_penerima(rs.getString("nama_penerima"));
-                transaksi.setAlamat_pengirim(rs.getString("alamat_pengirim"));
-                transaksi.setAlamat_penerima(rs.getString("alamat_penerima"));
-                transaksi.setNoHP_penerima(rs.getString("noHP_penerima"));
-                transaksi.setTotal_pembayaran(rs.getInt("total_pembayaran"));
+                transaksi.setIdTransaksi(rs.getInt("id_transaksi"));
+                transaksi.setIdPelanggan(rs.getInt("id_pelanggan"));
+                transaksi.setIdKurir(rs.getInt("id_kurir"));
+                transaksi.setKategoriBarang(rs.getString("kategori_barang"));
+                transaksi.setBeratBarang(rs.getInt("berat_barang"));
+                transaksi.setJumlahBarang(rs.getInt("jumlah_barang"));
+                transaksi.setNamaPengirim(rs.getString("nama_pengirim"));
+                transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
+                transaksi.setNoHpPengirim(rs.getString("noHP_pengirim"));
+                transaksi.setNamaPenerima(rs.getString("nama_penerima"));
+                transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
+                transaksi.setAlamatPenerima(rs.getString("alamat_penerima"));
+                transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
+                transaksi.setTotalPembayaran(rs.getInt("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
                 switch (rs.getString("status_pemesanan")){
                     case "MENUNGGU KURIR":
-                        transaksi.setStatus_pemesanan(0);
+                        transaksi.setStatusPemesanan(0);
                         break;
                     case "DIANTAR":
-                        transaksi.setStatus_pemesanan(1);
+                        transaksi.setStatusPemesanan(1);
                         break;
                     case "DITERIMA":
-                        transaksi.setStatus_pemesanan(2);
+                        transaksi.setStatusPemesanan(2);
                         break;
                 }
 
@@ -272,7 +271,7 @@ public class Controller {
                     status = 2;
                 }
 
-                transaksi.setStatus_pemesanan(status);
+                transaksi.setStatusPemesanan(status);
 
                 daftarOrder.add(transaksi);
             }
@@ -294,20 +293,20 @@ public class Controller {
 
             while (rs.next()) {
                 Transaksi transaksi = new Transaksi();
-                transaksi.setId_transaksi(rs.getInt("id_transaksi"));
-                transaksi.setId_pelanggan(rs.getInt("id_pelanggan"));
-                transaksi.setId_kurir(rs.getInt("id_kurir"));
-                transaksi.setKategori_barang(rs.getString("kategori_barang"));
-                transaksi.setBerat_barang(rs.getInt("berat_barang"));
-                transaksi.setJumlah_barang(rs.getInt("jumlah_barang"));
-                transaksi.setNama_pengirim(rs.getString("nama_pengirim"));
-                transaksi.setAlamat_pengirim(rs.getString("alamat_pengirim"));
-                transaksi.setNoHP_pengirim(rs.getString("noHP_pengirim"));
-                transaksi.setNama_penerima(rs.getString("nama_penerima"));
-                transaksi.setAlamat_pengirim(rs.getString("alamat_pengirim"));
-                transaksi.setAlamat_penerima(rs.getString("alamat_penerima"));
-                transaksi.setNoHP_penerima(rs.getString("noHP_penerima"));
-                transaksi.setTotal_pembayaran(rs.getInt("total_pembayaran"));
+                transaksi.setIdTransaksi(rs.getInt("id_transaksi"));
+                transaksi.setIdPelanggan(rs.getInt("id_pelanggan"));
+                transaksi.setIdKurir(rs.getInt("id_kurir"));
+                transaksi.setKategoriBarang(rs.getString("kategori_barang"));
+                transaksi.setBeratBarang(rs.getInt("berat_barang"));
+                transaksi.setJumlahBarang(rs.getInt("jumlah_barang"));
+                transaksi.setNamaPengirim(rs.getString("nama_pengirim"));
+                transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
+                transaksi.setNoHpPengirim(rs.getString("noHP_pengirim"));
+                transaksi.setNamaPenerima(rs.getString("nama_penerima"));
+                transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
+                transaksi.setAlamatPenerima(rs.getString("alamat_penerima"));
+                transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
+                transaksi.setTotalPembayaran(rs.getInt("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
                 //Get Status nya belum
                 String status_pemesanan = rs.getString("status_pemesanan");
@@ -320,7 +319,7 @@ public class Controller {
                     status = 2;
                 }
 
-                transaksi.setStatus_pemesanan(status);
+                transaksi.setStatusPemesanan(status);
 
                 daftarOrder.add(transaksi);
             }
@@ -334,7 +333,7 @@ public class Controller {
     public ArrayList<Transaksi> ambilDaftarOrderMenunggu(ArrayList<Transaksi> daftarOrder) {
         ArrayList<Transaksi> daftarOrderMenunggu = new ArrayList<>();
         for (Transaksi order : daftarOrder) {
-            if (order.getStatus_pemesanan().equals("MENUNGGU KURIR")) {
+            if (order.getStatusPemesanan().equals("MENUNGGU KURIR")) {
                 daftarOrderMenunggu.add(order);
             }
         }
@@ -362,11 +361,11 @@ public class Controller {
                     TingkatanUser tingkatanUser = TingkatanUser.valueOf(rs.getString("tingkatan"));
                     Pelanggan pelanggan = new Pelanggan();
                     pelanggan.setTingkatan(tingkatanUser);
-                    pelanggan.setId_user(idUser);
-                    pelanggan.setNama_depan(namaDepan);
-                    pelanggan.setNama_belakang(namaBelakang);
+                    pelanggan.setIdUser(idUser);
+                    pelanggan.setNamaDepan(namaDepan);
+                    pelanggan.setNamaBelakang(namaBelakang);
                     pelanggan.setNoHp(noHp);
-                    pelanggan.setEmail_user(emailUser);
+                    pelanggan.setEmailUser(emailUser);
                     pelanggan.setPassword(passwordUser);
                     pelanggan.setSaldo(saldo);
                     pelanggan.setRole(roleUser);
@@ -385,20 +384,20 @@ public class Controller {
                             String jenisKendaraan = rs2.getString("jenis_kendaraan");
 
                             Kurir kurir = new Kurir();
-                            kurir.setId_user(idUser);
-                            kurir.setNama_depan(namaDepan);
-                            kurir.setNama_belakang(namaBelakang);
+                            kurir.setIdUser(idUser);
+                            kurir.setNamaDepan(namaDepan);
+                            kurir.setNamaBelakang(namaBelakang);
                             kurir.setNoHp(noHp);
-                            kurir.setEmail_user(emailUser);
+                            kurir.setEmailUser(emailUser);
                             kurir.setPassword(passwordUser);
                             kurir.setSaldo(saldo);
                             kurir.setRole(roleUser);
                             kurir.setListTransaksi(ambilDaftarOrder(idUser));
-                            kurir.setTotal_pendapatan(totalPendapatan);
+                            kurir.setTotalPendapatan(totalPendapatan);
                             kurir.setNIK(NIK);
                             kurir.setKetersediaan(ketersediaanKurir);
                             kurir.setPlat(platNomor);
-                            kurir.setJenis_kendaraan(jenisKendaraan);
+                            kurir.setJenisKendaraan(jenisKendaraan);
                             new UserManager().getInstance().setUser(kurir);
 
                         }
@@ -407,11 +406,11 @@ public class Controller {
                     }
                 } else {
                     Admin admin = new Admin();
-                    admin.setId_user(idUser);
-                    admin.setNama_depan(namaDepan);
-                    admin.setNama_belakang(namaBelakang);
+                    admin.setIdUser(idUser);
+                    admin.setNamaDepan(namaDepan);
+                    admin.setNamaBelakang(namaBelakang);
                     admin.setNoHp(noHp);
-                    admin.setEmail_user(emailUser);
+                    admin.setEmailUser(emailUser);
                     admin.setPassword(passwordUser);
                     admin.setSaldo(saldo);
                     admin.setRole(roleUser);
@@ -445,11 +444,10 @@ public class Controller {
         return (false);
     }
 
-
     public boolean isiSaldo(Pelanggan pelanggan, int saldo) {
         conn.connect();
         double total = pelanggan.getSaldo() + saldo;
-        String query = "UPDATE user SET saldo = " + total + "WHERE id_user =" + pelanggan.getId_user() + ";";
+        String query = "UPDATE user SET saldo = " + total + "WHERE id_user =" + pelanggan.getIdUser() + ";";
 
         try {
             Statement stmt = conn.con.createStatement();
@@ -536,8 +534,8 @@ public class Controller {
         String query = "INSERT INTO saran VALUES(?,?,?)";
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query);
-            stmt.setInt(1, saran.getId_saran());
-            stmt.setInt(2, saran.getId_pelanggan());
+            stmt.setInt(1, saran.getIdSaran());
+            stmt.setInt(2, saran.getIdPelanggan());
             stmt.setString(3, saran.getSaran());
             stmt.executeUpdate();
             return (true);

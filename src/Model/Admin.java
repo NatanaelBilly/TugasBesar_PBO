@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
 import java.util.ArrayList;
 
-/**
- * @author natanael billy
- */
 public class Admin extends User {
     private ArrayList<Saran> listSaran;
 
@@ -17,8 +9,8 @@ public class Admin extends User {
 
     }
 
-    public Admin(ArrayList<Saran> listSaran, int id_user, String nama_depan, String nama_belakang, String noHp,String email_user, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
-        super(id_user, nama_depan, nama_belakang, noHp,email_user, password, saldo, role, listTransaksi);
+    public Admin(ArrayList<Saran> listSaran, int idUser, String namaDepan, String namaBelakang, String noHp,String emailUser, String password, double saldo, Role role, ArrayList<Transaksi> listTransaksi) {
+        super(idUser, namaDepan, namaBelakang, noHp,emailUser, password, saldo, role, listTransaksi);
         setListSaran(listSaran);
     }
 

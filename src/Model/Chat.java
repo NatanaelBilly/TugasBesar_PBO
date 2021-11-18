@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
 import java.sql.Time;
@@ -10,10 +5,10 @@ import java.util.Date;
 
 
 public class Chat {
-    private int id_chat;
-    private int id_transaksi;
-    private int id_pengirim;
-    private int id_penerima;
+    private int idChat;
+    private int idTransaksi;
+    private int idPengirim;
+    private int idPenerima;
     private String chat;
     private Date time;
     
@@ -21,45 +16,45 @@ public class Chat {
     public Chat(){}
 
 
-    public Chat(int id_chat, int id_transaksi, int id_pengirim, int id_penerima, String chat, Date time) {
-        setId_chat(id_chat);
-        setId_transaksi(id_transaksi);
-        setId_pengirim(id_pengirim);
-        setId_penerima(id_penerima);
+    public Chat(int idChat, int idTransaksi, int idPengirim, int idPenerima, String chat, Date time) {
+        setIdChat(idChat);
+        setIdTransaksi(idTransaksi);
+        setIdPengirim(idPengirim);
+        setIdPenerima(idPenerima);
         setChat(chat);
         setTime(time);
     }
 
-    public int getId_chat() {
-        return id_chat;
+    public int getIdChat() {
+        return idChat;
     }
 
-    public void setId_chat(int id_chat) {
-        this.id_chat = id_chat;
+    public void setIdChat(int idChat) {
+        this.idChat = idChat;
     }
 
-    public int getId_transaksi() {
-        return id_transaksi;
+    public int getIdTransaksi() {
+        return idTransaksi;
     }
 
-    public void setId_transaksi(int id_transaksi) {
-        this.id_transaksi = id_transaksi;
+    public void setIdTransaksi(int idTransaksi) {
+        this.idTransaksi = idTransaksi;
     }
 
-    public int getId_pengirim() {
-        return id_pengirim;
+    public int getIdPengirim() {
+        return idPengirim;
     }
 
-    public void setId_pengirim(int id_pengirim) {
-        this.id_pengirim = id_pengirim;
+    public void setIdPengirim(int idPengirim) {
+        this.idPengirim = idPengirim;
     }
 
-    public int getId_penerima() {
-        return id_penerima;
+    public int getIdPenerima() {
+        return idPenerima;
     }
 
-    public void setId_penerima(int id_penerima) {
-        this.id_penerima = id_penerima;
+    public void setIdPenerima(int idPenerima) {
+        this.idPenerima = idPenerima;
     }
 
     public String getChat() {
@@ -76,6 +71,11 @@ public class Chat {
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "Chat{" + "idChat=" + idChat + ", idTransaksi=" + idTransaksi + ", idPengirim=" + idPengirim + ", idPenerima=" + idPenerima + ", chat=" + chat + ", time=" + time + '}';
     }
     
     
