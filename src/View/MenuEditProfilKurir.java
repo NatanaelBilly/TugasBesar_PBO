@@ -133,13 +133,13 @@ public class MenuEditProfilKurir {
         kembaliKeLihatProfil.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new MenuLihatProfilKurir(kurir);
+                new MenuProfilKurir(kurir);
                 frame.dispose();
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-                new MenuLihatProfilKurir(kurir);
+                new MenuProfilKurir(kurir);
                 frame.dispose();
             }
 
@@ -226,12 +226,12 @@ public class MenuEditProfilKurir {
                             JOptionPane.showMessageDialog(null, "Mohon Maaf, Terjadi Kesalahan");
                         }
 
-                        new MenuLihatProfilKurir(kurir);
+                        new MenuProfilKurir(kurir);
                         frame.dispose();
 
                     } else if (konfirmasi == 1) {
                         JOptionPane.showMessageDialog(null, "Perubahan Profil Dibatalkan");
-                        new MenuLihatProfilKurir(kurir);
+                        new MenuProfilKurir(kurir);
                         frame.dispose();
                     }
                 }

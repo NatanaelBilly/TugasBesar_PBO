@@ -13,14 +13,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class MenuLihatProfilKurir {
+public class MenuProfilKurir {
     private JFrame frame;
     private JLabel labelMenu, labelProfilePic, labelNama, labelEmail, labelNoHp, labelNIK, labelPlat, labelKendaraan, labelKetersediaan,
             TampilanNama, TampilanEmail, TampilanNoHp, TampilanNIK, TampilanPlat, TampilanKendaraan, TampilanKetersediaan;
     private ImageIcon profilePic;
     
     private final DefaultComponentSetting GUI = new DefaultComponentSetting();
-    public MenuLihatProfilKurir(Kurir kurir)
+    public MenuProfilKurir(Kurir kurir)
     {
 //        if(kurir == null || new KurirController().cekKurirLogin())
 //        {
