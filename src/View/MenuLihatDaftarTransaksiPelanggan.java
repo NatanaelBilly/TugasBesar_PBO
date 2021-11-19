@@ -1,8 +1,6 @@
 package View;
 
-import Model.Constant;
 import Model.Pelanggan;
-import Model.StatusPengiriman;
 import Model.Transaksi;
 
 import javax.swing.*;
@@ -13,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 public class MenuLihatDaftarTransaksiPelanggan {
     private JFrame frame;

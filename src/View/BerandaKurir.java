@@ -68,7 +68,7 @@ public class BerandaKurir implements ActionListener {
         switch (command) {
             case "Lihat Profil":
                 frame.dispose();
-                new MenuLihatProfilKurir(kurir);
+                new MenuProfilKurir(kurir);
                 break;
             case "Lihat Order":
                 frame.dispose();

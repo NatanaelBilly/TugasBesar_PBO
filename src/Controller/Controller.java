@@ -286,7 +286,7 @@ public class Controller {
         ArrayList<Transaksi> daftarOrder = new ArrayList<>();
 
         conn.connect();
-        String query = "SELECT * FROM transaksi WHERE id_kurir = " + idUser + " OR id_pelanggan = " + idUser + ";";
+        String query = "SELECT * FROM transaksi WHERE id_kurir = " + idUser + " OR id_pelanggan = " + idUser + " ORDER BY tanggal DESC;";
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -463,8 +463,6 @@ public class Controller {
     public boolean cekUserDiDataBase(String email) {
         conn.connect();
         String query = "SELECT * FROM user WHERE email_user='" + email + "'";
-
-
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -548,7 +546,7 @@ public class Controller {
 
     public boolean updateDataPelanggan(String namaDpn, String namaBlkng, String email, String noHp, int idUser) {
         conn.connect();
-        String query = "update user set nama_depan = ?, nama_belakang = ?, email_user = ?, noHp = ? where id_user = ?";
+        String query = "UPDATE user SET nama_depan = ?, nama_belakang = ?, email_user = ?, noHp = ? WHERE id_user = ?";
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query);
             stmt.setString(1, namaDpn);

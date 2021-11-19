@@ -2,12 +2,6 @@ package Main;
 
 import Controller.Controller;
 import Model.Kurir;
-import Model.Role;
-import Model.Transaksi;
-import Model.User;
-import View.BerandaKurir;
-import View.MenuLihatOrderKurir;
-import View.MenuLihatProfilKurir;
 import View.MenuLogin;
 
 /**
