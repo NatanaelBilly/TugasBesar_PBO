@@ -102,7 +102,7 @@ public class MenuBuatOrder {
         labelTipeBarang.setBounds(10, 10, 150, 20);
 
         //Input Nama Pengirim
-        inputNamaPengirim = new JTextField(pelanggan.getNama_depan() + " " + pelanggan.getNama_belakang());
+        inputNamaPengirim = new JTextField(pelanggan.getNamaDepan() + " " + pelanggan.getNamaBelakang());
         inputNamaPengirim.setBounds(10, 35, 215, 30);
 
         //Input Nama Penerima
@@ -201,7 +201,7 @@ public class MenuBuatOrder {
         buttonOrder.setBounds(230, 590, 140, 40);
         buttonOrder.addActionListener(e -> {
             int idTransaksi = 0;
-            int idPelanggan = pelanggan.getId_user();
+            int idPelanggan = pelanggan.getIdUser();
             int idKurir = 0;
             String kategoriBarang = String.valueOf(inputTipeBarang.getSelectedItem());
             String namaPengirim = inputNamaPengirim.getText();
@@ -241,7 +241,7 @@ public class MenuBuatOrder {
                             Controller c = new Controller();
                             boolean transaksiTerbuat = c.buatTransaksi(transaksi);
                             if (transaksiTerbuat) {
-                                double saldoSekarang = c.bayarOrder(pelanggan.getId_user(), transaksi.getTotal_pembayaran());
+                                double saldoSekarang = c.bayarOrder(pelanggan.getIdUser(), transaksi.getTotalPembayaran());
                                 pelanggan.setSaldo(saldoSekarang);
                                 JOptionPane.showMessageDialog(null, "Transaksi Terbuat! Saldo kamu kini tinggal " + pelanggan.getSaldo());
                                 frame.dispose();
