@@ -5,11 +5,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MenuRegisterPilihRule {
-    JFrame frame;
-    JPanel registerPilihRule;
-    JLabel pilihRule, labelKembali;
-    JButton registerKurir, registerPelanggan;
-    DefaultComponentSetting GUI = new DefaultComponentSetting();
+    private JFrame frame;
+    private JPanel registerPilihRule;
+    private JLabel pilihRule, labelKembali;
+    private JButton registerKurir, registerPelanggan;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuRegisterPilihRule() {
         //Link Kembali

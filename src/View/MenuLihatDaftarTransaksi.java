@@ -26,13 +26,14 @@ public class MenuLihatDaftarTransaksi {
     private Controller controller = new Controller();
 
     private User user;
+
     public MenuLihatDaftarTransaksi(User user) {
-        
+
         this.user = user;
-        
-        if(user.getListTransaksi().size()==0){
+
+        if (user.getListTransaksi() == null || user.getListTransaksi().size() == 0) {
             JOptionPane.showMessageDialog(null, "Ordermu Kosong");
-            if(user instanceof Pelanggan)
+            if (user instanceof Pelanggan)
                 new BerandaPelanggan((Pelanggan) user);
             else
                 new BerandaKurir((Kurir) user);
@@ -42,7 +43,7 @@ public class MenuLihatDaftarTransaksi {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     frame.dispose();
-                    if(user instanceof Pelanggan)
+                    if (user instanceof Pelanggan)
                         new BerandaPelanggan((Pelanggan) user);
                     else
                         new BerandaKurir((Kurir) user);
@@ -116,10 +117,10 @@ public class MenuLihatDaftarTransaksi {
                     btnDetail.setVisible(false);
                 } else if (transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")) {
                     logo = new ImageIcon("assets/diantar.jpg");
-                    labelKurir.setText("Kurir: "+kurir.getNamaDepan()+" "+kurir.getNamaBelakang());
+                    labelKurir.setText("Kurir: " + kurir.getNamaDepan() + " " + kurir.getNamaBelakang());
                 } else {
                     logo = new ImageIcon("assets/order_selesai.jpg");
-                    labelKurir.setText("Kurir: "+kurir.getNamaDepan()+" "+kurir.getNamaBelakang());
+                    labelKurir.setText("Kurir: " + kurir.getNamaDepan() + " " + kurir.getNamaBelakang());
                 }
 
                 labelLogo = new JLabel();

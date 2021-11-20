@@ -78,6 +78,8 @@ public class MenuLogin {
 
             boolean bisaLogin = controller.cekUserDiDataBase(email, password);
 
+            System.out.println(bisaLogin);
+
             if (bisaLogin) {
                 frame.dispose();
                 new LoginHandler(email, password);

@@ -8,13 +8,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MenuRegisterPelanggan {
-    JFrame frame;
-    JPanel panelRegisterPelanggan;
-    JLabel labelKembali, labelJudul, labelNamaDepan, labelNamaBelakang, labelEmail, labelNomorHP, labelPassword;
-    JTextField inputNamaDepan, inputNamaBelakang, inputEmail, inputNomorHP;
-    JPasswordField inputPassword;
-    JButton buttonRegister;
-
+    private JFrame frame;
+    private JPanel panelRegisterPelanggan;
+    private JLabel labelKembali, labelJudul, labelNamaDepan, labelNamaBelakang, labelEmail, labelNomorHP, labelPassword;
+    private JTextField inputNamaDepan, inputNamaBelakang, inputEmail, inputNomorHP;
+    private JPasswordField inputPassword;
+    private JButton buttonRegister;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
     public MenuRegisterPelanggan() {
         //Link Kembali
         labelKembali = new DefaultComponentSetting().defaultBackLabel();
@@ -28,7 +28,7 @@ public class MenuRegisterPelanggan {
             @Override
             public void mousePressed(MouseEvent e) {
                 frame.dispose();
-                new HalamanAwal();
+                new MenuRegisterPilihRule();
             }
 
             @Override
@@ -48,11 +48,11 @@ public class MenuRegisterPelanggan {
         });
 
         //Label Judul
-        labelJudul = new DefaultComponentSetting().defaultHeadingLabel("Anda akan register sebagai pelanggan");
+        labelJudul = GUI.defaultHeadingLabel("Anda akan register sebagai pelanggan");
         labelJudul.setBounds(0, 100, 600, 30);
 
         //Label Nama Depan
-        labelNamaDepan = new DefaultComponentSetting().defaultRegularLabel("Nama Depan");
+        labelNamaDepan = GUI.defaultRegularLabel("Nama Depan");
         labelNamaDepan.setBounds(65, 210, 150, 30);
 
         //Input Nama Depan
@@ -60,7 +60,7 @@ public class MenuRegisterPelanggan {
         inputNamaDepan.setBounds(230, 210, 250, 30);
 
         //Label Nama Belakang
-        labelNamaBelakang = new DefaultComponentSetting().defaultRegularLabel("Nama Belakang");
+        labelNamaBelakang = GUI.defaultRegularLabel("Nama Belakang");
         labelNamaBelakang.setBounds(65, 260, 150, 30);
 
         //Input Nama Belakang
@@ -68,7 +68,7 @@ public class MenuRegisterPelanggan {
         inputNamaBelakang.setBounds(230, 260, 250, 30);
 
         //Label Email
-        labelEmail = new DefaultComponentSetting().defaultRegularLabel("Email");
+        labelEmail = GUI.defaultRegularLabel("Email");
         labelEmail.setBounds(65, 310, 150, 30);
 
         //Input Email
@@ -76,7 +76,7 @@ public class MenuRegisterPelanggan {
         inputEmail.setBounds(230, 310, 250, 30);
 
         //Label Nomor HP
-        labelNomorHP = new DefaultComponentSetting().defaultRegularLabel("Nomor HP");
+        labelNomorHP = GUI.defaultRegularLabel("Nomor HP");
         labelNomorHP.setBounds(65, 360, 150, 30);
 
         //Input Nomor HP
@@ -84,7 +84,7 @@ public class MenuRegisterPelanggan {
         inputNomorHP.setBounds(230, 360, 250, 30);
 
         //Label Password
-        labelPassword = new DefaultComponentSetting().defaultRegularLabel("Password");
+        labelPassword = GUI.defaultRegularLabel("Password");
         labelPassword.setBounds(65, 410, 150, 30);
 
         //Input Password
@@ -92,7 +92,7 @@ public class MenuRegisterPelanggan {
         inputPassword.setBounds(230, 410, 250, 30);
 
         //button Register
-        buttonRegister = new JButton("Register");
+        buttonRegister = GUI.defaultButton("Register",16);
         buttonRegister.setBounds(380, 500, 100, 40);
         buttonRegister.addActionListener(e -> {
             Controller controller = new Controller();
@@ -121,6 +121,7 @@ public class MenuRegisterPelanggan {
         panelRegisterPelanggan.setSize(600, 800);
         panelRegisterPelanggan.setVisible(true);
         panelRegisterPelanggan.setLayout(null);
+        panelRegisterPelanggan.setBackground(GUI.backGroundColor());
         panelRegisterPelanggan.add(labelJudul);
         panelRegisterPelanggan.add(labelKembali);
         panelRegisterPelanggan.add(labelNamaDepan);

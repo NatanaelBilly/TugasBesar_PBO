@@ -4,18 +4,49 @@ import Controller.*;
 import Model.*;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class MenuRegisterKurir {
     JFrame frame;
     JPanel panelRegisterKurir;
-    JLabel labelJudul, labelNamaDepan, labelNamaBelakang, labelNIK, labelPlatNomor, labelJenisKendaraan, labelEmail, labelNomorHP, labelPassword;
+    JLabel labelKembali, labelJudul, labelNamaDepan, labelNamaBelakang, labelNIK, labelPlatNomor, labelJenisKendaraan, labelEmail, labelNomorHP, labelPassword;
     JTextField inputNamaDepan, inputNamaBelakang, inputNIK, inputPlatnomor, inputJenisKendaraan, inputEmail, inputNomorHp;
     JPasswordField inputPassword;
     JButton buttonRegister;
     DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuRegisterKurir() {
+        //Label Kembali
+        labelKembali = new DefaultComponentSetting().defaultBackLabel();
+        labelKembali.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                frame.dispose();
+                new MenuRegisterPilihRule();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                frame.dispose();
+                new MenuRegisterPilihRule();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
         //Label Judul
         labelJudul = GUI.defaultHeadingLabel("Register sebagai Kurir");
         labelJudul.setBounds(0, 70, 600, 30);
@@ -85,7 +116,7 @@ public class MenuRegisterKurir {
         inputPassword.setBounds(230, 490, 250, 30);
 
         //button Register
-        buttonRegister = GUI.defaultButton("Register",16);
+        buttonRegister = GUI.defaultButton("Register", 16);
         buttonRegister.setBounds(380, 560, 100, 40);
         buttonRegister.addActionListener(e -> {
             Controller controller = new Controller();
@@ -104,8 +135,8 @@ public class MenuRegisterKurir {
             String plat = inputPlatnomor.getText();
             String jenisKendaraan = inputJenisKendaraan.getText();
 
-            if(namaDepan.isEmpty()||namaBelakang.isEmpty()||noHP.isEmpty()||emailUser.isEmpty()||password.isEmpty()||NIK.isEmpty()||plat.isEmpty()||jenisKendaraan.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Register Gagal.\n"+Constant.ERROR_MESSAGE);
+            if (namaDepan.isEmpty() || namaBelakang.isEmpty() || noHP.isEmpty() || emailUser.isEmpty() || password.isEmpty() || NIK.isEmpty() || plat.isEmpty() || jenisKendaraan.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Register Gagal.\n" + Constant.ERROR_MESSAGE);
             } else {
                 Kurir kurirBaru = new Kurir(NIK, ketersediaan, plat, jenisKendaraan, idUser, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.KURIR, null);
                 if (ck.RegisterKurir(kurirBaru)) {
@@ -143,7 +174,8 @@ public class MenuRegisterKurir {
         panelRegisterKurir.add(inputNomorHp);
         panelRegisterKurir.add(inputPassword);
         panelRegisterKurir.add(buttonRegister);
-        
+        panelRegisterKurir.add(labelKembali);
+
         //Frame
         frame = GUI.defaultFrame();
         frame.add(panelRegisterKurir);
