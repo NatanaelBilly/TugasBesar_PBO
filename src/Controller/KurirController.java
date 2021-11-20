@@ -37,9 +37,10 @@ public class KurirController {
     }
 
     public boolean RegisterKurir(Kurir kurir) {
+        System.out.println(kurir.toString());
         conn.connect();
         String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?,?,?)";
-        String query2 = "INSERT INTO kurir VALUES (?,?,?,?,?,?)";
+        String query2 = "INSERT INTO kurir VALUES (?,?,?,?,?)";
 
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query1);
@@ -54,10 +55,9 @@ public class KurirController {
             stmt.setString(8, TingkatanUser.KURIR.toString());
             stmt2.setString(1, kurir.getNIK());
             stmt2.setInt(2, kurir.getIdUser());
-            stmt2.setDouble(3, kurir.getTotalPendapatan());
-            stmt2.setInt(4, kurir.getKetersediaan());
-            stmt2.setString(5, kurir.getPlat());
-            stmt2.setString(6, kurir.getJenisKendaraan());
+            stmt2.setInt(3, kurir.getKetersediaan());
+            stmt2.setString(4, kurir.getPlat());
+            stmt2.setString(5, kurir.getJenisKendaraan());
             stmt.executeUpdate();
             stmt2.executeUpdate();
             return (true);

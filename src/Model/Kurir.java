@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Kurir extends User {
 
-    private double totalPendapatan;
     private String NIK;
     private int ketersediaan;
     private String plat;
@@ -14,13 +13,12 @@ public class Kurir extends User {
 
     }
 
-    public Kurir(double totalPendapatan, String NIK, int ketersediaan, String plat, 
+    public Kurir(String NIK, int ketersediaan, String plat, 
             String jenisKendaraan, int idUser, String namaDepan, String namaBelakang, 
             String noHp, String emailUser, String password, double saldo, Role role, 
             ArrayList<Transaksi> listTransaksi) {
         
         super(idUser, namaDepan, namaBelakang, noHp,emailUser, password, saldo, role, listTransaksi);
-        setTotalPendapatan(totalPendapatan);
         setNIK(NIK);
         setKetersediaan(ketersediaan);
         setPlat(plat);
@@ -29,7 +27,6 @@ public class Kurir extends User {
     
     //Builder
     public Kurir(Builder builder) {
-        this.totalPendapatan = builder.totalPendapatan;
         this.NIK = builder.NIK;
         this.ketersediaan = builder.ketersediaan;
         this.plat = builder.plat;
@@ -57,7 +54,6 @@ public class Kurir extends User {
         private String NIK;
         private String plat;
         private String jenisKendaraan;
-        private double totalPendapatan;
         private int ketersediaan;
     
         public Builder() {
@@ -103,10 +99,6 @@ public class Kurir extends User {
             return this;
         }
 
-        public Builder setTotalPendapatan(double totalPendapatan) {
-            this.totalPendapatan = totalPendapatan;
-            return this;
-        }
 
         public Builder setKetersediaan(int ketersediaan) {
             this.ketersediaan = ketersediaan;
@@ -154,14 +146,6 @@ public class Kurir extends User {
         this.plat = plat;
     }
 
-    public double getTotalPendapatan() {
-        return totalPendapatan;
-    }
-
-    public void setTotalPendapatan(double totalPendapatan) {
-        this.totalPendapatan = totalPendapatan;
-    }
-
     public String getJenisKendaraan() {
         return jenisKendaraan;
     }
@@ -172,10 +156,7 @@ public class Kurir extends User {
 
     @Override
     public String toString() {
-        return "Kurir{" + "totalPendapatan=" + totalPendapatan + ", NIK=" + NIK + ", ketersediaan=" + ketersediaan + ", plat=" + plat + ", jenisKendaraan=" + jenisKendaraan + '}';
+        return super.toString() + "Kurir{" + "NIK=" + NIK + ", ketersediaan=" + ketersediaan + ", plat=" + plat + ", jenisKendaraan=" + jenisKendaraan + '}';
     }
 
-    
-
-    
 }
