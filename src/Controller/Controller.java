@@ -321,8 +321,8 @@ public class Controller {
                 transaksi.setIdPelanggan(rs.getInt("id_pelanggan"));
                 transaksi.setIdKurir(rs.getInt("id_kurir"));
                 transaksi.setKategoriBarang(rs.getString("kategori_barang"));
-                transaksi.setBeratBarang(rs.getInt("berat_barang"));
-                transaksi.setJumlahBarang(rs.getInt("jumlah_barang"));
+                transaksi.setBeratBarang(rs.getDouble("berat_barang"));
+                transaksi.setJumlahBarang(rs.getDouble("jumlah_barang"));
                 transaksi.setNamaPengirim(rs.getString("nama_pengirim"));
                 transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
                 transaksi.setNoHpPengirim(rs.getString("noHP_pengirim"));
@@ -330,7 +330,7 @@ public class Controller {
                 transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
                 transaksi.setAlamatPenerima(rs.getString("alamat_penerima"));
                 transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
-                transaksi.setTotalPembayaran(rs.getInt("total_pembayaran"));
+                transaksi.setTotalPembayaran(rs.getDouble("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
                 //Get Status nya belum
                 String status_pemesanan = rs.getString("status_pemesanan");

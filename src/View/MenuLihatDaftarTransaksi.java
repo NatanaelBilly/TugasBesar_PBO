@@ -82,6 +82,7 @@ public class MenuLihatDaftarTransaksi {
 
             for (int i = 0; i < user.getListTransaksi().size(); i++) {
                 Transaksi transaksi = user.getListTransaksi().get(i);
+
                 kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
                 //Tanggal Untuk Setiap Transaksi
