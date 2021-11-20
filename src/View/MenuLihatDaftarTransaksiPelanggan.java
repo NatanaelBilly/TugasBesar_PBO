@@ -81,8 +81,6 @@ public class MenuLihatDaftarTransaksiPelanggan {
             labelTotal = GUI.defaultRegularLabel("Total: " + transaksi.getTotalPembayaran());
             labelTotal.setBounds(30, 140, 320, 30);
 
-            System.out.println(transaksi.getStatusPemesanan());
-
             labelLogo = new JLabel();
             if (transaksi.getStatusPemesanan().equalsIgnoreCase("MENUNGGU KURIR")) {
                 logo = new ImageIcon("assets/menunggu_kurir.jpg");
