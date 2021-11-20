@@ -107,7 +107,8 @@ public class MenuRegisterKurir {
             if(namaDepan.isEmpty()||namaBelakang.isEmpty()||noHP.isEmpty()||emailUser.isEmpty()||password.isEmpty()||NIK.isEmpty()||plat.isEmpty()||jenisKendaraan.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Register Gagal.\n"+Constant.ERROR_MESSAGE);
             } else {
-                Kurir kurirBaru = new Kurir(totalPendapatan, NIK, ketersediaan, plat, jenisKendaraan, idUser, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.KURIR, null);
+                Kurir kurirBaru = new Kurir(NIK, ketersediaan, plat, jenisKendaraan, idUser, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.KURIR, null);
+                System.out.println("id: "+kurirBaru.getIdUser());
                 if (ck.RegisterKurir(kurirBaru)) {
                     JOptionPane.showMessageDialog(null, "Register Berhasil!");
                     frame.dispose();

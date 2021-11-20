@@ -14,13 +14,12 @@ public class Kurir extends User {
 
     }
 
-    public Kurir(double totalPendapatan, String NIK, int ketersediaan, String plat, 
+    public Kurir(String NIK, int ketersediaan, String plat,
             String jenisKendaraan, int idUser, String namaDepan, String namaBelakang, 
             String noHp, String emailUser, String password, double saldo, Role role, 
             ArrayList<Transaksi> listTransaksi) {
         
         super(idUser, namaDepan, namaBelakang, noHp,emailUser, password, saldo, role, listTransaksi);
-        setTotalPendapatan(totalPendapatan);
         setNIK(NIK);
         setKetersediaan(ketersediaan);
         setPlat(plat);
@@ -152,14 +151,6 @@ public class Kurir extends User {
 
     public void setPlat(String plat) {
         this.plat = plat;
-    }
-
-    public double getTotalPendapatan() {
-        return totalPendapatan;
-    }
-
-    public void setTotalPendapatan(double totalPendapatan) {
-        this.totalPendapatan = totalPendapatan;
     }
 
     public String getJenisKendaraan() {
