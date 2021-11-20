@@ -32,15 +32,20 @@ public class MenuLihatDaftarTransaksi {
         
         if(user.getListTransaksi().size()==0){
             JOptionPane.showMessageDialog(null, "Ordermu Kosong");
-            
-            new BerandaPelanggan((Pelanggan) user);
+            if(user instanceof Pelanggan)
+                new BerandaPelanggan((Pelanggan) user);
+            else
+                new BerandaKurir((Kurir) user);
         } else {
             labelKembali = GUI.defaultBackLabel();
             labelKembali.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     frame.dispose();
-                    new BerandaPelanggan((Pelanggan) user);
+                    if(user instanceof Pelanggan)
+                        new BerandaPelanggan((Pelanggan) user);
+                    else
+                        new BerandaKurir((Kurir) user);
                 }
 
                 @Override

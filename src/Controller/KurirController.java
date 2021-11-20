@@ -4,12 +4,12 @@ import static Controller.Controller.conn;
 
 import Model.Kurir;
 import Model.TingkatanUser;
+import Model.User;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class KurirController {
-
     private Controller con = new Controller();
 
     public boolean EditDataKurirToDB(Kurir kurir) {
@@ -76,6 +76,60 @@ public class KurirController {
                 + "status_pemesanan = 'DIANTAR' ,"
                 + "id_kurir = " + idKurir
                 + " WHERE id_transaksi=" + idTransaksi;
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+            return (true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return (false);
+        }
+    }
+    
+    public boolean konfirmasiOrderOlehKurir(int idTransaksi)
+    {
+        Controller.conn.connect();
+        String query = "UPDATE transaksi "
+                + "SET "
+                + "status_pemesanan = 'DITERIMA' "
+                + " WHERE id_transaksi=" + idTransaksi;
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+            return (true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return (false);
+        }
+    }
+    
+    public Kurir prosesPembayaran(double biaya, int idKurir)
+    {
+        Controller con = new Controller();
+        User admin = con.ambilDataUser(1);
+        
+        Kurir kurir = con.ambilDataKurir(idKurir);
+        
+        kurir.setSaldo(kurir.getSaldo() + (biaya * 0.7));
+        double totalSaldoAdmin = admin.getSaldo() + (biaya * 0.3);
+        
+        if(ubahSaldoUser(1, totalSaldoAdmin))
+        {
+            if(ubahSaldoUser(kurir.getIdUser(), kurir.getSaldo()))
+            {
+                return kurir;
+            }
+        }
+        
+        return null;
+    }
+    
+    public boolean ubahSaldoUser(int idUser, double saldo) {
+        Controller.conn.connect();
+        String query = "UPDATE user "
+                + "SET "
+                + "saldo = " + saldo
+                + " WHERE id_user= " + idUser;
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(query);

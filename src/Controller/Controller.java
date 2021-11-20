@@ -37,6 +37,29 @@ public class Controller {
         return (users);
     }
 
+    public User ambilDataUser(int idUser) {
+        
+        User user = new User();
+        conn.connect();
+        String query = "SELECT * FROM user WHERE id_user=" + idUser;
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                user.setIdUser(rs.getInt("id_user"));
+                user.setNamaDepan(rs.getString("nama_depan"));
+                user.setNamaBelakang(rs.getString("nama_belakang"));
+                user.setEmailUser(rs.getString("email_user"));
+                user.setPassword(rs.getString("password"));
+                user.setRole(Role.valueOf(rs.getString("role")));
+                user.setSaldo(rs.getInt("saldo"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return (user);
+    }
+    
     //Kurir
     public Kurir ambilDataKurir(int idUser) {
         Kurir dataKurir = null;
@@ -332,6 +355,53 @@ public class Controller {
 
         return daftarOrder;
     }
+    
+    public Transaksi ambilSuatuOrder(int idTransaksi) {
+        
+        Transaksi transaksi = new Transaksi();
+
+        conn.connect();
+        String query = "SELECT * FROM transaksi WHERE id_transaksi = " + idTransaksi;
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                transaksi.setIdTransaksi(rs.getInt("id_transaksi"));
+                transaksi.setIdPelanggan(rs.getInt("id_pelanggan"));
+                transaksi.setIdKurir(rs.getInt("id_kurir"));
+                transaksi.setKategoriBarang(rs.getString("kategori_barang"));
+                transaksi.setBeratBarang(rs.getInt("berat_barang"));
+                transaksi.setJumlahBarang(rs.getInt("jumlah_barang"));
+                transaksi.setNamaPengirim(rs.getString("nama_pengirim"));
+                transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
+                transaksi.setNoHpPengirim(rs.getString("noHP_pengirim"));
+                transaksi.setNamaPenerima(rs.getString("nama_penerima"));
+                transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
+                transaksi.setAlamatPenerima(rs.getString("alamat_penerima"));
+                transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
+                transaksi.setTotalPembayaran(rs.getInt("total_pembayaran"));
+                transaksi.setTanggal(rs.getDate("tanggal"));
+                //Get Status nya belum
+                String status_pemesanan = rs.getString("status_pemesanan");
+                int status;
+                if (status_pemesanan.equals("MENUNGGU KURIR")) {
+                    status = 0;
+                } else if (status_pemesanan.equals("DIANTAR")) {
+                    status = 1;
+                } else {
+                    status = 2;
+                }
+
+                transaksi.setStatusPemesanan(status);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return transaksi;
+    }
 
     public ArrayList<Transaksi> ambilDaftarOrderMenunggu(ArrayList<Transaksi> daftarOrder) {
         ArrayList<Transaksi> daftarOrderMenunggu = new ArrayList<>();
@@ -476,6 +546,7 @@ public class Controller {
         }
         return (false);
     }
+    
 
     public ArrayList<Transaksi> getSeluruhTransaksi() {
         conn.connect();
