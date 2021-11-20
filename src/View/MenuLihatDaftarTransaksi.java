@@ -101,20 +101,6 @@ public class MenuLihatDaftarTransaksi {
                 labelTotal = GUI.defaultRegularLabel("Total: " + transaksi.getTotalPembayaran());
                 labelTotal.setBounds(30, 140, 320, 30);
 
-                labelLogo = new JLabel();
-                if (transaksi.getStatusPemesanan().equalsIgnoreCase("MENUNGGU KURIR")) {
-                    logo = new ImageIcon("assets/menunggu_kurir.jpg");
-//                    labelKurir.setVisible(false);
-                } else if (transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")) {
-                    logo = new ImageIcon("assets/diantar.jpg");
-                    labelKurir.setText("Kurir: "+kurir.getNamaDepan()+" "+kurir.getNamaBelakang());
-                } else {
-                    logo = new ImageIcon("assets/order_selesai.jpg");
-                    labelKurir.setText("Kurir: "+kurir.getNamaDepan()+" "+kurir.getNamaBelakang());
-                }
-
-                labelLogo.setIcon(logo);
-                labelLogo.setBounds(330, 30, 100, 100);
 
                 btnDetail = GUI.defaultButton("Detail", 17);
                 btnDetail.setBounds(330, 140, 100, 30);
@@ -125,6 +111,20 @@ public class MenuLihatDaftarTransaksi {
                         new MenuLihatDetailTransaksi(transaksi, user);
                     }
                 });
+                if (transaksi.getStatusPemesanan().equalsIgnoreCase("MENUNGGU KURIR")) {
+                    logo = new ImageIcon("assets/menunggu_kurir.jpg");
+                    btnDetail.setVisible(false);
+                } else if (transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")) {
+                    logo = new ImageIcon("assets/diantar.jpg");
+                    labelKurir.setText("Kurir: "+kurir.getNamaDepan()+" "+kurir.getNamaBelakang());
+                } else {
+                    logo = new ImageIcon("assets/order_selesai.jpg");
+                    labelKurir.setText("Kurir: "+kurir.getNamaDepan()+" "+kurir.getNamaBelakang());
+                }
+
+                labelLogo = new JLabel();
+                labelLogo.setIcon(logo);
+                labelLogo.setBounds(330, 30, 100, 100);
 
                 panelTransaksi = new JPanel();
                 panelTransaksi.setPreferredSize(new Dimension(100, 200));
