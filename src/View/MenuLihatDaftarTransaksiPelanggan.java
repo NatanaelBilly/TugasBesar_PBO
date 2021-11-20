@@ -1,5 +1,6 @@
 package View;
 
+
 import Model.Pelanggan;
 import Model.Transaksi;
 
@@ -12,12 +13,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+
 public class MenuLihatDaftarTransaksiPelanggan {
     private JFrame frame;
     private JPanel panel, panelTransaksi;
     private JLabel labelKembali, labelTgl, labelPengirim, labelPenerima, labelKurir, labelTotal, labelLogo;
     private ImageIcon logo;
-    private JButton btnDetail;
+    private JButton btnDetail, btnChat;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuLihatDaftarTransaksiPelanggan(Pelanggan pelanggan) {
@@ -94,7 +96,17 @@ public class MenuLihatDaftarTransaksiPelanggan {
 
             labelLogo.setIcon(logo);
             labelLogo.setBounds(330,30,100,100);
-
+            
+            btnChat = GUI.defaultButton("Chat", 17);
+            btnChat.setBounds(220, 140, 100, 30);
+            btnChat.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    frame.dispose();
+                    new MenuChat(transaksi.getIdTransaksi(), pelanggan);
+                }
+            });
+            
             btnDetail = GUI.defaultButton("Detail", 17);
             btnDetail.setBounds(330, 140, 100, 30);
             btnDetail.addActionListener(new ActionListener() {
@@ -120,6 +132,7 @@ public class MenuLihatDaftarTransaksiPelanggan {
             panelTransaksi.add(labelTotal);
             panelTransaksi.add(labelLogo);
             panelTransaksi.add(btnDetail);
+            panelTransaksi.add(btnChat);
 
             panel.add(panelTransaksi);
             panel.add(Box.createRigidArea(new Dimension(0, 25)));

@@ -94,10 +94,10 @@ public class Controller {
     //Insert Chat
     public boolean insertChat(Chat chat) {
         conn.connect();
-        String query = "INSERT INTO chat VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO chat VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query);
-            stmt.setInt(1, chat.getIdChat());
+            stmt.setInt(1, getLastIdChat());
             stmt.setInt(2, chat.getIdTransaksi());
             stmt.setInt(3, chat.getIdPengirim());
             stmt.setInt(4, chat.getIdPenerima());
@@ -113,11 +113,9 @@ public class Controller {
     }
 
     //Get chat
-    public ArrayList<Chat> getChatById(int idUser, int idKurir, int idTransaksi) {
+    public ArrayList<Chat> getChatById(int idTransaksi) {
         conn.connect();
-        String query = "SELECT * FROM chat WHERE id_pengirim = " + idUser
-                + " AND id_penerima = " + idKurir
-                + " OR id_pengirim = " + idKurir + " AND id_penerima = " + idUser;
+        String query = "SELECT * FROM chat WHERE id_transaksi = " + idTransaksi +";";
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -601,4 +599,76 @@ public class Controller {
         }
         return totalSekarang - totalBayar;
     }
+    
+    public String getNamaLawanChat(Chat chat, int id){
+        int getId = 1;
+        User u = new User();
+        if (chat.getIdPenerima() != id) {
+            getId = chat.getIdPenerima();
+        }
+        if (chat.getIdPengirim() != id) {
+            getId = chat.getIdPengirim();
+        }
+        conn.connect();
+        String query = "SELECT * FROM user WHERE id_user = " + getId +";";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                
+                u.setNamaDepan(rs.getString("nama_depan"));
+                u.setNamaBelakang(rs.getString("nama_belakang"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return u.getNamaDepan() + " " + u.getNamaBelakang();
+    }
+    
+    
+    public int getIdLawanChat(Chat chat, int id){
+        int getId = 1;
+        User u = new User();
+        if (chat.getIdPenerima() != id) {
+            getId = chat.getIdPenerima();
+        }
+        if (chat.getIdPengirim() != id) {
+            getId = chat.getIdPengirim();
+        }
+        conn.connect();
+        String query = "SELECT * FROM user WHERE id_user = " + getId +";";
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                
+                u.setIdUser(rs.getInt("id_user"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return u.getIdUser();
+    }
+    
+       public int getLastIdChat(){
+        
+        conn.connect();
+        String query = "SELECT * FROM chat;";
+        Chat c = new Chat();
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                
+                c.setIdChat(rs.getInt("id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return c.getIdChat() + 1;
+    }
+    
 }
