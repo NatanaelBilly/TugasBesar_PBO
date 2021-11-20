@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class MenuBuatOrder {
     private JFrame frame;
@@ -243,6 +244,7 @@ public class MenuBuatOrder {
                             if (transaksiTerbuat) {
                                 double saldoSekarang = c.bayarOrder(pelanggan.getIdUser(), transaksi.getTotalPembayaran());
                                 pelanggan.setSaldo(saldoSekarang);
+                                pelanggan.getListTransaksi().add(transaksi);
                                 JOptionPane.showMessageDialog(null, "Transaksi Terbuat! Saldo kamu kini tinggal " + pelanggan.getSaldo());
                                 frame.dispose();
                                 new BerandaPelanggan(pelanggan);

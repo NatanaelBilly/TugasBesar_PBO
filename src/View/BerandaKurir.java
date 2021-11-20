@@ -71,11 +71,19 @@ public class BerandaKurir implements ActionListener {
                 new MenuProfilKurir(kurir);
                 break;
             case "Lihat Order":
-                frame.dispose();
-                new MenuLihatOrderKurir(kurir);
+                
+                if(kurir.getKetersediaan() == 0)
+                {
+                    frame.dispose();
+                    new MenuLihatOrderKurir(kurir);
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Kamu masih memiliki orderan yang harus diantar.");
+                
                 break;
             case "Lihat Transaksi":
                 frame.dispose();
+                new MenuLihatDaftarTransaksi(kurir);
                 break;
             case "Obrolan":
                 frame.dispose();

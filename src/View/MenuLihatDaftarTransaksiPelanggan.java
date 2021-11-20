@@ -113,7 +113,7 @@ public class MenuLihatDaftarTransaksiPelanggan {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     frame.dispose();
-                    new MenuLihatDetailTransaksiPelanggan(transaksi, pelanggan);
+                    new MenuLihatDetailTransaksi(transaksi, pelanggan);
                 }
             });
 
