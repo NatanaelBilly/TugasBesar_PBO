@@ -35,6 +35,8 @@ public class MenuProfilePelanggan {
         //picture
         labelProfilePic = new JLabel();
         profilePic = new ImageIcon("assets/profile_pic.jpg");
+        Image image = profilePic.getImage().getScaledInstance(200, 250,  java.awt.Image.SCALE_SMOOTH);
+        profilePic = new ImageIcon(image);
         labelProfilePic.setIcon(profilePic);
         labelProfilePic.setBounds(200, 50, 200, 200);
 
