@@ -65,7 +65,7 @@ public class Controller {
                     String NIK = rs.getString("NIK");
                     String plat = rs.getString("plat");
                     String jenis_kendaraan = rs.getString("jenis_kendaraan");
-                    double total_pendapatan = rs.getInt("total_pendapatan");
+//                    double total_pendapatan = rs.getInt("total_pendapatan");
                     int ketersediaan = rs.getInt("ketersediaan");
 
                     dataKurir = new Kurir.Builder()
@@ -80,7 +80,7 @@ public class Controller {
                             .setNIK(NIK)
                             .setPlat(plat)
                             .setJenisKendaraan(jenis_kendaraan)
-                            .setTotalPendapatan(total_pendapatan)
+//                            .setTotalPendapatan(total_pendapatan)
                             .setKetersediaan(ketersediaan)
                             .build();
                 }
