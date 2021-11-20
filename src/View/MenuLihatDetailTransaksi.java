@@ -169,47 +169,6 @@ public class MenuLihatDetailTransaksi {
             btnChat.setBounds(20,660,540,30);
             btnChat.setFont(fontText);
             frame.add(btnChat);
-        }else{
-            if(transaksi.getSaranDriver()==null){
-                JLabel labelFeedback = new JLabel("Masukkan untuk kurir : ");
-                labelFeedback.setBounds(20,605,250,30);
-                labelFeedback.setFont(fontText);
-                JTextArea taFeedback = new JTextArea();
-                taFeedback.setBounds(20,635,540,65);
-                taFeedback.setLineWrap(true);
-                Border border = BorderFactory.createLineBorder(Color.BLACK);
-                taFeedback.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-                final int MAX_LENGTH = 200;
-                taFeedback.setDocument(new PlainDocument() {
-                    @Override
-                    public void insertString(int offs, String str, AttributeSet a) throws BadLocationException, BadLocationException {
-                        if (str == null || taFeedback.getText().length() >= MAX_LENGTH) {
-                            return;
-                        }
-
-                        super.insertString(offs, str, a);
-                    }
-                });
-
-                JButton btnSubmit = GUI.defaultButton("Submit",14);
-                btnSubmit.setFont(fontText);
-                btnSubmit.setBounds(455, 710, 100, 30);
-                frame.add(labelFeedback);
-                frame.add(taFeedback);
-                frame.add(btnSubmit);
-            }else{
-                JLabel labelFeedback = new JLabel("Masukkan untuk kurir: ");
-                labelFeedback.setBounds(20,605,250,30);
-                labelFeedback.setFont(fontText);
-                JTextArea taFeedback = new JTextArea(transaksi.getSaranDriver());
-                taFeedback.setBounds(20,635,540,65);
-                taFeedback.setLineWrap(true);
-                taFeedback.setEditable(false);
-                Border border = BorderFactory.createLineBorder(Color.BLACK);
-                taFeedback.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-                frame.add(taFeedback);
-                frame.add(labelFeedback);
-            }
         }
 
         panelNamaNoKurir.add(labelNamaKurir);
