@@ -1,9 +1,7 @@
 package View;
 
-import Model.Constant;
-import Model.Pelanggan;
-import Model.Transaksi;
-import Model.User;
+import Controller.Controller;
+import Model.*;
 
 
 import javax.swing.*;
@@ -27,8 +25,11 @@ public class MenuLihatDetailTransaksi {
     JTextArea taAlamatPengirim, taAlamatPenerima;
     ImageIcon iconProfil, iconPengirim, iconPenerima, iconBarang, iconDot;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
+    private Controller controller = new Controller();
 
     public MenuLihatDetailTransaksi(Transaksi transaksi, User user){
+        Kurir kurir = controller.ambilDataKurir(transaksi.getIdKurir());
+
         //back
         labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseAdapter() {
@@ -80,10 +81,10 @@ public class MenuLihatDetailTransaksi {
         }
         labelMessage.setBounds(55,5,400,40);
         labelMessage.setFont(fontLabelKurir);
-        labelNamaKurir = new JLabel("KURIR");
+        labelNamaKurir = new JLabel(kurir.getNamaDepan()+" "+kurir.getNamaBelakang());
         labelNamaKurir.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         labelNamaKurir.setFont(fontLabelKurir);
-        labelNoPlatKurir = new JLabel("D 2754 SBD");
+        labelNoPlatKurir = new JLabel(kurir.getPlat());
         labelNoPlatKurir.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         labelNoPlatKurir.setFont(fontLabelKurir);
         labelNamaPengirim = new JLabel(transaksi.getNamaPengirim());
