@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Controller;
 import Controller.KurirController;
 import Model.Kurir;
 import Model.Transaksi;
@@ -71,7 +72,13 @@ public class MenuAmbilOrderKurir {
         btnEditProfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ambilOrderan(transaksi.getIdTransaksi());
+                if(ambilOrderan(transaksi.getIdTransaksi()))
+                {
+                    frame.dispose();
+                    kurir.getListTransaksi().add(new Controller().ambilSuatuOrder(transaksi.getIdTransaksi()));
+                    kurir.setKetersediaan(1);
+                    new BerandaKurir(kurir);
+                }
             }
         });
         
@@ -128,7 +135,7 @@ public class MenuAmbilOrderKurir {
 
     }
     
-    private void ambilOrderan(int idTransaksi)
+    private boolean ambilOrderan(int idTransaksi)
     {
         //Cek Konfirmasi
         int konfirmasi = JOptionPane.showConfirmDialog(null, "Ingin Mengambil Orderan Ini ?");
@@ -139,8 +146,7 @@ public class MenuAmbilOrderKurir {
                 if(new KurirController().ubahKetersediaanKurir(kurir.getIdUser(),1))
                 {
                     JOptionPane.showMessageDialog(null, "Berhasil Mengambil Order.");
-                    frame.dispose();
-                    new MenuLihatOrderKurir(kurir);
+                    return true;
                 }
                 else    
                     JOptionPane.showMessageDialog(null, "Mohon Maaf, Telah Terjadi Kesalahan.");
@@ -148,6 +154,7 @@ public class MenuAmbilOrderKurir {
                 JOptionPane.showMessageDialog(null, "Mohon Maaf, Telah Terjadi Kesalahan.");
             }
         }
+        return false;
     }
     
 }

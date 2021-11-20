@@ -89,7 +89,7 @@ public class MenuChat {
         back.addActionListener((ActionEvent e) -> {
             frame.dispose();
             Pelanggan p = (Pelanggan)u;
-            new MenuLihatDaftarTransaksiPelanggan(p);
+            new MenuLihatDaftarTransaksi(p);
         });
 
         //Nama
