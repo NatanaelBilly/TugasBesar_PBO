@@ -4,6 +4,7 @@ import Controller.Controller;
 import Model.Kurir;
 import Model.Pelanggan;
 import Model.Transaksi;
+import Model.User;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -14,7 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MenuLihatDaftarTransaksiPelanggan {
+public class MenuLihatDaftarTransaksi {
     private JFrame frame;
     private JPanel panel, panelTransaksi;
     private JLabel labelKembali, labelTgl, labelPengirim, labelPenerima, labelKurir, labelTotal, labelLogo;
@@ -24,17 +25,22 @@ public class MenuLihatDaftarTransaksiPelanggan {
     private Kurir kurir;
     private Controller controller = new Controller();
 
-    public MenuLihatDaftarTransaksiPelanggan(Pelanggan pelanggan) {
-        if(pelanggan.getListTransaksi().size()==0){
+    private User user;
+    public MenuLihatDaftarTransaksi(User user) {
+        
+        this.user = user;
+        
+        if(user.getListTransaksi().size()==0){
             JOptionPane.showMessageDialog(null, "Ordermu Kosong");
-            new BerandaPelanggan(pelanggan);
+            
+            new BerandaPelanggan((Pelanggan) user);
         } else {
             labelKembali = GUI.defaultBackLabel();
             labelKembali.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     frame.dispose();
-                    new BerandaPelanggan(pelanggan);
+                    new BerandaPelanggan((Pelanggan) user);
                 }
 
                 @Override
@@ -68,8 +74,8 @@ public class MenuLihatDaftarTransaksiPelanggan {
             panel.add(labelKembali);
             panel.setVisible(true);
 
-            for (int i = 0; i < pelanggan.getListTransaksi().size(); i++) {
-                Transaksi transaksi = pelanggan.getListTransaksi().get(i);
+            for (int i = 0; i < user.getListTransaksi().size(); i++) {
+                Transaksi transaksi = user.getListTransaksi().get(i);
                 kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
                 //Tanggal Untuk Setiap Transaksi
@@ -111,7 +117,7 @@ public class MenuLihatDaftarTransaksiPelanggan {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         frame.dispose();
-                        new MenuLihatDetailTransaksiPelanggan(transaksi, pelanggan);
+                        new MenuLihatDetailTransaksi(transaksi, user);
                     }
                 });
 

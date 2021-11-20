@@ -37,7 +37,7 @@ public class BerandaPelanggan {
         btnTransaction.setBounds(170, 320, 250, 80);
         btnTransaction.addActionListener(e -> {
             frame.dispose();
-            new MenuLihatDaftarTransaksiPelanggan(pelanggan);
+            new MenuLihatDaftarTransaksi(pelanggan);
         });
 
         //Button Isi Saldo
