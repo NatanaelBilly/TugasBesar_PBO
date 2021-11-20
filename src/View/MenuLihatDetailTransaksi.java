@@ -1,6 +1,9 @@
 package View;
 
+import Controller.Controller;
+import Controller.KurirController;
 import Model.Constant;
+import Model.Kurir;
 import Model.Pelanggan;
 import Model.Transaksi;
 import Model.User;
@@ -14,6 +17,8 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -35,7 +40,11 @@ public class MenuLihatDetailTransaksi {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
+                if(user instanceof Pelanggan)
                 new MenuLihatDaftarTransaksi((Pelanggan) user);
+            else
+                new MenuLihatDaftarTransaksi((Kurir) user);
+                
             }
         });
 
@@ -165,10 +174,98 @@ public class MenuLihatDetailTransaksi {
         frame.getContentPane().setBackground(GUI.backGroundColor());
 
         if(transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")){
-            JButton btnChat = GUI.defaultButton("Chat Driver",15);
-            btnChat.setBounds(20,660,540,30);
-            btnChat.setFont(fontText);
-            frame.add(btnChat);
+
+            if(user instanceof Kurir)
+            {
+                JButton btnKonfirmasi = GUI.defaultButton("Konfirmasi Orderan",15);
+                btnKonfirmasi.setBounds(20,660,540,30);
+                btnKonfirmasi.setFont(fontText);
+                btnKonfirmasi.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        KurirController conKurir = new KurirController();
+                        boolean berhasil = false;
+                        if(conKurir.ubahKetersediaanKurir(user.getIdUser(),0))
+                        {
+                            if(conKurir.konfirmasiOrderOlehKurir(transaksi.getIdTransaksi()))
+                            {
+                                Kurir newKurir = conKurir.prosesPembayaran(transaksi.getTotalPembayaran(), user.getIdUser());
+                                if(newKurir != null)
+                                {
+                                    berhasil = true;
+                                    frame.dispose();
+                                    newKurir.setListTransaksi(user.getListTransaksi());
+                                    //Ga Rekomen
+                                    newKurir.getListTransaksi().get(newKurir.getListTransaksi().size() - 1).setStatusPemesanan(2);
+                                    new BerandaKurir(newKurir);
+                                }
+                            }
+                        }
+                        if(berhasil)
+                            JOptionPane.showMessageDialog(null, "Konfirmasi orderan berhasil.");
+                        else
+                            JOptionPane.showMessageDialog(null, "Konfirmasi orderan Gagal.");
+                    }
+                });
+                
+                frame.add(btnKonfirmasi);
+            }
+            else{
+                JButton btnChat = GUI.defaultButton("Chat Driver",15);
+                btnChat.setBounds(20,660,540,30);
+                btnChat.setFont(fontText);
+                frame.add(btnChat);
+            }
+        }else{
+            if(user instanceof Kurir)
+            {
+                JLabel labelSelesai = new JLabel("Pesanan Selesai.");
+                labelSelesai.setBounds(20,625,250,30);
+                labelSelesai.setFont(fontText);
+                frame.add(labelSelesai);
+            }else
+            {
+                if(transaksi.getSaranDriver()==null){
+                    JLabel labelFeedback = new JLabel("Masukkan untuk kurir : ");
+                    labelFeedback.setBounds(20,605,250,30);
+                    labelFeedback.setFont(fontText);
+                    JTextArea taFeedback = new JTextArea();
+                    taFeedback.setBounds(20,635,540,65);
+                    taFeedback.setLineWrap(true);
+                    Border border = BorderFactory.createLineBorder(Color.BLACK);
+                    taFeedback.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+                    final int MAX_LENGTH = 200;
+                    taFeedback.setDocument(new PlainDocument() {
+                        @Override
+                        public void insertString(int offs, String str, AttributeSet a) throws BadLocationException, BadLocationException {
+                            if (str == null || taFeedback.getText().length() >= MAX_LENGTH) {
+                                return;
+                            }
+
+                            super.insertString(offs, str, a);
+                        }
+                    });
+
+                    JButton btnSubmit = GUI.defaultButton("Submit",14);
+                    btnSubmit.setFont(fontText);
+                    btnSubmit.setBounds(455, 710, 100, 30);
+                    frame.add(labelFeedback);
+                    frame.add(taFeedback);
+                    frame.add(btnSubmit);
+                }else{
+                    JLabel labelFeedback = new JLabel("Masukkan untuk kurir: ");
+                    labelFeedback.setBounds(20,605,250,30);
+                    labelFeedback.setFont(fontText);
+                    JTextArea taFeedback = new JTextArea(transaksi.getSaranDriver());
+                    taFeedback.setBounds(20,635,540,65);
+                    taFeedback.setLineWrap(true);
+                    taFeedback.setEditable(false);
+                    Border border = BorderFactory.createLineBorder(Color.BLACK);
+                    taFeedback.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+                    frame.add(taFeedback);
+                    frame.add(labelFeedback);
+                }
+            }
         }
 
         panelNamaNoKurir.add(labelNamaKurir);
