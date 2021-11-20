@@ -2,6 +2,7 @@ package Controller;
 
 import Database.Database;
 import Model.*;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -167,24 +168,26 @@ public class Controller {
     }
 
     public int HitungJumlahUser() {
-        getAllUsers();
-        return users.size();
+        ArrayList<User> listUser = getAllUsers();
+        int size = listUser.size();
+        return listUser.get(size - 1).getIdUser();
     }
 
     public boolean RegisterPelanggan(Pelanggan pelanggan) {
         conn.connect();
-        String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?,?,?)";
+        String query1 = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query1);
-            stmt.setString(1, pelanggan.getNamaDepan());
-            stmt.setString(2, pelanggan.getNamaBelakang());
-            stmt.setString(3, pelanggan.getNoHp());
-            stmt.setString(4, pelanggan.getEmailUser());
-            stmt.setString(5, pelanggan.getPassword());
-            stmt.setString(6, String.valueOf(pelanggan.getRole()));
-            stmt.setDouble(7, pelanggan.getSaldo());
-            stmt.setString(8, String.valueOf(pelanggan.getTingkatan()));
+            stmt.setInt(1, pelanggan.getIdUser());
+            stmt.setString(2, pelanggan.getNamaDepan());
+            stmt.setString(3, pelanggan.getNamaBelakang());
+            stmt.setString(4, pelanggan.getNoHp());
+            stmt.setString(5, pelanggan.getEmailUser());
+            stmt.setString(6, pelanggan.getPassword());
+            stmt.setString(7, String.valueOf(pelanggan.getRole()));
+            stmt.setDouble(8, pelanggan.getSaldo());
+            stmt.setString(9, String.valueOf(pelanggan.getTingkatan()));
             stmt.executeUpdate();
             return true;
         } catch (SQLException throwables) {
@@ -248,7 +251,7 @@ public class Controller {
                 transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
                 transaksi.setTotalPembayaran(rs.getInt("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
-                switch (rs.getString("status_pemesanan")){
+                switch (rs.getString("status_pemesanan")) {
                     case "MENUNGGU KURIR":
                         transaksi.setStatusPemesanan(0);
                         break;
@@ -600,5 +603,20 @@ public class Controller {
             throwables.printStackTrace();
         }
         return totalSekarang - totalBayar;
+    }
+
+    public boolean hapusAkun(int idUser) {
+        conn.connect();
+        String sql = "DELETE FROM transaksi WHERE id_pelanggan=" + idUser + ";";
+        String sql2 = "DELETE FROM user WHERE id_user=" + idUser + ";";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(sql);
+            stmt.executeUpdate(sql2);
+            return (true);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return (false);
+        }
     }
 }

@@ -104,6 +104,8 @@ public class MenuRegisterPelanggan {
             int banyakUser = controller.HitungJumlahUser();
             double saldo = 0;
 
+            System.out.println(banyakUser+1);
+
             User penggunaBaru = new Pelanggan(TingkatanUser.BRONZE, banyakUser + 1, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.PELANGGAN, null);
             if (controller.RegisterPelanggan((Pelanggan) penggunaBaru)) {
                 JOptionPane.showMessageDialog(null, "Register Berhasil!");

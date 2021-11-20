@@ -126,6 +126,24 @@ public class MenuProfilePelanggan {
         btnHapus = GUI.defaultButton("Hapus Akun", 18);
         btnHapus.setBounds(90, 620, 140, 40);
         btnHapus.setVisible(false);
+        btnHapus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int yakinHapus = JOptionPane.showConfirmDialog(null, "Apakah kamu yakin ingin menghapus akun?");
+                if(yakinHapus == JOptionPane.YES_OPTION){
+                    boolean terhapus = controller.hapusAkun(pelanggan.getIdUser());
+                    if(terhapus){
+                        JOptionPane.showMessageDialog(null, "Akun kamu terhapus.");
+                        UserManager.getInstance().logOut();
+                        frame.dispose();
+                        new HalamanAwal();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Akun kamu gagal terhapus");
+                    }
+                }
+
+            }
+        });
 
         //Button
         btnEditProfile = GUI.defaultButton("Edit Profil", 18);
