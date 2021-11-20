@@ -9,7 +9,7 @@ import View.BerandaPelanggan;
 import View.MenuChat;
 import View.MenuEditProfilePelanggan;
 import View.MenuIsiSaldo;
-import View.MenuLihatDaftarTransaksiPelanggan;
+import View.MenuLihatDaftarTransaksi;
 import View.MenuLihatOrderKurir;
 import View.MenuLogin;
 import View.MenuProfilePelanggan;
