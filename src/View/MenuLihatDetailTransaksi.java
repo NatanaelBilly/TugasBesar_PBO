@@ -174,6 +174,7 @@ public class MenuLihatDetailTransaksi {
         frame.getContentPane().setBackground(GUI.backGroundColor());
 
         if(transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")){
+
             if(user instanceof Kurir)
             {
                 JButton btnKonfirmasi = GUI.defaultButton("Konfirmasi Orderan",15);

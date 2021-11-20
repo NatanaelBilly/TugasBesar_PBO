@@ -762,4 +762,30 @@ public class Controller {
         }
     }
 
+    public TingkatanUser updateTingkatan(int idUser) {
+        int banyakTransaksi=0;
+        conn.connect();
+        String query = "SELECT count("+idUser+") AS banyakTransaksi FROM transaksi WHERE id_pelanggan = "+idUser;
+        try {
+            Statement stmt = conn.con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                banyakTransaksi=rs.getInt("banyakTransaksi");
+            }
+            if(banyakTransaksi<=10){
+                return TingkatanUser.BRONZE;
+            }else{
+                if(banyakTransaksi<=20){
+                    return TingkatanUser.SILVER;
+                }else{
+                    return TingkatanUser.GOLD;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return TingkatanUser.BRONZE;
+    }
+
 }
