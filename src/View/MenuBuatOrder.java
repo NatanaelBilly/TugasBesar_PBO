@@ -233,12 +233,11 @@ public class MenuBuatOrder {
                         int statusPemesanan = StatusPengiriman.MENUNGGU_KURIR;
                         long millis = System.currentTimeMillis();
                         Date tanggal = new Date(millis);
-                        String saranDriver = null;
 
                         int buatTransaksi = JOptionPane.showConfirmDialog(null, "Saldo kamu akan terpotong sebesar " + totalPembayaran + " otomatis. Lanjutkan Pembayaran?");
 
                         if (buatTransaksi == JOptionPane.YES_OPTION) {
-                            Transaksi transaksi = new Transaksi(idTransaksi, idPelanggan, idKurir, kategoriBarang, beratBarang, banyakBarang, namaPengirim, alamatPengirim, noHPPengirim, namaPenerima, alamatPenerima, noHPPenerima, totalPembayaran, statusPemesanan, tanggal, saranDriver, null);
+                            Transaksi transaksi = new Transaksi(idTransaksi, idPelanggan, idKurir, kategoriBarang, beratBarang, banyakBarang, namaPengirim, alamatPengirim, noHPPengirim, namaPenerima, alamatPenerima, noHPPenerima, totalPembayaran, statusPemesanan, tanggal, null);
                             Controller c = new Controller();
                             boolean transaksiTerbuat = c.buatTransaksi(transaksi);
                             if (transaksiTerbuat) {

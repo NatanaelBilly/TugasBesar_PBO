@@ -21,7 +21,6 @@ public class Transaksi implements StatusPengiriman {
     private double totalPembayaran;
     private int statusPemesanan;
     private Date tanggal;
-    private String saranDriver;
     private ArrayList<Chat> listChat;
 
     public Transaksi() {
@@ -32,7 +31,7 @@ public class Transaksi implements StatusPengiriman {
             String namaPengirim, String alamatPengirim, String noHpPengirim, 
             String namaPenerima, String alamatPenerima, String noHpPenerima, 
             double totalPembayaran, int statusPemesanan, Date tanggal, 
-            String saranDriver, ArrayList<Chat> listChat) {
+            ArrayList<Chat> listChat) {
         
         setIdTransaksi(idTransaksi);
         setIdPelanggan(idPelanggan);
@@ -50,7 +49,6 @@ public class Transaksi implements StatusPengiriman {
         setTotalPembayaran(totalPembayaran);
         setStatusPemesanan(statusPemesanan);
         setTanggal(tanggal);
-        setSaranDriver(saranDriver);
         setListChat(listChat);
     }
 
@@ -158,15 +156,6 @@ public class Transaksi implements StatusPengiriman {
         this.totalPembayaran = totalPembayaran;
     }
 
-    public String getSaranDriver() {
-        return saranDriver;
-    }
-
-    public void setSaranDriver(String saranDriver) {
-        this.saranDriver = saranDriver;
-    }
-
-
     public String getStatusPemesanan() {
         String status = "";
         if(statusPemesanan == 0){
@@ -201,7 +190,7 @@ public class Transaksi implements StatusPengiriman {
 
     @Override
     public String toString() {
-        return "Transaksi{" + "idTransaksi=" + idTransaksi + ", idPelanggan=" + idPelanggan + ", idKurir=" + idKurir + ", kategoriBarang=" + kategoriBarang + ", beratBarang=" + beratBarang + ", jumlahBarang=" + jumlahBarang + ", namaPengirim=" + namaPengirim + ", alamatPengirim=" + alamatPengirim + ", noHpPengirim=" + noHpPengirim + ", namaPenerima=" + namaPenerima + ", alamatPenerima=" + alamatPenerima + ", noHpPenerima=" + noHpPenerima + ", totalPembayaran=" + totalPembayaran + ", statusPemesanan=" + statusPemesanan + ", tanggal=" + tanggal + ", saranDriver=" + saranDriver + ", listChat=" + listChat + '}';
+        return "Transaksi{" + "idTransaksi=" + idTransaksi + ", idPelanggan=" + idPelanggan + ", idKurir=" + idKurir + ", kategoriBarang=" + kategoriBarang + ", beratBarang=" + beratBarang + ", jumlahBarang=" + jumlahBarang + ", namaPengirim=" + namaPengirim + ", alamatPengirim=" + alamatPengirim + ", noHpPengirim=" + noHpPengirim + ", namaPenerima=" + namaPenerima + ", alamatPenerima=" + alamatPenerima + ", noHpPenerima=" + noHpPenerima + ", totalPembayaran=" + totalPembayaran + ", statusPemesanan=" + statusPemesanan + ", tanggal=" + tanggal + ", listChat=" + listChat + '}';
     }
     
     

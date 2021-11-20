@@ -570,7 +570,7 @@ public class Controller {
                 int statusPemesanan = rs.getInt(15);
                 String saranDriver = "";
                 ArrayList<Chat> chatTransaksi = new ArrayList<>();
-                Transaksi trans = new Transaksi(idTransaksi, idPelanggan, idKurir, kategoriBarang, beratBarang, jumlahBarang, namaPengirim, alamatPengirim, noHPPengirim, namaPenerima, alamatPenerima, noHPPenerima, totalPembayaran, statusPemesanan, tanggal, saranDriver, chatTransaksi);
+                Transaksi trans = new Transaksi(idTransaksi, idPelanggan, idKurir, kategoriBarang, beratBarang, jumlahBarang, namaPengirim, alamatPengirim, noHPPengirim, namaPenerima, alamatPenerima, noHPPenerima, totalPembayaran, statusPemesanan, tanggal, chatTransaksi);
                 listTransaksi.add(trans);
             }
         } catch (SQLException e) {
