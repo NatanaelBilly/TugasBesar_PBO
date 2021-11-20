@@ -381,7 +381,7 @@ public class Controller {
                         ResultSet rs2 = stmt2.executeQuery(query2);
                         while (rs2.next()) {
                             String NIK = rs2.getString("NIK");
-                            double totalPendapatan = rs2.getDouble("total_pendapatan");
+//                            double totalPendapatan = rs2.getDouble("total_pendapatan");
                             int ketersediaanKurir = rs2.getInt("ketersediaan");
                             String platNomor = rs2.getString("plat");
                             String jenisKendaraan = rs2.getString("jenis_kendaraan");
@@ -396,7 +396,7 @@ public class Controller {
                             kurir.setSaldo(saldo);
                             kurir.setRole(roleUser);
                             kurir.setListTransaksi(ambilDaftarOrder(idUser));
-                            kurir.setTotalPendapatan(totalPendapatan);
+//                            kurir.setTotalPendapatan(totalPendapatan);
                             kurir.setNIK(NIK);
                             kurir.setKetersediaan(ketersediaanKurir);
                             kurir.setPlat(platNomor);
