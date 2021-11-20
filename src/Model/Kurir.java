@@ -13,7 +13,7 @@ public class Kurir extends User {
 
     }
 
-    public Kurir(String NIK, int ketersediaan, String plat, 
+    public Kurir(String NIK, int ketersediaan, String plat,
             String jenisKendaraan, int idUser, String namaDepan, String namaBelakang, 
             String noHp, String emailUser, String password, double saldo, Role role, 
             ArrayList<Transaksi> listTransaksi) {

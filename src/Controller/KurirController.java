@@ -39,20 +39,20 @@ public class KurirController {
     public boolean RegisterKurir(Kurir kurir) {
         System.out.println(kurir.toString());
         conn.connect();
-        String query1 = "INSERT INTO user VALUES (null,?,?,?,?,?,?,?,?)";
+        String query1 = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO kurir VALUES (?,?,?,?,?)";
-
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query1);
             PreparedStatement stmt2 = conn.con.prepareStatement(query2);
-            stmt.setString(1, kurir.getNamaDepan());
-            stmt.setString(2, kurir.getNamaBelakang());
-            stmt.setString(3, kurir.getNoHp());
-            stmt.setString(4, kurir.getEmailUser());
-            stmt.setString(5, kurir.getPassword());
-            stmt.setString(6, kurir.getRole().toString());
-            stmt.setDouble(7, kurir.getSaldo());
-            stmt.setString(8, TingkatanUser.KURIR.toString());
+            stmt.setInt(1,kurir.getIdUser());
+            stmt.setString(2, kurir.getNamaDepan());
+            stmt.setString(3, kurir.getNamaBelakang());
+            stmt.setString(4, kurir.getNoHp());
+            stmt.setString(5, kurir.getEmailUser());
+            stmt.setString(6, kurir.getPassword());
+            stmt.setString(7, kurir.getRole().toString());
+            stmt.setDouble(8, kurir.getSaldo());
+            stmt.setString(9, TingkatanUser.KURIR.toString());
             stmt2.setString(1, kurir.getNIK());
             stmt2.setInt(2, kurir.getIdUser());
             stmt2.setInt(3, kurir.getKetersediaan());

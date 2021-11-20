@@ -396,7 +396,6 @@ public class Controller {
                             kurir.setSaldo(saldo);
                             kurir.setRole(roleUser);
                             kurir.setListTransaksi(ambilDaftarOrder(idUser));
-//                            kurir.setTotalPendapatan(totalPendapatan);
                             kurir.setNIK(NIK);
                             kurir.setKetersediaan(ketersediaanKurir);
                             kurir.setPlat(platNomor);
