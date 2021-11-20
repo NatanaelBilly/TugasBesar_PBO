@@ -3,6 +3,7 @@ package View;
 import Model.Constant;
 import Model.Pelanggan;
 import Model.Transaksi;
+import Model.User;
 
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class MenuLihatDetailTransaksiPelanggan {
+public class MenuLihatDetailTransaksi {
     JFrame frame;
     JPanel panelInfoKurir, panelNamaNoKurir, panelPengirim, panelPenerima, panelInfoPengiriman;
     JLabel labelMessage, labelIconProfil, labelNamaKurir, labelNoPlatKurir, labelIconPengirim, labelIconPenerima, labelKembali;
@@ -27,14 +28,14 @@ public class MenuLihatDetailTransaksiPelanggan {
     ImageIcon iconProfil, iconPengirim, iconPenerima, iconBarang, iconDot;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
-    public MenuLihatDetailTransaksiPelanggan(Transaksi transaksi, Pelanggan pelanggan){
+    public MenuLihatDetailTransaksi(Transaksi transaksi, User user){
         //back
         labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
-                new MenuLihatDaftarTransaksiPelanggan(pelanggan);
+                new MenuLihatDaftarTransaksi((Pelanggan) user);
             }
         });
 
