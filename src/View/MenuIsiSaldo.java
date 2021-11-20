@@ -6,7 +6,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -101,23 +100,19 @@ public class MenuIsiSaldo {
         isi.setBounds(320, 460, 80, 30);
         isi.setFont(fontButton);
         isi.setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
-        isi.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(inputNomorTelepon.getText().equals(pelanggan.getNoHp())){
-                    Controller c = new Controller();
-                    int saldo = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan Jumlah Saldo : "));
-                    boolean cek = c.isiSaldo(pelanggan, saldo);
-                    if (cek == true) {
-                        JOptionPane.showMessageDialog(null, "Pengisian Berhasil");
-                    }else {
-                        JOptionPane.showMessageDialog(null, "Pengisian Gagal");
-                    }
-                    
+        isi.addActionListener((ActionEvent e) -> {
+            if(inputNomorTelepon.getText().equals(pelanggan.getNoHp())){
+                Controller c = new Controller();
+                int saldo = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan Jumlah Saldo : "));
+                boolean cek = c.isiSaldo(pelanggan, saldo);
+                if (cek == true) {
+                    JOptionPane.showMessageDialog(null, "Pengisian Berhasil");
                 }else {
-                    JOptionPane.showMessageDialog(null, "Nomor Telepon Tidak Sesuai");
+                    JOptionPane.showMessageDialog(null, "Pengisian Gagal");
                 }
                 
+            }else {
+                JOptionPane.showMessageDialog(null, "Nomor Telepon Tidak Sesuai");
             }
         });
         frame.add(isi);

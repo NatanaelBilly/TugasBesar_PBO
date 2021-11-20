@@ -160,5 +160,7 @@ public class KurirController {
     {
         return (Kurir) new Model.UserManager().getInstance().getUser() == null;
     }
+    
+
 
 }

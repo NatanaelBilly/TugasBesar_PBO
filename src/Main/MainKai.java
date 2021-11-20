@@ -1,5 +1,6 @@
 package Main;
 
+import Model.Chat;
 import Model.Kurir;
 import Model.Pelanggan;
 import Model.User;
@@ -8,9 +9,11 @@ import View.BerandaPelanggan;
 import View.MenuChat;
 import View.MenuEditProfilePelanggan;
 import View.MenuIsiSaldo;
+import View.MenuLihatDaftarTransaksi;
 import View.MenuLihatOrderKurir;
 import View.MenuLogin;
 import View.MenuProfilePelanggan;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,6 +30,22 @@ public class MainKai {
 //        new MenuIsiSaldo(user);
 //Kurir kurir = new Kurir();
 //            new MenuLihatOrderKurir(kurir);
-new MenuChat();
+        Pelanggan p = new Pelanggan();
+        p.setIdUser(1);
+        Chat chat1 = new Chat();
+        chat1.setChat("Tes");
+        chat1.setIdPenerima(1);
+        chat1.setIdPengirim(2);
+        
+        Chat chat2 = new Chat();
+        chat2.setChat("Tes2sedrfffffffffff");
+        chat2.setIdPenerima(2);
+        chat2.setIdPengirim(1);
+        ArrayList<Chat> chat = new ArrayList();
+        chat.add(chat1);
+        chat.add(chat2);
+        Pelanggan u = new Pelanggan();
+        u.setIdUser(1);
+//        new MenuChat(chat,u );
     }
 }
