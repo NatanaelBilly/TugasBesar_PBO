@@ -99,7 +99,7 @@ public class MenuRegisterKurir {
             String NIK = inputNIK.getText();
             int jumlahUserSekarang = controller.HitungJumlahUser();
             int idUser = jumlahUserSekarang + 1;
-            double totalPendapatan = 0;
+//            double totalPendapatan = 0;
             int ketersediaan = 0;
             String plat = inputPlatnomor.getText();
             String jenisKendaraan = inputJenisKendaraan.getText();
@@ -108,7 +108,6 @@ public class MenuRegisterKurir {
                 JOptionPane.showMessageDialog(null, "Register Gagal.\n"+Constant.ERROR_MESSAGE);
             } else {
                 Kurir kurirBaru = new Kurir(NIK, ketersediaan, plat, jenisKendaraan, idUser, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.KURIR, null);
-                System.out.println("id: "+kurirBaru.getIdUser());
                 if (ck.RegisterKurir(kurirBaru)) {
                     JOptionPane.showMessageDialog(null, "Register Berhasil!");
                     frame.dispose();

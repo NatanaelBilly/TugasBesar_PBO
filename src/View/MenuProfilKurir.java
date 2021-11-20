@@ -15,8 +15,8 @@ import javax.swing.JLabel;
 
 public class MenuProfilKurir {
     private JFrame frame;
-    private JLabel labelMenu, labelProfilePic, labelNama, labelEmail, labelNoHp, labelNIK, labelPlat, labelKendaraan, labelKetersediaan,
-            TampilanNama, TampilanEmail, TampilanNoHp, TampilanNIK, TampilanPlat, TampilanKendaraan, TampilanKetersediaan;
+    private JLabel labelMenu, labelProfilePic, labelNama, labelEmail, labelNoHp, labelNIK, labelPlat, labelKendaraan, labelKetersediaan, labelSaldo,
+            TampilanNama, TampilanEmail, TampilanNoHp, TampilanNIK, TampilanPlat, TampilanKendaraan, TampilanKetersediaan, tampilanSaldo;
     private ImageIcon profilePic;
     
     private final DefaultComponentSetting GUI = new DefaultComponentSetting();
@@ -33,12 +33,12 @@ public class MenuProfilKurir {
         String data_nama_lengkap = kurir.getNamaDepan() + " " + kurir.getNamaBelakang();
         String data_email = kurir.getEmailUser();
         String data_noHp = kurir.getNoHp();
+        double data_saldo = kurir.getSaldo();
 //        String data_password = kurir.getPassword();
 
         String data_NIK = kurir.getNIK();
         String data_plat = kurir.getPlat();
         String data_jenis_kendaraan = kurir.getJenisKendaraan();
-//        double data_total_pendapatan = kurir.getTotal_pendapatan();
         int data_ketersediaan = kurir.getKetersediaan();
         
 
@@ -73,6 +73,9 @@ public class MenuProfilKurir {
         
         labelKetersediaan = GUI.defaultRegularLabel("Status");
         labelKetersediaan.setBounds(100,525,200,40);
+        
+        labelSaldo = GUI.defaultRegularLabel("Saldo");
+        labelSaldo.setBounds(100,550,200,40);
 
         //Data
         TampilanNama = GUI.defaultRegularLabel(": " + data_nama_lengkap);
@@ -102,6 +105,9 @@ public class MenuProfilKurir {
             
         TampilanKetersediaan = GUI.defaultRegularLabel(": " + status);
         TampilanKetersediaan.setBounds(200,525,300,40);
+        
+        tampilanSaldo = GUI.defaultRegularLabel(": " + data_saldo);
+        tampilanSaldo.setBounds(200,550,300,40);
 
         //Button Edit
         JButton btnEditProfile = GUI.defaultButton("Ubah Profil", 20);
@@ -159,6 +165,8 @@ public class MenuProfilKurir {
         frame.add(labelPlat);
         frame.add(labelKendaraan);
         frame.add(labelKetersediaan);
+        frame.add(labelSaldo);
+        
         frame.add(TampilanNama);
         frame.add(TampilanEmail);
         frame.add(TampilanNoHp);
@@ -166,6 +174,7 @@ public class MenuProfilKurir {
         frame.add(TampilanKendaraan);
         frame.add(TampilanNIK);
         frame.add(TampilanKetersediaan);
+        frame.add(tampilanSaldo);
         
         frame.add(btnEditProfile);
         frame.add(labelKembali);
