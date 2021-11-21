@@ -20,23 +20,22 @@ public class BerandaAdmin {
         panel.setBackground(new Color(201, 228, 197));
 
         //label
-        labelNama =new JLabel("WELCOME ADMIN "+admin.getNamaDepan());
+        labelNama =new JLabel("WELCOME ADMIN "+admin.getNamaBelakang());
         labelNama.setBounds(250,20,200,30);
-        panel.add(labelNama);
 
         //button lihat saldo pendapatan apk
-        buttonPendpatan = new JButton("lihat pendapatan");
+        buttonPendpatan = new DefaultComponentSetting().defaultButton("Lihat Pendapatan",10);
         buttonPendpatan.setBounds(200, 100, 200, 30);
         buttonPendpatan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new LihatSaldoAdmin(admin);
+                new MenuLihatSaldoAdmin(admin);
                 frame.dispose();
             }
         });
-        panel.add(buttonPendpatan);
+
         //button lihat list user
-        buttonListTransaksi = new JButton("lihat tabel transaksi");
+        buttonListTransaksi = new DefaultComponentSetting().defaultButton("Lihat Tabel Transaksi",10);
         buttonListTransaksi.setBounds(200, 150, 200, 30);
         buttonListTransaksi.addActionListener(new ActionListener() {
             @Override
@@ -45,10 +44,10 @@ public class BerandaAdmin {
                 frame.dispose();
             }
         });
-        panel.add(buttonListTransaksi);
+
 
         //button lihat seluruh transaksi
-        buttonListUser = new JButton("lihat tabel user");
+        buttonListUser = new DefaultComponentSetting().defaultButton("lihat Tabel User",10);
         buttonListUser.setBounds(200, 200, 200, 30);
         buttonListUser.addActionListener(new ActionListener() {
             @Override
@@ -57,10 +56,10 @@ public class BerandaAdmin {
                 frame.dispose();
             }
         });
-        panel.add(buttonListUser);
+
 
         //button lihat feedback dari user
-        buttonListFeedback = new JButton("lihat tabel feedback");
+        buttonListFeedback = new DefaultComponentSetting().defaultButton("Lihat Tabel Saran",10);
         buttonListFeedback.setBounds(200, 250, 200, 30);
         buttonListFeedback.addActionListener(new ActionListener() {
             @Override
@@ -69,8 +68,13 @@ public class BerandaAdmin {
                 frame.dispose();
             }
         });
-        panel.add(buttonListFeedback);
 
+
+        panel.add(labelNama);
+        panel.add(buttonPendpatan);
+        panel.add(buttonListTransaksi);
+        panel.add(buttonListUser);
+        panel.add(buttonListFeedback);
         //initialize panel dan frame
         panel.setLayout(null);
         panel.setVisible(true);

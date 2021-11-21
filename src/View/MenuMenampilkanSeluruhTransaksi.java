@@ -42,10 +42,10 @@ public class MenuMenampilkanSeluruhTransaksi {
         sp.setBackground(new Color(201, 228, 197));
         sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        panel.add(sp);
+
 
         //button back
-        back = new JButton("Kembali ke Main Menu");
+        back = new DefaultComponentSetting().defaultButton("kembali ke main menu",10);
         back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
@@ -55,7 +55,7 @@ public class MenuMenampilkanSeluruhTransaksi {
             }
         });
         panel.add(back);
-
+        panel.add(sp);
         //initialize panel dan frame
         panel.setLayout(null);
         panel.setVisible(true);
