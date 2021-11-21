@@ -261,8 +261,8 @@ public class Controller {
                 transaksi.setIdPelanggan(rs.getInt("id_pelanggan"));
                 transaksi.setIdKurir(rs.getInt("id_kurir"));
                 transaksi.setKategoriBarang(rs.getString("kategori_barang"));
-                transaksi.setBeratBarang(rs.getInt("berat_barang"));
-                transaksi.setJumlahBarang(rs.getInt("jumlah_barang"));
+                transaksi.setBeratBarang(rs.getDouble("berat_barang"));
+                transaksi.setJumlahBarang(rs.getDouble("jumlah_barang"));
                 transaksi.setNamaPengirim(rs.getString("nama_pengirim"));
                 transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
                 transaksi.setNoHpPengirim(rs.getString("noHP_pengirim"));
@@ -270,7 +270,7 @@ public class Controller {
                 transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
                 transaksi.setAlamatPenerima(rs.getString("alamat_penerima"));
                 transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
-                transaksi.setTotalPembayaran(rs.getInt("total_pembayaran"));
+                transaksi.setTotalPembayaran(rs.getDouble("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
                 switch (rs.getString("status_pemesanan")) {
                     case "MENUNGGU KURIR":
@@ -369,8 +369,8 @@ public class Controller {
                 transaksi.setIdPelanggan(rs.getInt("id_pelanggan"));
                 transaksi.setIdKurir(rs.getInt("id_kurir"));
                 transaksi.setKategoriBarang(rs.getString("kategori_barang"));
-                transaksi.setBeratBarang(rs.getInt("berat_barang"));
-                transaksi.setJumlahBarang(rs.getInt("jumlah_barang"));
+                transaksi.setBeratBarang(rs.getDouble("berat_barang"));
+                transaksi.setJumlahBarang(rs.getDouble("jumlah_barang"));
                 transaksi.setNamaPengirim(rs.getString("nama_pengirim"));
                 transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
                 transaksi.setNoHpPengirim(rs.getString("noHP_pengirim"));
@@ -378,9 +378,8 @@ public class Controller {
                 transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
                 transaksi.setAlamatPenerima(rs.getString("alamat_penerima"));
                 transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
-                transaksi.setTotalPembayaran(rs.getInt("total_pembayaran"));
+                transaksi.setTotalPembayaran(rs.getDouble("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
-                //Get Status nya belum
                 String status_pemesanan = rs.getString("status_pemesanan");
                 int status;
                 if (status_pemesanan.equals("MENUNGGU KURIR")) {
@@ -543,39 +542,6 @@ public class Controller {
             e.printStackTrace();
         }
         return (false);
-    }
-
-
-    public ArrayList<Transaksi> getSeluruhTransaksi() {
-        conn.connect();
-        String query = "SELECT * FROM transaksi";
-        try {
-            Statement stmt = conn.con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                int idTransaksi = rs.getInt(1);
-                int idPelanggan = rs.getInt(2);
-                int idKurir = rs.getInt(3);
-                String kategoriBarang = rs.getString(4);
-                double beratBarang = rs.getDouble(5);
-                double jumlahBarang = rs.getDouble(6);
-                String namaPengirim = rs.getString(7);
-                String namaPenerima = rs.getString(8);
-                String noHPPengirim = rs.getString(9);
-                String noHPPenerima = rs.getString(10);
-                String alamatPengirim = rs.getString(11);
-                String alamatPenerima = rs.getString(12);
-                double totalPembayaran = rs.getDouble(13);
-                Date tanggal = rs.getDate(14);
-                int statusPemesanan = rs.getInt(15);
-                ArrayList<Chat> chatTransaksi = new ArrayList<>();
-                Transaksi trans = new Transaksi(idTransaksi, idPelanggan, idKurir, kategoriBarang, beratBarang, jumlahBarang, namaPengirim, alamatPengirim, noHPPengirim, namaPenerima, alamatPenerima, noHPPenerima, totalPembayaran, statusPemesanan, tanggal, chatTransaksi);
-                listTransaksi.add(trans);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return (listTransaksi);
     }
 
     public ArrayList<Saran> getSeluruhSaran() {
@@ -748,14 +714,18 @@ public class Controller {
 
     public boolean hapusAkun(int idUser) {
         conn.connect();
-        String sql = "DELETE FROM saran WHERE id_pelanggan=" + idUser + ";";
-        String sql2 = "DELETE FROM transaksi WHERE id_pelanggan=" + idUser + ";";
-        String sql3 = "DELETE FROM user WHERE id_user=" + idUser + ";";
+        String sql1 = "DELETE FROM kurir WHERE id_user=" + idUser + ";";
+        String sql2 = "DELETE FROM transaksi WHERE id_pelanggan=" + idUser + " OR id_kurir=" + idUser + ";";
+        String sql3 = "DELETE FROM chat WHERE id_pengirim=" + idUser + " OR id_penerima=" + idUser + ";";
+        String sql4 = "DELETE FROM saran WHERE id_pelanggan=" + idUser + ";";
+        String sql5 = "DELETE FROM user WHERE id_user=" + idUser + ";";
         try {
             Statement stmt = conn.con.createStatement();
-            stmt.executeUpdate(sql);
+            stmt.executeUpdate(sql1);
             stmt.executeUpdate(sql2);
             stmt.executeUpdate(sql3);
+            stmt.executeUpdate(sql4);
+            stmt.executeUpdate(sql5);
             return (true);
         } catch (SQLException throwables) {
             throwables.printStackTrace();

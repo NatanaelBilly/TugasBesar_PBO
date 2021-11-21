@@ -85,25 +85,26 @@ public class MenuLihatDetailTransaksi {
         panelInfoPengiriman.setBackground(GUI.backGroundColor());
 
         //label
-        if (transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")) {
-            labelMessage = new JLabel("Barangmu sedang diantar oleh...");
-        } else {
-            labelMessage = new JLabel("Barangmu telah diantar oleh...");
-        }
+        labelMessage = new JLabel("Barangmu diantar oleh");
         labelMessage.setBounds(55, 5, 400, 40);
         labelMessage.setFont(fontLabelKurir);
+
         labelNamaKurir = new JLabel(kurir.getNamaDepan() + " " + kurir.getNamaBelakang());
         labelNamaKurir.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         labelNamaKurir.setFont(fontLabelKurir);
+
         labelNoPlatKurir = new JLabel(kurir.getPlat());
         labelNoPlatKurir.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         labelNoPlatKurir.setFont(fontLabelKurir);
+
         labelNamaPengirim = new JLabel(transaksi.getNamaPengirim());
         labelNamaPengirim.setBounds(0, 0, 300, 25);
         labelNamaPengirim.setFont(fontText);
+
         labelNoTlpPengirim = new JLabel(transaksi.getNoHpPengirim());
         labelNoTlpPengirim.setBounds(0, 25, 300, 25);
         labelNoTlpPengirim.setFont(fontText);
+
         taAlamatPengirim = new JTextArea(transaksi.getAlamatPengirim());
         taAlamatPengirim.setBounds(0, 50, 300, 65);
         taAlamatPengirim.setFont(fontText);
@@ -111,12 +112,15 @@ public class MenuLihatDetailTransaksi {
         taAlamatPengirim.setOpaque(false);
         taAlamatPengirim.setEditable(false);
         taAlamatPengirim.setFocusable(false);
+
         labelNamaPenerima = new JLabel(transaksi.getNamaPenerima());
         labelNamaPenerima.setBounds(0, 0, 300, 25);
         labelNamaPenerima.setFont(fontText);
+
         labelNoTlpPenerima = new JLabel(transaksi.getNoHpPenerima());
         labelNoTlpPenerima.setBounds(0, 25, 300, 25);
         labelNoTlpPenerima.setFont(fontText);
+
         taAlamatPenerima = new JTextArea(transaksi.getAlamatPenerima());
         taAlamatPenerima.setBounds(0, 50, 300, 65);
         taAlamatPenerima.setFont(fontText);
@@ -124,13 +128,12 @@ public class MenuLihatDetailTransaksi {
         taAlamatPenerima.setOpaque(false);
         taAlamatPenerima.setEditable(false);
         taAlamatPenerima.setFocusable(false);
-        labelBeratBarang = new JLabel(transaksi.getBeratBarang() + " kg");
 
-        //
-        System.out.println(transaksi.getBeratBarang());
+        labelBeratBarang = new JLabel(transaksi.getBeratBarang() + " kg");
         labelBeratBarang.setFont(fontInfoPengiriman);
         labelBeratBarang.setHorizontalAlignment(JLabel.CENTER);
         labelBeratBarang.setBorder(BorderFactory.createMatteBorder(0, 2, 0, 0, Color.BLACK));
+
         labelHarga = new JLabel(transaksi.getTotalPembayaran() + "");
         labelHarga.setFont(fontInfoPengiriman);
         labelHarga.setHorizontalAlignment(JLabel.CENTER);
@@ -143,18 +146,22 @@ public class MenuLihatDetailTransaksi {
         Image image = iconProfil.getImage().getScaledInstance(80, 70, java.awt.Image.SCALE_SMOOTH);
         iconProfil = new ImageIcon(image);
         labelIconProfil.setIcon(iconProfil);
+
         labelIconPengirim = new JLabel();
         labelIconPengirim.setBounds(100, 180, 80, 80);
         iconPengirim = new ImageIcon("assets/sender.jpg");
         labelIconPengirim.setIcon(iconPengirim);
+
         labelDot = new JLabel();
         labelDot.setBounds(135, 250, 20, 80);
         iconDot = new ImageIcon("assets/dot.jpg");
         labelDot.setIcon(iconDot);
+
         labelIconPenerima = new JLabel();
         labelIconPenerima.setBounds(100, 320, 80, 80);
         iconPenerima = new ImageIcon("assets/recipient.jpg");
         labelIconPenerima.setIcon(iconPenerima);
+
         labelIconBarang = new JLabel();
         switch (transaksi.getKategoriBarang()) {
             case "Dokumen":
@@ -180,11 +187,10 @@ public class MenuLihatDetailTransaksi {
         frame.getContentPane().setBackground(GUI.backGroundColor());
 
         if (transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")) {
-
             if (user instanceof Kurir) {
                 JButton btnKonfirmasi = GUI.defaultButton("Konfirmasi Orderan", 15);
-                btnKonfirmasi.setBounds(20, 660, 540, 30);
-                btnKonfirmasi.setFont(fontText);
+                btnKonfirmasi.setBounds(20, 640, 540, 30);
+//                btnKonfirmasi.setFont(fontText);
                 btnKonfirmasi.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -210,7 +216,12 @@ public class MenuLihatDetailTransaksi {
                     }
                 });
 
+                JButton btnChat = GUI.defaultButton("Chat",15);
+                btnChat.setBounds(20, 680, 540, 30);
+                btnChat.setVisible(true);
+
                 frame.add(btnKonfirmasi);
+                frame.add(btnChat);
             } else {
                 JButton btnChat = GUI.defaultButton("Chat Driver", 15);
                 btnChat.setBounds(20, 660, 540, 30);

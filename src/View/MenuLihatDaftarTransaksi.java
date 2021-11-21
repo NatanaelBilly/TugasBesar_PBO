@@ -28,7 +28,6 @@ public class MenuLihatDaftarTransaksi {
     private User user;
 
     public MenuLihatDaftarTransaksi(User user) {
-
         this.user = user;
 
         if (user.getListTransaksi() == null || user.getListTransaksi().size() == 0) {
