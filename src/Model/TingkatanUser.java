@@ -1,5 +1,5 @@
 package Model;
 
 public enum TingkatanUser {
-    KURIR,BRONZE,SILVER,GOLD;
+    ADMIN, KURIR, BRONZE, SILVER, GOLD;
 }

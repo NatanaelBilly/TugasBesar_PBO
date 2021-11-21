@@ -484,10 +484,10 @@ public class Controller {
                     admin.setPassword(passwordUser);
                     admin.setSaldo(saldo);
                     admin.setRole(roleUser);
-                    admin.setListTransaksi(null);//sementara
-                    admin.setListSaran(null);//sementara;
+//                    admin.setTin
+                    admin.setListTransaksi(ambilDaftarOrder());//sementara
+                    admin.setListSaran(getSeluruhSaran());//sementara;
                     new UserManager().getInstance().setUser(admin);
-
                 }
             }
         } catch (SQLException e) {
@@ -568,7 +568,6 @@ public class Controller {
                 double totalPembayaran = rs.getDouble(13);
                 Date tanggal = rs.getDate(14);
                 int statusPemesanan = rs.getInt(15);
-                String saranDriver = "";
                 ArrayList<Chat> chatTransaksi = new ArrayList<>();
                 Transaksi trans = new Transaksi(idTransaksi, idPelanggan, idKurir, kategoriBarang, beratBarang, jumlahBarang, namaPengirim, alamatPengirim, noHPPengirim, namaPenerima, alamatPenerima, noHPPenerima, totalPembayaran, statusPemesanan, tanggal, chatTransaksi);
                 listTransaksi.add(trans);
