@@ -1,32 +1,28 @@
 package View;
+
 import javax.swing.*;
 import java.awt.*;
+
 import Model.*;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 public class BerandaAdmin {
-    JFrame frame;
-    JPanel panel;
-    JLabel labelNama;
-    JButton buttonPendpatan,buttonListTransaksi,buttonListUser,buttonListFeedback;
+    private JFrame frame;
+    private JPanel panel;
+    private JLabel labelNama;
+    private JButton buttonPendpatan, buttonListTransaksi, buttonListUser, buttonListFeedback, buttonLogout;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
-    public BerandaAdmin(Admin admin){
-        //frame
-        frame = new DefaultComponentSetting().defaultFrame();
+    public BerandaAdmin(Admin admin) {
+        //Label
+        labelNama = GUI.defaultHeadingLabel("Welcome Admin");
+        labelNama.setBounds(0, 70, 600, 30);
 
-        //panel
-        panel= new JPanel();
-        panel.setSize(600, 800);
-        panel.setBackground(new Color(201, 228, 197));
-
-        //label
-        labelNama =new JLabel("WELCOME ADMIN "+admin.getNamaDepan());
-        labelNama.setBounds(250,20,200,30);
-        panel.add(labelNama);
-
-        //button lihat saldo pendapatan apk
-        buttonPendpatan = new JButton("lihat pendapatan");
-        buttonPendpatan.setBounds(200, 100, 200, 30);
+        //Button Pendapatan
+        buttonPendpatan = GUI.defaultButton("Lihat Pendapatan", 18);
+        buttonPendpatan.setBounds(170, 120, 250, 80);
         buttonPendpatan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,10 +30,10 @@ public class BerandaAdmin {
                 frame.dispose();
             }
         });
-        panel.add(buttonPendpatan);
-        //button lihat list user
-        buttonListTransaksi = new JButton("lihat tabel transaksi");
-        buttonListTransaksi.setBounds(200, 150, 200, 30);
+
+        //Button Lihat list user
+        buttonListTransaksi = GUI.defaultButton("Lihat Daftar Transaksi", 18);
+        buttonListTransaksi.setBounds(170, 220, 250, 80);
         buttonListTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -45,11 +41,11 @@ public class BerandaAdmin {
                 frame.dispose();
             }
         });
-        panel.add(buttonListTransaksi);
+
 
         //button lihat seluruh transaksi
-        buttonListUser = new JButton("lihat tabel user");
-        buttonListUser.setBounds(200, 200, 200, 30);
+        buttonListUser = GUI.defaultButton("Lihat Daftar User", 18);
+        buttonListUser.setBounds(170, 320, 250, 80);
         buttonListUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,11 +53,11 @@ public class BerandaAdmin {
                 frame.dispose();
             }
         });
-        panel.add(buttonListUser);
+
 
         //button lihat feedback dari user
-        buttonListFeedback = new JButton("lihat tabel feedback");
-        buttonListFeedback.setBounds(200, 250, 200, 30);
+        buttonListFeedback = GUI.defaultButton("Lihat Masukan", 18);
+        buttonListFeedback.setBounds(170, 420, 250, 80);
         buttonListFeedback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -69,16 +65,36 @@ public class BerandaAdmin {
                 frame.dispose();
             }
         });
-        panel.add(buttonListFeedback);
 
-        //initialize panel dan frame
+        //Button Logout
+        buttonLogout = GUI.defaultButton("Log Out", 18);
+        buttonLogout.setBounds(170, 520, 250, 80);
+        buttonLogout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new UserManager().logOut();
+                JOptionPane.showMessageDialog(null, Constant.INFO_LOGOUT);
+                frame.dispose();
+                new HalamanAwal();
+            }
+        });
+
+
+        //panel
+        panel = new JPanel();
         panel.setLayout(null);
         panel.setVisible(true);
-        frame.add(panel);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        panel.setSize(600, 800);
+        panel.setBackground(GUI.backGroundColor());
+        panel.add(labelNama);
+        panel.add(buttonPendpatan);
+        panel.add(buttonListTransaksi);
+        panel.add(buttonListUser);
+        panel.add(buttonListFeedback);
+        panel.add(buttonLogout);
 
+        //frame
+        frame = GUI.defaultFrame();
+        frame.add(panel);
     }
 }
