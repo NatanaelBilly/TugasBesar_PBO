@@ -31,7 +31,7 @@ public class UserManager {
         } else if (user instanceof Kurir) {
             this.kurir = (Kurir) user;
         } else {
-            this.admin = (Admin) admin;
+            this.admin = (Admin) user;
         }
     }
 
