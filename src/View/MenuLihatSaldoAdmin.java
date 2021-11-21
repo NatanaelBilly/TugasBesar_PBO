@@ -34,13 +34,13 @@ public class MenuLihatSaldoAdmin {
         //Label
         labelTotal  = new DefaultComponentSetting().defaultRegularLabel("Saldo Total Pendapatan");
         labelTotal.setBounds(30, 100, 150, 30);
-        panel.add(labelTotal);
+
         labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(str.toString());
         labelGetTotal.setBounds(200, 100, 150, 30);
-        panel.add(labelGetTotal);
+
 
         //button
-        detilTransaksi = new DefaultComponentSetting().defaultButton("Detail Transaksi",50);
+        detilTransaksi = new DefaultComponentSetting().defaultButton("Detail Transaksi",10);
         detilTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,10 +48,10 @@ public class MenuLihatSaldoAdmin {
                 frame.dispose();
             }
         });
-        panel.add(detilTransaksi);
+
 
         //button back
-        back = new JButton("Kembali ke Main Menu");
+        back = new DefaultComponentSetting().defaultButton("kembali ke main menu",10);
         back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
@@ -60,8 +60,12 @@ public class MenuLihatSaldoAdmin {
                 frame.dispose();
             }
         });
-        panel.add(back);
 
+
+        panel.add(labelTotal);
+        panel.add(labelGetTotal);
+        panel.add(detilTransaksi);
+        panel.add(back);
         //initialize panel dan frame
         panel.setLayout(null);
         panel.setVisible(true);

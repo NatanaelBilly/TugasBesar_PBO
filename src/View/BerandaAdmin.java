@@ -26,7 +26,7 @@ public class BerandaAdmin {
         buttonPendpatan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                new LihatSaldoAdmin(admin);
+                new MenuLihatSaldoAdmin(admin);
                 frame.dispose();
             }
         });
@@ -42,7 +42,6 @@ public class BerandaAdmin {
             }
         });
 
-
         //button lihat seluruh transaksi
         buttonListUser = GUI.defaultButton("Lihat Daftar User", 18);
         buttonListUser.setBounds(170, 320, 250, 80);
@@ -53,7 +52,6 @@ public class BerandaAdmin {
                 frame.dispose();
             }
         });
-
 
         //button lihat feedback dari user
         buttonListFeedback = GUI.defaultButton("Lihat Masukan", 18);
@@ -78,7 +76,6 @@ public class BerandaAdmin {
                 new HalamanAwal();
             }
         });
-
 
         //panel
         panel = new JPanel();
