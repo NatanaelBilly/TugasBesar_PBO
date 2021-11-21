@@ -7,7 +7,7 @@ import Model.User;
 import View.BerandaKurir;
 import View.BerandaPelanggan;
 import View.MenuChat;
-import View.MenuEditProfilePelanggan;
+//import View.MenuEditProfilePelanggan;
 import View.MenuIsiSaldo;
 import View.MenuLihatDaftarTransaksi;
 import View.MenuLihatOrderKurir;

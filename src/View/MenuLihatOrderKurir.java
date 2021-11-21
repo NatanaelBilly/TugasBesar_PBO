@@ -22,32 +22,17 @@ import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
-/**
- *
- * @author Asus
- */
 public class MenuLihatOrderKurir {
     private JFrame frame;
-    private JPanel panel, panelMenu;
+    private JPanel panel;
     private JPanel[] panelOrder;
     private JLabel labelPengirim,labelAlamatTujuan, labelBarang, labelBerat, labelJumlah, labelLogo;
     private ImageIcon logo;
     private JButton btnDetail;
-
     private final DefaultComponentSetting GUI = new DefaultComponentSetting();
     private Controller con = new Controller();
     
     public MenuLihatOrderKurir(Kurir kurir){
-//        if(new KurirController().cekKurirLogin())
-//        {
-//            new MenuLogin();
-//        }
-        
-        
-        panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setBorder(new EmptyBorder(25, 50, 25, 50));
-        
         //Link Kembali
         JLabel labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseListener() {
@@ -78,25 +63,25 @@ public class MenuLihatOrderKurir {
 
             }
         });
-        
+        panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(new EmptyBorder(25, 50, 25, 50));
         panel.add(labelKembali);
-        
-        
+        panel.setBackground(GUI.backGroundColor());
+
         ArrayList<Transaksi> daftarSemuaOrder = con.ambilDaftarOrder();
         ArrayList<Transaksi> daftarOrder = con.ambilDaftarOrderMenunggu(daftarSemuaOrder);
         panelOrder = new JPanel[daftarOrder.size()];
 
         for (int i = 0; i < daftarOrder.size(); i++) {
-            
             Transaksi thisOrder = daftarOrder.get(i);
-            
             panelOrder[i] = new JPanel();
             panelOrder[i].setPreferredSize( new Dimension(100, 200) );
             panelOrder[i].setMaximumSize( new Dimension(Integer.MAX_VALUE, 200) );
             panelOrder[i].setBorder(new BevelBorder(1, Color.BLACK, Color.BLACK));
             panelOrder[i].setLayout(null);
 
-            labelPengirim = GUI.defaultRegularLabel("Pengirim : " + daftarOrder.get(i).getNamaPenerima());
+            labelPengirim = GUI.defaultRegularLabel("Pengirim : " + daftarOrder.get(i).getNamaPengirim());
             labelPengirim.setBounds(30,20,320,30);
             labelAlamatTujuan = GUI.defaultRegularLabel("Alamat Tujuan : " + daftarOrder.get(i).getAlamatPenerima());
             labelAlamatTujuan.setBounds(30,50,320,30);
@@ -131,27 +116,21 @@ public class MenuLihatOrderKurir {
             panelOrder[i].add(labelBarang);
             panelOrder[i].add(labelLogo);
             panelOrder[i].add(btnDetail);
+            panelOrder[i].setBackground(GUI.backGroundColor());
 
             panel.add( panelOrder[i] );
             panel.add(Box.createRigidArea(new Dimension(0, 25)));
         }
-        
-        
-        
-        
-        //===================
+
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setBounds(0, 0, 600, 800);
         JPanel contentPane = new JPanel(null);
         contentPane.setPreferredSize(new Dimension(600, 800));
         contentPane.add(scrollPane);
 
-        frame = new JFrame("Daftar Order");
+        frame = GUI.defaultFrame();
         frame.setContentPane(contentPane);
         frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        frame.getContentPane().setBackground(GUI.backGroundColor());
     }
 }

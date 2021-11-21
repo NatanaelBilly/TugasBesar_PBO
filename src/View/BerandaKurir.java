@@ -32,7 +32,7 @@ public class BerandaKurir implements ActionListener {
         btnProfil.addActionListener(this);
 
         //Button Order
-        btnOrder = GUI.defaultButton("Lihat Order", 20);
+        btnOrder = GUI.defaultButton("Ambil Order", 20);
         btnOrder.setBounds(170, 250, 250, 80);
         btnOrder.addActionListener(this);
 
@@ -70,16 +70,13 @@ public class BerandaKurir implements ActionListener {
                 frame.dispose();
                 new MenuProfilKurir(kurir);
                 break;
-            case "Lihat Order":
-                
-                if(kurir.getKetersediaan() == 0)
-                {
+            case "Ambil Order":
+                if (kurir.getKetersediaan() == 0) {
                     frame.dispose();
                     new MenuLihatOrderKurir(kurir);
-                }
-                else
+                } else
                     JOptionPane.showMessageDialog(null, "Kamu masih memiliki orderan yang harus diantar.");
-                
+
                 break;
             case "Lihat Transaksi":
                 frame.dispose();

@@ -126,6 +126,8 @@ public class MenuIsiSaldo {
                 boolean cek = c.isiSaldo(pelanggan, saldo);
                 if (cek == true) {
                     JOptionPane.showMessageDialog(null, "Pengisian Berhasil");
+                    double saldoSekarang = pelanggan.getSaldo();
+                    pelanggan.setSaldo(saldoSekarang + saldo);
                 } else {
                     JOptionPane.showMessageDialog(null, "Pengisian Gagal");
                 }

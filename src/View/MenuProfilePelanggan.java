@@ -98,7 +98,7 @@ public class MenuProfilePelanggan {
                 if (nama.getText().isEmpty() || email.getText().isEmpty() || noHp.getText().isEmpty() || String.valueOf(password.getPassword()).isEmpty()) {
                     JOptionPane.showMessageDialog(null, Constant.ERROR_MESSAGE);
                 } else {
-                    System.out.println("pw: "+String.valueOf(password.getPassword()));
+//                    System.out.println("pw: "+String.valueOf(password.getPassword()));
                     String[] splited = nama.getText().split("\\s+");
                     String namaDepan = splited[0];
                     String namaBelakang = "";

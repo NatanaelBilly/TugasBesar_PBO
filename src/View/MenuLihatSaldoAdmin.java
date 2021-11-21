@@ -27,7 +27,7 @@ public class MenuLihatSaldoAdmin {
 
         //String builder
         StringBuilder str =new StringBuilder();
-        c.getSeluruhTransaksi();
+        c.ambilDaftarOrder();
         admin.setSaldo(m.lihatSaldoAdmin(c.listTransaksi));
         str.append(admin.getSaldo());
 
@@ -37,7 +37,6 @@ public class MenuLihatSaldoAdmin {
 
         labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(str.toString());
         labelGetTotal.setBounds(200, 100, 150, 30);
-
 
         //button
         detilTransaksi = new DefaultComponentSetting().defaultButton("Detail Transaksi",10);
