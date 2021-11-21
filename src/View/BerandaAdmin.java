@@ -26,8 +26,8 @@ public class BerandaAdmin {
         buttonPendpatan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenuLihatSaldoAdmin(admin);
                 frame.dispose();
+                new MenuLihatSaldoAdmin(admin);
             }
         });
 
@@ -37,8 +37,8 @@ public class BerandaAdmin {
         buttonListTransaksi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenuMenampilkanSeluruhTransaksi(admin);
                 frame.dispose();
+                new MenuMenampilkanSeluruhTransaksi(admin);
             }
         });
 
@@ -48,8 +48,8 @@ public class BerandaAdmin {
         buttonListUser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenuMenampilkanListUser(admin);
                 frame.dispose();
+                new MenuMenampilkanListUser(admin);
             }
         });
 
@@ -59,8 +59,8 @@ public class BerandaAdmin {
         buttonListFeedback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new MenuMenampilkanFeedbackDariPengguna(admin);
                 frame.dispose();
+                new MenuMenampilkanFeedbackDariPengguna(admin);
             }
         });
 
