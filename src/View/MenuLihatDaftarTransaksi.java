@@ -80,7 +80,7 @@ public class MenuLihatDaftarTransaksi {
             panel.add(labelKembali);
             panel.setVisible(true);
 
-            for (int i = 0; i < user.getListTransaksi().size(); i++) {
+            for (int i = user.getListTransaksi().size()-1; i >= 0; i--) {
                 Transaksi transaksi = user.getListTransaksi().get(i);
 
                 kurir = controller.ambilDataKurir(transaksi.getIdKurir());
