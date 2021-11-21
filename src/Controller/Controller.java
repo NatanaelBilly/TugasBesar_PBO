@@ -38,7 +38,7 @@ public class Controller {
     }
 
     public User ambilDataUser(int idUser) {
-        
+
         User user = new User();
         conn.connect();
         String query = "SELECT * FROM user WHERE id_user=" + idUser;
@@ -59,7 +59,7 @@ public class Controller {
         }
         return (user);
     }
-    
+
     //Kurir
     public Kurir ambilDataKurir(int idUser) {
         Kurir dataKurir = null;
@@ -139,7 +139,7 @@ public class Controller {
     //Get chat
     public ArrayList<Chat> getChatById(int idTransaksi) {
         conn.connect();
-        String query = "SELECT * FROM chat WHERE id_transaksi = " + idTransaksi +";";
+        String query = "SELECT * FROM chat WHERE id_transaksi = " + idTransaksi + ";";
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -353,9 +353,9 @@ public class Controller {
 
         return daftarOrder;
     }
-    
+
     public Transaksi ambilSuatuOrder(int idTransaksi) {
-        
+
         Transaksi transaksi = new Transaksi();
 
         conn.connect();
@@ -544,7 +544,7 @@ public class Controller {
         }
         return (false);
     }
-    
+
 
     public ArrayList<Transaksi> getSeluruhTransaksi() {
         conn.connect();
@@ -614,16 +614,17 @@ public class Controller {
 
     }
 
-    public boolean updateDataPelanggan(String namaDpn, String namaBlkng, String email, String noHp, int idUser) {
+    public boolean updateDataPelanggan(String namaDpn, String namaBlkng, String email, String noHp, int idUser, String password) {
         conn.connect();
-        String query = "UPDATE user SET nama_depan = ?, nama_belakang = ?, email_user = ?, noHp = ? WHERE id_user = ?";
+        String query = "UPDATE user SET nama_depan = ?, nama_belakang = ?, email_user = ?, noHp = ?, password = ? WHERE id_user = ?";
         try {
             PreparedStatement stmt = conn.con.prepareStatement(query);
             stmt.setString(1, namaDpn);
             stmt.setString(2, namaBlkng);
             stmt.setString(3, email);
             stmt.setString(4, noHp);
-            stmt.setInt(5, idUser);
+            stmt.setString(5, password);
+            stmt.setInt(6, idUser);
             stmt.executeUpdate();
             return (true);
         } catch (SQLException e) {
@@ -672,8 +673,8 @@ public class Controller {
         return totalSekarang - totalBayar;
     }
 
-    
-    public String getNamaLawanChat(Chat chat, int id){
+
+    public String getNamaLawanChat(Chat chat, int id) {
         int getId = 1;
         User u = new User();
         if (chat.getIdPenerima() != id) {
@@ -683,12 +684,12 @@ public class Controller {
             getId = chat.getIdPengirim();
         }
         conn.connect();
-        String query = "SELECT * FROM user WHERE id_user = " + getId +";";
+        String query = "SELECT * FROM user WHERE id_user = " + getId + ";";
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                
+
                 u.setNamaDepan(rs.getString("nama_depan"));
                 u.setNamaBelakang(rs.getString("nama_belakang"));
             }
@@ -698,9 +699,9 @@ public class Controller {
 
         return u.getNamaDepan() + " " + u.getNamaBelakang();
     }
-    
-    
-    public int getIdLawanChat(Chat chat, int id){
+
+
+    public int getIdLawanChat(Chat chat, int id) {
         int getId = 1;
         User u = new User();
         if (chat.getIdPenerima() != id) {
@@ -710,12 +711,12 @@ public class Controller {
             getId = chat.getIdPengirim();
         }
         conn.connect();
-        String query = "SELECT * FROM user WHERE id_user = " + getId +";";
+        String query = "SELECT * FROM user WHERE id_user = " + getId + ";";
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                
+
                 u.setIdUser(rs.getInt("id_user"));
             }
         } catch (SQLException e) {
@@ -724,9 +725,9 @@ public class Controller {
 
         return u.getIdUser();
     }
-    
-       public int getLastIdChat(){
-        
+
+    public int getLastIdChat() {
+
         conn.connect();
         String query = "SELECT * FROM chat;";
         Chat c = new Chat();
@@ -734,7 +735,7 @@ public class Controller {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                
+
                 c.setIdChat(rs.getInt("id"));
             }
         } catch (SQLException e) {
@@ -743,7 +744,6 @@ public class Controller {
 
         return c.getIdChat() + 1;
     }
-    
 
 
     public boolean hapusAkun(int idUser) {
@@ -764,22 +764,22 @@ public class Controller {
     }
 
     public TingkatanUser updateTingkatan(int idUser) {
-        int banyakTransaksi=0;
+        int banyakTransaksi = 0;
         conn.connect();
-        String query = "SELECT count("+idUser+") AS banyakTransaksi FROM transaksi WHERE id_pelanggan = "+idUser;
+        String query = "SELECT count(" + idUser + ") AS banyakTransaksi FROM transaksi WHERE id_pelanggan = " + idUser;
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()) {
-                banyakTransaksi=rs.getInt("banyakTransaksi");
+                banyakTransaksi = rs.getInt("banyakTransaksi");
             }
-            if(banyakTransaksi<=10){
+            if (banyakTransaksi <= 10) {
                 return TingkatanUser.BRONZE;
-            }else{
-                if(banyakTransaksi<=20){
+            } else {
+                if (banyakTransaksi <= 20) {
                     return TingkatanUser.SILVER;
-                }else{
+                } else {
                     return TingkatanUser.GOLD;
                 }
             }

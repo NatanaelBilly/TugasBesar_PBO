@@ -1,6 +1,7 @@
 package View;
 
 import Controller.*;
+import Model.Constant;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -81,10 +82,11 @@ public class MenuLogin {
             System.out.println(bisaLogin);
 
             if (bisaLogin) {
+                JOptionPane.showMessageDialog(null, Constant.INFO_LOGIN);
                 frame.dispose();
                 new LoginHandler(email, password);
             } else {
-                JOptionPane.showMessageDialog(null, "Masukkan data dengan benar");
+                JOptionPane.showMessageDialog(null, Constant.ERROR_MESSAGE);
             }
         });
 
