@@ -115,7 +115,7 @@ public class MenuEditProfilePelanggan {
                 Controller c = new Controller();
                 User user = new UserManager().getInstance().getUser();
                 if(user.getEmailUser().equals(tfEmail.getText()) || !user.getEmailUser().equals(tfEmail.getText()) && !c.cekUserDiDataBase(tfEmail.getText())){
-                    boolean updateDataPelanggan = c.updateDataPelanggan(tfNamaDepan.getText(), tfNamaBelakang.getText(), tfEmail.getText(), tfNoHp.getText(), pelanggan.getIdUser());
+                    boolean updateDataPelanggan = c.updateDataPelanggan(tfNamaDepan.getText(), tfNamaBelakang.getText(), tfEmail.getText(), tfNoHp.getText(), pelanggan.getIdUser(),"b");
                     if(updateDataPelanggan){
                         user.setNamaDepan(tfNamaDepan.getText());
                         user.setNamaBelakang(tfNamaBelakang.getText());
