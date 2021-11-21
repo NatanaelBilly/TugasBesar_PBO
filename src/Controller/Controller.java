@@ -749,12 +749,14 @@ public class Controller {
 
     public boolean hapusAkun(int idUser) {
         conn.connect();
-        String sql = "DELETE FROM transaksi WHERE id_pelanggan=" + idUser + ";";
-        String sql2 = "DELETE FROM user WHERE id_user=" + idUser + ";";
+        String sql = "DELETE FROM saran WHERE id_pelanggan=" + idUser + ";";
+        String sql2 = "DELETE FROM transaksi WHERE id_pelanggan=" + idUser + ";";
+        String sql3 = "DELETE FROM user WHERE id_user=" + idUser + ";";
         try {
             Statement stmt = conn.con.createStatement();
             stmt.executeUpdate(sql);
             stmt.executeUpdate(sql2);
+            stmt.executeUpdate(sql3);
             return (true);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
