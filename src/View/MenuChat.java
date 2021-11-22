@@ -3,6 +3,7 @@ package View;
 import Controller.Controller;
 import Model.Chat;
 import Model.Pelanggan;
+import Model.Transaksi;
 import Model.User;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -31,8 +32,8 @@ public class MenuChat {
     int idLawanChat;
     Controller c = new Controller();
 
-    public MenuChat(int idTransaksi, User u) {
-
+    public MenuChat(Transaksi transaksi, User u) {
+        int idTransaksi = transaksi.getIdTransaksi();
         ArrayList<Chat> chats = new ArrayList();
         chats = c.getChatById(idTransaksi);
 
@@ -78,7 +79,7 @@ public class MenuChat {
             myChat.setIdTransaksi(idTransaksi);
             myChat.setTime(null);
             c.insertChat(myChat);
-            new MenuChat(idTransaksi, u);
+            new MenuChat(transaksi, u);
         });
 
         //Button back
@@ -89,9 +90,8 @@ public class MenuChat {
         back.addActionListener((ActionEvent e) -> {
             frame.dispose();
             Pelanggan p = (Pelanggan)u;
-            new MenuLihatDaftarTransaksi(p);
+            new MenuLihatDetailTransaksi(transaksi, u);
         });
-
         //Nama
         JLabel nama = new DefaultComponentSetting().defaultRegularLabel(namaLawanChat);
         nama.setBounds(95, 20, 300, 50);
@@ -124,8 +124,6 @@ public class MenuChat {
                 rowPanel.setBackground(SystemColor.inactiveCaptionBorder);
             }
         }
-
-        
 
         frame.setVisible(true);
 

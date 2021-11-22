@@ -34,7 +34,7 @@ public class MenuLihatDetailTransaksi {
     ImageIcon iconProfil, iconPengirim, iconPenerima, iconBarang, iconDot;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
     private Controller controller = new Controller();
-
+    JButton btnChat;
     public MenuLihatDetailTransaksi(Transaksi transaksi, User user) {
         Kurir kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
@@ -51,6 +51,8 @@ public class MenuLihatDetailTransaksi {
 
             }
         });
+        
+        
 
         //Font
         Font fontLabelKurir = new Font("Arial", Font.PLAIN, 20);
@@ -218,14 +220,14 @@ public class MenuLihatDetailTransaksi {
                     }
                 });
 
-                JButton btnChat = GUI.defaultButton("Chat",15);
+                btnChat = GUI.defaultButton("Chat",15);
                 btnChat.setBounds(20, 680, 540, 30);
                 btnChat.setVisible(true);
 
                 frame.add(btnKonfirmasi);
                 frame.add(btnChat);
             } else {
-                JButton btnChat = GUI.defaultButton("Chat Driver", 15);
+                btnChat = GUI.defaultButton("Chat Driver", 15);
                 btnChat.setBounds(20, 660, 540, 30);
                 btnChat.setFont(fontText);
                 frame.add(btnChat);
@@ -236,6 +238,8 @@ public class MenuLihatDetailTransaksi {
                 labelSelesai.setBounds(20, 625, 250, 30);
                 labelSelesai.setFont(fontText);
                 frame.add(labelSelesai);
+                
+                
             }
 //            }else
 //            {
@@ -281,6 +285,11 @@ public class MenuLihatDetailTransaksi {
 //                }
 //            }
         }
+        
+        btnChat.addActionListener((ActionEvent e) -> {
+            frame.dispose();
+            new MenuChat(transaksi, user);
+        });
 
         panelNamaNoKurir.add(labelNamaKurir);
         panelNamaNoKurir.add(Box.createRigidArea(new Dimension(0, 10)));
