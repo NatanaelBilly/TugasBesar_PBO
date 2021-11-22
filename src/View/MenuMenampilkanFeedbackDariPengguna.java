@@ -8,12 +8,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Model.Admin;
 public class MenuMenampilkanFeedbackDariPengguna {
-    JFrame frame;
-    JPanel panel;
-    DefaultTableModel tableModel;
-    JTable tabelSaran;
-    JScrollPane sp;
-    JButton back;
+    private JFrame frame;
+    private JPanel panel;
+    private DefaultTableModel tableModel;
+    private JTable tabelSaran;
+    private JScrollPane sp;
+    private JButton back;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
     public MenuMenampilkanFeedbackDariPengguna(Admin admin){
         Controller c =new Controller();
         Method m=new Method();
@@ -34,17 +35,17 @@ public class MenuMenampilkanFeedbackDariPengguna {
         //tabel data
         tableModel=new DefaultTableModel(dataSaran,column);
         tabelSaran=new JTable(tableModel);
-        tabelSaran.setBackground(new Color(201, 228, 197));
-        tabelSaran.setBounds(10,100,550,600);
+        tabelSaran.setBackground(GUI.backGroundColor());
+        tabelSaran.setBounds(10, 80, 570, 700);
         JScrollPane sp=new JScrollPane(tabelSaran);
-        sp.setBounds(0,100,550,600);
-        sp.setBackground(new Color(201, 228, 197));
+        sp.setBounds(10, 80, 570, 700);
+        sp.setBackground(GUI.backGroundColor());
         sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
 
         //button back
-        back = new DefaultComponentSetting().defaultButton("kembali ke main menu",10);
+        back = GUI.defaultButton("Kembali", 18);
         back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
