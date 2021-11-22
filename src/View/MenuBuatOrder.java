@@ -220,9 +220,9 @@ public class MenuBuatOrder {
                     JOptionPane.showMessageDialog(null, "Maaf, berat barang yang anda masukkan melebihi batas yang kami tentukan.");
                 } else {
                     double totalPembayaran = 10000;
-                    if (beratBarang < 3) {
+                    if (beratBarang * banyakBarang < 3) {
                         totalPembayaran += 10000;
-                    } else if (beratBarang < 8) {
+                    } else if (beratBarang * banyakBarang < 8) {
                         totalPembayaran += 15000;
                     } else {
                         totalPembayaran += 25000;
