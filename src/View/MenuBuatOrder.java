@@ -242,8 +242,12 @@ public class MenuBuatOrder {
                             boolean transaksiTerbuat = c.buatTransaksi(transaksi);
                             if (transaksiTerbuat) {
                                 double saldoSekarang = c.bayarOrder(pelanggan.getIdUser(), transaksi.getTotalPembayaran());
+                                ArrayList<Transaksi> listTransaksi = c.ambilDaftarOrder(pelanggan.getIdUser());
+                                System.out.println(listTransaksi);
+//                                listTransaksi.add(transaksi);
+                                System.out.println(listTransaksi);
                                 pelanggan.setSaldo(saldoSekarang);
-                                pelanggan.getListTransaksi().add(transaksi);
+                                pelanggan.setListTransaksi(listTransaksi);
                                 TingkatanUser tingkat = c.updateTingkatan(pelanggan.getIdUser());
                                 pelanggan.setTingkatan(tingkat);
                                 JOptionPane.showMessageDialog(null, "Transaksi Terbuat! Saldo kamu kini tinggal " + pelanggan.getSaldo());

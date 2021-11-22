@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class MenuLihatDaftarTransaksi {
     private JFrame frame;
@@ -29,8 +30,9 @@ public class MenuLihatDaftarTransaksi {
 
     public MenuLihatDaftarTransaksi(User user) {
         this.user = user;
+        ArrayList<Transaksi> listTransaksi = controller.ambilDaftarOrder(user.getIdUser());
 
-        if (user.getListTransaksi() == null || user.getListTransaksi().size() == 0) {
+        if (listTransaksi == null || listTransaksi.size() == 0) {
             JOptionPane.showMessageDialog(null, "Ordermu Kosong");
             if (user instanceof Pelanggan)
                 new BerandaPelanggan((Pelanggan) user);
@@ -80,7 +82,7 @@ public class MenuLihatDaftarTransaksi {
             panel.setVisible(true);
 
             for (int i = user.getListTransaksi().size()-1; i >= 0; i--) {
-                Transaksi transaksi = user.getListTransaksi().get(i);
+                Transaksi transaksi = listTransaksi.get(i);
 
                 kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 

@@ -24,7 +24,7 @@ public class MenuMenampilkanFeedbackDariPengguna {
         //panel
         panel= new JPanel();
         panel.setSize(600, 800);
-        panel.setBackground(new Color(201, 228, 197));
+        panel.setBackground(new DefaultComponentSetting().backGroundColor());
 
         //init isi data
         c.getSeluruhSaran();
