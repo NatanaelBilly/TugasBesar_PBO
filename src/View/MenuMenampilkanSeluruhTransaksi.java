@@ -9,12 +9,13 @@ import Controller.Controller;
 import Controller.Method;
 import Model.*;
 public class MenuMenampilkanSeluruhTransaksi {
-    JFrame frame;
-    JPanel panel;
-    DefaultTableModel tableModel;
-    JTable tabelUser;
-    JScrollPane sp;
-    JButton back;
+    private JFrame frame;
+    private JPanel panel;
+    private DefaultTableModel tableModel;
+    private JTable tabelUser;
+    private JScrollPane sp;
+    private JButton back;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
     public MenuMenampilkanSeluruhTransaksi(Admin admin){
         Controller c =new Controller();
         Method m=new Method();
@@ -23,7 +24,6 @@ public class MenuMenampilkanSeluruhTransaksi {
         //panel
         panel= new JPanel();
         panel.setSize(600, 800);
-        panel.setBackground(new Color(201, 228, 197));
 
         //init isi data
         c.getAllUsers();
@@ -35,17 +35,17 @@ public class MenuMenampilkanSeluruhTransaksi {
         //tabel data
         tableModel=new DefaultTableModel(dataTransakksi,column);
         tabelUser=new JTable(tableModel);
-        tabelUser.setBackground(new Color(201, 228, 197));
-        tabelUser.setBounds(10,100,550,600);
+        tabelUser.setBackground(GUI.backGroundColor());
+        tabelUser.setBounds(10, 80, 570, 700);
         sp=new JScrollPane(tabelUser);
-        sp.setBounds(0,100,550,600);
-        sp.setBackground(new Color(201, 228, 197));
+        sp.setBounds(10, 80, 570, 700);
+        sp.setBackground(GUI.backGroundColor());
         sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
 
         //button back
-        back = new DefaultComponentSetting().defaultButton("kembali ke main menu",10);
+        back = GUI.defaultButton("Kembali", 18);
         back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
