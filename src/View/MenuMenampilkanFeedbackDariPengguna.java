@@ -46,7 +46,7 @@ public class MenuMenampilkanFeedbackDariPengguna {
 
         //button back
         back = GUI.defaultButton("Kembali", 18);
-        back.setBounds(400,20,200,30);
+        back.setBounds(350,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

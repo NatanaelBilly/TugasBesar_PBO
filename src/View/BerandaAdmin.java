@@ -20,17 +20,6 @@ public class BerandaAdmin {
         labelNama = GUI.defaultHeadingLabel("Welcome Admin");
         labelNama.setBounds(0, 70, 600, 30);
 
-        //Button Pendapatan
-        buttonPendpatan = GUI.defaultButton("Lihat Pendapatan", 18);
-        buttonPendpatan.setBounds(170, 120, 250, 80);
-        buttonPendpatan.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                new MenuLihatSaldoAdmin(admin);
-            }
-        });
-
         //Button Lihat list user
         buttonListTransaksi = GUI.defaultButton("Lihat Daftar Transaksi", 18);
         buttonListTransaksi.setBounds(170, 220, 250, 80);

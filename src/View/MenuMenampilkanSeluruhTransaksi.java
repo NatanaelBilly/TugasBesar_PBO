@@ -13,6 +13,7 @@ public class MenuMenampilkanSeluruhTransaksi {
     private JPanel panel;
     private DefaultTableModel tableModel;
     private JTable tabelUser;
+    private JLabel labelTotal,labelGetTotal;
     private JScrollPane sp;
     private JButton back;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
@@ -24,6 +25,19 @@ public class MenuMenampilkanSeluruhTransaksi {
         //panel
         panel= new JPanel();
         panel.setSize(600, 800);
+
+        //String builder
+        StringBuilder str =new StringBuilder();
+        c.ambilDaftarOrder();
+        admin.setSaldo(m.lihatSaldoAdmin(c.listTransaksi));
+        str.append(admin.getSaldo());
+
+        //Label
+        labelTotal  = new DefaultComponentSetting().defaultRegularLabel("Saldo Total Pendapatan : ");
+        labelTotal.setBounds(30, 100, 200, 30);
+
+        labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(str.toString());
+        labelGetTotal.setBounds(250, 100, 150, 30);
 
         //init isi data
         c.getAllUsers();
@@ -46,7 +60,7 @@ public class MenuMenampilkanSeluruhTransaksi {
 
         //button back
         back = GUI.defaultButton("Kembali", 18);
-        back.setBounds(400,20,200,30);
+        back.setBounds(350,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,6 +68,10 @@ public class MenuMenampilkanSeluruhTransaksi {
                 frame.dispose();
             }
         });
+
+        //panel
+        panel.add(labelTotal);
+        panel.add(labelGetTotal);
         panel.add(back);
         panel.add(sp);
         //initialize panel dan frame
