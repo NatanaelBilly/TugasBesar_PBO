@@ -10,10 +10,11 @@ import Model.*;
 import Controller.Method;
 import Controller.Controller;
 public class MenuLihatSaldoAdmin {
-    JFrame frame;
-    JPanel panel;
-    JLabel labelTotal,labelGetTotal;
-    JButton detilTransaksi,back;
+    private JFrame frame;
+    private JPanel panel;
+    private JLabel labelTotal,labelGetTotal;
+    private JButton detilTransaksi,back;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
     public MenuLihatSaldoAdmin(Admin admin){
         Controller c=new Controller();
         Method m=new Method();
@@ -23,7 +24,6 @@ public class MenuLihatSaldoAdmin {
         //panel
         panel= new JPanel();
         panel.setSize(600, 800);
-        panel.setBackground(new Color(201, 228, 197));
 
         //String builder
         StringBuilder str =new StringBuilder();
@@ -50,7 +50,7 @@ public class MenuLihatSaldoAdmin {
 
 
         //button back
-        back = new DefaultComponentSetting().defaultButton("kembali ke main menu",10);
+        back = GUI.defaultButton("Kembali", 18);
         back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
