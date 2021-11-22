@@ -23,6 +23,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.DecimalFormat;
 
 public class MenuLihatDetailTransaksi {
     JFrame frame;
@@ -129,7 +130,8 @@ public class MenuLihatDetailTransaksi {
         taAlamatPenerima.setEditable(false);
         taAlamatPenerima.setFocusable(false);
 
-        labelBeratBarang = new JLabel(transaksi.getBeratBarang() + " kg");
+        DecimalFormat df = new DecimalFormat("#.##");
+        labelBeratBarang = new JLabel(df.format(transaksi.getBeratBarang()*transaksi.getJumlahBarang()) + " kg");
         labelBeratBarang.setFont(fontInfoPengiriman);
         labelBeratBarang.setHorizontalAlignment(JLabel.CENTER);
         labelBeratBarang.setBorder(BorderFactory.createMatteBorder(0, 2, 0, 0, Color.BLACK));
