@@ -20,14 +20,12 @@ public class MenuMenampilkanListUser {
 
     public MenuMenampilkanListUser(Admin admin) {
         Method m = new Method();
-        //init isi data
+
         c.getAllUsers();
         String[][] dataUser = m.konversiListToArray(c.users);
 
-        //init kolom
         String column[] = {"Tingkatan", "Id", "Nama Depan", "Nama Belakang", "email"};
 
-        //tabel data
         tableModel = new DefaultTableModel(dataUser, column);
         tabelUser = new JTable(tableModel);
         tabelUser.setBackground(GUI.backGroundColor());
@@ -38,8 +36,6 @@ public class MenuMenampilkanListUser {
         sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-
-        //button back
         back = GUI.defaultButton("Kembali", 18);
         back.setBounds(350, 20, 150, 30);
         back.addActionListener(new ActionListener() {
@@ -50,7 +46,6 @@ public class MenuMenampilkanListUser {
             }
         });
 
-        //panel
         panel = new JPanel();
         panel.setSize(600, 800);
         panel.setBackground(GUI.backGroundColor());
@@ -59,7 +54,6 @@ public class MenuMenampilkanListUser {
         panel.add(back);
         panel.add(sp);
 
-        //Frame
         frame = GUI.defaultFrame();
         frame.add(panel);
         frame.setLocationRelativeTo(null);

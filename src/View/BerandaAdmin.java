@@ -16,11 +16,9 @@ public class BerandaAdmin {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public BerandaAdmin(Admin admin) {
-        //Label
         labelNama = GUI.defaultHeadingLabel("Welcome Admin");
         labelNama.setBounds(0, 70, 600, 30);
 
-        //Button Lihat list user
         buttonListTransaksi = GUI.defaultButton("Lihat Daftar Transaksi", 18);
         buttonListTransaksi.setBounds(170, 220, 250, 80);
         buttonListTransaksi.addActionListener(new ActionListener() {
@@ -31,7 +29,6 @@ public class BerandaAdmin {
             }
         });
 
-        //button lihat seluruh transaksi
         buttonListUser = GUI.defaultButton("Lihat Daftar User", 18);
         buttonListUser.setBounds(170, 320, 250, 80);
         buttonListUser.addActionListener(new ActionListener() {
@@ -42,7 +39,6 @@ public class BerandaAdmin {
             }
         });
 
-        //button lihat feedback dari user
         buttonListFeedback = GUI.defaultButton("Lihat Masukan", 18);
         buttonListFeedback.setBounds(170, 420, 250, 80);
         buttonListFeedback.addActionListener(new ActionListener() {
@@ -53,7 +49,6 @@ public class BerandaAdmin {
             }
         });
 
-        //Button Logout
         buttonLogout = GUI.defaultButton("Log Out", 18);
         buttonLogout.setBounds(170, 520, 250, 80);
         buttonLogout.addActionListener(new ActionListener() {
@@ -66,7 +61,6 @@ public class BerandaAdmin {
             }
         });
 
-        //panel
         panel = new JPanel();
         panel.setLayout(null);
         panel.setVisible(true);
@@ -79,7 +73,6 @@ public class BerandaAdmin {
         panel.add(buttonListFeedback);
         panel.add(buttonLogout);
 
-        //frame
         frame = GUI.defaultFrame();
         frame.add(panel);
     }
