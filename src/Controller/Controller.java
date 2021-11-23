@@ -248,7 +248,7 @@ public class Controller {
 //                        transaksi.setStatusPemesanan(0);
 //                        break;
 //                    case "DIANTAR":
-                        transaksi.setStatusPemesanan(rs.getInt("status_pemesanan"));
+                transaksi.setStatusPemesanan(rs.getInt("status_pemesanan"));
 //                        break;
 //                    case "DITERIMA":
 //                        transaksi.setStatusPemesanan(2);
@@ -591,7 +591,7 @@ public class Controller {
 
 
     public String getNamaLawanChat(Transaksi t, User u) {
-        
+
         int getId = 0;
         if (u instanceof Pelanggan) {
             getId = t.getIdKurir();
