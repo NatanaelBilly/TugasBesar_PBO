@@ -20,7 +20,7 @@ public class MenuProfilePelanggan {
     private JButton btnEditProfile, btnSimpan, btnHapus;
     private JPasswordField password;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
-    Controller controller = new Controller();
+    private Controller controller = new Controller();
 
     public MenuProfilePelanggan(Pelanggan pelanggan) {
         //back
