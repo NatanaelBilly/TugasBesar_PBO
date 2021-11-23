@@ -31,13 +31,13 @@ public class MenuMenampilkanSeluruhTransaksi {
         str.append(admin.getSaldo());
 
         labelTotal  = new DefaultComponentSetting().defaultRegularLabel("Saldo Total Pendapatan : ");
-        labelTotal.setBounds(30, 100, 200, 30);
+        labelTotal.setBounds(10, 20, 200, 30);
 
         labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(str.toString());
-        labelGetTotal.setBounds(250, 100, 150, 30);
+        labelGetTotal.setBounds(210, 20, 150, 30);
 
         c.getAllUsers();
-        String [][] dataTransakksi=m.konversiListToArrayTransaksi(c.users);
+        String [][] dataTransakksi=m.konversiListToArrayTransaksi(c.listTransaksi);
 
         String column[]={"id transaksi","Id pelanggan","id kurir","tanggal transaksi","total pembayaran"};
 

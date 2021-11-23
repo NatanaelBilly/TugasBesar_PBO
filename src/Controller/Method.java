@@ -48,19 +48,17 @@ public class Method {
         return total*0.3;
     }
 
-    public String [][] konversiListToArrayTransaksi(ArrayList<User> listUser){
-        String hasil[][]=new String[listUser.size()][5];
+    public String [][] konversiListToArrayTransaksi(ArrayList<Transaksi> listTransaksi){
+        String hasil[][]=new String[listTransaksi.size()][5];
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        for (int i = 0; i <listUser.size() ; i++) {
-            User currentUser= listUser.get(i);
-            for (int j = 0; j < currentUser.getListTransaksi().size(); j++) {
-                Transaksi currentTransaksi= currentUser.getListTransaksi().get(j);
+            for (int i = 0; i < listTransaksi.size(); i++) {
+                Transaksi currentTransaksi= listTransaksi.get(i);
                 hasil[i][0]=Integer.toString(currentTransaksi.getIdTransaksi());
                 hasil[i][1]=Integer.toString(currentTransaksi.getIdPelanggan());
                 hasil[i][2]=Integer.toString(currentTransaksi.getIdKurir());
                 hasil[i][3]=dateFormat.format(currentTransaksi.getTanggal());
+                hasil[i][4]=Double.toString(currentTransaksi.getTotalPembayaran());
             }
-        }
         return hasil;
     }
 
