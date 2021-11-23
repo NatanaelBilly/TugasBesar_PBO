@@ -57,7 +57,9 @@ public class MenuMenampilkanFeedbackDariPengguna {
 
         panel.add(back);
         panel.add(sp);
+
         //initialize panel dan frame
+
         panel.setLayout(null);
         panel.setVisible(true);
         frame.add(panel);

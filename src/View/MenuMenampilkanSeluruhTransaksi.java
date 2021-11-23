@@ -16,6 +16,7 @@ public class MenuMenampilkanSeluruhTransaksi {
     private JScrollPane sp;
     private JButton back;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
+    JLabel labelTotal, labelGetTotal;
     public MenuMenampilkanSeluruhTransaksi(Admin admin){
         Controller c =new Controller();
         Method m=new Method();
@@ -26,8 +27,20 @@ public class MenuMenampilkanSeluruhTransaksi {
         panel.setSize(600, 800);
 
         //init isi data
+        StringBuilder str =new StringBuilder();
+//        c.getSeluruhTransaksi();
+        admin.setSaldo(m.lihatSaldoAdmin(c.listTransaksi));
+        str.append(admin.getSaldo());
+
+        labelTotal  = new DefaultComponentSetting().defaultRegularLabel("Saldo Total Pendapatan : ");
+        labelTotal.setBounds(10, 20, 200, 30);
+
+        labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(str.toString());
+        labelGetTotal.setBounds(210, 20, 150, 30);
+
+
         c.getAllUsers();
-        String [][] dataTransakksi=m.konversiListToArrayTransaksi(c.users);
+        String [][] dataTransakksi=m.konversiListToArrayTransaksi(c.listTransaksi);
 
         //init kolom
         String column[]={"id transaksi","Id pelanggan","id kurir","tanggal transaksi","total pembayaran"};
