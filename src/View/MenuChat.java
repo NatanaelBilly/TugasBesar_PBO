@@ -2,6 +2,7 @@ package View;
 
 import Controller.Controller;
 import Model.Chat;
+import Model.Kurir;
 import Model.Pelanggan;
 import Model.Transaksi;
 import Model.User;
@@ -26,28 +27,31 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class MenuChat {
-
+    
     ArrayList<JLabel> labelChat = new ArrayList();
     String namaLawanChat, name;
     int idLawanChat;
     Controller c = new Controller();
+    JButton send, refresh;
 
     public MenuChat(Transaksi transaksi, User u) {
+        System.out.println(u.getNamaDepan());
         int idTransaksi = transaksi.getIdTransaksi();
         ArrayList<Chat> chats = new ArrayList();
         chats = c.getChatById(idTransaksi);
 
-        namaLawanChat = c.getNamaLawanChat(chats.get(0), u.getIdUser());
-        idLawanChat = c.getIdLawanChat(chats.get(0), u.getIdUser());
-//        JFrame frame = new DefaultComponentSetting().defaultFrame();
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setSize(600, 800);
-//        frame.getContentPane().setLayout(null);
-        JFrame frame = new JFrame();
+        namaLawanChat = c.getNamaLawanChat(transaksi, u);
+        idLawanChat = c.getIdLawanChat(transaksi, u);
+        
+        JFrame frame = new DefaultComponentSetting().defaultFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 800);
         frame.getContentPane().setLayout(null);
-        frame.setLocationRelativeTo(null);
+//        JFrame frame = new JFrame();
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setSize(600, 800);
+//        frame.getContentPane().setLayout(null);
+//        frame.setLocationRelativeTo(null);
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(25, 90, 530, 570);
         //scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -64,10 +68,15 @@ public class MenuChat {
         frame.add(chat);
 
         //Button Send
-        JButton send = new JButton("Kirim");
+        send = new JButton("Kirim");
         send.setBounds(485, 680, 70, 50);
         send.setFont(new Font("Arial", Font.PLAIN, 15));
         frame.add(send);
+        
+        //Button refresh
+        refresh = new JButton("Refresh");
+        refresh.setBounds(25, 20, 50, 50);
+        frame.add(refresh);
 
         send.addActionListener((ActionEvent e) -> {
             frame.dispose();
@@ -89,8 +98,16 @@ public class MenuChat {
         
         back.addActionListener((ActionEvent e) -> {
             frame.dispose();
-            Pelanggan p = (Pelanggan)u;
-            new MenuLihatDetailTransaksi(transaksi, u);
+            if (u instanceof Kurir) {
+                Kurir kurir = (Kurir)u;
+                System.out.println("kurir");
+                new MenuLihatDetailTransaksi(transaksi, kurir);
+            }
+            if (u instanceof Pelanggan) {
+                Pelanggan pelanggan = (Pelanggan)u;
+                new MenuLihatDetailTransaksi(transaksi, pelanggan);
+            }
+            
         });
         //Nama
         JLabel nama = new DefaultComponentSetting().defaultRegularLabel(namaLawanChat);
