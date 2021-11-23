@@ -41,7 +41,7 @@ public class MenuAmbilOrderKurir {
         labelKategoriBarang = GUI.defaultRegularLabel("Kategori Barang : " + transaksi.getKategoriBarang());
         labelKategoriBarang.setBounds(100, 100, 200, 40);
 
-        labelBeratBarang = GUI.defaultRegularLabel("Berat Barang : " + transaksi.getBeratBarang() + " KG");
+        labelBeratBarang = GUI.defaultRegularLabel("Berat Barang : " + transaksi.getBeratBarang() * transaksi.getJumlahBarang() + " KG");
         labelBeratBarang.setBounds(100, 125, 200, 40);
 
         labelJumlahBarang = GUI.defaultRegularLabel("Jumlah Barang : " + transaksi.getJumlahBarang());

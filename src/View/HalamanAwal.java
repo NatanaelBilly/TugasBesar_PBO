@@ -5,11 +5,11 @@ import Model.Constant;
 import javax.swing.*;
 
 public class HalamanAwal {
-    JFrame frame;
-    JLabel welcomeUser;
-    JButton btnLogin, btnRegister;
-    JPanel panelLandingPage;
-    DefaultComponentSetting GUI = new DefaultComponentSetting();
+    private JFrame frame;
+    private JLabel welcomeUser;
+    private JButton btnLogin, btnRegister;
+    private JPanel panelLandingPage;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public HalamanAwal() {
         //Label
