@@ -73,7 +73,7 @@ public class KurirController {
         Controller.conn.connect();
         String query = "UPDATE transaksi "
                 + "SET "
-                + "status_pemesanan = 'DIANTAR' ,"
+                + "status_pemesanan = 2 ,"
                 + "id_kurir = " + idKurir
                 + " WHERE id_transaksi=" + idTransaksi;
         try {

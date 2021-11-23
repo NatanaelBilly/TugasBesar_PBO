@@ -42,13 +42,13 @@ public class BerandaKurir implements ActionListener {
         btnTransaksi.addActionListener(this);
 
         //Button Obrolan
-        btnObrolan = GUI.defaultButton("Obrolan", 20);
-        btnObrolan.setBounds(170, 450, 250, 80);
-        btnObrolan.addActionListener(this);
+//        btnObrolan = GUI.defaultButton("Obrolan", 20);
+//        btnObrolan.setBounds(170, 450, 250, 80);
+//        btnObrolan.addActionListener(this);
 
         //Button Logout
         btnLogout = GUI.defaultButton("Logout", 20);
-        btnLogout.setBounds(170, 550, 250, 80);
+        btnLogout.setBounds(170, 450, 250, 80);
         btnLogout.addActionListener(this);
 
         //Frame
@@ -56,7 +56,7 @@ public class BerandaKurir implements ActionListener {
         frame.add(btnProfil);
         frame.add(btnOrder);
         frame.add(btnTransaksi);
-        frame.add(btnObrolan);
+//        frame.add(btnObrolan);
         frame.add(labelPesan);
         frame.add(btnLogout);
         frame.getContentPane().setBackground(GUI.backGroundColor());
@@ -81,10 +81,6 @@ public class BerandaKurir implements ActionListener {
             case "Lihat Transaksi":
                 frame.dispose();
                 new MenuLihatDaftarTransaksi(kurir);
-                break;
-            case "Obrolan":
-                frame.dispose();
-                //new obrolan
                 break;
             case "Logout":
                 JOptionPane.showMessageDialog(null, Constant.INFO_LOGOUT);
