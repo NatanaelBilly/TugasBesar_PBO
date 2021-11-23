@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class KurirController {
-    private Controller con = new Controller();
+
 
     public boolean EditDataKurirToDB(Kurir kurir) {
         Controller.conn.connect();
