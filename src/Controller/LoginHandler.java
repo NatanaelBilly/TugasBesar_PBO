@@ -15,7 +15,6 @@ public class LoginHandler {
         controller.logIn(email, password);
 
         User user = new Model.UserManager().getInstance().getUser();
-        System.out.println(user.getClass().getSimpleName());
 
         if (user instanceof Pelanggan) {
             new BerandaPelanggan((Pelanggan) user);

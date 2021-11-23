@@ -2,7 +2,6 @@ package Controller;
 
 import Database.Database;
 import Model.*;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -675,14 +674,14 @@ public class Controller {
     }
 
 
-    public String getNamaLawanChat(Chat chat, int id) {
-        int getId = 1;
-        User u = new User();
-        if (chat.getIdPenerima() != id) {
-            getId = chat.getIdPenerima();
+    public String getNamaLawanChat(Transaksi t, User u) {
+        
+        int getId = 0;
+        if (u instanceof Pelanggan) {
+            getId = t.getIdKurir();
         }
-        if (chat.getIdPengirim() != id) {
-            getId = chat.getIdPengirim();
+        if (u instanceof Kurir) {
+            getId = t.getIdPelanggan();
         }
         conn.connect();
         String query = "SELECT * FROM user WHERE id_user = " + getId + ";";
@@ -702,14 +701,13 @@ public class Controller {
     }
 
 
-    public int getIdLawanChat(Chat chat, int id) {
-        int getId = 1;
-        User u = new User();
-        if (chat.getIdPenerima() != id) {
-            getId = chat.getIdPenerima();
+    public int getIdLawanChat(Transaksi t, User u) {
+        int getId = 0;
+        if (u instanceof Pelanggan) {
+            getId = t.getIdKurir();
         }
-        if (chat.getIdPengirim() != id) {
-            getId = chat.getIdPengirim();
+        if (u instanceof Kurir) {
+            getId = t.getIdPelanggan();
         }
         conn.connect();
         String query = "SELECT * FROM user WHERE id_user = " + getId + ";";

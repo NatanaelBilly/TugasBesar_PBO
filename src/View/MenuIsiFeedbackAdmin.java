@@ -3,9 +3,6 @@ package View;
 import Controller.Controller;
 import Model.Pelanggan;
 import Model.Saran;
-import Model.User;
-import Model.UserManager;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

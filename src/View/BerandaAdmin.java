@@ -12,7 +12,7 @@ public class BerandaAdmin {
     private JFrame frame;
     private JPanel panel;
     private JLabel labelNama;
-    private JButton buttonListTransaksi, buttonListUser, buttonListFeedback, buttonLogout;
+    private JButton buttonPendpatan, buttonListTransaksi, buttonListUser, buttonListFeedback, buttonLogout;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public BerandaAdmin(Admin admin) {
@@ -67,6 +67,7 @@ public class BerandaAdmin {
         panel.setSize(600, 800);
         panel.setBackground(GUI.backGroundColor());
         panel.add(labelNama);
+        panel.add(buttonPendpatan);
         panel.add(buttonListTransaksi);
         panel.add(buttonListUser);
         panel.add(buttonListFeedback);
