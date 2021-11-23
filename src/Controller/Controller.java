@@ -273,30 +273,31 @@ public class Controller {
                 transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
                 transaksi.setTotalPembayaran(rs.getDouble("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
-                switch (rs.getString("status_pemesanan")) {
-                    case "MENUNGGU KURIR":
-                        transaksi.setStatusPemesanan(0);
-                        break;
-                    case "DIANTAR":
-                        transaksi.setStatusPemesanan(1);
-                        break;
-                    case "DITERIMA":
-                        transaksi.setStatusPemesanan(2);
-                        break;
-                }
+                
+//                switch (rs.getString("status_pemesanan")) {
+//                    case "MENUNGGU KURIR":
+//                        transaksi.setStatusPemesanan(0);
+//                        break;
+//                    case "DIANTAR":
+//                        transaksi.setStatusPemesanan(1);
+//                        break;
+//                    case "DITERIMA":
+//                        transaksi.setStatusPemesanan(2);
+//                        break;
+//                }
+//
+//                //Get Status nya belum
+//                String status_pemesanan = rs.getString("status_pemesanan");
+//                int status;
+//                if (status_pemesanan.equals("MENUNGGU KURIR")) {
+//                    status = 0;
+//                } else if (status_pemesanan.equals("DIANTAR")) {
+//                    status = 1;
+//                } else {
+//                    status = 2;
+//                }
 
-                //Get Status nya belum
-                String status_pemesanan = rs.getString("status_pemesanan");
-                int status;
-                if (status_pemesanan.equals("MENUNGGU KURIR")) {
-                    status = 0;
-                } else if (status_pemesanan.equals("DIANTAR")) {
-                    status = 1;
-                } else {
-                    status = 2;
-                }
-
-                transaksi.setStatusPemesanan(status);
+                transaksi.setStatusPemesanan(rs.getInt("status_pemesanan"));
 
                 daftarOrder.add(transaksi);
             }
