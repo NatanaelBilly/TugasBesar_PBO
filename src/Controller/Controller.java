@@ -382,17 +382,17 @@ public class Controller {
                 transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
                 transaksi.setTotalPembayaran(rs.getDouble("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
-                String status_pemesanan = rs.getString("status_pemesanan");
-                int status;
-                if (status_pemesanan.equals("MENUNGGU KURIR")) {
-                    status = 0;
-                } else if (status_pemesanan.equals("DIANTAR")) {
-                    status = 1;
-                } else {
-                    status = 2;
-                }
+//                String status_pemesanan = rs.getString("status_pemesanan");
+//                int status;
+//                if (status_pemesanan.equals("MENUNGGU KURIR")) {
+//                    status = 0;
+//                } else if (status_pemesanan.equals("DIANTAR")) {
+//                    status = 1;
+//                } else {
+//                    status = 2;
+//                }
 
-                transaksi.setStatusPemesanan(status);
+                transaksi.setStatusPemesanan(rs.getInt("status_pemesanan"));
 
             }
         } catch (SQLException e) {
@@ -405,7 +405,7 @@ public class Controller {
     public ArrayList<Transaksi> ambilDaftarOrderMenunggu(ArrayList<Transaksi> daftarOrder) {
         ArrayList<Transaksi> daftarOrderMenunggu = new ArrayList<>();
         for (Transaksi order : daftarOrder) {
-            if (order.getStatusPemesanan() == 1) {
+            if (order.getStatusPemesanan() == 0) {
                 daftarOrderMenunggu.add(order);
             }
         }

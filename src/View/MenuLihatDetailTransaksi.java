@@ -169,7 +169,7 @@ public class MenuLihatDetailTransaksi {
             case "Alat Kecantikan":
                 iconBarang = new ImageIcon("assets/alat_kecantikan.png");
                 break;
-            case "Lainnya":
+            case "Tipe Lain":
                 iconBarang = new ImageIcon("assets/box.png");
                 break;
         }
@@ -179,7 +179,7 @@ public class MenuLihatDetailTransaksi {
         frame = GUI.defaultFrame();
         frame.getContentPane().setBackground(GUI.backGroundColor());
 
-        if (transaksi.getStatusPemesanan() == 2) {
+        if (transaksi.getStatusPemesanan() == 1) {
             if (user instanceof Kurir) {
                 JButton btnKonfirmasi = GUI.defaultButton("Konfirmasi Orderan", 15);
                 btnKonfirmasi.setBounds(20, 640, 540, 30);

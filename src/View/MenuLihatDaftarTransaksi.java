@@ -114,10 +114,10 @@ public class MenuLihatDaftarTransaksi {
                         new MenuLihatDetailTransaksi(transaksi, user);
                     }
                 });
-                if (transaksi.getStatusPemesanan() == 1) {
+                if (transaksi.getStatusPemesanan() == 0) {
                     logo = new ImageIcon("assets/menunggu_kurir.jpg");
                     btnDetail.setVisible(false);
-                } else if (transaksi.getStatusPemesanan() == 2) {
+                } else if (transaksi.getStatusPemesanan() == 1) {
                     logo = new ImageIcon("assets/diantar.jpg");
                     labelKurir.setText("Kurir: " + kurir.getNamaDepan() + " " + kurir.getNamaBelakang());
                 } else {
