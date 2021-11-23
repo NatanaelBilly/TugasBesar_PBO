@@ -18,12 +18,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class MenuIsiFeedbackAdmin {
-    JFrame frame;
-    JPanel panel, panelText;
-    JLabel labelKembali, labelProfilePic, labelNama, labelKet, labelAdmin;
-    ImageIcon profilePic;
-    JTextArea taFeedback;
-    JButton btnSubmit;
+    private JFrame frame;
+    private JPanel panel, panelText;
+    private JLabel labelKembali, labelProfilePic, labelNama, labelKet, labelAdmin;
+    private ImageIcon profilePic;
+    private JTextArea taFeedback;
+    private JButton btnSubmit;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuIsiFeedbackAdmin(Pelanggan pelanggan){
@@ -41,7 +41,7 @@ public class MenuIsiFeedbackAdmin {
         labelProfilePic = new JLabel();
         profilePic = new ImageIcon ("assets/profile_pic.jpg");
         labelProfilePic.setIcon(profilePic);
-        labelProfilePic.setBounds(130,50,320,260);
+        labelProfilePic.setBounds(220,80,150,150);
 
         //Nama
         labelNama = GUI.defaultHeadingLabel("Hallo, "+pelanggan.getNamaDepan()+" "+pelanggan.getNamaBelakang());

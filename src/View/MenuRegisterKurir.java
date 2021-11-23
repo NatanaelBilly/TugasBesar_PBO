@@ -8,13 +8,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MenuRegisterKurir {
-    JFrame frame;
-    JPanel panelRegisterKurir;
-    JLabel labelKembali, labelJudul, labelNamaDepan, labelNamaBelakang, labelNIK, labelPlatNomor, labelJenisKendaraan, labelEmail, labelNomorHP, labelPassword;
-    JTextField inputNamaDepan, inputNamaBelakang, inputNIK, inputPlatnomor, inputJenisKendaraan, inputEmail, inputNomorHp;
-    JPasswordField inputPassword;
-    JButton buttonRegister;
-    DefaultComponentSetting GUI = new DefaultComponentSetting();
+    private JFrame frame;
+    private JPanel panelRegisterKurir;
+    private JLabel labelKembali, labelJudul, labelNamaDepan, labelNamaBelakang, labelNIK, labelPlatNomor, labelJenisKendaraan, labelEmail, labelNomorHP, labelPassword;
+    private JTextField inputNamaDepan, inputNamaBelakang, inputNIK, inputPlatnomor, inputJenisKendaraan, inputEmail, inputNomorHp;
+    private JPasswordField inputPassword;
+    private JButton buttonRegister;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuRegisterKurir() {
         //Label Kembali

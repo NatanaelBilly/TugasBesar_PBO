@@ -1,10 +1,7 @@
 package View;
 
 import Controller.Controller;
-import Model.Kurir;
-import Model.Pelanggan;
-import Model.Transaksi;
-import Model.User;
+import Model.*;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -113,10 +110,10 @@ public class MenuLihatDaftarTransaksi {
                         new MenuLihatDetailTransaksi(transaksi, user);
                     }
                 });
-                if (transaksi.pilihStatusPengiriman().equalsIgnoreCase("MENUNGGU KURIR")) {
+                if (transaksi.getStatusPemesanan()== StatusPengiriman.MENUNGGU_KURIR) {
                     logo = new ImageIcon("assets/menunggu_kurir.jpg");
                     btnDetail.setVisible(false);
-                } else if (transaksi.pilihStatusPengiriman().equalsIgnoreCase("diantar")) {
+                } else if (transaksi.getStatusPemesanan()==StatusPengiriman.DIANTAR) {
                     logo = new ImageIcon("assets/diantar.jpg");
                     labelKurir.setText("Kurir: " + kurir.getNamaDepan() + " " + kurir.getNamaBelakang());
                 } else {
