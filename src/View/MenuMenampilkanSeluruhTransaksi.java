@@ -13,7 +13,6 @@ public class MenuMenampilkanSeluruhTransaksi {
     private JPanel panel;
     private DefaultTableModel tableModel;
     private JTable tabelUser;
-    private JLabel labelTotal,labelGetTotal;
     private JScrollPane sp;
     private JButton back;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
@@ -22,25 +21,18 @@ public class MenuMenampilkanSeluruhTransaksi {
         Method m=new Method();
         frame = new DefaultComponentSetting().defaultFrame();
 
+        //panel
         panel= new JPanel();
         panel.setSize(600, 800);
 
-        StringBuilder str =new StringBuilder();
-        c.getSeluruhTransaksi();
-        admin.setSaldo(m.lihatSaldoAdmin(c.listTransaksi));
-        str.append(admin.getSaldo());
-
-        labelTotal  = new DefaultComponentSetting().defaultRegularLabel("Saldo Total Pendapatan : ");
-        labelTotal.setBounds(30, 100, 200, 30);
-
-        labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(str.toString());
-        labelGetTotal.setBounds(250, 100, 150, 30);
-
+        //init isi data
         c.getAllUsers();
         String [][] dataTransakksi=m.konversiListToArrayTransaksi(c.users);
 
+        //init kolom
         String column[]={"id transaksi","Id pelanggan","id kurir","tanggal transaksi","total pembayaran"};
 
+        //tabel data
         tableModel=new DefaultTableModel(dataTransakksi,column);
         tabelUser=new JTable(tableModel);
         tabelUser.setBackground(GUI.backGroundColor());
@@ -51,8 +43,10 @@ public class MenuMenampilkanSeluruhTransaksi {
         sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
+
+        //button back
         back = GUI.defaultButton("Kembali", 18);
-        back.setBounds(350,20,200,30);
+        back.setBounds(400,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -60,12 +54,9 @@ public class MenuMenampilkanSeluruhTransaksi {
                 frame.dispose();
             }
         });
-
-        panel.add(labelTotal);
-        panel.add(labelGetTotal);
         panel.add(back);
         panel.add(sp);
-
+        //initialize panel dan frame
         panel.setLayout(null);
         panel.setVisible(true);
         frame.add(panel);

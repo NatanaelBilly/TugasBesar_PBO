@@ -14,7 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 public class MenuLihatDaftarTransaksi {
     private JFrame frame;
@@ -30,9 +29,8 @@ public class MenuLihatDaftarTransaksi {
 
     public MenuLihatDaftarTransaksi(User user) {
         this.user = user;
-        ArrayList<Transaksi> listTransaksi = controller.ambilDaftarOrder(user.getIdUser());
 
-        if (listTransaksi == null || listTransaksi.size() == 0) {
+        if (user.getListTransaksi() == null || user.getListTransaksi().size() == 0) {
             JOptionPane.showMessageDialog(null, "Ordermu Kosong");
             if (user instanceof Pelanggan)
                 new BerandaPelanggan((Pelanggan) user);
@@ -82,7 +80,7 @@ public class MenuLihatDaftarTransaksi {
             panel.setVisible(true);
 
             for (int i = user.getListTransaksi().size()-1; i >= 0; i--) {
-                Transaksi transaksi = listTransaksi.get(i);
+                Transaksi transaksi = user.getListTransaksi().get(i);
 
                 kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
@@ -114,10 +112,10 @@ public class MenuLihatDaftarTransaksi {
                         new MenuLihatDetailTransaksi(transaksi, user);
                     }
                 });
-                if (transaksi.getStatusPemesanan() == 1) {
+                if (transaksi.getStatusPemesanan().equalsIgnoreCase("MENUNGGU KURIR")) {
                     logo = new ImageIcon("assets/menunggu_kurir.jpg");
                     btnDetail.setVisible(false);
-                } else if (transaksi.getStatusPemesanan() == 2) {
+                } else if (transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")) {
                     logo = new ImageIcon("assets/diantar.jpg");
                     labelKurir.setText("Kurir: " + kurir.getNamaDepan() + " " + kurir.getNamaBelakang());
                 } else {

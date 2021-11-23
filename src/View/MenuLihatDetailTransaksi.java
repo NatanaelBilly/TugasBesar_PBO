@@ -7,26 +7,34 @@ import Model.Kurir;
 import Model.Pelanggan;
 import Model.Transaksi;
 import Model.User;
+
+
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
 
 public class MenuLihatDetailTransaksi {
-    private JFrame frame;
-    private JPanel panelInfoKurir, panelNamaNoKurir, panelPengirim, panelPenerima, panelInfoPengiriman;
-    private JLabel labelMessage, labelIconProfil, labelNamaKurir, labelNoPlatKurir, labelIconPengirim, labelIconPenerima, labelKembali;
-    private JLabel labelNamaPengirim, labelNoTlpPengirim, labelNamaPenerima, labelNoTlpPenerima, labelIconBarang, labelBeratBarang, labelHarga, labelDot;
-    private JTextArea taAlamatPengirim, taAlamatPenerima;
-    private ImageIcon iconProfil, iconPengirim, iconPenerima, iconBarang, iconDot;
+    JFrame frame;
+    JPanel panelInfoKurir, panelNamaNoKurir, panelPengirim, panelPenerima, panelInfoPengiriman;
+    JLabel labelMessage, labelIconProfil, labelNamaKurir, labelNoPlatKurir, labelIconPengirim, labelIconPenerima, labelKembali;
+    JLabel labelNamaPengirim, labelNoTlpPengirim, labelNamaPenerima, labelNoTlpPenerima, labelIconBarang, labelBeratBarang, labelHarga, labelDot;
+    JTextArea taAlamatPengirim, taAlamatPenerima;
+    ImageIcon iconProfil, iconPengirim, iconPenerima, iconBarang, iconDot;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
     private Controller controller = new Controller();
-    private JButton btnChat;
+    JButton btnChat;
     public MenuLihatDetailTransaksi(Transaksi transaksi, User user) {
         Kurir kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
@@ -40,8 +48,11 @@ public class MenuLihatDetailTransaksi {
                     new MenuLihatDaftarTransaksi((Pelanggan) user);
                 else
                     new MenuLihatDaftarTransaksi((Kurir) user);
+
             }
         });
+        
+        
 
         //Font
         Font fontLabelKurir = new Font("Arial", Font.PLAIN, 20);
@@ -179,10 +190,11 @@ public class MenuLihatDetailTransaksi {
         frame = GUI.defaultFrame();
         frame.getContentPane().setBackground(GUI.backGroundColor());
 
-        if (transaksi.getStatusPemesanan() == 2) {
+        if (transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")) {
             if (user instanceof Kurir) {
                 JButton btnKonfirmasi = GUI.defaultButton("Konfirmasi Orderan", 15);
                 btnKonfirmasi.setBounds(20, 640, 540, 30);
+//                btnKonfirmasi.setFont(fontText);
                 btnKonfirmasi.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -274,10 +286,10 @@ public class MenuLihatDetailTransaksi {
 //            }
         }
         
-//        btnChat.addActionListener((ActionEvent e) -> {
-//            frame.dispose();
-//            new MenuChat(transaksi, user);
-//        });
+        btnChat.addActionListener((ActionEvent e) -> {
+            frame.dispose();
+            new MenuChat(transaksi, user);
+        });
 
         panelNamaNoKurir.add(labelNamaKurir);
         panelNamaNoKurir.add(Box.createRigidArea(new Dimension(0, 10)));

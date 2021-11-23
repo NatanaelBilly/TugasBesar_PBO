@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class KurirController {
-
+    private Controller con = new Controller();
 
     public boolean EditDataKurirToDB(Kurir kurir) {
         Controller.conn.connect();
@@ -37,7 +37,7 @@ public class KurirController {
     }
 
     public boolean RegisterKurir(Kurir kurir) {
-
+        System.out.println(kurir.toString());
         conn.connect();
         String query1 = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO kurir VALUES (?,?,?,?,?)";
@@ -73,7 +73,7 @@ public class KurirController {
         Controller.conn.connect();
         String query = "UPDATE transaksi "
                 + "SET "
-                + "status_pemesanan = 2 ,"
+                + "status_pemesanan = 'DIANTAR' ,"
                 + "id_kurir = " + idKurir
                 + " WHERE id_transaksi=" + idTransaksi;
         try {
@@ -91,7 +91,7 @@ public class KurirController {
         Controller.conn.connect();
         String query = "UPDATE transaksi "
                 + "SET "
-                + "status_pemesanan = 3 "
+                + "status_pemesanan = 'DITERIMA' "
                 + " WHERE id_transaksi=" + idTransaksi;
         try {
             Statement stmt = conn.con.createStatement();

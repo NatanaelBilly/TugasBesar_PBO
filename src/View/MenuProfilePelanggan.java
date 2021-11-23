@@ -20,7 +20,7 @@ public class MenuProfilePelanggan {
     private JButton btnEditProfile, btnSimpan, btnHapus;
     private JPasswordField password;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
-    private Controller controller = new Controller();
+    Controller controller = new Controller();
 
     public MenuProfilePelanggan(Pelanggan pelanggan) {
         //back
@@ -35,7 +35,9 @@ public class MenuProfilePelanggan {
 
         //picture
         labelProfilePic = new JLabel();
-        profilePic = new ImageIcon("assets/profile_pic.jpg");;
+        profilePic = new ImageIcon("assets/profile_pic.jpg");
+        Image image = profilePic.getImage().getScaledInstance(200, 250, java.awt.Image.SCALE_SMOOTH);
+        profilePic = new ImageIcon(image);
         labelProfilePic.setIcon(profilePic);
         labelProfilePic.setBounds(200, 50, 200, 200);
 
@@ -96,6 +98,7 @@ public class MenuProfilePelanggan {
                 if (nama.getText().isEmpty() || email.getText().isEmpty() || noHp.getText().isEmpty() || String.valueOf(password.getPassword()).isEmpty()) {
                     JOptionPane.showMessageDialog(null, Constant.ERROR_MESSAGE);
                 } else {
+//                    System.out.println("pw: "+String.valueOf(password.getPassword()));
                     String[] splited = nama.getText().split("\\s+");
                     String namaDepan = splited[0];
                     String namaBelakang = "";

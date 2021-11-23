@@ -8,13 +8,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MenuLogin {
-    private JFrame frame;
-    private JLabel labelJudul, labelEmail, labelPassword, linkKembali;
-    private JTextField inputEmail;
-    private JPasswordField inputPassword;
-    private JPanel panelLogin;
-    private JButton buttonLogin;
-    private DefaultComponentSetting GUI = new DefaultComponentSetting();
+    JFrame frame;
+    JLabel labelJudul, labelEmail, labelPassword, linkKembali;
+    JTextField inputEmail;
+    JPasswordField inputPassword;
+    JPanel panelLogin;
+    JButton buttonLogin;
+    DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuLogin() {
         //Link Kembali
@@ -78,6 +78,9 @@ public class MenuLogin {
             Controller controller = new Controller();
 
             boolean bisaLogin = controller.cekUserDiDataBase(email, password);
+
+            System.out.println(bisaLogin);
+
             if (bisaLogin) {
                 JOptionPane.showMessageDialog(null, Constant.INFO_LOGIN);
                 frame.dispose();

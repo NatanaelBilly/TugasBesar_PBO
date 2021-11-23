@@ -156,19 +156,16 @@ public class Transaksi implements StatusPengiriman {
         this.totalPembayaran = totalPembayaran;
     }
 
-//    public String getStatusPemesanan() {
-//        String status = "";
-//        if(statusPemesanan == 0){
-//            status = "MENUNGGU KURIR";
-//        } else if(statusPemesanan == 1){
-//            status = "DIANTAR";
-//        } else {
-//            status = "DITERIMA";
-//        }
-//        return status;
-//    }
-    public int getStatusPemesanan() {
-        return statusPemesanan;
+    public String getStatusPemesanan() {
+        String status = "";
+        if(statusPemesanan == 0){
+            status = "MENUNGGU KURIR";
+        } else if(statusPemesanan == 1){
+            status = "DIANTAR";
+        } else {
+            status = "DITERIMA";
+        }
+        return status;
     }
 
     public void setStatusPemesanan(int statusPemesanan) {

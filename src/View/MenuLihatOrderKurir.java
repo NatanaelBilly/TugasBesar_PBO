@@ -105,7 +105,7 @@ public class MenuLihatOrderKurir {
                 public void actionPerformed(ActionEvent e) {
                     //Button Ambil
                     frame.dispose();
-                    new MenuAmbilOrderKurir(thisOrder, kurir);
+                    new MenuAmbilOrderKurir(thisOrder);
                 }
             });
 

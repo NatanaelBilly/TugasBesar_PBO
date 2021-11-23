@@ -3,6 +3,9 @@ package View;
 import Controller.Controller;
 import Model.Pelanggan;
 import Model.Saran;
+import Model.User;
+import Model.UserManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,12 +18,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class MenuIsiFeedbackAdmin {
-    private JFrame frame;
-    private JPanel panel, panelText;
-    private JLabel labelKembali, labelProfilePic, labelNama, labelKet, labelAdmin;
-    private ImageIcon profilePic;
-    private JTextArea taFeedback;
-    private JButton btnSubmit;
+    JFrame frame;
+    JPanel panel, panelText;
+    JLabel labelKembali, labelProfilePic, labelNama, labelKet, labelAdmin;
+    ImageIcon profilePic;
+    JTextArea taFeedback;
+    JButton btnSubmit;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuIsiFeedbackAdmin(Pelanggan pelanggan){
