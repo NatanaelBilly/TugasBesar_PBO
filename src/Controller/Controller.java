@@ -2,7 +2,6 @@ package Controller;
 
 import Database.Database;
 import Model.*;
-
 import java.sql.*;
 import java.util.ArrayList;
 

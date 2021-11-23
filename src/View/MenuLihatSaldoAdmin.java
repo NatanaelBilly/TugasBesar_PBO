@@ -1,11 +1,8 @@
 package View;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.Object;
-import java.awt.Color;
 import Model.*;
 import Controller.Method;
 import Controller.Controller;
