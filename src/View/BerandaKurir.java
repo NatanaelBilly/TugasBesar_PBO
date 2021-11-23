@@ -13,11 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class BerandaKurir implements ActionListener {
-    JFrame frame;
-    JLabel labelPesan;
-    JButton btnProfil, btnOrder, btnTransaksi, btnObrolan, btnLogout;
-    DefaultComponentSetting GUI = new DefaultComponentSetting();
-    Kurir kurir;
+    private JFrame frame;
+    private JLabel labelPesan;
+    private JButton btnProfil, btnOrder, btnTransaksi, btnObrolan, btnLogout;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
+    private Kurir kurir;
 
     public BerandaKurir(Kurir kurir) {
         this.kurir = kurir;
