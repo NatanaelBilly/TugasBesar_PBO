@@ -149,11 +149,11 @@ public class MenuBuatOrder {
                 } else if (e.getKeyChar() == ',') {
                     falseInput = "Harap Gunakan Titik(.)";
                     JOptionPane.showMessageDialog(null, falseInput);
-                    inputBeratBarang.setText("");
+                    inputBanyakBarang.setText("");
                 } else {
                     falseInput = "Masukkan Hanya Angka";
                     JOptionPane.showMessageDialog(null, falseInput);
-                    inputBeratBarang.setText("");
+                    inputBanyakBarang.setText("");
                 }
             }
         });

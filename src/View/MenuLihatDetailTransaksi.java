@@ -35,6 +35,7 @@ public class MenuLihatDetailTransaksi {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
     private Controller controller = new Controller();
     JButton btnChat;
+
     public MenuLihatDetailTransaksi(Transaksi transaksi, User user) {
         Kurir kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
@@ -51,8 +52,7 @@ public class MenuLihatDetailTransaksi {
 
             }
         });
-        
-        
+
 
         //Font
         Font fontLabelKurir = new Font("Arial", Font.PLAIN, 20);
@@ -133,7 +133,7 @@ public class MenuLihatDetailTransaksi {
         taAlamatPenerima.setFocusable(false);
 
         DecimalFormat df = new DecimalFormat("#.##");
-        labelBeratBarang = new JLabel(df.format(transaksi.getBeratBarang()*transaksi.getJumlahBarang()) + " kg");
+        labelBeratBarang = new JLabel(df.format(transaksi.getBeratBarang() * transaksi.getJumlahBarang()) + " kg");
         labelBeratBarang.setFont(fontInfoPengiriman);
         labelBeratBarang.setHorizontalAlignment(JLabel.CENTER);
         labelBeratBarang.setBorder(BorderFactory.createMatteBorder(0, 2, 0, 0, Color.BLACK));
@@ -190,7 +190,7 @@ public class MenuLihatDetailTransaksi {
         frame = GUI.defaultFrame();
         frame.getContentPane().setBackground(GUI.backGroundColor());
 
-        if (transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")) {
+        if (transaksi.pilihStatusPengiriman().equalsIgnoreCase("diantar")) {
             if (user instanceof Kurir) {
                 JButton btnKonfirmasi = GUI.defaultButton("Konfirmasi Orderan", 15);
                 btnKonfirmasi.setBounds(20, 640, 540, 30);
@@ -220,7 +220,7 @@ public class MenuLihatDetailTransaksi {
                     }
                 });
 
-                btnChat = GUI.defaultButton("Chat",15);
+                btnChat = GUI.defaultButton("Chat", 15);
                 btnChat.setBounds(20, 680, 540, 30);
                 btnChat.setVisible(true);
 
@@ -238,8 +238,8 @@ public class MenuLihatDetailTransaksi {
                 labelSelesai.setBounds(20, 625, 250, 30);
                 labelSelesai.setFont(fontText);
                 frame.add(labelSelesai);
-                
-                
+
+
             }
 //            }else
 //            {
@@ -285,7 +285,7 @@ public class MenuLihatDetailTransaksi {
 //                }
 //            }
         }
-        
+
         btnChat.addActionListener((ActionEvent e) -> {
             frame.dispose();
             new MenuChat(transaksi, user);

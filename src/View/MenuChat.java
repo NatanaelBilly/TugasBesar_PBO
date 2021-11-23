@@ -28,11 +28,12 @@ import javax.swing.JTextField;
 
 public class MenuChat {
     
-    ArrayList<JLabel> labelChat = new ArrayList();
-    String namaLawanChat, name;
-    int idLawanChat;
-    Controller c = new Controller();
-    JButton send, refresh;
+    private ArrayList<JLabel> labelChat = new ArrayList();
+    private String namaLawanChat, name;
+    private int idLawanChat;
+    private Controller c = new Controller();
+    private JButton send, refresh;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuChat(Transaksi transaksi, User u) {
         System.out.println(u.getNamaDepan());
@@ -68,14 +69,14 @@ public class MenuChat {
         frame.add(chat);
 
         //Button Send
-        send = new JButton("Kirim");
+        send = GUI.defaultButton("Kirim",15);
         send.setBounds(485, 680, 70, 50);
         send.setFont(new Font("Arial", Font.PLAIN, 15));
         frame.add(send);
         
         //Button refresh
-        refresh = new JButton("Refresh");
-        refresh.setBounds(25, 20, 50, 50);
+        refresh = GUI.defaultButton("Refresh",10);
+        refresh.setBounds(500, 20, 50, 50);
         frame.add(refresh);
 
         send.addActionListener((ActionEvent e) -> {
@@ -92,7 +93,7 @@ public class MenuChat {
         });
 
         //Button back
-        JButton back = new JButton("<");
+        JButton back = GUI.defaultButton("<",15);
         back.setBounds(25, 20, 50, 50);
         frame.add(back);
         
