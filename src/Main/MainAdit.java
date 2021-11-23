@@ -2,6 +2,7 @@ package Main;
 
 import Controller.Controller;
 import Model.Kurir;
+import View.HalamanAwal;
 import View.MenuLogin;
 
 /**
@@ -10,9 +11,6 @@ import View.MenuLogin;
  */
 public class MainAdit {
     public static void main(String[] args) {
-        
-        Kurir kurir = new Controller().ambilDataKurir(8);
-
-        new MenuLogin();
+        new HalamanAwal();
     }
 }

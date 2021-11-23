@@ -18,21 +18,18 @@ public class MenuMenampilkanFeedbackDariPengguna {
     public MenuMenampilkanFeedbackDariPengguna(Admin admin){
         Controller c =new Controller();
         Method m=new Method();
-        //frame
+
         frame = new DefaultComponentSetting().defaultFrame();
 
-        //panel
         panel= new JPanel();
         panel.setSize(600, 800);
-        panel.setBackground(new Color(201, 228, 197));
+        panel.setBackground(new DefaultComponentSetting().backGroundColor());
 
-        //init isi data
         c.getSeluruhSaran();
         String [][] dataSaran=m.konversiListToArraySaran(c.listSaran);
         //init kolom
         String column[]={"id saran","Id pengguna","Saran"};
 
-        //tabel data
         tableModel=new DefaultTableModel(dataSaran,column);
         tabelSaran=new JTable(tableModel);
         tabelSaran.setBackground(GUI.backGroundColor());
@@ -44,9 +41,8 @@ public class MenuMenampilkanFeedbackDariPengguna {
         sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
 
-        //button back
         back = GUI.defaultButton("Kembali", 18);
-        back.setBounds(400,20,200,30);
+        back.setBounds(350,20,200,30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,7 +53,7 @@ public class MenuMenampilkanFeedbackDariPengguna {
 
         panel.add(back);
         panel.add(sp);
-        //initialize panel dan frame
+
         panel.setLayout(null);
         panel.setVisible(true);
         frame.add(panel);

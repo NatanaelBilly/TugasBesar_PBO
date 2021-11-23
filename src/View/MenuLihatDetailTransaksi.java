@@ -26,15 +26,15 @@ import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
 
 public class MenuLihatDetailTransaksi {
-    JFrame frame;
-    JPanel panelInfoKurir, panelNamaNoKurir, panelPengirim, panelPenerima, panelInfoPengiriman;
-    JLabel labelMessage, labelIconProfil, labelNamaKurir, labelNoPlatKurir, labelIconPengirim, labelIconPenerima, labelKembali;
-    JLabel labelNamaPengirim, labelNoTlpPengirim, labelNamaPenerima, labelNoTlpPenerima, labelIconBarang, labelBeratBarang, labelHarga, labelDot;
-    JTextArea taAlamatPengirim, taAlamatPenerima;
-    ImageIcon iconProfil, iconPengirim, iconPenerima, iconBarang, iconDot;
+    private JFrame frame;
+    private JPanel panelInfoKurir, panelNamaNoKurir, panelPengirim, panelPenerima, panelInfoPengiriman;
+    private JLabel labelMessage, labelIconProfil, labelNamaKurir, labelNoPlatKurir, labelIconPengirim, labelIconPenerima, labelKembali;
+    private JLabel labelNamaPengirim, labelNoTlpPengirim, labelNamaPenerima, labelNoTlpPenerima, labelIconBarang, labelBeratBarang, labelHarga, labelDot;
+    private JTextArea taAlamatPengirim, taAlamatPenerima;
+    private ImageIcon iconProfil, iconPengirim, iconPenerima, iconBarang, iconDot;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
     private Controller controller = new Controller();
-    JButton btnChat;
+    private JButton btnChat;
     public MenuLihatDetailTransaksi(Transaksi transaksi, User user) {
         Kurir kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
@@ -48,11 +48,8 @@ public class MenuLihatDetailTransaksi {
                     new MenuLihatDaftarTransaksi((Pelanggan) user);
                 else
                     new MenuLihatDaftarTransaksi((Kurir) user);
-
             }
         });
-        
-        
 
         //Font
         Font fontLabelKurir = new Font("Arial", Font.PLAIN, 20);
@@ -194,7 +191,6 @@ public class MenuLihatDetailTransaksi {
             if (user instanceof Kurir) {
                 JButton btnKonfirmasi = GUI.defaultButton("Konfirmasi Orderan", 15);
                 btnKonfirmasi.setBounds(20, 640, 540, 30);
-//                btnKonfirmasi.setFont(fontText);
                 btnKonfirmasi.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -286,10 +282,10 @@ public class MenuLihatDetailTransaksi {
 //            }
         }
         
-        btnChat.addActionListener((ActionEvent e) -> {
-            frame.dispose();
-            new MenuChat(transaksi, user);
-        });
+//        btnChat.addActionListener((ActionEvent e) -> {
+//            frame.dispose();
+//            new MenuChat(transaksi, user);
+//        });
 
         panelNamaNoKurir.add(labelNamaKurir);
         panelNamaNoKurir.add(Box.createRigidArea(new Dimension(0, 10)));
