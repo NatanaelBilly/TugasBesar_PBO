@@ -73,7 +73,7 @@ public class KurirController {
         Controller.conn.connect();
         String query = "UPDATE transaksi "
                 + "SET "
-                + "status_pemesanan = 'DIANTAR' ,"
+                + "status_pemesanan = 2 ,"
                 + "id_kurir = " + idKurir
                 + " WHERE id_transaksi=" + idTransaksi;
         try {
@@ -91,7 +91,7 @@ public class KurirController {
         Controller.conn.connect();
         String query = "UPDATE transaksi "
                 + "SET "
-                + "status_pemesanan = 'DITERIMA' "
+                + "status_pemesanan = 3 "
                 + " WHERE id_transaksi=" + idTransaksi;
         try {
             Statement stmt = conn.con.createStatement();
