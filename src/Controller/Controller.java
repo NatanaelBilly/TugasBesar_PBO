@@ -279,7 +279,7 @@ public class Controller {
 
     public ArrayList<Transaksi> ambilDaftarOrder(int idUser) {
         ArrayList<Transaksi> daftarOrder = new ArrayList<>();
-
+        System.out.println(idUser);
         conn.connect();
         String query = "SELECT * FROM transaksi WHERE id_kurir = " + idUser + " OR id_pelanggan = " + idUser + " ORDER BY tanggal DESC;";
         try {

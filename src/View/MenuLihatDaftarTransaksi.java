@@ -29,6 +29,7 @@ public class MenuLihatDaftarTransaksi {
         this.user = user;
          System.out.println(user.getIdUser());
         ArrayList<Transaksi> listTransaksi= controller.ambilDaftarOrder(user.getIdUser());
+        System.out.println(listTransaksi.size() +  " " + listTransaksi);
         if (listTransaksi == null || listTransaksi.size() == 0) {
             JOptionPane.showMessageDialog(null, "Ordermu Kosong");
             if (user instanceof Pelanggan)

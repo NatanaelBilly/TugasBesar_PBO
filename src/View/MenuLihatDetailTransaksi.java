@@ -214,24 +214,27 @@ public class MenuLihatDetailTransaksi {
                 btnChat = GUI.defaultButton("Chat", 15);
                 btnChat.setBounds(20, 680, 540, 30);
                 btnChat.setVisible(true);
-
+                
                 frame.add(btnKonfirmasi);
                 frame.add(btnChat);
             } else {
                 btnChat = GUI.defaultButton("Chat Driver", 15);
                 btnChat.setBounds(20, 660, 540, 30);
                 btnChat.setFont(fontText);
+                
                 frame.add(btnChat);
             }
+            btnChat.addActionListener((ActionEvent e) -> {
+                    frame.dispose();
+                    new MenuChat(transaksi, user);
+                    });
         } else {
-            if (user instanceof Kurir) {
-                JLabel labelSelesai = new JLabel("Pesanan Selesai.");
+                JLabel labelSelesai = new JLabel("Pesanan Telah Selesai.");
                 labelSelesai.setBounds(20, 625, 250, 30);
                 labelSelesai.setFont(fontText);
-                frame.add(labelSelesai);
-
-                
+                frame.add(labelSelesai);   
             }
+
 //            }else
 //            {
 //                if(transaksi.getSaranDriver()==null){
@@ -275,13 +278,7 @@ public class MenuLihatDetailTransaksi {
 //                    frame.add(labelFeedback);
 //                }
 //            }
-        }
-
-        btnChat.addActionListener((ActionEvent e) -> {
-            frame.dispose();
-            new MenuChat(transaksi, user);
-        });
-
+//        }
         panelNamaNoKurir.add(labelNamaKurir);
         panelNamaNoKurir.add(Box.createRigidArea(new Dimension(0, 10)));
         panelNamaNoKurir.add(labelNoPlatKurir);
@@ -305,7 +302,6 @@ public class MenuLihatDetailTransaksi {
         frame.add(panelPenerima);
         frame.add(panelInfoKurir);
         frame.add(panelInfoPengiriman);
-
         panelInfoKurir.setLayout(null);
     }
 }
