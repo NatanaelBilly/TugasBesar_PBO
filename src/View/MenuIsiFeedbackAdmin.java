@@ -24,7 +24,6 @@ public class MenuIsiFeedbackAdmin {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuIsiFeedbackAdmin(Pelanggan pelanggan){
-        //back
         labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseAdapter() {
             @Override
@@ -34,21 +33,17 @@ public class MenuIsiFeedbackAdmin {
             }
         });
 
-        //picture
         labelProfilePic = new JLabel();
         profilePic = new ImageIcon ("assets/profile_pic.jpg");
         labelProfilePic.setIcon(profilePic);
         labelProfilePic.setBounds(220,80,150,150);
 
-        //Nama
         labelNama = GUI.defaultHeadingLabel("Hallo, "+pelanggan.getNamaDepan()+" "+pelanggan.getNamaBelakang());
 
-        //Ket
         labelKet = GUI.defaultRegularLabel("Let us know what you're thinking about this application");
         labelAdmin = GUI.defaultRegularLabel("- ADMIN");
         labelAdmin.setBounds(420,340,100,100);
 
-        //Text Area
         taFeedback = new JTextArea();
         taFeedback.setBounds(110,420,360,140);
         taFeedback.setLineWrap(true);
@@ -88,11 +83,9 @@ public class MenuIsiFeedbackAdmin {
             }
         });
 
-        //Frame
         frame = GUI.defaultFrame();
         frame.getContentPane().setBackground(GUI.backGroundColor());
 
-        //Panel
         panel = new JPanel();
         panel.setSize(600, 320);
         panel.setBackground(GUI.backGroundColor());
@@ -100,7 +93,6 @@ public class MenuIsiFeedbackAdmin {
         panelText.setBounds(50,320,500,130);
         panelText.setBackground(GUI.backGroundColor());
 
-        //add
         panel.add(labelKembali);
         panel.add(labelProfilePic);
         panelText.add(labelNama);

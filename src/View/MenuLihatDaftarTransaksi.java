@@ -81,15 +81,12 @@ public class MenuLihatDaftarTransaksi {
                 Transaksi transaksi = listTransaksi.get(i);
                 kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
-                //Tanggal Untuk Setiap Transaksi
                 labelTgl = GUI.defaultRegularLabel(String.valueOf(transaksi.getTanggal()));
                 labelTgl.setBounds(30, 20, 320, 30);
 
-                //Label Pengirim untuk Setiap Transaksi
                 labelPengirim = GUI.defaultRegularLabel("Pengirim: " + transaksi.getNamaPengirim());
                 labelPengirim.setBounds(30, 50, 320, 30);
 
-                //Label Penerima
                 labelPenerima = GUI.defaultRegularLabel("Penerima: " + transaksi.getNamaPenerima());
                 labelPenerima.setBounds(30, 80, 320, 30);
 
@@ -98,7 +95,6 @@ public class MenuLihatDaftarTransaksi {
 
                 labelTotal = GUI.defaultRegularLabel("Total: " + transaksi.getTotalPembayaran());
                 labelTotal.setBounds(30, 140, 320, 30);
-
 
                 btnDetail = GUI.defaultButton("Detail", 17);
                 btnDetail.setBounds(330, 140, 100, 30);
