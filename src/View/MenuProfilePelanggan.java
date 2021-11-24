@@ -12,7 +12,6 @@ import java.awt.event.MouseEvent;
 
 public class MenuProfilePelanggan {
     private JFrame frame;
-    private JPanel panelNama;
     private JLabel labelProfilePic, labelNama, labelEmail, labelSaldo, labelTingkatan, labelNoHp, labelKembali, labelPassword;
     private JTextField email, tingkatan, saldo, noHp, nama;
     private ImageIcon profilePic;
@@ -34,7 +33,7 @@ public class MenuProfilePelanggan {
         labelProfilePic = new JLabel();
         profilePic = new ImageIcon("assets/profile_pic.jpg");
         labelProfilePic.setIcon(profilePic);
-        labelProfilePic.setBounds(225, 50, 150, 150);
+        labelProfilePic.setBounds(225, 100, 150, 150);
 
         labelNama = GUI.defaultRegularLabel("Nama");
         labelNama.setBounds(90, 300, 80, 40);
