@@ -23,7 +23,6 @@ public class MenuProfilePelanggan {
     private Controller controller = new Controller();
 
     public MenuProfilePelanggan(Pelanggan pelanggan) {
-        //back
         labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseAdapter() {
             @Override
@@ -33,7 +32,6 @@ public class MenuProfilePelanggan {
             }
         });
 
-        //picture
         labelProfilePic = new JLabel();
         profilePic = new ImageIcon("assets/profile_pic.jpg");
         Image image = profilePic.getImage().getScaledInstance(200, 250, java.awt.Image.SCALE_SMOOTH);
@@ -41,7 +39,6 @@ public class MenuProfilePelanggan {
         labelProfilePic.setIcon(profilePic);
         labelProfilePic.setBounds(225, 50, 150, 150);
 
-        //label
         labelNama = GUI.defaultRegularLabel("Nama");
         labelNama.setBounds(90, 300, 80, 40);
 
@@ -98,7 +95,6 @@ public class MenuProfilePelanggan {
                 if (nama.getText().isEmpty() || email.getText().isEmpty() || noHp.getText().isEmpty() || String.valueOf(password.getPassword()).isEmpty()) {
                     JOptionPane.showMessageDialog(null, Constant.ERROR_MESSAGE);
                 } else {
-//                    System.out.println("pw: "+String.valueOf(password.getPassword()));
                     String[] splited = nama.getText().split("\\s+");
                     String namaDepan = splited[0];
                     String namaBelakang = "";
@@ -160,7 +156,6 @@ public class MenuProfilePelanggan {
             }
         });
 
-        //Button
         btnEditProfile = GUI.defaultButton("Edit Profil", 18);
         btnEditProfile.setBounds(390, 620, 140, 40);
         btnEditProfile.addActionListener(e -> {
@@ -173,8 +168,6 @@ public class MenuProfilePelanggan {
             password.setEditable(true);
         });
 
-
-        //Frame
         frame = GUI.defaultFrame();
         frame.getContentPane().setBackground(GUI.backGroundColor());
         frame.add(labelKembali);
@@ -194,6 +187,5 @@ public class MenuProfilePelanggan {
         frame.add(btnEditProfile);
         frame.add(btnSimpan);
         frame.add(btnHapus);
-
     }
 }

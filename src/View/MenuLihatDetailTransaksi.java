@@ -29,7 +29,7 @@ public class MenuLihatDetailTransaksi {
 
     public MenuLihatDetailTransaksi(Transaksi transaksi, User user) {
         Kurir kurir = controller.ambilDataKurir(transaksi.getIdKurir());
-        //back
+
         labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseAdapter() {
             @Override
@@ -43,16 +43,12 @@ public class MenuLihatDetailTransaksi {
             }
         });
 
-
-        //Font
         Font fontLabelKurir = new Font("Arial", Font.PLAIN, 20);
         Font fontText = new Font("Arial", Font.PLAIN, 18);
         Font fontInfoPengiriman = new Font("Arial", Font.PLAIN, 35);
 
-        //line border
         LineBorder line = new LineBorder(new Color(0, 0, 0), 2, true);
 
-        //Panel
         panelInfoKurir = new JPanel();
         panelInfoKurir.setBounds(90, 20, 400, 140);
         panelInfoKurir.setBorder(line);
@@ -77,7 +73,6 @@ public class MenuLihatDetailTransaksi {
         panelInfoPengiriman.setBorder(new EmptyBorder(15, 35, 15, 25));
         panelInfoPengiriman.setBackground(GUI.backGroundColor());
 
-        //label
         labelMessage = new JLabel("Barang diantar oleh");
         labelMessage.setBounds(55, 5, 400, 40);
         labelMessage.setFont(fontLabelKurir);
@@ -133,7 +128,6 @@ public class MenuLihatDetailTransaksi {
         labelHarga.setHorizontalAlignment(JLabel.CENTER);
         labelHarga.setBorder(BorderFactory.createMatteBorder(0, 2, 0, 0, Color.BLACK));
 
-        //icon pic
         labelIconProfil = new JLabel();
         labelIconProfil.setBounds(70, 50, 80, 70);
         iconProfil = new ImageIcon("assets/profile_pic.jpg");
@@ -176,7 +170,6 @@ public class MenuLihatDetailTransaksi {
         }
         labelIconBarang.setIcon(iconBarang);
 
-        //Frame
         frame = GUI.defaultFrame();
         frame.getContentPane().setBackground(GUI.backGroundColor());
 
@@ -232,52 +225,8 @@ public class MenuLihatDetailTransaksi {
                 labelSelesai.setBounds(20, 625, 250, 30);
                 labelSelesai.setFont(fontText);
                 frame.add(labelSelesai);   
-            }
+        }
 
-//            }else
-//            {
-//                if(transaksi.getSaranDriver()==null){
-//                    JLabel labelFeedback = new JLabel("Masukkan untuk kurir : ");
-//                    labelFeedback.setBounds(20,605,250,30);
-//                    labelFeedback.setFont(fontText);
-//                    JTextArea taFeedback = new JTextArea();
-//                    taFeedback.setBounds(20,635,540,65);
-//                    taFeedback.setLineWrap(true);
-//                    Border border = BorderFactory.createLineBorder(Color.BLACK);
-//                    taFeedback.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-//                    final int MAX_LENGTH = 200;
-//                    taFeedback.setDocument(new PlainDocument() {
-//                        @Override
-//                        public void insertString(int offs, String str, AttributeSet a) throws BadLocationException, BadLocationException {
-//                            if (str == null || taFeedback.getText().length() >= MAX_LENGTH) {
-//                                return;
-//                            }
-//
-//                            super.insertString(offs, str, a);
-//                        }
-//                    });
-//
-//                    JButton btnSubmit = GUI.defaultButton("Submit",14);
-//                    btnSubmit.setFont(fontText);
-//                    btnSubmit.setBounds(455, 710, 100, 30);
-//                    frame.add(labelFeedback);
-//                    frame.add(taFeedback);
-//                    frame.add(btnSubmit);
-//                }else{
-//                    JLabel labelFeedback = new JLabel("Masukkan untuk kurir: ");
-//                    labelFeedback.setBounds(20,605,250,30);
-//                    labelFeedback.setFont(fontText);
-//                    JTextArea taFeedback = new JTextArea(transaksi.getSaranDriver());
-//                    taFeedback.setBounds(20,635,540,65);
-//                    taFeedback.setLineWrap(true);
-//                    taFeedback.setEditable(false);
-//                    Border border = BorderFactory.createLineBorder(Color.BLACK);
-//                    taFeedback.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
-//                    frame.add(taFeedback);
-//                    frame.add(labelFeedback);
-//                }
-//            }
-//        }
         panelNamaNoKurir.add(labelNamaKurir);
         panelNamaNoKurir.add(Box.createRigidArea(new Dimension(0, 10)));
         panelNamaNoKurir.add(labelNoPlatKurir);
