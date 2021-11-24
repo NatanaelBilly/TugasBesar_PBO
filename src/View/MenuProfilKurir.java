@@ -24,7 +24,6 @@ public class MenuProfilKurir {
     private KurirController ck = new KurirController();
 
     public MenuProfilKurir(Kurir kurir) {
-        //Link Kembali
         labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseListener() {
             @Override
@@ -55,17 +54,14 @@ public class MenuProfilKurir {
             }
         });
 
-        //Menu
         labelMenu = GUI.defaultHeadingLabel("Lihat Profil");
         labelMenu.setBounds(200, 40, 200, 40);
 
-        //picture
         labelProfilePic = new JLabel();
         profilePic = new ImageIcon("assets/profile_pic.jpg");
         labelProfilePic.setIcon(profilePic);
         labelProfilePic.setBounds(225, 150, 150, 150);
 
-        //Label Keterangan
         labelNama = GUI.defaultRegularLabel("Nama");
         labelNama.setBounds(100, 250, 200, 40);
 
@@ -90,7 +86,6 @@ public class MenuProfilKurir {
         labelSaldo = GUI.defaultRegularLabel("Saldo");
         labelSaldo.setBounds(100, 600, 200, 40);
 
-        //Data
         nama = new JTextField(kurir.getNamaDepan() + " " + kurir.getNamaBelakang());
         nama.setBounds(210, 250, 315, 40);
         nama.setEditable(false);
@@ -123,7 +118,6 @@ public class MenuProfilKurir {
         saldo.setBounds(210, 600, 315, 40);
         saldo.setEditable(false);
 
-        //Button Hapus Akun
         btnHapusAkun = GUI.defaultButton("Hapus Akun", 18);
         btnHapusAkun.setBounds(100, 650, 140, 40);
         btnHapusAkun.setVisible(false);
@@ -144,7 +138,6 @@ public class MenuProfilKurir {
             }
         });
 
-        //Button Simpan
         btnSimpan = GUI.defaultButton("Simpan", 18);
         btnSimpan.setBounds(390, 650, 140, 40);
         btnSimpan.setVisible(false);
@@ -183,8 +176,6 @@ public class MenuProfilKurir {
             }
         });
 
-
-        //Button Edit
         btnEditProfile = GUI.defaultButton("Edit Profil", 18);
         btnEditProfile.setBounds(390, 650, 140, 40);
         btnEditProfile.addActionListener(new ActionListener() {
@@ -203,7 +194,6 @@ public class MenuProfilKurir {
             }
         });
 
-        //Frame
         frame = GUI.defaultFrame();
         frame.getContentPane().setBackground(GUI.backGroundColor());
         frame.add(labelMenu);

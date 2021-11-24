@@ -15,18 +15,16 @@ import javax.swing.JOptionPane;
 public class BerandaKurir implements ActionListener {
     private JFrame frame;
     private JLabel labelPesan;
-    private JButton btnProfil, btnOrder, btnTransaksi, btnObrolan, btnLogout;
+    private JButton btnProfil, btnOrder, btnTransaksi, btnLogout;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
     private Kurir kurir;
 
     public BerandaKurir(Kurir kurir) {
         this.kurir = kurir;
 
-        //label
         labelPesan = GUI.defaultHeadingLabel("Selamat Datang, " + kurir.getNamaDepan() + "!");
         labelPesan.setBounds(145, 50, 300, 80);
 
-        //Button Profil
         btnProfil = GUI.defaultButton("Lihat Profil", 20);
         btnProfil.setBounds(170, 150, 250, 80);
         btnProfil.addActionListener(this);
@@ -39,12 +37,10 @@ public class BerandaKurir implements ActionListener {
         btnTransaksi.setBounds(170, 350, 250, 80);
         btnTransaksi.addActionListener(this);
 
-        //Button Logout
         btnLogout = GUI.defaultButton("Logout", 20);
         btnLogout.setBounds(170, 450, 250, 80);
         btnLogout.addActionListener(this);
 
-        //Frame
         frame = GUI.defaultFrame();
         frame.add(btnProfil);
         frame.add(btnOrder);
@@ -74,10 +70,6 @@ public class BerandaKurir implements ActionListener {
                 frame.dispose();
                 new MenuLihatDaftarTransaksi(kurir);
                 break;
-//            case "Obrolan":
-//                frame.dispose();
-//                //new obrolan
-//                break;
             case "Logout":
                 JOptionPane.showMessageDialog(null, Constant.INFO_LOGOUT);
                 frame.dispose();
@@ -85,7 +77,7 @@ public class BerandaKurir implements ActionListener {
                 new HalamanAwal();
                 break;
             default:
-                JOptionPane.showMessageDialog(null, "Berhasil Keluar");
+                JOptionPane.showMessageDialog(null, "Berhasil Keluar, Terima Kasih.");
                 System.exit(1);
                 break;
         }
