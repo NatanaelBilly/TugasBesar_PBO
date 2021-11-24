@@ -17,7 +17,6 @@ public class MenuLogin {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuLogin() {
-        //Link Kembali
         linkKembali = GUI.defaultBackLabel();
         linkKembali.addMouseListener(new MouseListener() {
             @Override
@@ -48,27 +47,21 @@ public class MenuLogin {
             }
         });
 
-        //Label Judul
         labelJudul = GUI.defaultHeadingLabel("Log In");
         labelJudul.setBounds(0,150,600,40);
 
-        //Label Input Email
         labelEmail = GUI.defaultRegularLabel("Email");
         labelEmail.setBounds(75, 250, 150, 35);
 
-        //TextField Input Email
         inputEmail = new JTextField();
         inputEmail.setBounds(225, 250, 300, 35);
 
-        //Label Input Password
         labelPassword = GUI.defaultRegularLabel("Password");
         labelPassword.setBounds(75, 320, 150, 35);
 
-        //Input Password
         inputPassword = new JPasswordField();
         inputPassword.setBounds(225, 320, 300, 35);
 
-        //Button Login
         buttonLogin = GUI.defaultButton("Login",20);
         buttonLogin.setBounds(425, 400, 100, 45);
         buttonLogin.addActionListener(e -> {
@@ -79,7 +72,6 @@ public class MenuLogin {
 
             boolean bisaLogin = controller.cekUserDiDataBase(email, password);
 
-
             if (bisaLogin) {
                 JOptionPane.showMessageDialog(null, Constant.INFO_LOGIN);
                 frame.dispose();
@@ -89,7 +81,6 @@ public class MenuLogin {
             }
         });
 
-        //Panel Login
         panelLogin = new JPanel();
         panelLogin.setVisible(true);
         panelLogin.setLayout(null);
@@ -103,8 +94,7 @@ public class MenuLogin {
         panelLogin.add(labelJudul);
         panelLogin.setBackground(GUI.backGroundColor());
 
-        //frame
-        frame = new DefaultComponentSetting().defaultFrame();
+        frame = GUI.defaultFrame();
         frame.add(panelLogin);
     }
 }

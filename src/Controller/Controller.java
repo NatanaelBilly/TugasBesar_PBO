@@ -60,7 +60,6 @@ public class Controller {
         return (user);
     }
 
-    //Kurir
     public Kurir ambilDataKurir(int idUser) {
         Kurir dataKurir = null;
 
@@ -114,7 +113,6 @@ public class Controller {
         return dataKurir;
     }
 
-    //Insert Chat
     public boolean insertChat(Chat chat) {
         conn.connect();
         String query = "INSERT INTO chat VALUES(?,?,?,?,?,?)";
@@ -135,7 +133,6 @@ public class Controller {
 
     }
 
-    //Get chat
     public ArrayList<Chat> getChatById(int idTransaksi) {
         conn.connect();
         String query = "SELECT * FROM chat WHERE id_transaksi = " + idTransaksi + ";";
@@ -439,21 +436,6 @@ public class Controller {
             return (false);
         }
 
-    }
-
-    public boolean cekUserDiDataBase(String email) {
-        conn.connect();
-        String query = "SELECT * FROM user WHERE email_user='" + email + "'";
-        try {
-            Statement stmt = conn.con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                return (true);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return (false);
     }
 
     public ArrayList<Transaksi> getSeluruhTransaksi(){

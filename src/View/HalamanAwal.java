@@ -12,11 +12,9 @@ public class HalamanAwal {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public HalamanAwal() {
-        //Label
         welcomeUser = GUI.defaultHeadingLabel("Hallo! Welcome to " + Constant.APPLICATION_NAME);
         welcomeUser.setBounds(0, 150, 600, 80);
 
-        //Button Login
         btnLogin = GUI.defaultButton("Login", 22);
         btnLogin.setBounds(170, 250, 250, 80);
         btnLogin.addActionListener(e -> {
@@ -24,15 +22,13 @@ public class HalamanAwal {
             new MenuLogin();
         });
 
-        //Button Register
         btnRegister = GUI.defaultButton("Register", 22);
         btnRegister.setBounds(170, 390, 250, 80);
         btnRegister.addActionListener(e -> {
             frame.dispose();
-            new MenuRegisterPilihRule();
+            new MenuRegisterPilihRole();
         });
 
-        //Panel
         panelLandingPage = new JPanel();
         panelLandingPage.setVisible(true);
         panelLandingPage.setLayout(null);
@@ -42,7 +38,6 @@ public class HalamanAwal {
         panelLandingPage.add(btnLogin);
         panelLandingPage.add(btnRegister);
 
-        //Frame
         frame = new DefaultComponentSetting().defaultFrame();
         frame.add(panelLandingPage);
     }

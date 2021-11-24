@@ -4,15 +4,14 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MenuRegisterPilihRule {
+public class MenuRegisterPilihRole {
     private JFrame frame;
     private JPanel registerPilihRule;
     private JLabel pilihRule, labelKembali;
     private JButton registerKurir, registerPelanggan;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
-    public MenuRegisterPilihRule() {
-        //Link Kembali
+    public MenuRegisterPilihRole() {
         labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseListener() {
             @Override
@@ -43,11 +42,9 @@ public class MenuRegisterPilihRule {
             }
         });
 
-        //Label
         pilihRule = GUI.defaultHeadingLabel("Pilih Role Kamu.");
         pilihRule.setBounds(0, 200, 600, 30);
 
-        //Button Kurir
         registerKurir = GUI.defaultButton("Kurir", 18);
         registerKurir.setBounds(60, 300, 480, 60);
         registerKurir.addActionListener(e -> {
@@ -55,7 +52,6 @@ public class MenuRegisterPilihRule {
             new MenuRegisterKurir();
         });
 
-        //Button Pelanggan
         registerPelanggan = GUI.defaultButton("Pelanggan", 18);
         registerPelanggan.setBounds(60, 400, 480, 60);
         registerPelanggan.addActionListener(e -> {
@@ -63,7 +59,6 @@ public class MenuRegisterPilihRule {
             new MenuRegisterPelanggan();
         });
 
-        //Panel
         registerPilihRule = new JPanel();
         registerPilihRule.setBounds(0, 0, 600, 800);
         registerPilihRule.setLayout(null);
@@ -74,7 +69,6 @@ public class MenuRegisterPilihRule {
         registerPilihRule.add(registerKurir);
         registerPilihRule.add(registerPelanggan);
 
-        //Frame
         frame = GUI.defaultFrame();
         frame.add(registerPilihRule);
     }
