@@ -78,7 +78,7 @@ public class MenuLihatDetailTransaksi {
         panelInfoPengiriman.setBackground(GUI.backGroundColor());
 
         //label
-        labelMessage = new JLabel("Barangmu diantar oleh");
+        labelMessage = new JLabel("Barang diantar oleh");
         labelMessage.setBounds(55, 5, 400, 40);
         labelMessage.setFont(fontLabelKurir);
 

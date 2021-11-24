@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 import java.util.ArrayList;
 
-public class Method {
+public class AdminController {
     Controller c = new Controller();
     
     public void lihatDaftarUser(){
@@ -39,6 +39,7 @@ public class Method {
         }
     }
 
+    //Gausah ada, ambil dari admin.etSaldo()
     public double lihatSaldoAdmin(ArrayList<Transaksi> listTransaksi){
         double total=0;
         for (int i = 0; i < listTransaksi.size(); i++) {

@@ -30,21 +30,14 @@ public class BerandaKurir implements ActionListener {
         btnProfil = GUI.defaultButton("Lihat Profil", 20);
         btnProfil.setBounds(170, 150, 250, 80);
         btnProfil.addActionListener(this);
-
-        //Button Order
+        
         btnOrder = GUI.defaultButton("Ambil Order", 20);
         btnOrder.setBounds(170, 250, 250, 80);
         btnOrder.addActionListener(this);
 
-        //Button Transaksi
         btnTransaksi = GUI.defaultButton("Lihat Transaksi", 20);
         btnTransaksi.setBounds(170, 350, 250, 80);
         btnTransaksi.addActionListener(this);
-
-//        //Button Obrolan
-//        btnObrolan = GUI.defaultButton("Obrolan", 20);
-//        btnObrolan.setBounds(170, 450, 250, 80);
-//        btnObrolan.addActionListener(this);
 
         //Button Logout
         btnLogout = GUI.defaultButton("Logout", 20);
@@ -56,7 +49,6 @@ public class BerandaKurir implements ActionListener {
         frame.add(btnProfil);
         frame.add(btnOrder);
         frame.add(btnTransaksi);
-//        frame.add(btnObrolan);
         frame.add(labelPesan);
         frame.add(btnLogout);
         frame.getContentPane().setBackground(GUI.backGroundColor());

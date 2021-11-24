@@ -19,7 +19,7 @@ public class MenuMenampilkanListUser {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuMenampilkanListUser(Admin admin) {
-        Method m = new Method();
+        AdminController m = new AdminController();
         //init isi data
         c.getAllUsers();
         String[][] dataUser = m.konversiListToArray(c.users);
