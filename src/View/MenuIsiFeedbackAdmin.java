@@ -36,11 +36,12 @@ public class MenuIsiFeedbackAdmin {
         labelProfilePic = new JLabel();
         profilePic = new ImageIcon ("assets/profile_pic.jpg");
         labelProfilePic.setIcon(profilePic);
-        labelProfilePic.setBounds(220,80,150,150);
+        labelProfilePic.setBounds(220,140,150,150);
 
         labelNama = GUI.defaultHeadingLabel("Hallo, "+pelanggan.getNamaDepan()+" "+pelanggan.getNamaBelakang());
 
         labelKet = GUI.defaultRegularLabel("Let us know what you're thinking about this application");
+
         labelAdmin = GUI.defaultRegularLabel("- ADMIN");
         labelAdmin.setBounds(420,340,100,100);
 
