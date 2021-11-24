@@ -2,7 +2,6 @@ package View;
 
 import Controller.Controller;
 import Model.*;
-import jdk.nashorn.internal.scripts.JO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,8 +33,6 @@ public class MenuProfilePelanggan {
 
         labelProfilePic = new JLabel();
         profilePic = new ImageIcon("assets/profile_pic.jpg");
-        Image image = profilePic.getImage().getScaledInstance(200, 250, java.awt.Image.SCALE_SMOOTH);
-        profilePic = new ImageIcon(image);
         labelProfilePic.setIcon(profilePic);
         labelProfilePic.setBounds(225, 50, 150, 150);
 
