@@ -2,7 +2,6 @@ package View;
 
 import Controller.*;
 import Model.*;
-import jdk.nashorn.internal.scripts.JO;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -24,13 +23,13 @@ public class MenuRegisterKurir {
             @Override
             public void mouseClicked(MouseEvent e) {
                 frame.dispose();
-                new MenuRegisterPilihRule();
+                new MenuRegisterPilihRole();
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
                 frame.dispose();
-                new MenuRegisterPilihRule();
+                new MenuRegisterPilihRole();
             }
 
             @Override

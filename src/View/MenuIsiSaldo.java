@@ -28,8 +28,7 @@ public class MenuIsiSaldo {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuIsiSaldo(Pelanggan pelanggan) {
-        //Label Kembali
-        labelKembali = new DefaultComponentSetting().defaultBackLabel();
+        labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -59,11 +58,9 @@ public class MenuIsiSaldo {
             }
         });
 
-        //Judul
         menuTitle = GUI.defaultHeadingLabel("ISI SALDO");
         menuTitle.setBounds(0, 90, 600, 80);
 
-        //Metode Gopay
         gopay = GUI.defaultButton("GOPAY", 20);
         gopay.setBounds(170, 250, 250, 80);
         gopay.addActionListener((ActionEvent e) -> {
@@ -71,7 +68,6 @@ public class MenuIsiSaldo {
             MenuIsiSaldoGopayOvo(pelanggan, "Gopay");
         });
 
-        //Metode OVO
         ovo = GUI.defaultButton("OVO", 20);
         ovo.setBounds(170, 380, 250, 80);
         ovo.addActionListener((ActionEvent e) -> {
@@ -79,7 +75,6 @@ public class MenuIsiSaldo {
             MenuIsiSaldoGopayOvo(pelanggan, "Ovo");
         });
 
-        //Frame
         frame = GUI.defaultFrame();
         frame.getContentPane().setBackground(GUI.backGroundColor());
         frame.add(menuTitle);
@@ -109,7 +104,6 @@ public class MenuIsiSaldo {
         inputNomorTelepon.setBounds(150, 390, 300, 50);
         inputNomorTelepon.setFont(new Font("Arial", Font.PLAIN, 20));
 
-
         back = GUI.defaultButton("Kembali", 14);
         back.setBounds(170, 460, 100, 30);
         back.addActionListener((ActionEvent e) -> {
@@ -117,7 +111,7 @@ public class MenuIsiSaldo {
             new MenuIsiSaldo(pelanggan);
         });
 
-        isi = GUI.defaultButton("Isi", 14);
+        isi = GUI.defaultButton("ISI", 14);
         isi.setBounds(330, 460, 100, 30);
         isi.addActionListener((ActionEvent e) -> {
             if (inputNomorTelepon.getText().equals(pelanggan.getNoHp())) {

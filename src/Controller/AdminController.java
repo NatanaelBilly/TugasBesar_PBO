@@ -8,15 +8,6 @@ import java.util.ArrayList;
 public class AdminController {
     Controller c = new Controller();
     
-    public void lihatDaftarUser(){
-        ArrayList<User> listUser = c.getAllUsers();
-        for (int i = 0; i < listUser.size(); i++) {
-            User currentUser= listUser.get(i);
-            System.out.println(currentUser);
-            System.out.println();
-        }
-    }
-    
     public String [][] konversiListToArray(ArrayList<User> list){
         String hasil[][]=new String[list.size()][5];
         for (int i = 0; i < list.size(); i++) {
@@ -28,15 +19,6 @@ public class AdminController {
             hasil[i][4]=currentUser.getEmailUser();
         }
         return hasil;
-    }
-    
-    public void lihatFeedback(ArrayList<Saran> listSaran){
-        System.out.println("LIST FEEDBACK");
-        for (int i = 0; i < listSaran.size(); i++) {
-            Saran currentSaran= listSaran.get(i);
-            System.out.println("From : "+ currentSaran.getIdPelanggan()+"\n" +
-                    "Feedback : "+currentSaran.getSaran()+"\n");
-        }
     }
 
     public String [][] konversiListToArrayTransaksi(ArrayList<Transaksi> listTransaksi){
