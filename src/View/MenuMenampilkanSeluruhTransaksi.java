@@ -31,7 +31,7 @@ public class MenuMenampilkanSeluruhTransaksi {
         labelGetTotal.setBounds(210, 20, 150, 30);
 
 
-        c.getAllUsers();
+        c.getSeluruhTransaksi();
         String [][] dataTransakksi=m.konversiListToArrayTransaksi(c.listTransaksi);
 
         //init kolom
@@ -51,7 +51,7 @@ public class MenuMenampilkanSeluruhTransaksi {
 
         //button back
         back = GUI.defaultButton("Kembali", 18);
-        back.setBounds(400,20,200,30);
+        back.setBounds(380,20,150,30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,8 +59,11 @@ public class MenuMenampilkanSeluruhTransaksi {
                 frame.dispose();
             }
         });
+
         panel.add(back);
         panel.add(sp);
+        panel.add(labelTotal);
+        panel.add(labelGetTotal);
         //initialize panel dan frame
         panel.setLayout(null);
         panel.setVisible(true);
