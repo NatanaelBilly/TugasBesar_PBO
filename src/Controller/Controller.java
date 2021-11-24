@@ -478,7 +478,8 @@ public class Controller {
                 double totalPembayaran=rs.getDouble(13);
                 Date tanggal=rs.getDate(14);
                 int statusPemesanan=rs.getInt(15);
-                Transaksi transaksi=new Transaksi(idTransaksi,idPelanggan,idKurir,kategori,berat,jumlah,namaPengirim,alamatPemgirim,noPengirim,namaPenerima,alamatPenerima,noPenerima,totalPembayaran,statusPemesanan,tanggal);
+                ArrayList<Chat> listChat=new ArrayList<>();
+                Transaksi transaksi=new Transaksi(idTransaksi,idPelanggan,idKurir,kategori,berat,jumlah,namaPengirim,alamatPemgirim,noPengirim,namaPenerima,alamatPenerima,noPenerima,totalPembayaran,statusPemesanan,tanggal,listChat);
                 listTransaksi.add(transaksi);
             }
         } catch (SQLException e) {
