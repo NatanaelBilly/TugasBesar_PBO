@@ -13,12 +13,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
-//import java.text.DateFormat;
-//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-//import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,26 +31,20 @@ public class MenuChat {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuChat(Transaksi transaksi, User u) {
-
+        
         int idTransaksi = transaksi.getIdTransaksi();
         ArrayList<Chat> chats = new ArrayList();
         chats = c.getChatById(idTransaksi);
-
+        
         namaLawanChat = c.getNamaLawanChat(transaksi, u);
         idLawanChat = c.getIdLawanChat(transaksi, u);
-        
+
         JFrame frame = new DefaultComponentSetting().defaultFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 800);
         frame.getContentPane().setLayout(null);
-//        JFrame frame = new JFrame();
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setSize(600, 800);
-//        frame.getContentPane().setLayout(null);
-//        frame.setLocationRelativeTo(null);
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(25, 90, 530, 570);
-        //scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         frame.getContentPane().add(scrollPane);
 
         JPanel borderlaoutpanel = new JPanel();
@@ -91,6 +80,11 @@ public class MenuChat {
             c.insertChat(myChat);
             new MenuChat(transaksi, u);
         });
+        
+        refresh.addActionListener((ActionEvent e) -> {
+            frame.dispose();
+            new MenuChat(transaksi, u);
+        });
 
         //Button back
         JButton back = GUI.defaultButton("<",15);
@@ -103,7 +97,7 @@ public class MenuChat {
                 Kurir kurir = (Kurir)u;
                 new MenuLihatDetailTransaksi(transaksi, kurir);
             }
-            if (u instanceof Pelanggan) {
+            else if (u instanceof Pelanggan) {
                 Pelanggan pelanggan = (Pelanggan)u;
                 new MenuLihatDetailTransaksi(transaksi, pelanggan);
             }

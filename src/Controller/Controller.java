@@ -617,28 +617,28 @@ public class Controller {
     }
 
 
-    public int getIdLawanChat(Transaksi t, User u) {
+    public int getIdLawanChat(Transaksi t, User userNow) {
         int getId = 0;
-        if (u instanceof Pelanggan) {
+        if (userNow instanceof Pelanggan) {
             getId = t.getIdKurir();
         }
-        if (u instanceof Kurir) {
+        if (userNow instanceof Kurir) {
             getId = t.getIdPelanggan();
         }
         conn.connect();
         String query = "SELECT * FROM user WHERE id_user = " + getId + ";";
+        User user = new User();
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-
-                u.setIdUser(rs.getInt("id_user"));
+                user.setIdUser(rs.getInt("id_user"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return u.getIdUser();
+        return user.getIdUser();
     }
 
     public int getLastIdChat() {
@@ -706,6 +706,17 @@ public class Controller {
             e.printStackTrace();
         }
         return TingkatanUser.BRONZE;
+    }
+    
+    public void hapusChat(int idTransaksi){
+        conn.connect();
+        String query = "DELETE FROM chat WHERE id_transaksi = " + idTransaksi + ";";
+        try {
+            Statement stmt = conn.con.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

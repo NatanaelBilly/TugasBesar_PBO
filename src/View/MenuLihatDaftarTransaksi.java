@@ -27,6 +27,7 @@ public class MenuLihatDaftarTransaksi {
 
     public MenuLihatDaftarTransaksi(User user) {
         this.user = user;
+         System.out.println(user.getIdUser());
         ArrayList<Transaksi> listTransaksi= controller.ambilDaftarOrder(user.getIdUser());
         if (listTransaksi == null || listTransaksi.size() == 0) {
             JOptionPane.showMessageDialog(null, "Ordermu Kosong");
@@ -79,7 +80,6 @@ public class MenuLihatDaftarTransaksi {
 
             for (int i = user.getListTransaksi().size() - 1; i >= 0; i--) {
                 Transaksi transaksi = listTransaksi.get(i);
-                System.out.println(transaksi.getIdKurir());
                 kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
                 //Tanggal Untuk Setiap Transaksi
@@ -116,7 +116,7 @@ public class MenuLihatDaftarTransaksi {
                 } else if (transaksi.getStatusPemesanan()==StatusPengiriman.DIANTAR) {
                     logo = new ImageIcon("assets/diantar.jpg");
                     labelKurir.setText("Kurir: " + kurir.getNamaDepan() + " " + kurir.getNamaBelakang());
-                } else {
+                } else if (transaksi.getStatusPemesanan()==StatusPengiriman.DITERIMA){
                     logo = new ImageIcon("assets/order_selesai.jpg");
                     labelKurir.setText("Kurir: " + kurir.getNamaDepan() + " " + kurir.getNamaBelakang());
                 }

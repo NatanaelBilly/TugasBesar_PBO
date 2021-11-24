@@ -13,7 +13,7 @@ public class HalamanAwal {
 
     public HalamanAwal() {
         //Label
-        welcomeUser = GUI.defaultHeadingLabel("Hallo! Welcome to a" + Constant.APPLICATION_NAME);
+        welcomeUser = GUI.defaultHeadingLabel("Hallo! Welcome to " + Constant.APPLICATION_NAME);
         welcomeUser.setBounds(0, 150, 600, 80);
 
         //Button Login

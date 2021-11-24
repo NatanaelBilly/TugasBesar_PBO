@@ -2,27 +2,18 @@ package View;
 
 import Controller.Controller;
 import Controller.KurirController;
-import Model.Constant;
 import Model.Kurir;
 import Model.Pelanggan;
 import Model.Transaksi;
 import Model.User;
-
-
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
 
 public class MenuLihatDetailTransaksi {
@@ -38,7 +29,7 @@ public class MenuLihatDetailTransaksi {
 
     public MenuLihatDetailTransaksi(Transaksi transaksi, User user) {
         Kurir kurir = controller.ambilDataKurir(transaksi.getIdKurir());
-
+        System.out.println(user.getIdUser());
         //back
         labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseAdapter() {
@@ -207,7 +198,8 @@ public class MenuLihatDetailTransaksi {
                                     frame.dispose();
                                     newKurir.setListTransaksi(user.getListTransaksi());
                                     //Ga Rekomen
-                                    newKurir.getListTransaksi().get(newKurir.getListTransaksi().size() - 1).setStatusPemesanan(2);
+                                    newKurir.getListTransaksi().get(newKurir.getListTransaksi().size() - 1).setStatusPemesanan(3);
+                                    controller.hapusChat(transaksi.getIdTransaksi());
                                     new BerandaKurir(newKurir);
                                 }
                             }
@@ -238,7 +230,7 @@ public class MenuLihatDetailTransaksi {
                 labelSelesai.setFont(fontText);
                 frame.add(labelSelesai);
 
-
+                
             }
 //            }else
 //            {
