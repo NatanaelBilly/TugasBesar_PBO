@@ -60,7 +60,7 @@ public class MenuProfilKurir {
         labelProfilePic = new JLabel();
         profilePic = new ImageIcon("assets/profile_pic.jpg");
         labelProfilePic.setIcon(profilePic);
-        labelProfilePic.setBounds(225, 150, 150, 150);
+        labelProfilePic.setBounds(225, 80, 150, 150);
 
         labelNama = GUI.defaultRegularLabel("Nama");
         labelNama.setBounds(100, 250, 200, 40);
