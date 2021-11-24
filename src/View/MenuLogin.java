@@ -79,7 +79,6 @@ public class MenuLogin {
 
             boolean bisaLogin = controller.cekUserDiDataBase(email, password);
 
-            System.out.println(bisaLogin);
 
             if (bisaLogin) {
                 JOptionPane.showMessageDialog(null, Constant.INFO_LOGIN);

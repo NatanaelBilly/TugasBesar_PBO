@@ -259,7 +259,7 @@ public class MenuEditProfilKurir {
 
                 //Cek Kata Sandi
                 if (!inputPasswordLama.getText().equals(kurir.getPassword())) {
-                    System.out.println("Input = " );
+                  
                     JOptionPane.showMessageDialog(null, "Kata Sandi lama salah");
                 } else if (!inputPasswordBaru.getText().equals(inputPasswordBaru2.getText())) {
                     JOptionPane.showMessageDialog(null, "Kata Sandi baru tidak cocok");

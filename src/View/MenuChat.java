@@ -35,7 +35,7 @@ public class MenuChat {
     JButton send, refresh;
 
     public MenuChat(Transaksi transaksi, User u) {
-        System.out.println(u.getNamaDepan());
+
         int idTransaksi = transaksi.getIdTransaksi();
         ArrayList<Chat> chats = new ArrayList();
         chats = c.getChatById(idTransaksi);
@@ -100,7 +100,6 @@ public class MenuChat {
             frame.dispose();
             if (u instanceof Kurir) {
                 Kurir kurir = (Kurir)u;
-                System.out.println("kurir");
                 new MenuLihatDetailTransaksi(transaksi, kurir);
             }
             if (u instanceof Pelanggan) {
