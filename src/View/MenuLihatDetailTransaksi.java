@@ -29,7 +29,6 @@ public class MenuLihatDetailTransaksi {
 
     public MenuLihatDetailTransaksi(Transaksi transaksi, User user) {
         Kurir kurir = controller.ambilDataKurir(transaksi.getIdKurir());
-        System.out.println(user.getIdUser());
         //back
         labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseAdapter() {

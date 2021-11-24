@@ -35,7 +35,7 @@ public class MenuChat {
         int idTransaksi = transaksi.getIdTransaksi();
         ArrayList<Chat> chats = new ArrayList();
         chats = c.getChatById(idTransaksi);
-        
+
         namaLawanChat = c.getNamaLawanChat(transaksi, u);
         idLawanChat = c.getIdLawanChat(transaksi, u);
 
@@ -137,6 +137,6 @@ public class MenuChat {
         }
 
         frame.setVisible(true);
-
+        
     }
 }

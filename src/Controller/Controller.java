@@ -279,7 +279,6 @@ public class Controller {
 
     public ArrayList<Transaksi> ambilDaftarOrder(int idUser) {
         ArrayList<Transaksi> daftarOrder = new ArrayList<>();
-        System.out.println(idUser);
         conn.connect();
         String query = "SELECT * FROM transaksi WHERE id_kurir = " + idUser + " OR id_pelanggan = " + idUser + " ORDER BY tanggal DESC;";
         try {
@@ -601,19 +600,20 @@ public class Controller {
         }
         conn.connect();
         String query = "SELECT * FROM user WHERE id_user = " + getId + ";";
+        User user = new User();
         try {
             Statement stmt = conn.con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
 
-                u.setNamaDepan(rs.getString("nama_depan"));
-                u.setNamaBelakang(rs.getString("nama_belakang"));
+                user.setNamaDepan(rs.getString("nama_depan"));
+                user.setNamaBelakang(rs.getString("nama_belakang"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return u.getNamaDepan() + " " + u.getNamaBelakang();
+        return user.getNamaDepan() + " " + user.getNamaBelakang();
     }
 
 

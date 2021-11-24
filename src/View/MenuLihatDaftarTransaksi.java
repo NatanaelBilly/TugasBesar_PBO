@@ -22,14 +22,12 @@ public class MenuLihatDaftarTransaksi {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
     private Kurir kurir;
     private Controller controller = new Controller();
-
     private User user;
 
     public MenuLihatDaftarTransaksi(User user) {
         this.user = user;
-         System.out.println(user.getIdUser());
+        
         ArrayList<Transaksi> listTransaksi= controller.ambilDaftarOrder(user.getIdUser());
-        System.out.println(listTransaksi.size() +  " " + listTransaksi);
         if (listTransaksi == null || listTransaksi.size() == 0) {
             JOptionPane.showMessageDialog(null, "Ordermu Kosong");
             if (user instanceof Pelanggan)

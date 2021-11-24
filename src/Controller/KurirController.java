@@ -37,7 +37,6 @@ public class KurirController {
     }
 
     public boolean RegisterKurir(Kurir kurir) {
-        System.out.println(kurir.toString());
         conn.connect();
         String query1 = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?)";
         String query2 = "INSERT INTO kurir VALUES (?,?,?,?,?)";
