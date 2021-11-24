@@ -1,6 +1,6 @@
 package View;
 import Controller.Controller;
-import Controller.Method;
+import Controller.AdminController;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -17,7 +17,7 @@ public class MenuMenampilkanFeedbackDariPengguna {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
     public MenuMenampilkanFeedbackDariPengguna(Admin admin){
         Controller c =new Controller();
-        Method m=new Method();
+        AdminController m=new AdminController();
         //frame
         frame = new DefaultComponentSetting().defaultFrame();
 

@@ -1,13 +1,11 @@
 package View;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.Object;
-import java.awt.Color;
+
 import Model.*;
-import Controller.Method;
+import Controller.AdminController;
 import Controller.Controller;
 public class MenuLihatSaldoAdmin {
     private JFrame frame;
@@ -17,7 +15,7 @@ public class MenuLihatSaldoAdmin {
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
     public MenuLihatSaldoAdmin(Admin admin){
         Controller c=new Controller();
-        Method m=new Method();
+        AdminController m=new AdminController();
         //Frame
         frame = new DefaultComponentSetting().defaultFrame();
 

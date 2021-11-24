@@ -158,7 +158,6 @@ public class Controller {
         return (chats);
     }
 
-
     public int HitungJumlahUser() {
         ArrayList<User> listUser = getAllUsers();
         int size = listUser.size();
@@ -313,46 +312,10 @@ public class Controller {
         return daftarOrder;
     }
 
-    public Transaksi ambilSuatuOrder(int idTransaksi) {
-
-        Transaksi transaksi = new Transaksi();
-
-        conn.connect();
-        String query = "SELECT * FROM transaksi WHERE id_transaksi = " + idTransaksi;
-        try {
-            Statement stmt = conn.con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-
-            while (rs.next()) {
-                transaksi.setIdTransaksi(rs.getInt("id_transaksi"));
-                transaksi.setIdPelanggan(rs.getInt("id_pelanggan"));
-                transaksi.setIdKurir(rs.getInt("id_kurir"));
-                transaksi.setKategoriBarang(rs.getString("kategori_barang"));
-                transaksi.setBeratBarang(rs.getDouble("berat_barang"));
-                transaksi.setJumlahBarang(rs.getDouble("jumlah_barang"));
-                transaksi.setNamaPengirim(rs.getString("nama_pengirim"));
-                transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
-                transaksi.setNoHpPengirim(rs.getString("noHP_pengirim"));
-                transaksi.setNamaPenerima(rs.getString("nama_penerima"));
-                transaksi.setAlamatPengirim(rs.getString("alamat_pengirim"));
-                transaksi.setAlamatPenerima(rs.getString("alamat_penerima"));
-                transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
-                transaksi.setTotalPembayaran(rs.getDouble("total_pembayaran"));
-                transaksi.setTanggal(rs.getDate("tanggal"));
-                transaksi.setStatusPemesanan(rs.getInt("status_pemesanan"));
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return transaksi;
-    }
-
     public ArrayList<Transaksi> ambilDaftarOrderMenunggu(ArrayList<Transaksi> daftarOrder) {
         ArrayList<Transaksi> daftarOrderMenunggu = new ArrayList<>();
         for (Transaksi order : daftarOrder) {
-            if (order.getStatusPemesanan()==1) {
+            if (order.getStatusPemesanan() == 1) {
                 daftarOrderMenunggu.add(order);
             }
         }
@@ -548,21 +511,6 @@ public class Controller {
         }
     }
 
-    public boolean ubahPassword(String passBaru, int idUser) {
-        conn.connect();
-        String query = "update user set password = ? where id_user = ?";
-        try {
-            PreparedStatement stmt = conn.con.prepareStatement(query);
-            stmt.setString(1, passBaru);
-            stmt.setInt(2, idUser);
-            stmt.executeUpdate();
-            return (true);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return (false);
-        }
-    }
-
     public double bayarOrder(int idPelanggan, double totalBayar) {
         conn.connect();
         String query1 = "SELECT saldo FROM user WHERE id_user=" + idPelanggan + ";";
@@ -587,7 +535,6 @@ public class Controller {
         }
         return totalSekarang - totalBayar;
     }
-
 
     public String getNamaLawanChat(Transaksi t, User u) {
 
@@ -615,7 +562,6 @@ public class Controller {
 
         return user.getNamaDepan() + " " + user.getNamaBelakang();
     }
-
 
     public int getIdLawanChat(Transaksi t, User userNow) {
         int getId = 0;
@@ -659,7 +605,6 @@ public class Controller {
 
         return c.getIdChat() + 1;
     }
-
 
     public boolean hapusAkun(int idUser) {
         conn.connect();
@@ -707,8 +652,8 @@ public class Controller {
         }
         return TingkatanUser.BRONZE;
     }
-    
-    public void hapusChat(int idTransaksi){
+
+    public void hapusChat(int idTransaksi) {
         conn.connect();
         String query = "DELETE FROM chat WHERE id_transaksi = " + idTransaksi + ";";
         try {

@@ -2,6 +2,7 @@ package View;
 
 import Controller.*;
 import Model.*;
+import jdk.nashorn.internal.scripts.JO;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -130,7 +131,6 @@ public class MenuRegisterKurir {
             String NIK = inputNIK.getText();
             int jumlahUserSekarang = controller.HitungJumlahUser();
             int idUser = jumlahUserSekarang + 1;
-//            double totalPendapatan = 0;
             int ketersediaan = 0;
             String plat = inputPlatnomor.getText();
             String jenisKendaraan = inputJenisKendaraan.getText();
@@ -138,14 +138,27 @@ public class MenuRegisterKurir {
             if (namaDepan.isEmpty() || namaBelakang.isEmpty() || noHP.isEmpty() || emailUser.isEmpty() || password.isEmpty() || NIK.isEmpty() || plat.isEmpty() || jenisKendaraan.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Register Gagal.\n" + Constant.ERROR_MESSAGE);
             } else {
-                Kurir kurirBaru = new Kurir(NIK, ketersediaan, plat, jenisKendaraan, idUser, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.KURIR, null);
-                if (ck.RegisterKurir(kurirBaru)) {
-                    JOptionPane.showMessageDialog(null, "Register Berhasil!");
-                    frame.dispose();
-                    new BerandaKurir(kurirBaru);
+                if (Validation.cekEmail(emailUser)) {
+                    if (Validation.cekNoHP(noHP)) {
+                        if (password.length() > 8) {
+                            Kurir kurirBaru = new Kurir(NIK, ketersediaan, plat, jenisKendaraan, idUser, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.KURIR, null);
+                            if (ck.RegisterKurir(kurirBaru)) {
+                                JOptionPane.showMessageDialog(null, "Register Berhasil!");
+                                frame.dispose();
+                                new BerandaKurir(kurirBaru);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Coba lagi");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, Constant.WRONG_PASSWORD);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, Constant.WRONG_NUMBER);
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Coba lagi");
+                    JOptionPane.showMessageDialog(null, Constant.WRONG_EMAIL);
                 }
+
             }
 
         });

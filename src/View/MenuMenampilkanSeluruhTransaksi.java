@@ -1,12 +1,11 @@
 package View;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Controller.Controller;
-import Controller.Method;
+import Controller.AdminController;
 import Model.*;
 public class MenuMenampilkanSeluruhTransaksi {
     private JFrame frame;
@@ -19,7 +18,7 @@ public class MenuMenampilkanSeluruhTransaksi {
     JLabel labelTotal, labelGetTotal;
     public MenuMenampilkanSeluruhTransaksi(Admin admin){
         Controller c =new Controller();
-        Method m=new Method();
+        AdminController m=new AdminController();
         frame = new DefaultComponentSetting().defaultFrame();
 
         //panel

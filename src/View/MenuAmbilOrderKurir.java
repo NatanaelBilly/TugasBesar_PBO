@@ -6,12 +6,14 @@ import Model.Kurir;
 import Model.Pelanggan;
 import Model.Transaksi;
 import Model.User;
+
 import java.awt.Color;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,22 +27,23 @@ public class MenuAmbilOrderKurir {
 //    private JLabel labelMenu, labelNamaPengirim, labelAlamatPengirim, labelNamaPenerima, labelAlamatPenerima, labelKategoriBarang,
 //            labelBeratBarang, labelJumlahBarang, labelHPPengirim, labelHPPenerima, labelTotalBayar;
 
-    
+
     private JFrame frame;
     private JPanel panelPengirim, panelPenerima, panelBarang;
     private JLabel labelJudul, labelPengirim, labelPenerima, labelBarang, labelNamaPenerima, labelNamaPengirim, labelAlamatPenerima, labelAlamatPengirim, labelNomorHPPenerima, labelNomorHPPengirim, labelTipeBarang, labelTotalBarang, labelBeratBarang;
     private JTextField inputNamaPengirim, inputTipeBarang, inputNamaPenerima, inputLokasiPengirim, inputLokasiPenerima, inputNoHPPengirim, inputNoHPPenerima, inputBanyakBarang, inputBeratBarang;
-    
+
     private Controller con = new Controller();
     private final DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     private Kurir kurir;
     private User pelanggan;
-    public MenuAmbilOrderKurir(Transaksi transaksi,Kurir kurir) {
-        
+
+    public MenuAmbilOrderKurir(Transaksi transaksi, Kurir kurir) {
+
         this.kurir = kurir;
         pelanggan = con.ambilDataUser(transaksi.getIdPelanggan());
-        
+
         //Label Judul
         labelJudul = GUI.defaultHeadingLabel("Ambil Order");
         labelJudul.setBounds(0, 40, 600, 30);
@@ -106,7 +109,7 @@ public class MenuAmbilOrderKurir {
         inputNamaPenerima.setEditable(false);
 
         //Input Tipe Barang
-         inputTipeBarang = new JTextField();
+        inputTipeBarang = new JTextField();
         inputTipeBarang.setBounds(225, 10, 280, 30);
         inputTipeBarang.setText(transaksi.getKategoriBarang());
         inputTipeBarang.setEditable(false);
@@ -140,7 +143,7 @@ public class MenuAmbilOrderKurir {
         inputBanyakBarang.setBounds(225, 60, 280, 30);
         inputBanyakBarang.setText("" + transaksi.getJumlahBarang());
         inputBanyakBarang.setEditable(false);
-        
+
 
         //Label no HP
         labelNomorHPPengirim = GUI.defaultRegularLabel("Nomor HP Pengirim");
@@ -165,14 +168,10 @@ public class MenuAmbilOrderKurir {
 
         inputBeratBarang = new JTextField();
         inputBeratBarang.setBounds(225, 110, 280, 30);
-        inputBeratBarang.setText(""+transaksi.getBeratBarang());
+        inputBeratBarang.setText("" + transaksi.getBeratBarang());
         inputBeratBarang.setEditable(false);
-        
-        
-        
-        
-        
-        
+
+
 //
 //        //Menu
 //        labelMenu = GUI.defaultHeadingLabel("Rincian Order");
@@ -218,7 +217,8 @@ public class MenuAmbilOrderKurir {
             public void actionPerformed(ActionEvent e) {
                 if (ambilOrderan(transaksi.getIdTransaksi())) {
                     frame.dispose();
-                    kurir.getListTransaksi().add(new Controller().ambilSuatuOrder(transaksi.getIdTransaksi()));
+                    ArrayList<Transaksi> listTransaksi = new Controller().ambilDaftarOrder(kurir.getIdUser());
+                    kurir.setListTransaksi(listTransaksi);
                     kurir.setKetersediaan(1);
                     new BerandaKurir(kurir);
                 }
@@ -257,27 +257,8 @@ public class MenuAmbilOrderKurir {
             }
         });
 
-
         //Frame
         frame = GUI.defaultFrame();
-
-//        frame.add(labelMenu);
-//        frame.add(labelNamaPengirim);
-//        frame.add(labelHPPengirim);
-//        frame.add(labelAlamatPengirim);
-//        frame.add(labelNamaPenerima);
-//        frame.add(labelHPPenerima);
-//        frame.add(labelAlamatPenerima);
-//        frame.add(labelKategoriBarang);
-//        frame.add(labelBeratBarang);
-//        frame.add(labelJumlahBarang);
-//        frame.add(labelTotalBayar);
-
-//        frame.add(btnEditProfile);
-//        frame.add(labelKembali);
-
-        //Frame
-        frame = new DefaultComponentSetting().defaultFrame();
         frame.getContentPane().setBackground(GUI.backGroundColor());
 
         //Add To Panel

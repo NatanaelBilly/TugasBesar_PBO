@@ -15,6 +15,7 @@ public class MenuRegisterPelanggan {
     private JPasswordField inputPassword;
     private JButton buttonRegister;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
+
     public MenuRegisterPelanggan() {
         //Link Kembali
         labelKembali = new DefaultComponentSetting().defaultBackLabel();
@@ -92,26 +93,41 @@ public class MenuRegisterPelanggan {
         inputPassword.setBounds(230, 410, 250, 30);
 
         //button Register
-        buttonRegister = GUI.defaultButton("Register",16);
+        buttonRegister = GUI.defaultButton("Register", 16);
         buttonRegister.setBounds(380, 500, 100, 40);
         buttonRegister.addActionListener(e -> {
-            Controller controller = new Controller();
-            String noHP = inputNomorHP.getText();
-            String namaDepan = inputNamaDepan.getText();
-            String namaBelakang = inputNamaBelakang.getText();
-            String emailUser = inputEmail.getText();
-            String password = String.valueOf(inputPassword.getPassword());
-            int banyakUser = controller.HitungJumlahUser();
-            double saldo = 0;
 
-            User penggunaBaru = new Pelanggan(TingkatanUser.BRONZE, banyakUser + 1, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.PELANGGAN, null);
-            if (controller.RegisterPelanggan((Pelanggan) penggunaBaru)) {
-                JOptionPane.showMessageDialog(null, "Register Berhasil!");
-                frame.dispose();
-                new BerandaPelanggan((Pelanggan) penggunaBaru);
+            if (inputNomorHP.getText().isEmpty() || inputNamaDepan.getText().isEmpty() || inputNamaBelakang.getText().isEmpty() || inputEmail.getText().isEmpty() || String.valueOf(inputPassword).isEmpty()) {
+                JOptionPane.showMessageDialog(null, Constant.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "Register Gagal. Silahkan coba lagi");
+                if (Validation.cekEmail(inputEmail.getText())) {
+                    if (Validation.cekNoHP(inputNomorHP.getText())) {
+                        Controller controller = new Controller();
+                        String noHP = inputNomorHP.getText();
+                        String namaDepan = inputNamaDepan.getText();
+                        String namaBelakang = inputNamaBelakang.getText();
+                        String emailUser = inputEmail.getText();
+                        String password = String.valueOf(inputPassword.getPassword());
+                        int banyakUser = controller.HitungJumlahUser();
+                        double saldo = 0;
+
+                        User penggunaBaru = new Pelanggan(TingkatanUser.BRONZE, banyakUser + 1, namaDepan, namaBelakang, noHP, emailUser, password, saldo, Role.PELANGGAN, null);
+                        if (controller.RegisterPelanggan((Pelanggan) penggunaBaru)) {
+                            JOptionPane.showMessageDialog(null, "Register Berhasil!");
+                            frame.dispose();
+                            new BerandaPelanggan((Pelanggan) penggunaBaru);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Register Gagal. Silahkan coba lagi");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, Constant.WRONG_NUMBER);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, Constant.WRONG_EMAIL);
+                }
             }
+
+
         });
 
         //Panel
