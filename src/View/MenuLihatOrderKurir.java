@@ -33,7 +33,6 @@ public class MenuLihatOrderKurir {
     private Controller con = new Controller();
     
     public MenuLihatOrderKurir(Kurir kurir){
-        //Link Kembali
         JLabel labelKembali = GUI.defaultBackLabel();
         labelKembali.addMouseListener(new MouseListener() {
             @Override
@@ -63,6 +62,7 @@ public class MenuLihatOrderKurir {
 
             }
         });
+        
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(new EmptyBorder(25, 50, 25, 50));
@@ -103,7 +103,6 @@ public class MenuLihatOrderKurir {
             btnDetail.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //Button Ambil
                     frame.dispose();
                     new MenuAmbilOrderKurir(thisOrder, kurir);
                 }
