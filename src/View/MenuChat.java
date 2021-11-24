@@ -14,6 +14,7 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.sql.Time;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,17 +24,20 @@ import javax.swing.JTextField;
 
 public class MenuChat {
     
-    private ArrayList<JLabel> labelChat = new ArrayList();
+    private JPanel borderlaoutpanel;
+    private ArrayList<Chat> chats = new ArrayList();
     private String namaLawanChat, name;
     private int idLawanChat;
     private Controller c = new Controller();
-    private JButton send, refresh;
+    private JButton send, refresh, back;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
+    private JLabel nama;
+    private JTextField chat;
 
     public MenuChat(Transaksi transaksi, User u) {
-        
+
         int idTransaksi = transaksi.getIdTransaksi();
-        ArrayList<Chat> chats = new ArrayList();
+
         chats = c.getChatById(idTransaksi);
 
         namaLawanChat = c.getNamaLawanChat(transaksi, u);
@@ -47,69 +51,67 @@ public class MenuChat {
         scrollPane.setBounds(25, 90, 530, 570);
         frame.getContentPane().add(scrollPane);
 
-        JPanel borderlaoutpanel = new JPanel();
+        borderlaoutpanel = new JPanel();
         scrollPane.setViewportView(borderlaoutpanel);
         borderlaoutpanel.setLayout(new BorderLayout(0, 0));
-        
-        //Chat TextField
-        JTextField chat = new JTextField();
+
+        chat = new JTextField();
         chat.setBounds(25, 680, 455, 50);
         chat.setFont(new Font("Arial", Font.PLAIN, 20));
         frame.add(chat);
 
-        //Button Send
-        send = GUI.defaultButton("Kirim",15);
+        send = GUI.defaultButton("Kirim", 15);
         send.setBounds(485, 680, 70, 50);
         send.setFont(new Font("Arial", Font.PLAIN, 15));
         frame.add(send);
-        
-        //Button refresh
-        refresh = GUI.defaultButton("Refresh",10);
+
+        refresh = GUI.defaultButton("Refresh", 10);
         refresh.setBounds(500, 20, 50, 50);
         frame.add(refresh);
 
         send.addActionListener((ActionEvent e) -> {
             frame.dispose();
+            java.util.Date utilDate = new java.util.Date();
+            Time sqlTime = new java.sql.Time(utilDate.getTime());
 
             Chat myChat = new Chat();
             myChat.setIdPenerima(idLawanChat);
             myChat.setIdPengirim(u.getIdUser());
             myChat.setChat(chat.getText());
             myChat.setIdTransaksi(idTransaksi);
-            myChat.setTime(null);
+            myChat.setTime(sqlTime);
             c.insertChat(myChat);
+
             new MenuChat(transaksi, u);
         });
-        
+
         refresh.addActionListener((ActionEvent e) -> {
             frame.dispose();
             new MenuChat(transaksi, u);
         });
 
-        //Button back
-        JButton back = GUI.defaultButton("<",15);
+        back = GUI.defaultButton("<", 15);
         back.setBounds(25, 20, 50, 50);
         frame.add(back);
-        
+
         back.addActionListener((ActionEvent e) -> {
             frame.dispose();
             if (u instanceof Kurir) {
-                Kurir kurir = (Kurir)u;
+                Kurir kurir = (Kurir) u;
                 new MenuLihatDetailTransaksi(transaksi, kurir);
-            }
-            else if (u instanceof Pelanggan) {
-                Pelanggan pelanggan = (Pelanggan)u;
+            } else if (u instanceof Pelanggan) {
+                Pelanggan pelanggan = (Pelanggan) u;
                 new MenuLihatDetailTransaksi(transaksi, pelanggan);
             }
-            
+
         });
-        //Nama
-        JLabel nama = new DefaultComponentSetting().defaultRegularLabel(namaLawanChat);
+
+        nama = new DefaultComponentSetting().defaultRegularLabel(namaLawanChat);
         nama.setBounds(95, 20, 300, 50);
         frame.add(nama);
 
         nama.setFont(new Font("Arial", Font.PLAIN, 25));
-        
+
         JPanel columnpanel = new JPanel();
         borderlaoutpanel.add(columnpanel, BorderLayout.NORTH);
         columnpanel.setLayout(new GridLayout(0, 1, 0, 1));
@@ -117,7 +119,7 @@ public class MenuChat {
 
         for (int i = 0; i < chats.size(); i++) {
             if (chats.get(i).getIdPengirim() == u.getIdUser()) {
-                name = "You";
+                name = "Anda";
             } else {
                 name = namaLawanChat;
             }
@@ -137,6 +139,6 @@ public class MenuChat {
         }
 
         frame.setVisible(true);
-        
+
     }
 }

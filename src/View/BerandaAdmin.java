@@ -1,10 +1,7 @@
 package View;
 
 import javax.swing.*;
-import java.awt.*;
-
 import Model.*;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 

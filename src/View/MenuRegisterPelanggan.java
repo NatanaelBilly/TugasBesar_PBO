@@ -121,7 +121,6 @@ public class MenuRegisterPelanggan {
 
         });
 
-        //Panel
         panelRegisterPelanggan = new JPanel();
         panelRegisterPelanggan.setSize(600, 800);
         panelRegisterPelanggan.setVisible(true);
@@ -140,8 +139,6 @@ public class MenuRegisterPelanggan {
         panelRegisterPelanggan.add(inputNomorHP);
         panelRegisterPelanggan.add(inputPassword);
         panelRegisterPelanggan.add(buttonRegister);
-
-        //Frame
         frame = new DefaultComponentSetting().defaultFrame();
         frame.add(panelRegisterPelanggan);
     }

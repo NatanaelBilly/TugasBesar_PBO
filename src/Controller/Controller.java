@@ -123,7 +123,7 @@ public class Controller {
             stmt.setInt(3, chat.getIdPengirim());
             stmt.setInt(4, chat.getIdPenerima());
             stmt.setString(5, chat.getChat());
-            stmt.setDate(6, (Date) chat.getTime());
+            stmt.setTime(6, chat.getTime());
             stmt.executeUpdate();
             return (true);
         } catch (SQLException e) {

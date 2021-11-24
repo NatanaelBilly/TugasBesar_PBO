@@ -1,5 +1,6 @@
 package View;
 
+import Model.Constant;
 import Model.Pelanggan;
 import Model.UserManager;
 
@@ -54,6 +55,7 @@ public class BerandaPelanggan {
         btnLogout.setBounds(170, 620, 250, 80);
         btnLogout.addActionListener(e -> {
             frame.dispose();
+            JOptionPane.showMessageDialog(null, Constant.INFO_LOGOUT);
             UserManager.getInstance().logOut();
             new HalamanAwal();
         });
