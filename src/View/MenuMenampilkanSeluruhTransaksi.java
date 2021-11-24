@@ -21,24 +21,17 @@ public class MenuMenampilkanSeluruhTransaksi {
         AdminController m=new AdminController();
         frame = new DefaultComponentSetting().defaultFrame();
 
-        //panel
         panel= new JPanel();
         panel.setSize(600, 800);
-
-        //init isi data
-        StringBuilder str =new StringBuilder();
-//        c.getSeluruhTransaksi();
-        admin.setSaldo(m.lihatSaldoAdmin(c.listTransaksi));
-        str.append(admin.getSaldo());
 
         labelTotal  = new DefaultComponentSetting().defaultRegularLabel("Saldo Total Pendapatan : ");
         labelTotal.setBounds(10, 20, 200, 30);
 
-        labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(str.toString());
+        labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(Double.toString(admin.getSaldo()));
         labelGetTotal.setBounds(210, 20, 150, 30);
 
 
-        c.getAllUsers();
+        c.getSeluruhTransaksi();
         String [][] dataTransakksi=m.konversiListToArrayTransaksi(c.listTransaksi);
 
         //init kolom
@@ -58,7 +51,7 @@ public class MenuMenampilkanSeluruhTransaksi {
 
         //button back
         back = GUI.defaultButton("Kembali", 18);
-        back.setBounds(400,20,200,30);
+        back.setBounds(380,20,150,30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -66,8 +59,11 @@ public class MenuMenampilkanSeluruhTransaksi {
                 frame.dispose();
             }
         });
+
         panel.add(back);
         panel.add(sp);
+        panel.add(labelTotal);
+        panel.add(labelGetTotal);
         //initialize panel dan frame
         panel.setLayout(null);
         panel.setVisible(true);

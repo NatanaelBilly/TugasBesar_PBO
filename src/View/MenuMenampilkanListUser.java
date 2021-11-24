@@ -41,7 +41,7 @@ public class MenuMenampilkanListUser {
 
         //button back
         back = GUI.defaultButton("Kembali", 18);
-        back.setBounds(400, 20, 150, 30);
+        back.setBounds(380, 20, 150, 30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
