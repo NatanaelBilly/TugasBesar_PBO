@@ -222,13 +222,20 @@ public class MenuLihatDetailTransaksi {
                 btnChat = GUI.defaultButton("Chat", 15);
                 btnChat.setBounds(20, 680, 540, 30);
                 btnChat.setVisible(true);
-
+                btnChat.addActionListener((ActionEvent e) -> {
+                    frame.dispose();
+                    new MenuChat(transaksi, user);
+                    });
                 frame.add(btnKonfirmasi);
                 frame.add(btnChat);
             } else {
                 btnChat = GUI.defaultButton("Chat Driver", 15);
                 btnChat.setBounds(20, 660, 540, 30);
                 btnChat.setFont(fontText);
+                btnChat.addActionListener((ActionEvent e) -> {
+                    frame.dispose();
+                    new MenuChat(transaksi, user);
+                    });
                 frame.add(btnChat);
             }
         } else {
@@ -285,10 +292,8 @@ public class MenuLihatDetailTransaksi {
 //            }
         }
 
-        btnChat.addActionListener((ActionEvent e) -> {
-            frame.dispose();
-            new MenuChat(transaksi, user);
-        });
+
+        
 
         panelNamaNoKurir.add(labelNamaKurir);
         panelNamaNoKurir.add(Box.createRigidArea(new Dimension(0, 10)));

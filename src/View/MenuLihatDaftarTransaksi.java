@@ -28,6 +28,7 @@ public class MenuLihatDaftarTransaksi {
     public MenuLihatDaftarTransaksi(User user) {
         this.user = user;
         ArrayList<Transaksi> listTransaksi= controller.ambilDaftarOrder(user.getIdUser());
+        System.out.println(listTransaksi.size() +  " " + listTransaksi);
         if (listTransaksi == null || listTransaksi.size() == 0) {
             JOptionPane.showMessageDialog(null, "Ordermu Kosong");
             if (user instanceof Pelanggan)
@@ -79,7 +80,6 @@ public class MenuLihatDaftarTransaksi {
 
             for (int i = user.getListTransaksi().size() - 1; i >= 0; i--) {
                 Transaksi transaksi = listTransaksi.get(i);
-                System.out.println(transaksi.getIdKurir());
                 kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
                 //Tanggal Untuk Setiap Transaksi
