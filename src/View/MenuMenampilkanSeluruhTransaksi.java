@@ -21,20 +21,13 @@ public class MenuMenampilkanSeluruhTransaksi {
         AdminController m=new AdminController();
         frame = new DefaultComponentSetting().defaultFrame();
 
-        //panel
         panel= new JPanel();
         panel.setSize(600, 800);
-
-        //init isi data
-        StringBuilder str =new StringBuilder();
-//        c.getSeluruhTransaksi();
-        admin.setSaldo(m.lihatSaldoAdmin(c.listTransaksi));
-        str.append(admin.getSaldo());
 
         labelTotal  = new DefaultComponentSetting().defaultRegularLabel("Saldo Total Pendapatan : ");
         labelTotal.setBounds(10, 20, 200, 30);
 
-        labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(str.toString());
+        labelGetTotal = new DefaultComponentSetting().defaultRegularLabel(Double.toString(admin.getSaldo()));
         labelGetTotal.setBounds(210, 20, 150, 30);
 
 

@@ -39,16 +39,6 @@ public class AdminController {
         }
     }
 
-    //Gausah ada, ambil dari admin.etSaldo()
-    public double lihatSaldoAdmin(ArrayList<Transaksi> listTransaksi){
-        double total=0;
-        for (int i = 0; i < listTransaksi.size(); i++) {
-            Transaksi currentTransaksi= listTransaksi.get(i);
-            total += currentTransaksi.getTotalPembayaran();
-        }
-        return total*0.3;
-    }
-
     public String [][] konversiListToArrayTransaksi(ArrayList<Transaksi> listTransaksi){
         String hasil[][]=new String[listTransaksi.size()][5];
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
