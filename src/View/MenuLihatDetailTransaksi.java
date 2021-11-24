@@ -222,31 +222,27 @@ public class MenuLihatDetailTransaksi {
                 btnChat = GUI.defaultButton("Chat", 15);
                 btnChat.setBounds(20, 680, 540, 30);
                 btnChat.setVisible(true);
-                btnChat.addActionListener((ActionEvent e) -> {
-                    frame.dispose();
-                    new MenuChat(transaksi, user);
-                    });
+                
                 frame.add(btnKonfirmasi);
                 frame.add(btnChat);
             } else {
                 btnChat = GUI.defaultButton("Chat Driver", 15);
                 btnChat.setBounds(20, 660, 540, 30);
                 btnChat.setFont(fontText);
-                btnChat.addActionListener((ActionEvent e) -> {
+                
+                frame.add(btnChat);
+            }
+            btnChat.addActionListener((ActionEvent e) -> {
                     frame.dispose();
                     new MenuChat(transaksi, user);
                     });
-                frame.add(btnChat);
-            }
         } else {
-            if (user instanceof Kurir) {
-                JLabel labelSelesai = new JLabel("Pesanan Selesai.");
+                JLabel labelSelesai = new JLabel("Pesanan Telah Selesai.");
                 labelSelesai.setBounds(20, 625, 250, 30);
                 labelSelesai.setFont(fontText);
                 frame.add(labelSelesai);
 
 
-            }
 //            }else
 //            {
 //                if(transaksi.getSaranDriver()==null){
