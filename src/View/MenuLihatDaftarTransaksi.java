@@ -1,10 +1,7 @@
 package View;
 
 import Controller.Controller;
-import Model.Kurir;
-import Model.Pelanggan;
-import Model.Transaksi;
-import Model.User;
+import Model.*;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
@@ -14,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class MenuLihatDaftarTransaksi {
     private JFrame frame;
@@ -29,8 +27,8 @@ public class MenuLihatDaftarTransaksi {
 
     public MenuLihatDaftarTransaksi(User user) {
         this.user = user;
-
-        if (user.getListTransaksi() == null || user.getListTransaksi().size() == 0) {
+        ArrayList<Transaksi> listTransaksi= controller.ambilDaftarOrder(user.getIdUser());
+        if (listTransaksi == null || listTransaksi.size() == 0) {
             JOptionPane.showMessageDialog(null, "Ordermu Kosong");
             if (user instanceof Pelanggan)
                 new BerandaPelanggan((Pelanggan) user);
@@ -79,9 +77,9 @@ public class MenuLihatDaftarTransaksi {
             panel.add(labelKembali);
             panel.setVisible(true);
 
-            for (int i = user.getListTransaksi().size()-1; i >= 0; i--) {
-                Transaksi transaksi = user.getListTransaksi().get(i);
-
+            for (int i = user.getListTransaksi().size() - 1; i >= 0; i--) {
+                Transaksi transaksi = listTransaksi.get(i);
+                System.out.println(transaksi.getIdKurir());
                 kurir = controller.ambilDataKurir(transaksi.getIdKurir());
 
                 //Tanggal Untuk Setiap Transaksi
@@ -112,10 +110,10 @@ public class MenuLihatDaftarTransaksi {
                         new MenuLihatDetailTransaksi(transaksi, user);
                     }
                 });
-                if (transaksi.getStatusPemesanan().equalsIgnoreCase("MENUNGGU KURIR")) {
+                if (transaksi.getStatusPemesanan()== StatusPengiriman.MENUNGGU_KURIR) {
                     logo = new ImageIcon("assets/menunggu_kurir.jpg");
                     btnDetail.setVisible(false);
-                } else if (transaksi.getStatusPemesanan().equalsIgnoreCase("diantar")) {
+                } else if (transaksi.getStatusPemesanan()==StatusPengiriman.DIANTAR) {
                     logo = new ImageIcon("assets/diantar.jpg");
                     labelKurir.setText("Kurir: " + kurir.getNamaDepan() + " " + kurir.getNamaBelakang());
                 } else {

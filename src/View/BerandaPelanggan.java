@@ -6,11 +6,11 @@ import Model.UserManager;
 import javax.swing.*;
 
 public class BerandaPelanggan {
-    JFrame frame;
-    JPanel panelMessage;
-    JLabel labelMessage;
-    JButton btnProfile, btnOrder, btnTransaction, btnIsiSaldo, btnFeedback, btnLogout;
-    DefaultComponentSetting GUI = new DefaultComponentSetting();
+    private JFrame frame;
+    private JPanel panelMessage;
+    private JLabel labelMessage;
+    private JButton btnProfile, btnOrder, btnTransaction, btnIsiSaldo, btnFeedback, btnLogout;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public BerandaPelanggan(Pelanggan pelanggan) {
         //Label

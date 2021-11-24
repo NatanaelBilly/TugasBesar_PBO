@@ -20,7 +20,7 @@ public class MenuProfilePelanggan {
     private JButton btnEditProfile, btnSimpan, btnHapus;
     private JPasswordField password;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
-    Controller controller = new Controller();
+    private Controller controller = new Controller();
 
     public MenuProfilePelanggan(Pelanggan pelanggan) {
         //back
@@ -39,7 +39,7 @@ public class MenuProfilePelanggan {
         Image image = profilePic.getImage().getScaledInstance(200, 250, java.awt.Image.SCALE_SMOOTH);
         profilePic = new ImageIcon(image);
         labelProfilePic.setIcon(profilePic);
-        labelProfilePic.setBounds(200, 50, 200, 200);
+        labelProfilePic.setBounds(225, 50, 150, 150);
 
         //label
         labelNama = GUI.defaultRegularLabel("Nama");

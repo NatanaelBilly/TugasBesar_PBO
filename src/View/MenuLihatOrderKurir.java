@@ -93,7 +93,7 @@ public class MenuLihatOrderKurir {
             labelBerat.setBounds(30,140,320,30);
 
             labelLogo= new JLabel();
-            logo = new ImageIcon ("assets/diantar.jpg");
+            logo = new ImageIcon ("assets/menunggu_kurir.jpg");
             labelLogo.setIcon(logo);
             labelLogo.setBounds(360, 30,100,100);
 

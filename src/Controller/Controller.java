@@ -83,8 +83,7 @@ public class Controller {
                     String email_user = rs.getString("email_user");
                     String password = rs.getString("password");
                     String noHp = rs.getString("noHp");
-                    double saldo = rs.getInt("saldo");
-
+                    double saldo = rs.getDouble("saldo");
                     String NIK = rs.getString("NIK");
                     String plat = rs.getString("plat");
                     String jenis_kendaraan = rs.getString("jenis_kendaraan");
@@ -159,34 +158,6 @@ public class Controller {
         return (chats);
     }
 
-    //Buat transaksi
-    public boolean buatOrder(Transaksi transaksi) {
-        conn.connect();
-        String query = "INSERT INTO transaksi VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try {
-            PreparedStatement stmt = conn.con.prepareStatement(query);
-            stmt.setInt(1, transaksi.getIdTransaksi());
-            stmt.setInt(2, transaksi.getIdPelanggan());
-            stmt.setInt(3, transaksi.getIdKurir());
-            stmt.setString(4, transaksi.getKategoriBarang());
-            stmt.setDouble(5, transaksi.getBeratBarang());
-            stmt.setDouble(6, transaksi.getJumlahBarang());
-            stmt.setString(7, transaksi.getNamaPengirim());
-            stmt.setString(8, transaksi.getNamaPenerima());
-            stmt.setString(9, transaksi.getNoHpPengirim());
-            stmt.setString(10, transaksi.getNoHpPenerima());
-            stmt.setString(11, transaksi.getAlamatPengirim());
-            stmt.setString(12, transaksi.getAlamatPenerima());
-            stmt.setDouble(13, transaksi.getTotalPembayaran());
-            stmt.setDate(14, (Date) transaksi.getTanggal());
-            stmt.setString(15, transaksi.getStatusPemesanan());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return false;
-        }
-    }
 
     public int HitungJumlahUser() {
         ArrayList<User> listUser = getAllUsers();
@@ -235,7 +206,7 @@ public class Controller {
             stmt.setString(10, transaksi.getAlamatPenerima());
             stmt.setDouble(11, transaksi.getTotalPembayaran());
             stmt.setDate(12, (Date) transaksi.getTanggal());
-            stmt.setString(13, transaksi.getStatusPemesanan());
+            stmt.setInt(13, transaksi.getStatusPemesanan());
             stmt.executeUpdate();
             return (true);
         } catch (SQLException throwables) {
@@ -272,30 +243,30 @@ public class Controller {
                 transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
                 transaksi.setTotalPembayaran(rs.getDouble("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
-                switch (rs.getString("status_pemesanan")) {
-                    case "MENUNGGU KURIR":
-                        transaksi.setStatusPemesanan(0);
-                        break;
-                    case "DIANTAR":
-                        transaksi.setStatusPemesanan(1);
-                        break;
-                    case "DITERIMA":
-                        transaksi.setStatusPemesanan(2);
-                        break;
-                }
+//                switch (rs.getString("status_pemesanan")) {
+//                    case "MENUNGGU KURIR":
+//                        transaksi.setStatusPemesanan(0);
+//                        break;
+//                    case "DIANTAR":
+                transaksi.setStatusPemesanan(rs.getInt("status_pemesanan"));
+//                        break;
+//                    case "DITERIMA":
+//                        transaksi.setStatusPemesanan(2);
+//                        break;
+//                }
 
                 //Get Status nya belum
-                String status_pemesanan = rs.getString("status_pemesanan");
-                int status;
-                if (status_pemesanan.equals("MENUNGGU KURIR")) {
-                    status = 0;
-                } else if (status_pemesanan.equals("DIANTAR")) {
-                    status = 1;
-                } else {
-                    status = 2;
-                }
-
-                transaksi.setStatusPemesanan(status);
+//                String status_pemesanan = rs.getString("status_pemesanan");
+//                int status;
+//                if (status_pemesanan.equals("MENUNGGU KURIR")) {
+//                    status = 0;
+//                } else if (status_pemesanan.equals("DIANTAR")) {
+//                    status = 1;
+//                } else {
+//                    status = 2;
+//                }
+//
+//                transaksi.setStatusPemesanan(status);
 
                 daftarOrder.add(transaksi);
             }
@@ -332,18 +303,7 @@ public class Controller {
                 transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
                 transaksi.setTotalPembayaran(rs.getDouble("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
-                //Get Status nya belum
-                String status_pemesanan = rs.getString("status_pemesanan");
-                int status;
-                if (status_pemesanan.equals("MENUNGGU KURIR")) {
-                    status = 0;
-                } else if (status_pemesanan.equals("DIANTAR")) {
-                    status = 1;
-                } else {
-                    status = 2;
-                }
-
-                transaksi.setStatusPemesanan(status);
+                transaksi.setStatusPemesanan(rs.getInt("status_pemesanan"));
 
                 daftarOrder.add(transaksi);
             }
@@ -380,17 +340,7 @@ public class Controller {
                 transaksi.setNoHpPenerima(rs.getString("noHP_penerima"));
                 transaksi.setTotalPembayaran(rs.getDouble("total_pembayaran"));
                 transaksi.setTanggal(rs.getDate("tanggal"));
-                String status_pemesanan = rs.getString("status_pemesanan");
-                int status;
-                if (status_pemesanan.equals("MENUNGGU KURIR")) {
-                    status = 0;
-                } else if (status_pemesanan.equals("DIANTAR")) {
-                    status = 1;
-                } else {
-                    status = 2;
-                }
-
-                transaksi.setStatusPemesanan(status);
+                transaksi.setStatusPemesanan(rs.getInt("status_pemesanan"));
 
             }
         } catch (SQLException e) {
@@ -403,7 +353,7 @@ public class Controller {
     public ArrayList<Transaksi> ambilDaftarOrderMenunggu(ArrayList<Transaksi> daftarOrder) {
         ArrayList<Transaksi> daftarOrderMenunggu = new ArrayList<>();
         for (Transaksi order : daftarOrder) {
-            if (order.getStatusPemesanan().equals("MENUNGGU KURIR")) {
+            if (order.getStatusPemesanan()==1) {
                 daftarOrderMenunggu.add(order);
             }
         }
@@ -641,7 +591,7 @@ public class Controller {
 
 
     public String getNamaLawanChat(Transaksi t, User u) {
-        
+
         int getId = 0;
         if (u instanceof Pelanggan) {
             getId = t.getIdKurir();

@@ -1,7 +1,9 @@
 package Model;
 
 public interface StatusPengiriman {
-    int MENUNGGU_KURIR=0;
-    int DIANTAR=1;
-    int DITERIMA=2;
+    int MENUNGGU_KURIR=1;
+    int DIANTAR=2;
+    int DITERIMA=3;
+
+    abstract String pilihStatusPengiriman();
 }

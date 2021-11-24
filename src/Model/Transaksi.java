@@ -24,15 +24,16 @@ public class Transaksi implements StatusPengiriman {
     private ArrayList<Chat> listChat;
 
     public Transaksi() {
-        
+
     }
-    public Transaksi(int idTransaksi, int idPelanggan, int idKurir, 
-            String kategoriBarang, double beratBarang, double jumlahBarang, 
-            String namaPengirim, String alamatPengirim, String noHpPengirim, 
-            String namaPenerima, String alamatPenerima, String noHpPenerima, 
-            double totalPembayaran, int statusPemesanan, Date tanggal, 
-            ArrayList<Chat> listChat) {
-        
+
+    public Transaksi(int idTransaksi, int idPelanggan, int idKurir,
+                     String kategoriBarang, double beratBarang, double jumlahBarang,
+                     String namaPengirim, String alamatPengirim, String noHpPengirim,
+                     String namaPenerima, String alamatPenerima, String noHpPenerima,
+                     double totalPembayaran, int statusPemesanan, Date tanggal,
+                     ArrayList<Chat> listChat) {
+
         setIdTransaksi(idTransaksi);
         setIdPelanggan(idPelanggan);
         setIdKurir(idKurir);
@@ -156,16 +157,8 @@ public class Transaksi implements StatusPengiriman {
         this.totalPembayaran = totalPembayaran;
     }
 
-    public String getStatusPemesanan() {
-        String status = "";
-        if(statusPemesanan == 0){
-            status = "MENUNGGU KURIR";
-        } else if(statusPemesanan == 1){
-            status = "DIANTAR";
-        } else {
-            status = "DITERIMA";
-        }
-        return status;
+    public int getStatusPemesanan() {
+        return statusPemesanan;
     }
 
     public void setStatusPemesanan(int statusPemesanan) {
@@ -192,6 +185,15 @@ public class Transaksi implements StatusPengiriman {
     public String toString() {
         return "Transaksi{" + "idTransaksi=" + idTransaksi + ", idPelanggan=" + idPelanggan + ", idKurir=" + idKurir + ", kategoriBarang=" + kategoriBarang + ", beratBarang=" + beratBarang + ", jumlahBarang=" + jumlahBarang + ", namaPengirim=" + namaPengirim + ", alamatPengirim=" + alamatPengirim + ", noHpPengirim=" + noHpPengirim + ", namaPenerima=" + namaPenerima + ", alamatPenerima=" + alamatPenerima + ", noHpPenerima=" + noHpPenerima + ", totalPembayaran=" + totalPembayaran + ", statusPemesanan=" + statusPemesanan + ", tanggal=" + tanggal + ", listChat=" + listChat + '}';
     }
-    
-    
+
+    @Override
+    public String pilihStatusPengiriman() {
+        if (statusPemesanan == MENUNGGU_KURIR) {
+            return "Menunggu Kurir";
+        } else if (statusPemesanan == DIANTAR) {
+            return "Diantar";
+        } else {
+            return "Diterima";
+        }
+    }
 }

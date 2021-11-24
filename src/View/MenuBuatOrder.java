@@ -149,11 +149,11 @@ public class MenuBuatOrder {
                 } else if (e.getKeyChar() == ',') {
                     falseInput = "Harap Gunakan Titik(.)";
                     JOptionPane.showMessageDialog(null, falseInput);
-                    inputBeratBarang.setText("");
+                    inputBanyakBarang.setText("");
                 } else {
                     falseInput = "Masukkan Hanya Angka";
                     JOptionPane.showMessageDialog(null, falseInput);
-                    inputBeratBarang.setText("");
+                    inputBanyakBarang.setText("");
                 }
             }
         });
@@ -242,8 +242,9 @@ public class MenuBuatOrder {
                             boolean transaksiTerbuat = c.buatTransaksi(transaksi);
                             if (transaksiTerbuat) {
                                 double saldoSekarang = c.bayarOrder(pelanggan.getIdUser(), transaksi.getTotalPembayaran());
+                                ArrayList<Transaksi> listTransaksi = c.ambilDaftarOrder(pelanggan.getIdUser());
                                 pelanggan.setSaldo(saldoSekarang);
-                                pelanggan.getListTransaksi().add(transaksi);
+                                pelanggan.setListTransaksi(listTransaksi);
                                 TingkatanUser tingkat = c.updateTingkatan(pelanggan.getIdUser());
                                 pelanggan.setTingkatan(tingkat);
                                 JOptionPane.showMessageDialog(null, "Transaksi Terbuat! Saldo kamu kini tinggal " + pelanggan.getSaldo());

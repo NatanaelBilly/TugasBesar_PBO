@@ -8,13 +8,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class MenuLogin {
-    JFrame frame;
-    JLabel labelJudul, labelEmail, labelPassword, linkKembali;
-    JTextField inputEmail;
-    JPasswordField inputPassword;
-    JPanel panelLogin;
-    JButton buttonLogin;
-    DefaultComponentSetting GUI = new DefaultComponentSetting();
+    private JFrame frame;
+    private JLabel labelJudul, labelEmail, labelPassword, linkKembali;
+    private JTextField inputEmail;
+    private JPasswordField inputPassword;
+    private JPanel panelLogin;
+    private JButton buttonLogin;
+    private DefaultComponentSetting GUI = new DefaultComponentSetting();
 
     public MenuLogin() {
         //Link Kembali
