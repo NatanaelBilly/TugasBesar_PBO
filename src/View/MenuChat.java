@@ -31,7 +31,7 @@ public class MenuChat {
     private Controller c = new Controller();
     private JButton send, refresh, back;
     private DefaultComponentSetting GUI = new DefaultComponentSetting();
-    private JLabel nama;
+    private JLabel nama, teksChat;
     private JTextField chat;
 
     public MenuChat(Transaksi transaksi, User u) {
@@ -128,7 +128,8 @@ public class MenuChat {
             columnpanel.add(rowPanel);
             rowPanel.setLayout(null);
 
-            JLabel teksChat = new JLabel(name + " : " + chats.get(i).getChat());
+            teksChat = new JLabel(chats.get(i).getTime()+ "   " 
+                    + name + " : " + chats.get(i).getChat());
             teksChat.setFont(new Font("Arial", Font.PLAIN, 16));
             teksChat.setBounds(20, 5, 500, 40);
             rowPanel.add(teksChat);
